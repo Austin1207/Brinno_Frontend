@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const TutorialScale = ({state, projectActions, itemsActions,left}) => {
+const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}) => {
 
     const TutoialScaleOk = event => {
         document.getElementById("TutorialScaleRectangular").style.display = "none";
@@ -31,7 +31,7 @@ const TutorialScale = ({state, projectActions, itemsActions,left}) => {
         document.getElementById("TutorialScaleMeasureBackButton").style.display = "";
         document.getElementById("TutorialScaleMeasureOkButton").style.display = "";
 
-        itemsActions.selectItem("layer0", "xFAw434Nm");
+        itemsActions.selectItem("layer1", "xFAw434Nm");
     }
 
     const MeasureBack = event => {
@@ -88,6 +88,8 @@ const TutorialScale = ({state, projectActions, itemsActions,left}) => {
         document.getElementById("TutorialScaleSetOkButton").style.display = "none";
 
         projectActions.unselectAll()
+        sceneActions.selectLayer("layer2")
+
     }
 
     return(

@@ -36,8 +36,8 @@ export default class LineSpeedDial extends Component{
     );
 
     const actions = [
-      { icon: <PencilAddIcon />, name: "Area I want", do: () => linesActions.selectToolDrawingLine('install area')},
-      { icon: <PencilMinusIcon />, name: "Area I don't want" , do: () => linesActions.selectToolDrawingLine('wall')},
+      { icon: <PencilAddIcon />, name: "Interest Area", do: () => linesActions.selectToolDrawingLine('install area')},
+      { icon: <PencilMinusIcon />, name: "Construction Area" , do: () => linesActions.selectToolDrawingLine('wall')},
     ];
 
     return (

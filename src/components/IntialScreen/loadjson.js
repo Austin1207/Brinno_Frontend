@@ -2,17 +2,14 @@ export function loadimgjson (loadImageUrl) {
     var loadjson = {
         "unit": "cm",
         "layers": {
-            "layer0": {
-                "id": "layer0",
+            "layer1": {
+                "id": "layer1",
                 "altitude": 0,
                 "order": 0,
                 "opacity": 1,
                 "name": "default",
                 "visible": true,
                 "vertices": {},
-                "lines": {},
-                "holes": {},
-                "areas": {},
                 "items": {
                     "xFAw434Nm": {
                         "id": "xFAw434Nm",
@@ -23,10 +20,10 @@ export function loadimgjson (loadImageUrl) {
                         "selected": false,
                         "properties": {
                             "imageUri": loadImageUrl,
-                            "x1": 0,
-                            "y1": 0,
-                            "x2": 100,
-                            "y2": 0,
+                            "x1": 400,
+                            "y1": 315,
+                            "x2": 500,
+                            "y2": 315,
                             "distance": {
                                 "length": 100
                             },
@@ -39,6 +36,30 @@ export function loadimgjson (loadImageUrl) {
                         "rotation": 0
                     }
                 },
+                "lines": {},
+                "holes": {},
+                "areas": {},
+                "selected": {
+                    "vertices": [],
+                    "lines": [],
+                    "holes": [],
+                    "areas": [],
+                    "items": []
+                }
+            },
+
+            "layer2": {
+                "id": "layer2",
+                "altitude": 0,
+                "order": 0,
+                "opacity": 1,
+                "name": "default",
+                "visible": true,
+                "vertices": {},
+                "lines": {},
+                "holes": {},
+                "areas": {},
+                "items": {},
                 "selected": {
                     "vertices": [],
                     "lines": [],
@@ -47,6 +68,7 @@ export function loadimgjson (loadImageUrl) {
                     "items": []
                 }
             }
+
         },
         "grids": {
             "h1": {
@@ -66,7 +88,7 @@ export function loadimgjson (loadImageUrl) {
                 }
             }
         },
-        "selectedLayer": "layer-1",
+        "selectedLayer": "layer1",
         "groups": {},
         "width": 3000,
         "height": 2000,

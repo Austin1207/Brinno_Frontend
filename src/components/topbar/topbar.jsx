@@ -20,7 +20,7 @@ import '@babel/polyfill'; //for async
 const pages = ['+Upload', 'Set Scale', 'Tutorials'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const ResponsiveAppBar = ({ state, projectActions, itemsActions}) => {
+const ResponsiveAppBar = ({ state, projectActions, itemsActions, sceneActions}) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -152,6 +152,8 @@ const ResponsiveAppBar = ({ state, projectActions, itemsActions}) => {
     document.getElementById("TutorialScaleRectangular").style.display = "";
     document.getElementById("TutorialScaleWord").style.display = "";
     document.getElementById("TutorialScaleButton").style.display = "";
+
+    sceneActions.selectLayer("layer1")
   }
 
   return (

@@ -2,8 +2,8 @@ export function loadimgjson (loadImageUrl) {
     var loadjson = {
         "unit": "cm",
         "layers": {
-            "layer-1": {
-                "id": "layer-1",
+            "layer1": {
+                "id": "layer1",
                 "altitude": 0,
                 "order": 0,
                 "opacity": 1,
@@ -66,7 +66,7 @@ export function loadimgjson (loadImageUrl) {
                 }
             }
         },
-        "selectedLayer": "layer-1",
+        "selectedLayer": "layer1",
         "groups": {},
         "width": 3000,
         "height": 2000,

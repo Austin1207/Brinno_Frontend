@@ -70,13 +70,21 @@ export default class ImageFul extends Component {
   }
 
   onMouseMove(event) {
+    //滑鼠所在x座標&y座標(向右為x+,向下為y+,原點在整個視窗的左上)
     let {x, y} = event.viewerEvent;
 
+    //整個視窗的高度(2000) - 上述y = 新y座標(原點變為整個視窗的左下)
     y = this.props.scene.height - y;
 
-    let dist = pointsDistance(this.props.x1, this.props.y1, this.props.x2, this.props.y2);
-    let scale = !isNaN(dist) && dist ? (this.props.distance.length / dist) : 0;
+    //dist = ruler兩點間距離
 
+    let dist = (pointsDistance(this.props.x1, this.props.y1, this.props.x2, this.props.y2));
+
+    //scalechange1
+    //scale防誤
+    let scale = !isNaN(dist) && dist ? (this.props.distance.length / (dist)) : 0;
+
+    //
     let origin = {
       x: this.props.element.x - (this.props.width * scale / 2),
       y: this.props.element.y + (this.props.height * scale / 2)
@@ -158,7 +166,8 @@ export default class ImageFul extends Component {
 
   render() {
     let dist = pointsDistance(this.props.x1, this.props.y1, this.props.x2, this.props.y2);
-    let scale = !isNaN(dist) && dist ? (this.props.distance.length / dist) : 0;
+    //scalechange2
+    let scale = !isNaN(dist) && dist ? (this.props.distance.length / (dist) ) : 0;
     let half_w = this.props.width / 2;
 
     let ruler = !this.props.element.selected ? null : (
