@@ -73,7 +73,7 @@ export default class ImageFul extends Component {
     //滑鼠所在x座標&y座標(向右為x+,向下為y+,原點在整個視窗的左上)
     let {x, y} = event.viewerEvent;
 
-    //整個視窗的高度(2000) - 上述y = 新y座標(原點變為整個視窗的左下)
+    //整個視窗的高度(2000) - 上述y = 新y座標(原點變為整個視窗的左下)(滑鼠向右x+,向上y+)
     y = this.props.scene.height - y;
 
     //dist = ruler兩點間距離
@@ -84,36 +84,61 @@ export default class ImageFul extends Component {
     //scale防誤
     let scale = !isNaN(dist) && dist ? (this.props.distance.length / (dist)) : 0;
 
-    //
+    
+    //origin.x = 相片中心x座標-相片寬度*scale/2 -> origin.x為相篇最左側x座標
+    //origin.y = 相篇中心y座標+相篇長度*scale/2 -> origin.y為相片最上侧y座標
+    // let origin = {
+    //   x: this.props.element.x - (this.props.width * scale / 2),
+    //   y: this.props.element.y + (this.props.height * scale / 2)
+    // };
+
+    // //minX = origin.x + 相篇寬度*scale -> minX為相片最右側x座標
+    // //minY = origin.y + 相篇長度*scale -> minX為相片最下側x座標
+    // let minX = origin.x + (this.props.width * scale);
+    // let minY = origin.y - (this.props.height * scale);
+
+    // //限制ruler兩點邊界值
+    // if (x < origin.x) {
+    //   x = origin.x;
+    // }
+    // else if (x > minX) {
+    //   x = minX;
+    // }
+
+    // if (y > origin.y) {
+    //   y = origin.y;
+    // }
+    // else if (y < minY) {
+    //   y = minY;
+    // }
+
+    //新座標系統以相片左上為原點，滑鼠向右為x+，滑鼠向下為y+)
+
+    //0度
+    // let newX = (x - origin.x);
+    // let newY = (origin.y - y);
+
+    //180度
+    // let newX = this.props.width * scale - (x - origin.x);
+    // let newY = this.props.height * scale - (origin.y - y);
+
+    // 改寫
+    //旋轉角度
+    let theta = this.props.element.rotation * Math.PI / 180
     let origin = {
-      x: this.props.element.x - (this.props.width * scale / 2),
-      y: this.props.element.y + (this.props.height * scale / 2)
+      x: this.props.element.x - (this.props.width * Math.cos(theta) * scale / 2) - (this.props.height * Math.sin(theta) * scale / 2),
+      y: this.props.element.y - (this.props.width * Math.sin(theta) * scale / 2) + (this.props.height * Math.cos(theta) * scale / 2)
     };
 
-    let minX = origin.x + (this.props.width * scale);
-    let minY = origin.y - (this.props.height * scale);
+    let newX = (x - origin.x) * Math.cos(theta) + (y - origin.y) * Math.sin(theta);
+    let newY = (x - origin.x) * Math.sin(theta) - (y - origin.y) * Math.cos(theta);
 
-    if (x < origin.x) {
-      x = origin.x;
-    }
-    else if (x > minX) {
-      x = minX;
-    }
-
-    if (y > origin.y) {
-      y = origin.y;
-    }
-    else if (y < minY) {
-      y = minY;
-    }
-
-    let newX = (x - origin.x);
-    let newY = (origin.y - y);
-
+    //調整ruler點1時即時更新資料
     if (this.state.handleMouseMove1) {
       let dist = pointsDistance(newX, newY, this.props.x2, this.props.y2);
       this.context.projectActions.setProperties(new Map({x1: newX, y1: newY, distance: new Map({length: dist})}));
     }
+    //調整ruler點2時即時更新資料
     else if (this.state.handleMouseMove2) {
       let dist = pointsDistance(this.props.x1, this.props.y1, newX, newY);
       this.context.projectActions.setProperties(new Map({x2: newX, y2: newY, distance: new Map({length: dist})}));
