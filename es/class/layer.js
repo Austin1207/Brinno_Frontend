@@ -10,6 +10,7 @@ import { Layer as LayerModel } from '../models';
 var sameSet = function sameSet(set1, set2) {
   return set1.size === set2.size && set1.isSuperset(set2) && set1.isSubset(set2);
 };
+var firstArea = true; //control place default camera
 
 var Layer = function () {
   function Layer() {
@@ -175,7 +176,6 @@ var Layer = function () {
             return state.getIn(['scene', 'layers', layerID, 'vertices', vertexID]);
           });
           var resultAdd = Area.add(state, layerID, 'area', areaVerticesCoords, state.catalog);
-
           areaIDs[ind] = resultAdd.area.id;
           state = resultAdd.updatedState;
         }
@@ -194,12 +194,12 @@ var Layer = function () {
       });
 
       // Find all holes for an area
-      var i = void 0,
-          j = void 0;
-      for (i = 0; i < verticesCoordsForArea.length; i++) {
+      //let i, j;
+      var areaVerticesList = new Array();
+      for (var i = 0; i < verticesCoordsForArea.length; i++) {
         var holesList = new List(); // The holes for this area
-        var areaVerticesList = verticesCoordsForArea[i].vertices.flatten().toArray();
-        for (j = 0; j < verticesCoordsForArea.length; j++) {
+        areaVerticesList = verticesCoordsForArea[i].vertices.flatten().toArray();
+        for (var j = 0; j < verticesCoordsForArea.length; j++) {
           if (i !== j) {
             var isHole = GeometryUtils.ContainsPoint(areaVerticesList, verticesCoordsForArea[j].vertices.get(0).get(0), verticesCoordsForArea[j].vertices.get(0).get(1));
             if (isHole) {
@@ -225,6 +225,28 @@ var Layer = function () {
         });
         state = state.setIn(['scene', 'layers', layerID, 'areas', areaID, 'holes'], areaHoles);
       });
+
+      // Add Default Camera
+      var allX = new Array();
+      var allY = new Array();
+      for (var _i = 0; _i < areaVerticesList.length; _i++) {
+        if (_i % 2 == 0) {
+          allX.push(areaVerticesList[_i]);
+        } else {
+          allY.push(areaVerticesList[_i]);
+        }
+      }
+      if (allX.length != 0 & firstArea) {
+        firstArea = false;
+        var Xmax = Math.max.apply(Math, allX);
+        var Xmin = Math.min.apply(Math, allX);
+        var Ymax = Math.max.apply(Math, allY);
+        var Ymin = Math.min.apply(Math, allY);
+        state = Item.create(state, layerID, 'camera_BAC2000', Xmax, Ymax, 200, 100, -45).updatedState;
+        state = Item.create(state, layerID, 'camera_BAC2000', Xmax, Ymin, 200, 100, -135).updatedState;
+        state = Item.create(state, layerID, 'camera_BAC2000', Xmin, Ymax, 200, 100, 45).updatedState;
+        state = Item.create(state, layerID, 'camera_BAC2000', Xmin, Ymin, 200, 100, 135).updatedState;
+      }
 
       return { updatedState: state };
     }

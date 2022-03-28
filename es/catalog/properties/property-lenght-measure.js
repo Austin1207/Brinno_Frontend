@@ -13,7 +13,8 @@ import PropertyStyle from './shared-property-style';
 
 var internalTableStyle = { borderCollapse: 'collapse' };
 var secondTdStyle = { padding: 0 };
-var unitContainerStyle = { width: '5em' };
+// const unitContainerStyle = {width: '5em'};
+var unitContainerStyle = { width: '88px' };
 
 export default function PropertyLengthMeasure(_ref, _ref2) {
   var value = _ref.value,
@@ -64,11 +65,7 @@ export default function PropertyLengthMeasure(_ref, _ref2) {
         React.createElement(
           'td',
           { style: PropertyStyle.firstTdStyle },
-          React.createElement(
-            FormLabel,
-            null,
-            label
-          )
+          React.createElement(FormLabel, null)
         ),
         React.createElement(
           'td',

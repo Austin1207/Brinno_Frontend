@@ -17,6 +17,7 @@ import {
   Sidepanel,
   CameraDefault,
   ResponsiveAppBar,
+  TopBar,
   Loading,
   InitialScreen,
   TutorialScale
@@ -105,7 +106,7 @@ class ReactPlanner extends Component {
 
         <TutorialScale state={extractedState} left={contentW} {...props}/>
 
-        <ResponsiveAppBar state={extractedState} {...props} />
+        <TopBar state={extractedState} {...props} />
         
         <Content width={contentW} height={contentH-56} state={extractedState} {...props} onWheel={event => event.preventDefault()} />
 
