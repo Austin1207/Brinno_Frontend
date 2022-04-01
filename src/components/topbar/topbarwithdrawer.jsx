@@ -6,12 +6,6 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -24,13 +18,12 @@ import Grow from '@mui/material/Grow';
 import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuList from '@mui/material/MenuList';
-import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import CatalogItem from '../catalog-view/catalog-item';
 import Tooltip from '@mui/material/Tooltip';
 import Avatar from '@mui/material/Avatar';
+import PropTypes from 'prop-types';
 
-const pages = ['+Upload', 'Set Scale', 'Tutorials'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const drawerWidth = 260;
 
@@ -79,7 +72,7 @@ const handleCloseUserMenu = () => {
   console.log("4")
 };
 
-export default function TopBar() {
+export default function TopBar({ linesActions }) {
   const theme = useTheme();
   const [openPoper, setOpenPoper] = React.useState(false);
   const [openDrawer, setOpenDrawer] = React.useState(false);
@@ -294,8 +287,8 @@ export default function TopBar() {
                       aria-labelledby="composition-button"
                       //onKeyDown={handleListKeyDown}
                     >
-                      <MenuItem onClick={handlePoperClose}>Construction Area</MenuItem>
-                      <MenuItem onClick={handlePoperClose}>Interest Area</MenuItem>
+                      <MenuItem onClick={() => linesActions.selectToolDrawingLine('wall')}>Construction Area</MenuItem>
+                      <MenuItem onClick={() => linesActions.selectToolDrawingLine('install area')}>Interest Area</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>
@@ -337,11 +330,15 @@ export default function TopBar() {
               </MenuItem>
             ))}
           </Menu>
-        </Box> 
-{/*          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-          </Typography>
-              <Button color="inherit">Login</Button>*/}
+        </Box>
+        <Box sx={{ flexGrow: 0 }}>
+          <Button
+              key={'Gernerate'}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+              {'Gernerate'}
+          </Button>
+        </Box>
         </Toolbar>
       </AppBar>
       <Drawer

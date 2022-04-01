@@ -12,6 +12,7 @@ import TopBar from './topbar/topbarwithdrawer';
 import Loading from './loading/loading';
 import InitialScreen from './IntialScreen/InititalScreen';
 import TutorialScale from './Tutorial/TutorialScale';
+import BottomButtonGroup from './bottombuttongroup/bottombuttongroup'
 
 export {
   ToolbarComponents,
@@ -27,7 +28,8 @@ export {
   TopBar,
   Loading,
   InitialScreen,
-  TutorialScale
+  TutorialScale,
+  BottomButtonGroup
 };
 
 export default {
@@ -44,5 +46,6 @@ export default {
   TopBar,
   Loading,
   InitialScreen,
-  TutorialScale
+  TutorialScale,
+  BottomButtonGroup
 };
