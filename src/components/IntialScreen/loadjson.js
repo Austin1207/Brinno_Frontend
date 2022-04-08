@@ -33,7 +33,7 @@ export function loadimgjson (loadImageUrl) {
                         "visible": true,
                         "x": 479.709994739929,
                         "y": 1629.5759345522179,
-                        "rotation": 0
+                        "rotation": 90
                     }
                 },
                 "lines": {},

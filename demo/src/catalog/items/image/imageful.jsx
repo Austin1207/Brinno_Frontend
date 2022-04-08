@@ -102,13 +102,17 @@ export default class ImageFul extends Component {
     // else if (y < minY) {
     //   y = minY;
     // }
+
     //新座標系統以相片左上為原點，滑鼠向右為x+，滑鼠向下為y+)
+
     //0度
     // let newX = (x - origin.x);
     // let newY = (origin.y - y);
+
     //180度
     // let newX = this.props.width * scale - (x - origin.x);
     // let newY = this.props.height * scale - (origin.y - y);
+
     // 改寫
     //旋轉角度
     let theta = this.props.element.rotation * Math.PI / 180
@@ -116,8 +120,10 @@ export default class ImageFul extends Component {
       x: this.props.element.x - (this.props.width * Math.cos(theta) * scale / 2) - (this.props.height * Math.sin(theta) * scale / 2),
       y: this.props.element.y - (this.props.width * Math.sin(theta) * scale / 2) + (this.props.height * Math.cos(theta) * scale / 2)
     };
+
     let newX = (x - origin.x) * Math.cos(theta) + (y - origin.y) * Math.sin(theta);
     let newY = (x - origin.x) * Math.sin(theta) - (y - origin.y) * Math.cos(theta);
+
     //調整ruler點1時即時更新資料
     if (this.state.handleMouseMove1) {
       let dist = pointsDistance(newX, newY, this.props.x2, this.props.y2);
