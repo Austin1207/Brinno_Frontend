@@ -19,7 +19,8 @@ import {
   ResponsiveAppBar,
   Loading,
   InitialScreen,
-  TutorialScale
+  TutorialScale,
+  Bottom
 } from './components/export';
 import {VERSION} from './version';
 import './styles/export';
@@ -89,12 +90,13 @@ class ReactPlanner extends Component {
 
     return (
       <div style={{...wrapperStyle, height}}>
-        {/*
-        <Toolbar width={toolbarW} height={toolbarH} state={extractedState} {...props} />
-        */}
+        
+        {/* <Toolbar width={toolbarW} height={toolbarH} state={extractedState} {...props} /> */}
+       
 
         <Loading left={(contentW-100)/2} />
 
+        {/* 修正上方topbar遮蔽 */}
         <div style={{
           width: contentW,
           height: 64,
@@ -102,6 +104,8 @@ class ReactPlanner extends Component {
           }}></div>
 
         <InitialScreen state={extractedState} left={(contentW-320)/2} {...props} />
+
+        {/* <Bottom /> */}
 
         <TutorialScale state={extractedState} left={contentW} {...props}/>
 

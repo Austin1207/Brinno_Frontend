@@ -11,6 +11,7 @@ import ResponsiveAppBar from './topbar/topbar';
 import Loading from './loading/loading';
 import InitialScreen from './IntialScreen/InititalScreen';
 import TutorialScale from './Tutorial/TutorialScale';
+import Bottom from './bottom/Bottom';
 
 export {
   ToolbarComponents,
@@ -25,7 +26,8 @@ export {
   ResponsiveAppBar,
   Loading,
   InitialScreen,
-  TutorialScale
+  TutorialScale,
+  Bottom
 };
 
 export default {
@@ -41,5 +43,6 @@ export default {
   ResponsiveAppBar,
   Loading,
   InitialScreen,
-  TutorialScale
+  TutorialScale,
+  Bottom
 };
