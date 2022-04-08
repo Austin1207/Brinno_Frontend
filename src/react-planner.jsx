@@ -17,9 +17,11 @@ import {
   Sidepanel,
   CameraDefault,
   ResponsiveAppBar,
+  TopBar,
   Loading,
   InitialScreen,
-  TutorialScale
+  TutorialScale,
+  BottomButtonGroup
 } from './components/export';
 import {VERSION} from './version';
 import './styles/export';
@@ -80,7 +82,7 @@ class ReactPlanner extends Component {
     let {width, height, state, stateExtractor, ...props} = this.props;
 
     let contentW = width; //- sidebarW;
-    // let toolbarH = height - footerBarH;
+    let toolbarH = height - footerBarH;
     let contentH = height + 60;// - footerBarH;
     let sidebarH = height;// - footerBarH;
 
@@ -91,7 +93,7 @@ class ReactPlanner extends Component {
       <div style={{...wrapperStyle, height}}>
         {/*
         <Toolbar width={toolbarW} height={toolbarH} state={extractedState} {...props} />
-        */}
+    */}
 
         <Loading left={(contentW-100)/2} />
 
@@ -105,15 +107,17 @@ class ReactPlanner extends Component {
 
         <TutorialScale state={extractedState} left={contentW} {...props}/>
 
-        <ResponsiveAppBar state={extractedState} {...props} />
+        <TopBar state={extractedState} {...props} />
         
         <Content width={contentW} height={contentH-56} state={extractedState} {...props} onWheel={event => event.preventDefault()} />
 
-        <LineSpeedDial state={extractedState} {...props} />
+        <BottomButtonGroup state={extractedState} {...props} />
+        
+        {/*<LineSpeedDial state={extractedState} {...props} />
 
         <CameraSpeedDial state={extractedState} {...props} />
 
-        {/*<CameraDefault state={extractedState} {...props} />*/}
+        <CameraDefault state={extractedState} {...props} />*/}
 
   {
         <Sidebar display = {'none'} width={sidebarW} height={75} left = {(contentW-520)/2} state={extractedState} {...props} />            

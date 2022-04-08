@@ -15,6 +15,7 @@ import { FaFile, FaMousePointer, FaPlus } from 'react-icons/fa';
 import ToolbarButton from './toolbar-button';
 import ToolbarSaveButton from './toolbar-save-button';
 import ToolbarLoadButton from './toolbar-load-button';
+import ToolbarLoadImgButton from './toolbar-load-image'; //test
 import If from '../../utils/react-if';
 import { MODE_IDLE, MODE_3D_VIEW, MODE_3D_FIRST_PERSON, MODE_VIEWING_CATALOG, MODE_CONFIGURING_PROJECT } from '../../constants';
 import * as SharedStyle from '../../shared-style';
@@ -193,6 +194,11 @@ var Toolbar = function (_Component) {
             } },
           React.createElement(MdSettings, null)
         )
+      },
+      //test
+      {
+        index: 9, condition: allowProjectFileSupport,
+        dom: React.createElement(ToolbarLoadImgButton, { state: state })
       }];
 
       sorter = sorter.concat(toolbarButtons.map(function (Component, key) {

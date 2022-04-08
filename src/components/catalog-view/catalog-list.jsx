@@ -151,7 +151,7 @@ export default class CatalogList extends Component {
     let currentCategory = this.context.catalog.getCategory(page);
     let categoriesToDisplay = currentCategory.categories;
     let elementsToDisplay = currentCategory.elements.filter(element => element.info.visibility ? /*element.info.visibility.catalog*/false : true );
-
+    //console.log(elementsToDisplay)
     let breadcrumbComponent = null;
 
     if (page !== 'root') {
@@ -201,8 +201,8 @@ export default class CatalogList extends Component {
         <div style={itemsStyle}>
           {
             this.state.matchString === '' ? [
-              turnBackButton,
-              categoriesToDisplay.map(cat => <CatalogPageItem key={cat.name} page={cat} oldPage={currentCategory}/>),
+              //turnBackButton,
+              //categoriesToDisplay.map(cat => <CatalogPageItem key={cat.name} page={cat} oldPage={currentCategory}/>),
               elementsToDisplay.map(elem => <CatalogItem key={elem.name} element={elem}/>)
             ] :
             this.state.matchedElements.map(elem => <CatalogItem key={elem.name} element={elem}/>)

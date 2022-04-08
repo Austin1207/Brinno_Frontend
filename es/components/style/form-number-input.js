@@ -14,18 +14,20 @@ import * as SharedStyle from '../../shared-style';
 import { MdUpdate } from 'react-icons/md';
 import { KEYBOARD_BUTTON_CODE } from '../../constants';
 
+//調input樣式
+
 var STYLE_INPUT = {
   display: 'block',
-  width: '100%',
+  width: '100px',
+  height: '53px',
   padding: '0 2px',
-  fontSize: '13px',
+  fontSize: '44px',
   lineHeight: '1.25',
-  color: SharedStyle.PRIMARY_COLOR.input,
-  backgroundColor: SharedStyle.COLORS.white,
+  color: "#ff8200",
+  backgroundColor: '#271807',
   backgroundImage: 'none',
   border: '1px solid rgba(0,0,0,.15)',
-  outline: 'none',
-  height: '30px'
+  outline: 'none'
 };
 
 var confirmStyle = {
@@ -34,8 +36,8 @@ var confirmStyle = {
   width: '2em',
   height: '2em',
   right: '0.35em',
-  top: '0.35em',
-  backgroundColor: SharedStyle.SECONDARY_COLOR.main,
+  top: '1em',
+  // backgroundColor: SharedStyle.SECONDARY_COLOR.main,
   color: '#FFF',
   transition: 'all 0.1s linear'
 };
@@ -135,18 +137,7 @@ var FormNumberInput = function (_Component) {
             }
           },
           placeholder: placeholder
-        }),
-        React.createElement(
-          'div',
-          {
-            onClick: function onClick(e) {
-              if (different) saveFn(e);
-            },
-            title: this.context.translator.t('Confirm'),
-            style: _extends({}, confirmStyle, { visibility: different ? 'visible' : 'hidden', opacity: different ? '1' : '0' })
-          },
-          React.createElement(MdUpdate, { style: { width: '100%', height: '100%', padding: '0.2em', color: '#FFF' } })
-        )
+        })
       );
     }
   }]);

@@ -21,11 +21,16 @@ export default function PanelElementEditor(_ref, _ref2) {
       { key: element.id, name: translator.t('Properties: [{0}] {1}', element.type, element.id), opened: true },
       React.createElement(
         'div',
-        { style: { padding: '5px 15px' } },
+        { style: {
+            padding: '66px 0px'
+            // color: "#ff8200"
+          } },
         React.createElement(ElementEditor, { element: element, layer: layer, state: state })
       )
     );
   };
+
+  //測試自動鎖定
 
   var layerRenderer = function layerRenderer(layer) {
     return Seq().concat(layer.lines, layer.holes, layer.areas, layer.items).filter(function (element) {

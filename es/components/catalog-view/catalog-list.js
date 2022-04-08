@@ -20,11 +20,12 @@ import * as SharedStyle from '../../shared-style';
 
 var containerStyle = {
   position: 'fixed',
-  width: 'calc( 100% - 51px)',
-  height: 'calc( 100% - 20px)',
+  width: 'calc( 25% - 51px)',
+  height: 'calc( 100% - 149px)',
   backgroundColor: '#FFF',
   padding: '1em',
-  left: 50,
+  right: 0,
+  bottom: 80,
   overflowY: 'auto',
   overflowX: 'hidden',
   zIndex: 10
@@ -170,7 +171,7 @@ var CatalogList = function (_Component) {
       var currentCategory = this.context.catalog.getCategory(page);
       var categoriesToDisplay = currentCategory.categories;
       var elementsToDisplay = currentCategory.elements.filter(function (element) {
-        return element.info.visibility ? element.info.visibility.catalog : true;
+        return element.info.visibility ? /*element.info.visibility.catalog*/false : true;
       });
 
       var breadcrumbComponent = null;
@@ -214,31 +215,9 @@ var CatalogList = function (_Component) {
         React.createElement(
           ContentTitle,
           null,
-          this.context.translator.t('Catalog')
+          this.context.translator.t('Camera')
         ),
         breadcrumbComponent,
-        React.createElement(
-          'div',
-          { style: searchContainer },
-          React.createElement(
-            'span',
-            { style: searchText },
-            this.context.translator.t('Search Element')
-          ),
-          React.createElement('input', { type: 'text', style: searchInput, onChange: function onChange(e) {
-              _this2.matcharray(e.target.value);
-            } })
-        ),
-        selectedHistory.size ? React.createElement(
-          'div',
-          { style: historyContainer },
-          React.createElement(
-            'span',
-            null,
-            this.context.translator.t('Last Selected')
-          ),
-          selectedHistoryElements
-        ) : null,
         React.createElement(
           'div',
           { style: itemsStyle },

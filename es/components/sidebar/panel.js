@@ -14,31 +14,36 @@ import * as SharedStyle from '../../shared-style';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 
 var STYLE = {
-  borderTop: '1px solid #222',
-  borderBottom: '1px solid #48494E',
+  // borderTop: '0px solid #222',
+  // borderBottom: '0px solid #48494E',
+  position: "absolute",
+  // left:"0px",
+  // top:"0px",
   userSelect: 'none'
 };
-var STYLE_TITLE = {
-  fontSize: '11px',
-  color: SharedStyle.PRIMARY_COLOR.text_alt,
-  padding: '5px 15px 8px 15px',
-  backgroundColor: SharedStyle.PRIMARY_COLOR.alt,
-  textShadow: '-1px -1px 2px rgba(0, 0, 0, 1)',
-  boxShadow: 'inset 0px -3px 19px 0px rgba(0,0,0,0.5)',
-  margin: '0px',
-  cursor: 'pointer'
-};
+// const STYLE_TITLE = {
+//   fontSize: '11px',
+//   color: SharedStyle.PRIMARY_COLOR.text_alt,
+//   padding: '5px 15px 8px 15px',
+//   backgroundColor: SharedStyle.PRIMARY_COLOR.alt,
+//   textShadow: '-1px -1px 2px rgba(0, 0, 0, 1)',
+//   boxShadow: 'inset 0px -3px 19px 0px rgba(0,0,0,0.5)',
+//   margin: '0px',
+//   cursor: 'pointer'
+// };
 var STYLE_CONTENT = {
   fontSize: '11px',
   color: SharedStyle.PRIMARY_COLOR.text_alt,
-  border: '1px solid #222',
-  padding: '0px',
-  backgroundColor: SharedStyle.PRIMARY_COLOR.alt,
-  textShadow: '-1px -1px 2px rgba(0, 0, 0, 1)'
+  // border: '1px solid #222',
+  // padding: '10px',
+  backgroundColor: '#271807',
+  width: "520px",
+  height: "210px"
+  // textShadow: '-1px -1px 2px rgba(0, 0, 0, 1)'
 };
-var STYLE_ARROW = {
-  float: 'right'
-};
+// const STYLE_ARROW = {
+//   float: 'right'
+// };
 
 var Panel = function (_Component) {
   _inherits(Panel, _Component);
@@ -68,8 +73,6 @@ var Panel = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           name = _props.name,
           headComponents = _props.headComponents,
@@ -82,24 +85,6 @@ var Panel = function (_Component) {
       return React.createElement(
         'div',
         { style: STYLE },
-        React.createElement(
-          'h3',
-          {
-            style: _extends({}, STYLE_TITLE, { color: hover ? SharedStyle.SECONDARY_COLOR.main : SharedStyle.PRIMARY_COLOR.text_alt }),
-            onMouseEnter: function onMouseEnter() {
-              return _this2.toggleHover();
-            },
-            onMouseLeave: function onMouseLeave() {
-              return _this2.toggleHover();
-            },
-            onClick: function onClick() {
-              return _this2.toggleOpen();
-            }
-          },
-          name,
-          headComponents,
-          opened ? React.createElement(FaAngleUp, { style: STYLE_ARROW }) : React.createElement(FaAngleDown, { style: STYLE_ARROW })
-        ),
         React.createElement(
           'div',
           { style: _extends({}, STYLE_CONTENT, { display: opened ? 'block' : 'none' }) },

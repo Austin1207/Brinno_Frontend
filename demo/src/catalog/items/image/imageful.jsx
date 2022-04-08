@@ -72,31 +72,23 @@ export default class ImageFul extends Component {
   onMouseMove(event) {
     //滑鼠所在x座標&y座標(向右為x+,向下為y+,原點在整個視窗的左上)
     let {x, y} = event.viewerEvent;
-
     //整個視窗的高度(2000) - 上述y = 新y座標(原點變為整個視窗的左下)(滑鼠向右x+,向上y+)
     y = this.props.scene.height - y;
-
     //dist = ruler兩點間距離
-
     let dist = (pointsDistance(this.props.x1, this.props.y1, this.props.x2, this.props.y2));
-
     //scalechange1
     //scale防誤
     let scale = !isNaN(dist) && dist ? (this.props.distance.length / (dist)) : 0;
-
-    
     //origin.x = 相片中心x座標-相片寬度*scale/2 -> origin.x為相篇最左側x座標
     //origin.y = 相篇中心y座標+相篇長度*scale/2 -> origin.y為相片最上侧y座標
     // let origin = {
     //   x: this.props.element.x - (this.props.width * scale / 2),
     //   y: this.props.element.y + (this.props.height * scale / 2)
     // };
-
     // //minX = origin.x + 相篇寬度*scale -> minX為相片最右側x座標
     // //minY = origin.y + 相篇長度*scale -> minX為相片最下側x座標
     // let minX = origin.x + (this.props.width * scale);
     // let minY = origin.y - (this.props.height * scale);
-
     // //限制ruler兩點邊界值
     // if (x < origin.x) {
     //   x = origin.x;
@@ -104,7 +96,6 @@ export default class ImageFul extends Component {
     // else if (x > minX) {
     //   x = minX;
     // }
-
     // if (y > origin.y) {
     //   y = origin.y;
     // }

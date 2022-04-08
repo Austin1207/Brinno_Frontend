@@ -296,7 +296,7 @@ export default function Viewer2D(
 
   let { e, f, SVGWidth, SVGHeight } = state.get('viewer2D').toJS();
 
-  let rulerSize = 15; //px
+  let rulerSize = 0; //px
   let rulerUnitPixelSize = 100;
   let rulerBgColor = SharedStyle.PRIMARY_COLOR.main;
   let rulerFnColor = SharedStyle.COLORS.white;
