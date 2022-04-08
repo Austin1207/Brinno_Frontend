@@ -17,15 +17,14 @@ export default function Content(_ref) {
   var mode = state.get('mode');
 
   switch (mode) {
+    /*
     case constants.MODE_3D_VIEW:
-      return React.createElement(Viewer3D, { state: state, width: width, height: height });
-
-    case constants.MODE_3D_FIRST_PERSON:
-      return React.createElement(Viewer3DFirstPerson, { state: state, width: width, height: height });
-
-    case constants.MODE_VIEWING_CATALOG:
-      return React.createElement(CatalogList, { state: state, width: width, height: height });
-
+      return <Viewer3D state={state} width={width} height={height}/>;
+      case constants.MODE_3D_FIRST_PERSON:
+      return <Viewer3DFirstPerson state={state} width={width} height={height}/>;
+      case constants.MODE_VIEWING_CATALOG:
+      return <CatalogList state={state} width={width} height={height}/>;
+    */
     case constants.MODE_IDLE:
     case constants.MODE_2D_ZOOM_IN:
     case constants.MODE_2D_ZOOM_OUT:

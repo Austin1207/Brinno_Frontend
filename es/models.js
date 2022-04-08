@@ -258,9 +258,7 @@ export var Group = function (_Record9) {
   elements: new Map()
 }), 'Group'));
 
-export var DefaultLayers = new Map({
-  'layer1': new Layer({ id: 'layer1', name: 'default' })
-});
+export var DefaultLayers = new Map({ 'layer1': new Layer({ id: 'layer1', name: 'default' }) }, { 'layer2': new Layer({ id: 'layer2', name: 'default2' }) });
 
 export var Scene = function (_Record10) {
   _inherits(Scene, _Record10);

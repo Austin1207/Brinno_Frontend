@@ -19,9 +19,11 @@ import Translator from './translator/translator';
 import Catalog from './catalog/catalog';
 import actions from './actions/export';
 import { objectsMap } from './utils/objects-utils';
-import { ToolbarComponents, Content, SidebarComponents, FooterBarComponents } from './components/export';
+import { ToolbarComponents, Content, SidebarComponents, FooterBarComponents, LineSpeedDial, CameraSpeedDial, Sidepanel, CameraDefault, ResponsiveAppBar, Loading, InitialScreen, TutorialScale } from './components/export';
 import { VERSION } from './version';
 import './styles/export';
+
+import preview from './preview.png';
 
 var Toolbar = ToolbarComponents.Toolbar;
 var Sidebar = SidebarComponents.Sidebar;
@@ -33,18 +35,12 @@ var sidebarW = 300;
 var footerBarH = 20;
 
 var wrapperStyle = {
-  display: 'flex',
+  // display: 'flex',
   flexFlow: 'row nowrap'
 };
 
 var ReactPlanner = function (_Component) {
   _inherits(ReactPlanner, _Component);
-
-  function ReactPlanner() {
-    _classCallCheck(this, ReactPlanner);
-
-    return _possibleConstructorReturn(this, (ReactPlanner.__proto__ || Object.getPrototypeOf(ReactPlanner)).apply(this, arguments));
-  }
 
   _createClass(ReactPlanner, [{
     key: 'getChildContext',
@@ -87,6 +83,24 @@ var ReactPlanner = function (_Component) {
         projectActions.initCatalog(catalog);
       }
     }
+  }]);
+
+  function ReactPlanner() {
+    _classCallCheck(this, ReactPlanner);
+
+    var _this = _possibleConstructorReturn(this, (ReactPlanner.__proto__ || Object.getPrototypeOf(ReactPlanner)).call(this));
+
+    _this.state = {
+      showHideSidepanel: true
+    };
+    return _this;
+  }
+
+  _createClass(ReactPlanner, [{
+    key: 'hideSidepanel',
+    value: function hideSidepanel() {
+      this.setState({ showHideSidepanel: !this.state.showHideSidepanel });
+    }
   }, {
     key: 'render',
     value: function render() {
@@ -97,22 +111,34 @@ var ReactPlanner = function (_Component) {
           stateExtractor = _props2.stateExtractor,
           props = _objectWithoutProperties(_props2, ['width', 'height', 'state', 'stateExtractor']);
 
-      var contentW = width - toolbarW - sidebarW;
-      var toolbarH = height - footerBarH;
-      var contentH = height - footerBarH;
-      var sidebarH = height - footerBarH;
+      var contentW = width; //- sidebarW;
+      // let toolbarH = height - footerBarH;
+      var contentH = height + 60; // - footerBarH;
+      var sidebarH = height; // - footerBarH;
 
       var extractedState = stateExtractor(state);
+      var showHideSidepanel = this.state.showHideSidepanel;
 
       return React.createElement(
         'div',
         { style: _extends({}, wrapperStyle, { height: height }) },
-        React.createElement(Toolbar, _extends({ width: toolbarW, height: toolbarH, state: extractedState }, props)),
-        React.createElement(Content, _extends({ width: contentW, height: contentH, state: extractedState }, props, { onWheel: function onWheel(event) {
+        React.createElement(Loading, { left: (contentW - 100) / 2 }),
+        React.createElement('div', { style: {
+            width: contentW,
+            height: 64,
+            zIndex: 9999
+          } }),
+        React.createElement(InitialScreen, _extends({ state: extractedState, left: (contentW - 320) / 2 }, props)),
+        React.createElement(TutorialScale, _extends({ state: extractedState, left: contentW }, props)),
+        React.createElement(ResponsiveAppBar, _extends({ state: extractedState }, props)),
+        React.createElement(Content, _extends({ width: contentW, height: contentH - 56, state: extractedState }, props, { onWheel: function onWheel(event) {
             return event.preventDefault();
           } })),
-        React.createElement(Sidebar, _extends({ width: sidebarW, height: sidebarH, state: extractedState }, props)),
-        React.createElement(FooterBar, _extends({ width: width, height: footerBarH, state: extractedState }, props))
+        React.createElement(LineSpeedDial, _extends({ state: extractedState }, props)),
+        React.createElement(CameraSpeedDial, _extends({ state: extractedState }, props)),
+        React.createElement(Sidebar, _extends({ display: 'none', width: sidebarW, height: 75, left: (contentW - 520) / 2, state: extractedState }, props))
+        //<FooterBar width={width} height={footerBarH} state={extractedState} {...props} />
+
       );
     }
   }]);

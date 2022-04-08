@@ -13,11 +13,15 @@ import * as SharedStyle from '../../shared-style';
 import If from '../../utils/react-if';
 
 var STYLE = {
-  backgroundColor: SharedStyle.PRIMARY_COLOR.main,
-  display: 'block',
-  overflowY: 'auto',
-  overflowX: 'hidden',
-  paddingBottom: '20px'
+  // backgroundColor: '#f28500',
+  // backgroundColor: SharedStyle.PRIMARY_COLOR.main,
+  // display: 'block',
+  // overflowY: 'hidden',
+  // overflowX: 'hidden',
+  position: 'absolute',
+  top: '90px',
+  border: "none"
+  // left: '460px',
 };
 
 var sortButtonsCb = function sortButtonsCb(a, b) {
@@ -44,6 +48,8 @@ export default function Sidebar(_ref) {
   var state = _ref.state,
       width = _ref.width,
       height = _ref.height,
+      display = _ref.display,
+      left = _ref.left,
       sidebarComponents = _ref.sidebarComponents;
 
 
@@ -60,7 +66,8 @@ export default function Sidebar(_ref) {
 
   var sorter = [
   //{ index: 0, condition: true, dom: <PanelGuides state={state}/> },
-  { index: 1, condition: true, dom: React.createElement(PanelLayers, { state: state }) }, { index: 2, condition: true, dom: React.createElement(PanelLayerElements, { mode: state.mode, layers: state.scene.layers, selectedLayer: state.scene.selectedLayer }) },
+  // { index: 1, condition: true, dom: <PanelLayers state={state} /> },
+  // { index: 2, condition: true, dom: <PanelLayerElements mode={state.mode} layers={state.scene.layers} selectedLayer={state.scene.selectedLayer} /> },
   //{ index: 3, condition: true, dom: <PanelGroups mode={state.mode} groups={state.scene.groups} layers={state.scene.layers} /> },
   { index: 4, condition: !multiselected, dom: React.createElement(PanelElementEditor, { state: state }) }];
 
@@ -77,9 +84,10 @@ export default function Sidebar(_ref) {
   }));
 
   return React.createElement(
-    'aside',
+    'div',
     {
-      style: _extends({ width: width, height: height }, STYLE),
+      id: 'sidebar',
+      style: _extends({ width: width, height: height, display: display, left: left }, STYLE),
       onKeyDown: function onKeyDown(event) {
         return event.stopPropagation();
       },

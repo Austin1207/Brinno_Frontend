@@ -17,11 +17,20 @@ import {
 } from '../class/export';
 
 class Project{
-
+//original
   static setAlterate( state ){
     return { updatedState: state.set('alterate', !state.alterate ) };
   }
-
+  /*
+//fix bug
+  static setMutiChooseTrue( state ){
+    return { updatedState: state.set('alterate', true ) };
+  }
+//fix bug
+  static setMutiChooseFalse( state ){
+    return { updatedState: state.set('alterate', false ) };
+  }
+*/
   static openCatalog( state ) {
     state = this.setMode( state, MODE_VIEWING_CATALOG ).updatedState;
 

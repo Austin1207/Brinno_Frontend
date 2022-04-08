@@ -16,7 +16,7 @@ export default class LineSpeedDial extends Component{
   render() {
 
     let {
-      context: { itemsActions,  linesActions}
+      context: { linesActions }
     } = this;
 
     const PencilAddIcon = createSvgIcon(
