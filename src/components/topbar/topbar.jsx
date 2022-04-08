@@ -144,16 +144,26 @@ const ResponsiveAppBar = ({ state, projectActions, itemsActions, sceneActions}) 
   };
 
   //topbar onclick
+  const ImageLayerMode = event => {
+    sceneActions.selectLayer("layer1")
+    itemsActions.selectItem("layer1", "xFAw434Nm");
+  }
+
   const TutorialsOnclick = event => {
     console.log("tutorial")
+    sceneActions.selectLayer("layer1")
+    itemsActions.selectItem("layer1", "xFAw434Nm");
   };
 
-  const SetScale = event => {
+  async function SetScale() {
     document.getElementById("TutorialScaleRectangular").style.display = "";
     document.getElementById("TutorialScaleWord").style.display = "";
     document.getElementById("TutorialScaleButton").style.display = "";
 
-    sceneActions.selectLayer("layer1")
+    await ImageLayerMode();
+
+    RotateCircle1.style.display = "none";
+    RotateCircle2.style.display = "none";
   }
 
   return (

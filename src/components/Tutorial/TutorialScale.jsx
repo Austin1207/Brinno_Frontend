@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ImageFul from '../../../demo/src/catalog/items/image/imageful';
 
 const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}) => {
 
@@ -11,10 +12,13 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("TutorialScalePopupWord").style.display = "";
         document.getElementById("TutorialScalePopupShowmeButton").style.display = "";
         document.getElementById("TutorialScalePopupOkButton").style.display = "";
+
+        itemsActions.selectItem("layer1", "xFAw434Nm");
+        DrawingScale();
       }
 
     const PopShowme = event => {
-        conosle.log("Not yet")
+        console.log("Not yet")
     }
 
     const PopOk = event => {
@@ -64,6 +68,11 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("TutorialScaleSetBackButton").style.display = "";
         document.getElementById("TutorialScaleSetOkButton").style.display = "";
 
+        document.getElementById("path1").style.display = "";
+        document.getElementById("path2").style.display = "";
+        document.getElementById("DistanceNumber").style.display = "";
+
+
     }
 
     const SetBack = event => {
@@ -79,18 +88,57 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("TutorialScaleSetWord").style.display = "none";
         document.getElementById("TutorialScaleSetBackButton").style.display = "none";
         document.getElementById("TutorialScaleSetOkButton").style.display = "none";
+
+        document.getElementById("path1").style.display = "none";
+        document.getElementById("path2").style.display = "none";
+        document.getElementById("DistanceNumber").style.display = "none";
     }
 
     const SetOk = event => {
-        document.getElementById("TutorialScalePopupRectangular").style.display = "none";
         document.getElementById("TutorialScaleSetWord").style.display = "none";
         document.getElementById("TutorialScaleSetBackButton").style.display = "none";
         document.getElementById("TutorialScaleSetOkButton").style.display = "none";
 
-        projectActions.unselectAll()
-        sceneActions.selectLayer("layer2")
+        document.getElementById("TutorialScaleFinalWord").style.display = "";
+        document.getElementById("TutorialScaleFinalShowmeButton").style.display = "";
+        document.getElementById("TutorialScaleFinalOkButton").style.display = "";
+
+        document.getElementById("path1").style.display = "none";
+        document.getElementById("path2").style.display = "none";
+        document.getElementById("DistanceNumber").style.display = "none";
+
+        document.getElementById("Circle1").style.display = "none";
+        document.getElementById("Circle2").style.display = "none";
+        document.getElementById("Line").style.display = "none";
 
     }
+
+    const FinalShowme = event => {
+        console.log("FinalShowme")
+    }
+
+    const FinalOk = event => {
+        document.getElementById("TutorialScalePopupRectangular").style.display = "none";
+        document.getElementById("TutorialScaleFinalWord").style.display = "none";
+        document.getElementById("TutorialScaleFinalShowmeButton").style.display = "none";
+        document.getElementById("TutorialScaleFinalOkButton").style.display = "none";
+
+        projectActions.unselectAll()
+        sceneActions.selectLayer("layer2")
+    }
+
+    //畫Scale
+    const CircleMove = (circle) => {
+        var e = document.createEvent("MouseEvents");
+        e.initEvent("click", true, true);
+        circle.dispatchEvent(e);
+    }
+    
+    const DrawingScale = event => {
+        var Circle1 = document.getElementById("Circle1")
+        CircleMove(Circle1);
+    }
+
 
     return(
         <div>
@@ -371,7 +419,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 zIndex: 10000,
                 // left: "525px",
                 left: (left-386)/2,
-                top: "230px",
+                top: "211px",
                 // fontFamily: "HelveticaNeue",
                 fontSize: "14px",
                 fontWeight: 500,
@@ -396,7 +444,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 backgroundColor: "#ff8200",
                 // left: "755px",
                 left: (left + 70)/2,
-                top: "230px",
+                top: "211px",
                 // fontFamily: "HelveticaNeue",
                 fontSize: "14px",
                 fontWeight: 500,
@@ -412,6 +460,104 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             }}>
                 Ok
             </button>
+
+            {/* PlaceToolV4_11 */}
+
+            <span id = "TutorialScaleFinalWord" style = {{
+                position: "absolute",
+                top: "133px",
+                // left: "527px",
+                left: (left-390)/2,
+                width: "421px",
+                height: "38px",
+                zIndex: 10000,
+                // fontFamily: "HelveticaNeue",
+                fontSize: "16px",
+                fontWeight: 500,
+                fontStretch: "normal",
+                fontStyle: "normal",
+                lineHeight: "normal",
+                letterSpacing: "normal",
+                textAlign: "center",
+                color: "#fff",
+                display: "none"
+            }}>
+                Please draw the construction area under Outline Tool to indicate the general area of the site
+            </span>
+
+            <button id = "TutorialScaleFinalShowmeButton" onClick = {FinalShowme} style ={{
+                position: "absolute",
+                width: "160px",
+                height: "44px",
+                zIndex: 10000,
+                // left: "525px",
+                left: (left-386)/2,
+                top: "202px",
+                // fontFamily: "HelveticaNeue",
+                fontSize: "14px",
+                fontWeight: 500,
+                fontStretch: "normal",
+                fontStyle: "normal",
+                lineHeight: "normal",
+                letterSpacing: "normal",
+                textAlign: "center",
+                color: "#969696",
+                border:"none",
+                borderRadius:"8px",
+                display: "none"
+            }}>
+                Show me
+            </button>
+            
+            <button id = "TutorialScaleFinalOkButton" onClick = {FinalOk} style ={{
+                position: "absolute",
+                width: "160px",
+                height: "44px",
+                zIndex: 10000,
+                backgroundColor: "#ff8200",
+                // left: "755px",
+                left: (left + 70)/2,
+                top: "202px",
+                // fontFamily: "HelveticaNeue",
+                fontSize: "14px",
+                fontWeight: 500,
+                fontStretch: "normal",
+                fontStyle: "normal",
+                lineHeight: "normal",
+                letterSpacing: "normal",
+                textAlign: "center",
+                color: "#fff",
+                border:"none",
+                borderRadius:"8px",
+                display: "none"
+            }}>
+                Ok
+            </button>
+
+            {/* <button id = "TutorialScaleFinalOkButton" onClick = {testimage} style ={{
+                position: "absolute",
+                width: "160px",
+                height: "44px",
+                zIndex: 10000,
+                backgroundColor: "#ff8200",
+                // left: "755px",
+                left: (left + 70)/2,
+                top: "202px",
+                // fontFamily: "HelveticaNeue",
+                fontSize: "14px",
+                fontWeight: 500,
+                fontStretch: "normal",
+                fontStyle: "normal",
+                lineHeight: "normal",
+                letterSpacing: "normal",
+                textAlign: "center",
+                color: "#fff",
+                border:"none",
+                borderRadius:"8px",
+                display: ""
+            }}>
+                Ok
+            </button> */}
 
         </div>
     )

@@ -7,12 +7,14 @@ const STYLE_LINE = {
   stroke: "#0096fd"
 };
 
+//旋轉拖曳圓圈
 const STYLE_CIRCLE = {
   fill: "#0096fd",
   stroke: "#0096fd",
   cursor: "ew-resize"
 };
 
+//旋轉大園
 const STYLE_CIRCLE2 = {
   fill: "none",
   stroke: "#0096fd",
@@ -44,8 +46,19 @@ export default function Item({layer, item, scene, catalog}) {
            data-layer={layer.id}
            data-part="rotation-anchor"
         >
-          <circle cx="0" cy="150" r="10" style={STYLE_CIRCLE}/>
-          <circle cx="0" cy="0" r="150" style={STYLE_CIRCLE2}/>
+          <circle id = "RotateCircle1" cx="0" cy="150" r="10" style={{
+            fill: "#0096fd",
+            stroke: "#0096fd",
+            cursor: "ew-resize",
+            display:""
+          }}/>
+
+          <circle id = "RotateCircle2" cx="0" cy="0" r="150" style={{
+            fill: "none",
+            stroke: "#0096fd",
+            cursor: "ew-resize",
+            display:""
+          }}/>
         </g>
       </If>
     </g>
