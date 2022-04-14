@@ -23,6 +23,7 @@ import CatalogItem from '../catalog-view/catalog-item';
 import Tooltip from '@mui/material/Tooltip';
 import Avatar from '@mui/material/Avatar';
 import PropTypes from 'prop-types';
+import { elementsToDisplay } from './elementstodisplay';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const drawerWidth = 260;
@@ -121,115 +122,6 @@ export default function TopBar({ linesActions }) {
     setAnchorElUser(null);
   };
 
-  let elementsToDisplay = new Array(    {
-    "name": "camera_BAC2000",
-    "prototype": "items",
-    "info": {
-        "tag": [
-            "security"
-        ],
-        "title": "BAC2000",
-        "description": "1080P 69°",
-        "image": "catalog/items/BAC2000/BAC2000.png"
-    },
-    "properties": {
-        "color": {
-            "label": "Color",
-            "type": "color",
-            "defaultValue": "#F5F4F4"
-        },
-        "altitude": {
-            "label": "altitude",
-            "type": "length-measure",
-            "defaultValue": {
-                "length": 100,
-                "unit": "cm"
-            }
-        }
-    }
-},
-{
-    "name": "camera_BCC200",
-    "prototype": "items",
-    "info": {
-        "tag": [
-            "security"
-        ],
-        "title": "BCC200",
-        "description": "1080P 118°",
-        "image": "catalog/items/BCC200/BCC200.png"
-    },
-    "properties": {
-        "color": {
-            "label": "Color",
-            "type": "color",
-            "defaultValue": "#F5F4F4"
-        },
-        "altitude": {
-            "label": "altitude",
-            "type": "length-measure",
-            "defaultValue": {
-                "length": 100,
-                "unit": "cm"
-            }
-        }
-    }
-},
-{
-    "name": "camera_BCC2000",
-    "prototype": "items",
-    "info": {
-        "tag": [
-            "security"
-        ],
-        "title": "BCC2000",
-        "description": "1080P 118°",
-        "image": "catalog/items/BCC2000/BCC2000.png"
-    },
-    "properties": {
-        "color": {
-            "label": "Color",
-            "type": "color",
-            "defaultValue": "#F5F4F4"
-        },
-        "altitude": {
-            "label": "altitude",
-            "type": "length-measure",
-            "defaultValue": {
-                "length": 100,
-                "unit": "cm"
-            }
-        }
-    }
-},
-{
-    "name": "camera_MAC200DN",
-    "prototype": "items",
-    "info": {
-        "tag": [
-            "security"
-        ],
-        "title": "MAC200DN",
-        "description": "720P 70°",
-        "image": "catalog/items/MAC200DN/MAC200DN.jpg"
-    },
-    "properties": {
-        "color": {
-            "label": "Color",
-            "type": "color",
-            "defaultValue": "#F5F4F4"
-        },
-        "altitude": {
-            "label": "altitude",
-            "type": "length-measure",
-            "defaultValue": {
-                "length": 100,
-                "unit": "cm"
-            }
-        }
-    }
-});
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" sx={{bgcolor:"#222"}} openDrawer={openDrawer} openPoper={openPoper}>
@@ -301,6 +193,38 @@ export default function TopBar({ linesActions }) {
             >
             {'Place'}
           </Button>
+          <Popper
+            open={openPoper}
+            anchorEl={anchorRef.current}
+            role={undefined}
+            placement="bottom-start"
+            transition
+            disablePortal
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                style={{
+                  transformOrigin:
+                    placement === 'bottom-start' ? 'left top' : 'left bottom',
+                }}
+              >
+                <Paper>
+                  <ClickAwayListener onClickAway={handlePoperClose}>
+                    <MenuList
+                      autoFocusItem={openPoper}
+                      id="composition-menu"
+                      aria-labelledby="composition-button"
+                      //onKeyDown={handleListKeyDown}
+                    >
+                      <MenuItem onClick={() => linesActions.selectToolDrawingLine('wall')}>Construction Area</MenuItem>
+                      <MenuItem onClick={() => linesActions.selectToolDrawingLine('install area')}>Interest Area</MenuItem>
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Popper>
         </Box> 
         <Box sx={{ flexGrow: 0 }}>        
           <Tooltip title="Open settings">
