@@ -106,10 +106,10 @@ class ReactPlanner extends Component {
         <InitialScreen state={extractedState} left={(contentW-320)/2} {...props} />
 
         <TutorialScale state={extractedState} left={contentW} {...props}/>
-
-        <TopBar state={extractedState} {...props} />
         
         <Content width={contentW} height={contentH-56} state={extractedState} {...props} onWheel={event => event.preventDefault()} />
+
+        <TopBar state={extractedState} {...props} />
 
         <BottomButtonGroup state={extractedState} {...props} />
         

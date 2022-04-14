@@ -1,6 +1,7 @@
 import * as Three from 'three';
 import React from 'react';
 import { ReactPlannerSharedStyle } from 'react-planner';
+import ItemButtons from './itembuttons';
 
 const WIDTH = 10;
 const DEPTH = 20;
@@ -396,7 +397,7 @@ export default {
         style={style}/>
       <text key='2' x='0' y='0'
             transform={`translate(${WIDTH / 2}, ${DEPTH / 2}) scale(1,-1) rotate(${textRotation})`}
-        style={{textAnchor: 'middle', fontSize: '11px'}}>
+            style={{textAnchor: 'middle', fontSize: '11px'}}>
         {element.name}
       </text>
       <circle key='3'
@@ -414,6 +415,13 @@ export default {
               style={{textAnchor: 'middle', fontSize: '11px', fill: 'white'}}>
               {"69°"}
         </text>
+{/*        <rect key='5' x='0' y='30' rx='3' ry='3' width= '180' height= '40' fill= '#271807'
+              transform={`rotate(${textRotation})`}/>
+        <ItemButtons
+          element={element}
+          layer={layer}
+          scene={scene}
+        />*/}
         </g>
     )
   },

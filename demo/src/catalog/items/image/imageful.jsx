@@ -56,7 +56,7 @@ export default class ImageFul extends Component {
 
   onMouseDown(event) {
     let target = event.viewerEvent.originalEvent.target;
-
+    //console.log(target.nodeName)
     if (target.nodeName === 'circle') {
       if (target.attributes.name) {
         if (target.attributes.name.nodeValue === 'fst-anchor') {

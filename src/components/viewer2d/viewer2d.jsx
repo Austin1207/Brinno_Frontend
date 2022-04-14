@@ -6,6 +6,18 @@ import * as constants from '../../constants';
 import State from './state';
 import * as SharedStyle from '../../shared-style';
 import { RulerX, RulerY } from './export';
+import { elementsToDisplay } from '../topbar/elementstodisplay';
+import CatalogChangeItem from '../catalog-view/catalog-changeitem';
+
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Drawer from '@mui/material/Drawer';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+
+const drawerWidth = 260;
 
 function mode2Tool(mode) {
   switch (mode) {
@@ -91,7 +103,56 @@ function extractElementData(node) {
 export default function Viewer2D(
   { state, width, height },
   { viewer2DActions, linesActions, holesActions, verticesActions, itemsActions, areaActions, projectActions, catalog }) {
+  
+  /* item button */
+  const [contextMenu, setContextMenu] = React.useState(false);
+  const [cursorPositionX, setX] = React.useState(0);
+  const [cursorPositionY, setY] = React.useState(0);
+  const [selectItem, setSelectItem] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [info, setInfo] = React.useState(false);
+  const [type, setType] = React.useState(false);
 
+  const handleContextMenu = (event) => {
+    event.preventDefault();
+    if(selectItem){
+      setX(event.clientX);
+      setY(event.clientY);
+      setContextMenu(!contextMenu);
+    };
+  };
+
+  const handleContextMenuClose = () => {
+    setContextMenu(false);
+  };
+
+  const handleClickDelete = () =>{
+    projectActions.remove();
+    setInfo(false);
+    setType(false);
+    setContextMenu(false);
+  };
+
+  const handleInfo = () => {
+    setOpen(true);
+    setInfo(true);
+    setType(false);
+    setContextMenu(false);
+  };
+
+  const handleType = () => {
+    setOpen(true);
+    setInfo(false);
+    setType(true);
+    setContextMenu(false);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+    setInfo(false);
+  };
+
+  /* item button */
 
   let { viewer2D, mode, scene } = state;
 
@@ -150,6 +211,8 @@ export default function Viewer2D(
   };
 
   let onMouseDown = viewerEvent => {
+    setSelectItem(false);
+    setInfo(false);// item button
     let event = viewerEvent.originalEvent;
 
     //workaround that allow imageful component to work
@@ -220,6 +283,8 @@ export default function Viewer2D(
 
           case 'items':
             itemsActions.selectItem(elementData.layer, elementData.id);
+            setSelectItem(true);
+            setInfo(true);// item button
             break;
 
           case 'none':
@@ -255,6 +320,7 @@ export default function Viewer2D(
 
       case constants.MODE_DRAGGING_ITEM:
         itemsActions.endDraggingItem(x, y);
+        setSelectItem(true);// item button
         break;
 
       case constants.MODE_DRAGGING_HOLE:
@@ -316,8 +382,37 @@ export default function Viewer2D(
       gridColumnGap: '0',
       gridTemplateColumns: `${rulerSize}px ${width - rulerSize}px`,
       gridTemplateRows: `${rulerSize}px ${height - rulerSize}px`,
-      position: 'relative'
-    }}>
+      position: 'relative',
+      cursor: 'context-menu'
+    }}
+    onContextMenu={handleContextMenu}>
+      <Drawer
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+          },
+        }}
+        PaperProps={{ style: { height: "90vh", top: 68.5 } }}
+        variant="persistent"
+        anchor="left"
+        open={open}>            
+        <IconButton onClick={handleDrawerClose}>
+          <ChevronLeftIcon />
+        </IconButton>        
+        <Divider />
+        {
+          info && !type &&
+          <Typography Info>
+            Info
+          </Typography>
+        }
+        {
+          type && elementsToDisplay.map(elem => <CatalogChangeItem key={elem.name} element={elem}/>)
+        }
+      </Drawer>
       <div style={{ gridColumn: 1, gridRow: 1, backgroundColor: rulerBgColor }}></div>
       <div style={{ gridRow: 1, gridColumn: 2, position: 'relative', overflow: 'hidden' }} id="rulerX">
       { sceneWidth ? <RulerX
@@ -376,6 +471,18 @@ export default function Viewer2D(
         </svg>
 
       </ReactSVGPanZoom>
+      <Menu
+        open={contextMenu}
+        onClose={handleContextMenuClose}
+        anchorReference="anchorPosition"
+        anchorPosition={
+          { top: cursorPositionY, left: cursorPositionX }
+        }
+      >
+        <MenuItem onClick={handleInfo}>Info</MenuItem>
+        <MenuItem onClick={handleClickDelete}>Delete</MenuItem>
+        <MenuItem onClick={handleType}>Change</MenuItem>
+      </Menu>
     </div>
   );
 }
