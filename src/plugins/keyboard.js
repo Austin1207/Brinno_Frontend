@@ -93,7 +93,6 @@ export default function keyboard() {
           if(!ctrlFired){
             store.dispatch(setAlterateState());
             ctrlFired = true;//fix bug
-            console.log("set ctrlFired = true");
             break;
           }
         }
@@ -117,7 +116,6 @@ export default function keyboard() {
         {
           store.dispatch(setAlterateState());
           ctrlFired = false;//fix bug
-          console.log("set ctrlFired = false");
           break;
         }
       }

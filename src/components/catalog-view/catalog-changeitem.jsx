@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {FaPlusCircle as IconAdd} from 'react-icons/fa';
 import * as SharedStyle from '../../shared-style';
+import { Item } from '../../class/export';
 
 const STYLE_BOX = {
   width: '14em',
@@ -113,15 +114,24 @@ export default class CatalogChangeItem extends Component {
 
   select() {
     let element = this.props.element;
+    let selectedID = this.props.state.getIn(['scene', 'layers', 'layer1', 'selected']).items._tail.array[0];
+    let selectedCamera = this.props.state.getIn(['scene', 'layers', 'layer1', 'items', selectedID]);
+    let cameraX = selectedCamera.x;
+    let cameraY = selectedCamera.y;
+    let cameraRotation = selectedCamera.rotation;
 
-    switch (element.prototype) {
-      case 'lines':
+    switch (element.name) {
+      case 'camera_BAC2000':
         this.context.linesActions.selectToolDrawingLine(element.name);
         break;
-      case 'items':
-        this.context.itemsActions.selectToolDrawingItem(element.name);
+      case 'camera_BCC200':
+        this.context.projectActions.remove();
+        this.context.itemsActions.directCreatItem( 'layer1', 'camera_BCC200', cameraX, cameraY, cameraRotation );
         break;
-      case 'holes':
+      case 'camera_BCC2000':
+        this.context.holesActions.selectToolDrawingHole(element.name);
+        break;
+      case 'camera_MAC200DN':
         this.context.holesActions.selectToolDrawingHole(element.name);
         break;
     }
@@ -157,6 +167,7 @@ export default class CatalogChangeItem extends Component {
 
 CatalogChangeItem.propTypes = {
   element: PropTypes.object.isRequired,
+  state: PropTypes.object.isRequired
 };
 
 CatalogChangeItem.contextTypes = {

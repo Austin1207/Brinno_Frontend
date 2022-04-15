@@ -15,6 +15,7 @@ import {
 class Item{
 
   static create( state, layerID, type, x, y, width, height, rotation ) {
+    console.log("items.create")
     let itemID = IDBroker.acquireID();
 
     let item = state.catalog.factoryElement(type, {
@@ -187,6 +188,13 @@ class Item{
   static endRotatingItem(state, x, y) {
     state = this.updateRotatingItem(state, x, y).updatedState;
     state = state.merge({ mode: MODE_IDLE });
+
+    return { updatedState: state };
+  }
+
+  static directCreatItem(state, layerID, type, x, y, rotation) {
+    console.log("item.directCreatItem")
+    state = this.create( state, layerID, type, x, y, 200, 100, rotation ).updatedState;
 
     return { updatedState: state };
   }
