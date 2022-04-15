@@ -8,7 +8,23 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import StraightenIcon from '@mui/icons-material/Straighten';
 import Fab from '@mui/material/Fab';
 
-export default function BottomButtonGroup({projectActions}){
+import '@babel/polyfill'; //for async
+
+export default function BottomButtonGroup({projectActions, sceneActions, itemsActions}){
+  const ImageLayerMode = event => {
+    sceneActions.selectLayer("layer1")
+    itemsActions.selectItem("layer1", "xFAw434Nm");
+  }
+  async function SetScale() {
+    document.getElementById("TutorialScaleRectangular").style.display = "";
+    document.getElementById("TutorialScaleWord").style.display = "";
+    document.getElementById("TutorialScaleButton").style.display = "";
+
+    await ImageLayerMode();
+
+    RotateCircle1.style.display = "none";
+    RotateCircle2.style.display = "none";
+  }
     return (
         <Container 
           maxWidth='sm'
@@ -27,6 +43,7 @@ export default function BottomButtonGroup({projectActions}){
 
             <Button variant="contained"
             sx={{ position: 'absolute', bottom: 35, right: 136, backgroundColor: '#FFFFFF', "&:hover": {backgroundColor: '#FFFFFF'}}}
+            onClick = {SetScale}
             >
                 <StraightenIcon style={{ fill: 'black' }}/>
             </Button>
