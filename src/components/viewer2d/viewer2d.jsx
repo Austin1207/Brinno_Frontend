@@ -410,7 +410,7 @@ export default function Viewer2D(
           </Typography>
         }
         {
-          type && elementsToDisplay.map(elem => <CatalogChangeItem key={elem.name} element={elem}/>)
+          type && elementsToDisplay.map(elem => <CatalogChangeItem key={elem.name} element={elem} state={state}/>)
         }
       </Drawer>
       <div style={{ gridColumn: 1, gridRow: 1, backgroundColor: rulerBgColor }}></div>

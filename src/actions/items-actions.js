@@ -8,7 +8,8 @@ import {
   END_DRAGGING_ITEM,
   BEGIN_ROTATING_ITEM,
   UPDATE_ROTATING_ITEM,
-  END_ROTATING_ITEM
+  END_ROTATING_ITEM,
+  DIRECT_CREATE_ITEM
 } from '../constants';
 
 export function selectItem(layerID, itemID) {
@@ -79,5 +80,13 @@ export function endRotatingItem(x, y) {
   return {
     type: END_ROTATING_ITEM,
     x, y
+  }
+}
+
+export function directCreatItem(layerID, type, x, y, rotation) {
+  console.log("items-actions");
+  return {
+    type: DIRECT_CREATE_ITEM,
+    layerID, type, x, y, rotation
   }
 }
