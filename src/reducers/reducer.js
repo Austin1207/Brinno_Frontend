@@ -32,7 +32,7 @@ export default function appReducer(state, action) {
   if( PROJECT_ACTIONS[action.type] ) return ReactPlannerProjectReducer(...arguments);
   if( VIEWER2D_ACTIONS[action.type] ) return ReactPlannerViewer2dReducer(...arguments);
   if( VIEWER3D_ACTIONS[action.type] ) return ReactPlannerViewer3dReducer(...arguments);
-  if( ITEMS_ACTIONS[action.type] ) return ReactPlannerItemsReducer(...arguments);
+  if( ITEMS_ACTIONS[action.type] )  return ReactPlannerItemsReducer(...arguments);
   if( HOLE_ACTIONS[action.type] ) return ReactPlannerHolesReducer(...arguments);
   if( LINE_ACTIONS[action.type] ) return ReactPlannerLinesReducer(...arguments);
   if( AREA_ACTIONS[action.type] ) return ReactPlannerAreasReducer(...arguments);

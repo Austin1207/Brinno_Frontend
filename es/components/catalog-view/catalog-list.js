@@ -173,7 +173,7 @@ var CatalogList = function (_Component) {
       var elementsToDisplay = currentCategory.elements.filter(function (element) {
         return element.info.visibility ? /*element.info.visibility.catalog*/false : true;
       });
-
+      //console.log(elementsToDisplay)
       var breadcrumbComponent = null;
 
       if (page !== 'root') {
@@ -221,9 +221,10 @@ var CatalogList = function (_Component) {
         React.createElement(
           'div',
           { style: itemsStyle },
-          this.state.matchString === '' ? [turnBackButton, categoriesToDisplay.map(function (cat) {
-            return React.createElement(CatalogPageItem, { key: cat.name, page: cat, oldPage: currentCategory });
-          }), elementsToDisplay.map(function (elem) {
+          this.state.matchString === '' ? [
+          //turnBackButton,
+          //categoriesToDisplay.map(cat => <CatalogPageItem key={cat.name} page={cat} oldPage={currentCategory}/>),
+          elementsToDisplay.map(function (elem) {
             return React.createElement(CatalogItem, { key: elem.name, element: elem });
           })] : this.state.matchedElements.map(function (elem) {
             return React.createElement(CatalogItem, { key: elem.name, element: elem });

@@ -29,9 +29,7 @@ var LineSpeedDial = function (_Component) {
   _createClass(LineSpeedDial, [{
     key: 'render',
     value: function render() {
-      var _context = this.context,
-          itemsActions = _context.itemsActions,
-          linesActions = _context.linesActions;
+      var linesActions = this.context.linesActions;
 
 
       var PencilAddIcon = createSvgIcon(React.createElement(

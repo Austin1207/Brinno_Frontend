@@ -192,9 +192,9 @@ class Item{
     return { updatedState: state };
   }
 
-  static directCreatItem(state, layerID, type, x, y, rotation) {
+  static directCreatItem(state, layerID, itemtype, x, y, rotation) {
     console.log("item.directCreatItem")
-    state = this.create( state, layerID, type, x, y, 200, 100, rotation ).updatedState;
+    state = this.create( state, layerID, itemtype, x, y, 200, 100, rotation ).updatedState;
 
     return { updatedState: state };
   }

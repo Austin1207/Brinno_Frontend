@@ -83,10 +83,9 @@ export function endRotatingItem(x, y) {
   }
 }
 
-export function directCreatItem(layerID, type, x, y, rotation) {
-  console.log("items-actions");
+export function directCreatItem(layerID, itemtype, x, y, rotation) {
   return {
     type: DIRECT_CREATE_ITEM,
-    layerID, type, x, y, rotation
+    layerID, itemtype, x, y, rotation
   }
 }
