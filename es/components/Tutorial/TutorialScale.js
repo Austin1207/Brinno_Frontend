@@ -1,6 +1,7 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 import * as React from 'react';
+import ImageFul from '../../../demo/src/catalog/items/image/imageful';
 
 var TutorialScale = function TutorialScale(_ref) {
     var _ref2, _ref3;
@@ -21,10 +22,13 @@ var TutorialScale = function TutorialScale(_ref) {
         document.getElementById("TutorialScalePopupWord").style.display = "";
         document.getElementById("TutorialScalePopupShowmeButton").style.display = "";
         document.getElementById("TutorialScalePopupOkButton").style.display = "";
+
+        itemsActions.selectItem("layer1", "xFAw434Nm");
+        DrawingScale();
     };
 
     var PopShowme = function PopShowme(event) {
-        conosle.log("Not yet");
+        console.log("Not yet");
     };
 
     var PopOk = function PopOk(event) {
@@ -72,6 +76,10 @@ var TutorialScale = function TutorialScale(_ref) {
         document.getElementById("TutorialScaleSetWord").style.display = "";
         document.getElementById("TutorialScaleSetBackButton").style.display = "";
         document.getElementById("TutorialScaleSetOkButton").style.display = "";
+
+        document.getElementById("path1").style.display = "";
+        document.getElementById("path2").style.display = "";
+        document.getElementById("DistanceNumber").style.display = "";
     };
 
     var SetBack = function SetBack(event) {
@@ -87,22 +95,60 @@ var TutorialScale = function TutorialScale(_ref) {
         document.getElementById("TutorialScaleSetWord").style.display = "none";
         document.getElementById("TutorialScaleSetBackButton").style.display = "none";
         document.getElementById("TutorialScaleSetOkButton").style.display = "none";
+
+        document.getElementById("path1").style.display = "none";
+        document.getElementById("path2").style.display = "none";
+        document.getElementById("DistanceNumber").style.display = "none";
     };
 
     var SetOk = function SetOk(event) {
-        document.getElementById("TutorialScalePopupRectangular").style.display = "none";
         document.getElementById("TutorialScaleSetWord").style.display = "none";
         document.getElementById("TutorialScaleSetBackButton").style.display = "none";
         document.getElementById("TutorialScaleSetOkButton").style.display = "none";
+
+        document.getElementById("TutorialScaleFinalWord").style.display = "";
+        document.getElementById("TutorialScaleFinalShowmeButton").style.display = "";
+        document.getElementById("TutorialScaleFinalOkButton").style.display = "";
+
+        document.getElementById("path1").style.display = "none";
+        document.getElementById("path2").style.display = "none";
+        document.getElementById("DistanceNumber").style.display = "none";
+
+        document.getElementById("Circle1").style.display = "none";
+        document.getElementById("Circle2").style.display = "none";
+        document.getElementById("Line").style.display = "none";
+    };
+
+    var FinalShowme = function FinalShowme(event) {
+        console.log("FinalShowme");
+    };
+
+    var FinalOk = function FinalOk(event) {
+        document.getElementById("TutorialScalePopupRectangular").style.display = "none";
+        document.getElementById("TutorialScaleFinalWord").style.display = "none";
+        document.getElementById("TutorialScaleFinalShowmeButton").style.display = "none";
+        document.getElementById("TutorialScaleFinalOkButton").style.display = "none";
 
         projectActions.unselectAll();
         sceneActions.selectLayer("layer2");
     };
 
+    //畫Scale
+    var CircleMove = function CircleMove(circle) {
+        var e = document.createEvent("MouseEvents");
+        e.initEvent("click", true, true);
+        circle.dispatchEvent(e);
+    };
+
+    var DrawingScale = function DrawingScale(event) {
+        var Circle1 = document.getElementById("Circle1");
+        CircleMove(Circle1);
+    };
+
     return React.createElement(
-        "div",
+        'div',
         null,
-        React.createElement("div", { id: "TutorialScaleRectangular", style: {
+        React.createElement('div', { id: 'TutorialScaleRectangular', style: {
                 position: "absolute",
                 width: "565px",
                 height: "42px",
@@ -116,8 +162,8 @@ var TutorialScale = function TutorialScale(_ref) {
                 display: "none"
             } }),
         React.createElement(
-            "span",
-            { id: "TutorialScaleWord", style: {
+            'span',
+            { id: 'TutorialScaleWord', style: {
                     position: "absolute",
                     top: "663px",
                     // left: "323px",
@@ -136,11 +182,11 @@ var TutorialScale = function TutorialScale(_ref) {
                     color: "#000",
                     display: "none"
                 } },
-            "You can magnify or minimize anywhere with scroll on your mouse or touchpad"
+            'You can magnify or minimize anywhere with scroll on your mouse or touchpad'
         ),
         React.createElement(
-            "button",
-            { id: "TutorialScaleButton", onClick: TutoialScaleOk, style: {
+            'button',
+            { id: 'TutorialScaleButton', onClick: TutoialScaleOk, style: {
                     position: "absolute",
                     width: "61px",
                     height: "24px",
@@ -154,9 +200,9 @@ var TutorialScale = function TutorialScale(_ref) {
                     borderRadius: "8px",
                     display: "none"
                 } },
-            "ok"
+            'ok'
         ),
-        React.createElement("div", { id: "TutorialScalePopupRectangular", style: {
+        React.createElement('div', { id: 'TutorialScalePopupRectangular', style: {
                 position: "absolute",
                 width: "520px",
                 height: "204px",
@@ -171,8 +217,8 @@ var TutorialScale = function TutorialScale(_ref) {
                 display: "none"
             } }),
         React.createElement(
-            "span",
-            { id: "TutorialScalePopupWord", style: {
+            'span',
+            { id: 'TutorialScalePopupWord', style: {
                     position: "absolute",
                     top: "133px",
                     // left: "527px",
@@ -191,11 +237,11 @@ var TutorialScale = function TutorialScale(_ref) {
                     color: "#fff",
                     display: "none"
                 } },
-            "Please use your cursor to select from one endpoint  to the other endpoint to set the scale of your canvas"
+            'Please use your cursor to select from one endpoint  to the other endpoint to set the scale of your canvas'
         ),
         React.createElement(
-            "button",
-            { id: "TutorialScalePopupShowmeButton", onClick: PopShowme, style: {
+            'button',
+            { id: 'TutorialScalePopupShowmeButton', onClick: PopShowme, style: {
                     position: "absolute",
                     width: "160px",
                     height: "44px",
@@ -216,11 +262,11 @@ var TutorialScale = function TutorialScale(_ref) {
                     borderRadius: "8px",
                     display: "none"
                 } },
-            "Show me"
+            'Show me'
         ),
         React.createElement(
-            "button",
-            { id: "TutorialScalePopupOkButton", onClick: PopOk, style: {
+            'button',
+            { id: 'TutorialScalePopupOkButton', onClick: PopOk, style: {
                     position: "absolute",
                     width: "160px",
                     height: "44px",
@@ -242,11 +288,11 @@ var TutorialScale = function TutorialScale(_ref) {
                     borderRadius: "8px",
                     display: "none"
                 } },
-            "Ok"
+            'Ok'
         ),
         React.createElement(
-            "span",
-            { id: "TutorialScaleMeasureWord", style: {
+            'span',
+            { id: 'TutorialScaleMeasureWord', style: {
                     position: "absolute",
                     top: "123px",
                     // left: "559px",
@@ -265,9 +311,9 @@ var TutorialScale = function TutorialScale(_ref) {
                     color: "#fff",
                     display: "none"
                 } },
-            "Please enter the length of the two points selected"
+            'Please enter the length of the two points selected'
         ),
-        React.createElement("div", { id: "TutorialScaleMeasureLine", style: (_ref2 = {
+        React.createElement('div', { id: 'TutorialScaleMeasureLine', style: (_ref2 = {
                 position: "absolute",
                 width: "88px",
                 height: "5px",
@@ -278,15 +324,15 @@ var TutorialScale = function TutorialScale(_ref) {
                 // left: "640px",
                 top: "210px",
                 border: "none"
-            }, _defineProperty(_ref2, "borderRadius", "8px"), _defineProperty(_ref2, "display", "none"), _ref2) }),
-        React.createElement("div", { id: "TutorialScaleMeasureTriangle", style: (_ref3 = {
+            }, _defineProperty(_ref2, 'borderRadius', "8px"), _defineProperty(_ref2, 'display', "none"), _ref2) }),
+        React.createElement('div', { id: 'TutorialScaleMeasureTriangle', style: (_ref3 = {
                 position: "absolute",
                 zIndex: 10000,
                 left: "785px"
-            }, _defineProperty(_ref3, "left", (left + 130) / 2), _defineProperty(_ref3, "top", "182px"), _defineProperty(_ref3, "borderTop", "7px solid gray"), _defineProperty(_ref3, "borderLeft", "7px solid transparent"), _defineProperty(_ref3, "borderRight", "7px solid transparent"), _defineProperty(_ref3, "borderBottom", "7px solid transparent"), _defineProperty(_ref3, "display", "none"), _ref3) }),
+            }, _defineProperty(_ref3, 'left', (left + 130) / 2), _defineProperty(_ref3, 'top', "182px"), _defineProperty(_ref3, 'borderTop', "7px solid gray"), _defineProperty(_ref3, 'borderLeft', "7px solid transparent"), _defineProperty(_ref3, 'borderRight', "7px solid transparent"), _defineProperty(_ref3, 'borderBottom', "7px solid transparent"), _defineProperty(_ref3, 'display', "none"), _ref3) }),
         React.createElement(
-            "button",
-            { id: "TutorialScaleMeasureBackButton", onClick: MeasureBack, style: {
+            'button',
+            { id: 'TutorialScaleMeasureBackButton', onClick: MeasureBack, style: {
                     position: "absolute",
                     width: "160px",
                     height: "44px",
@@ -307,11 +353,11 @@ var TutorialScale = function TutorialScale(_ref) {
                     borderRadius: "8px",
                     display: "none"
                 } },
-            "Back"
+            'Back'
         ),
         React.createElement(
-            "button",
-            { id: "TutorialScaleMeasureOkButton", onClick: MeasureOk, style: {
+            'button',
+            { id: 'TutorialScaleMeasureOkButton', onClick: MeasureOk, style: {
                     position: "absolute",
                     width: "160px",
                     height: "44px",
@@ -333,11 +379,11 @@ var TutorialScale = function TutorialScale(_ref) {
                     borderRadius: "8px",
                     display: "none"
                 } },
-            "Ok"
+            'Ok'
         ),
         React.createElement(
-            "span",
-            { id: "TutorialScaleSetWord", style: {
+            'span',
+            { id: 'TutorialScaleSetWord', style: {
                     position: "absolute",
                     top: "150px",
                     // left: "527px",
@@ -356,18 +402,18 @@ var TutorialScale = function TutorialScale(_ref) {
                     color: "#fff",
                     display: "none"
                 } },
-            "Scale successfully adjusted"
+            'Scale successfully adjusted'
         ),
         React.createElement(
-            "button",
-            { id: "TutorialScaleSetBackButton", onClick: SetBack, style: {
+            'button',
+            { id: 'TutorialScaleSetBackButton', onClick: SetBack, style: {
                     position: "absolute",
                     width: "160px",
                     height: "44px",
                     zIndex: 10000,
                     // left: "525px",
                     left: (left - 386) / 2,
-                    top: "230px",
+                    top: "211px",
                     // fontFamily: "HelveticaNeue",
                     fontSize: "14px",
                     fontWeight: 500,
@@ -381,11 +427,11 @@ var TutorialScale = function TutorialScale(_ref) {
                     borderRadius: "8px",
                     display: "none"
                 } },
-            "Back"
+            'Back'
         ),
         React.createElement(
-            "button",
-            { id: "TutorialScaleSetOkButton", onClick: SetOk, style: {
+            'button',
+            { id: 'TutorialScaleSetOkButton', onClick: SetOk, style: {
                     position: "absolute",
                     width: "160px",
                     height: "44px",
@@ -393,7 +439,7 @@ var TutorialScale = function TutorialScale(_ref) {
                     backgroundColor: "#ff8200",
                     // left: "755px",
                     left: (left + 70) / 2,
-                    top: "230px",
+                    top: "211px",
                     // fontFamily: "HelveticaNeue",
                     fontSize: "14px",
                     fontWeight: 500,
@@ -407,7 +453,81 @@ var TutorialScale = function TutorialScale(_ref) {
                     borderRadius: "8px",
                     display: "none"
                 } },
-            "Ok"
+            'Ok'
+        ),
+        React.createElement(
+            'span',
+            { id: 'TutorialScaleFinalWord', style: {
+                    position: "absolute",
+                    top: "133px",
+                    // left: "527px",
+                    left: (left - 390) / 2,
+                    width: "421px",
+                    height: "38px",
+                    zIndex: 10000,
+                    // fontFamily: "HelveticaNeue",
+                    fontSize: "16px",
+                    fontWeight: 500,
+                    fontStretch: "normal",
+                    fontStyle: "normal",
+                    lineHeight: "normal",
+                    letterSpacing: "normal",
+                    textAlign: "center",
+                    color: "#fff",
+                    display: "none"
+                } },
+            'Please draw the construction area under Outline Tool to indicate the general area of the site'
+        ),
+        React.createElement(
+            'button',
+            { id: 'TutorialScaleFinalShowmeButton', onClick: FinalShowme, style: {
+                    position: "absolute",
+                    width: "160px",
+                    height: "44px",
+                    zIndex: 10000,
+                    // left: "525px",
+                    left: (left - 386) / 2,
+                    top: "202px",
+                    // fontFamily: "HelveticaNeue",
+                    fontSize: "14px",
+                    fontWeight: 500,
+                    fontStretch: "normal",
+                    fontStyle: "normal",
+                    lineHeight: "normal",
+                    letterSpacing: "normal",
+                    textAlign: "center",
+                    color: "#969696",
+                    border: "none",
+                    borderRadius: "8px",
+                    display: "none"
+                } },
+            'Show me'
+        ),
+        React.createElement(
+            'button',
+            { id: 'TutorialScaleFinalOkButton', onClick: FinalOk, style: {
+                    position: "absolute",
+                    width: "160px",
+                    height: "44px",
+                    zIndex: 10000,
+                    backgroundColor: "#ff8200",
+                    // left: "755px",
+                    left: (left + 70) / 2,
+                    top: "202px",
+                    // fontFamily: "HelveticaNeue",
+                    fontSize: "14px",
+                    fontWeight: 500,
+                    fontStretch: "normal",
+                    fontStyle: "normal",
+                    lineHeight: "normal",
+                    letterSpacing: "normal",
+                    textAlign: "center",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "8px",
+                    display: "none"
+                } },
+            'Ok'
         )
     );
 };

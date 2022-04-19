@@ -8,11 +8,14 @@ import LineSpeedDial from './linespeeddial/linespeeddial';
 import CameraSpeedDial from './cameraspeeddial/cameraspeeddial';
 import CameraDefault from './cameradefault/cameradefault';
 import ResponsiveAppBar from './topbar/topbar';
+import TopBar from './topbar/topbarwithdrawer';
 import Loading from './loading/loading';
 import InitialScreen from './IntialScreen/InititalScreen';
 import TutorialScale from './Tutorial/TutorialScale';
 
-export { ToolbarComponents, Content, SidebarComponents, FooterBarComponents, Viewer2DComponents, StyleComponents, LineSpeedDial, CameraSpeedDial, CameraDefault, ResponsiveAppBar, Loading, InitialScreen, TutorialScale };
+import BottomButtonGroup from './bottombuttongroup/bottombuttongroup';
+
+export { ToolbarComponents, Content, SidebarComponents, FooterBarComponents, Viewer2DComponents, StyleComponents, LineSpeedDial, CameraSpeedDial, CameraDefault, ResponsiveAppBar, TopBar, Loading, InitialScreen, TutorialScale, BottomButtonGroup };
 
 export default {
   ToolbarComponents: ToolbarComponents,
@@ -25,7 +28,9 @@ export default {
   CameraSpeedDial: CameraSpeedDial,
   CameraDefault: CameraDefault,
   ResponsiveAppBar: ResponsiveAppBar,
+  TopBar: TopBar,
   Loading: Loading,
   InitialScreen: InitialScreen,
-  TutorialScale: TutorialScale
+  TutorialScale: TutorialScale,
+  BottomButtonGroup: BottomButtonGroup
 };

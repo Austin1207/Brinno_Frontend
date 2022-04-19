@@ -16,6 +16,7 @@ var Item = function () {
   _createClass(Item, null, [{
     key: 'create',
     value: function create(state, layerID, type, x, y, width, height, rotation) {
+      console.log("items.create");
       var itemID = IDBroker.acquireID();
 
       var item = state.catalog.factoryElement(type, {
@@ -212,6 +213,14 @@ var Item = function () {
     value: function endRotatingItem(state, x, y) {
       state = this.updateRotatingItem(state, x, y).updatedState;
       state = state.merge({ mode: MODE_IDLE });
+
+      return { updatedState: state };
+    }
+  }, {
+    key: 'directCreatItem',
+    value: function directCreatItem(state, layerID, type, x, y, rotation) {
+      console.log("item.directCreatItem");
+      state = this.create(state, layerID, type, x, y, 200, 100, rotation).updatedState;
 
       return { updatedState: state };
     }

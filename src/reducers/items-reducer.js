@@ -49,14 +49,12 @@ export default function (state, action) {
       return Item.updateRotatingItem(state, action.x, action.y).updatedState;
 
     case END_ROTATING_ITEM:
-      console.log("items-reducer.END_ROTATING_ITEM");
       state = state.merge({ sceneHistory: history.historyPush(state.sceneHistory, state.scene) });
       return Item.endRotatingItem(state, action.x, action.y).updatedState;
     //add part
     case DIRECT_CREATE_ITEM:
-      console.log("items-reducer");
       state = state.merge({ sceneHistory: history.historyPush(state.sceneHistory, state.scene) });
-      return Item.directCreatItem( state, action.layerID, action.type, action.x, action.y, action.rotation ).updatedState;
+      return Item.directCreatItem(state, action.layerID, action.itemtype, action.x, action.y, action.rotation ).updatedState;
 
     default:
       return state;

@@ -5,6 +5,7 @@ import { rollback, undo, remove, toggleSnap, copyProperties, pasteProperties, se
 export default function keyboard() {
 
   return function (store, stateExtractor) {
+    var ctrlFired = false; //fix bug
 
     window.addEventListener('keydown', function (event) {
 
@@ -69,8 +70,11 @@ export default function keyboard() {
           }
         case KEYBOARD_BUTTON_CODE.CTRL:
           {
-            store.dispatch(setAlterateState());
-            break;
+            if (!ctrlFired) {
+              store.dispatch(setAlterateState());
+              ctrlFired = true; //fix bug
+              break;
+            }
           }
       }
     });
@@ -89,6 +93,7 @@ export default function keyboard() {
         case KEYBOARD_BUTTON_CODE.CTRL:
           {
             store.dispatch(setAlterateState());
+            ctrlFired = false; //fix bug
             break;
           }
       }

@@ -114,29 +114,30 @@ export default class CatalogChangeItem extends Component {
 
   select() {
     let element = this.props.element;
-    let selectedID = this.props.state.getIn(['scene', 'layers', 'layer1', 'selected']).items._tail.array[0];
-    let selectedCamera = this.props.state.getIn(['scene', 'layers', 'layer1', 'items', selectedID]);
+    let selectedID = this.props.state.getIn(['scene', 'layers', 'layer2', 'selected']).items._tail.array[0];
+    let selectedCamera = this.props.state.getIn(['scene', 'layers', 'layer2', 'items', selectedID]);
     let cameraX = selectedCamera.x;
     let cameraY = selectedCamera.y;
     let cameraRotation = selectedCamera.rotation;
 
     switch (element.name) {
       case 'camera_BAC2000':
-        this.context.linesActions.selectToolDrawingLine(element.name);
+        this.context.projectActions.remove();
+        this.context.itemsActions.directCreatItem('layer2', 'camera_BAC2000', cameraX, cameraY, cameraRotation );
         break;
       case 'camera_BCC200':
         this.context.projectActions.remove();
-        this.context.itemsActions.directCreatItem( 'layer1', 'camera_BCC200', cameraX, cameraY, cameraRotation );
+        this.context.itemsActions.directCreatItem('layer2', 'camera_BCC200', cameraX, cameraY, cameraRotation );
         break;
       case 'camera_BCC2000':
-        this.context.holesActions.selectToolDrawingHole(element.name);
+        this.context.projectActions.remove();
+        this.context.itemsActions.directCreatItem('layer2', 'camera_BCC2000', cameraX, cameraY, cameraRotation );
         break;
       case 'camera_MAC200DN':
-        this.context.holesActions.selectToolDrawingHole(element.name);
+        this.context.projectActions.remove();
+        this.context.itemsActions.directCreatItem('layer2', 'camera_MAC200DN', cameraX, cameraY, cameraRotation );
         break;
     }
-
-    this.context.projectActions.pushLastSelectedCatalogElementToHistory(element);
   }
 
   render() {

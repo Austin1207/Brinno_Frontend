@@ -19,7 +19,7 @@ import Translator from './translator/translator';
 import Catalog from './catalog/catalog';
 import actions from './actions/export';
 import { objectsMap } from './utils/objects-utils';
-import { ToolbarComponents, Content, SidebarComponents, FooterBarComponents, LineSpeedDial, CameraSpeedDial, Sidepanel, CameraDefault, ResponsiveAppBar, Loading, InitialScreen, TutorialScale } from './components/export';
+import { ToolbarComponents, Content, SidebarComponents, FooterBarComponents, LineSpeedDial, CameraSpeedDial, Sidepanel, CameraDefault, ResponsiveAppBar, TopBar, Loading, InitialScreen, TutorialScale, BottomButtonGroup } from './components/export';
 import { VERSION } from './version';
 import './styles/export';
 
@@ -112,7 +112,7 @@ var ReactPlanner = function (_Component) {
           props = _objectWithoutProperties(_props2, ['width', 'height', 'state', 'stateExtractor']);
 
       var contentW = width; //- sidebarW;
-      // let toolbarH = height - footerBarH;
+      var toolbarH = height - footerBarH;
       var contentH = height + 60; // - footerBarH;
       var sidebarH = height; // - footerBarH;
 
@@ -130,12 +130,11 @@ var ReactPlanner = function (_Component) {
           } }),
         React.createElement(InitialScreen, _extends({ state: extractedState, left: (contentW - 320) / 2 }, props)),
         React.createElement(TutorialScale, _extends({ state: extractedState, left: contentW }, props)),
-        React.createElement(ResponsiveAppBar, _extends({ state: extractedState }, props)),
         React.createElement(Content, _extends({ width: contentW, height: contentH - 56, state: extractedState }, props, { onWheel: function onWheel(event) {
             return event.preventDefault();
           } })),
-        React.createElement(LineSpeedDial, _extends({ state: extractedState }, props)),
-        React.createElement(CameraSpeedDial, _extends({ state: extractedState }, props)),
+        React.createElement(TopBar, _extends({ state: extractedState }, props)),
+        React.createElement(BottomButtonGroup, _extends({ state: extractedState }, props)),
         React.createElement(Sidebar, _extends({ display: 'none', width: sidebarW, height: 75, left: (contentW - 520) / 2, state: extractedState }, props))
         //<FooterBar width={width} height={footerBarH} state={extractedState} {...props} />
 
