@@ -193,6 +193,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 color: "#fff",
                 border:"none",
                 borderRadius:"8px",
+                cursor:"pointer",
                 display: "none"
             }}>
                 ok
@@ -256,6 +257,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 color: "#969696",
                 border:"none",
                 borderRadius:"8px",
+                cursor:"pointer",
                 display: "none"
             }}>
                 Show me
@@ -281,6 +283,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 color: "#fff",
                 border:"none",
                 borderRadius:"8px",
+                cursor:"pointer",
                 display: "none"
             }}>
                 Ok
@@ -358,6 +361,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 color: "#969696",
                 border:"none",
                 borderRadius:"8px",
+                cursor:"pointer",
                 display: "none"
             }}>
                 Back
@@ -383,6 +387,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 color: "#fff",
                 border:"none",
                 borderRadius:"8px",
+                cursor:"pointer",
                 display: "none"
             }}>
                 Ok
@@ -431,6 +436,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 color: "#969696",
                 border:"none",
                 borderRadius:"8px",
+                cursor:"pointer",
                 display: "none"
             }}>
                 Back
@@ -456,6 +462,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 color: "#fff",
                 border:"none",
                 borderRadius:"8px",
+                cursor:"pointer",
                 display: "none"
             }}>
                 Ok
@@ -504,6 +511,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 color: "#969696",
                 border:"none",
                 borderRadius:"8px",
+                cursor:"pointer",
                 display: "none"
             }}>
                 Show me
@@ -529,6 +537,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 color: "#fff",
                 border:"none",
                 borderRadius:"8px",
+                cursor:"pointer",
                 display: "none"
             }}>
                 Ok
