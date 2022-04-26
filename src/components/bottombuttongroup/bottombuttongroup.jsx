@@ -10,21 +10,33 @@ import Fab from '@mui/material/Fab';
 
 import '@babel/polyfill'; //for async
 
-export default function BottomButtonGroup({projectActions, sceneActions, itemsActions}){
+export default function BottomButtonGroup({projectActions, sceneActions, itemsActions, state}){
+
   const ImageLayerMode = event => {
     sceneActions.selectLayer("layer1")
     itemsActions.selectItem("layer1", "xFAw434Nm");
-  }
+    }
+
   async function SetScale() {
-    document.getElementById("TutorialScaleRectangular").style.display = "";
-    document.getElementById("TutorialScaleWord").style.display = "";
-    document.getElementById("TutorialScaleButton").style.display = "";
 
-    await ImageLayerMode();
+    const json = state.get('scene').toJS();
+    const PicInJson = json["layers"]["layer1"]["items"]["xFAw434Nm"];
 
-    RotateCircle1.style.display = "none";
-    RotateCircle2.style.display = "none";
+    if ( PicInJson != undefined ) {
+      document.getElementById("TutorialScaleRectangular").style.display = "";
+      document.getElementById("TutorialScaleWord").style.display = "";
+      document.getElementById("TutorialScaleButton").style.display = "";
+  
+      await ImageLayerMode();
+  
+      RotateCircle1.style.display = "none";
+      RotateCircle2.style.display = "none";
+      }
+    else {
+      alert("Please upload your file first.")
+    }
   }
+
     return (
         <Container 
           maxWidth='sm'
@@ -55,7 +67,8 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               right: 60,
               backgroundColor: '#FFFFFF',
               "&:hover": {backgroundColor: '#FFFFFF'}}}
-              //onClick={() => this.getLS()}
+              // onClick={() => this.getLS()}
+              onClick={() => test()}
               aria-label="Help">
                 <QuestionMarkIcon
                   style={{ fill: 'black' }} 
