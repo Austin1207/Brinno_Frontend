@@ -8,6 +8,7 @@ import * as SharedStyle from '../../shared-style';
 import { RulerX, RulerY } from './export';
 import { elementsToDisplay } from '../topbar/elementstodisplay';
 import CatalogChangeItem from '../catalog-view/catalog-changeitem';
+import Visibility_Polygon from './visibility-polygon';
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -442,6 +443,7 @@ export default function Viewer2D(
           negativeUnitsNumber={0}
         /> : null }
       </div>
+      {/*<Visibility_Polygon/>*/}
       <ReactSVGPanZoom
         style={{ gridColumn: 2, gridRow: 2 }}
         width={width - rulerSize}
