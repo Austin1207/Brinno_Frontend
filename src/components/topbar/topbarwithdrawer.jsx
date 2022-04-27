@@ -180,7 +180,7 @@ export default function TopBar({ linesActions }) {
                       //onKeyDown={handleListKeyDown}
                     >
                       <MenuItem onClick={() => linesActions.selectToolDrawingLine('wall')}>Construction Area</MenuItem>
-                      <MenuItem onClick={() => linesActions.selectToolDrawingLine('install area')}>Interest Area</MenuItem>
+                      <MenuItem onClick={() => linesActions.selectToolDrawingLine('interest area')}>Interest Area</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>
@@ -218,7 +218,7 @@ export default function TopBar({ linesActions }) {
                       //onKeyDown={handleListKeyDown}
                     >
                       <MenuItem onClick={() => linesActions.selectToolDrawingLine('wall')}>Construction Area</MenuItem>
-                      <MenuItem onClick={() => linesActions.selectToolDrawingLine('install area')}>Interest Area</MenuItem>
+                      <MenuItem onClick={() => linesActions.selectToolDrawingLine('interest area')}>Interest Area</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>

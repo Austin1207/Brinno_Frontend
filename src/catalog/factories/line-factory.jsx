@@ -18,10 +18,18 @@ export default function LineFactory(name, info) {
       let { x: x2, y: y2 } = layer.vertices.get(element.vertices.get(1));
 
       let epsilon = 20;
-      let STYLE_LINE = { stroke: SharedStyle.LINE_MESH_COLOR.selected };
-      let STYLE_RECT = { strokeWidth: 1, stroke: SharedStyle.LINE_MESH_COLOR.unselected, fill: 'blue'};
-      let STYLE_RECT_SELECTED = { ...STYLE_RECT, stroke: SharedStyle.LINE_MESH_COLOR.selected };
-
+      let STYLE_LINE = {};
+      let STYLE_LINE_SELECTED = {};
+      switch(name){
+        case 'construction area':
+          STYLE_LINE = { strokeWidth: 10, stroke: '#000000' };
+          STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
+          break;
+        case 'interest area':
+          STYLE_LINE = { strokeWidth: 10, stroke: '#ff8200' };
+          STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
+          break;
+      }
       let length = Geometry.pointsDistance(x1, y1, x2, y2);
       let length_5 = length / 5;
 
@@ -33,11 +41,9 @@ export default function LineFactory(name, info) {
       let textDistance = half_thickness + epsilon + extra_epsilon;
 
       return (element.selected) ?
-        <g>
-          <rect x="0" y={-half_thickness} width={length} height={thickness} style={STYLE_RECT_SELECTED} />
-          <line x1={length_5} y1={-half_thickness_eps} x2={length_5} y2={half_thickness_eps} style={STYLE_LINE} />
-        </g> :
-        <rect x="0" y={-half_thickness} width={length} height={thickness} style={STYLE_RECT} />
+        <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE_SELECTED} strokeDasharray="20"/>
+        :
+        <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE} strokeDasharray="20"/>
     },
 
     render3D: function (element, layer, scene) {

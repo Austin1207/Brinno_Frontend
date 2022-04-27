@@ -8,6 +8,9 @@ import ToolbarLoadButton from './toolbar-load-button';
 import ToolbarLoadImgButton from './toolbar-load-image';//test
 import If from '../../utils/react-if';
 import * as SharedStyle from '../../shared-style';
+import HighlightAltIcon from '@mui/icons-material/HighlightAlt';
+import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
 
 const iconTextStyle = {
   fontSize: '19px',
@@ -67,7 +70,7 @@ export default class Toolbar extends Component {
 
     let {
       props: { state, width, height, toolbarButtons, allowProjectFileSupport },
-      context: { projectActions, viewer3DActions, translator }
+      context: { projectActions, viewer3DActions, translator, linesActions }
     } = this;
 
     let mode = state.get('mode');
@@ -76,11 +79,51 @@ export default class Toolbar extends Component {
 
     let sorter = [
       {
+        index: 1, condition: true, dom: <ToolbarButton
+          active={false}
+          tooltip={translator.t('Interest Area')}
+          onClick={event => linesActions.selectToolDrawingLine('interest area')}>
+          <HighlightAltIcon />
+        </ToolbarButton>
+      },
+      {
         index: 0, condition: true, dom: <ToolbarButton
           active={false}
-          tooltip={translator.t('Undo (CTRL-Z)')}
-          onClick={event => projectActions.undo()}>
-          <MdUndo />
+          tooltip={translator.t('Construction Area')}
+          onClick={event => linesActions.selectToolDrawingLine('construction area')}>
+          <HighlightAltIcon />
+        </ToolbarButton>
+      },
+      {
+        index: 2, condition: true, dom: <ToolbarButton
+          active={false}
+          tooltip={translator.t('Obstacle Area')}
+          onClick={event => linesActions.selectToolDrawingLine('obstacle area')}>
+          <LocationSearchingIcon />
+        </ToolbarButton>
+      },
+      {
+        index: 3, condition: true, dom: <ToolbarButton
+          active={false}
+          tooltip={translator.t('No Camera Area')}
+          onClick={event => linesActions.selectToolDrawingLine('nocamera area')}>
+          <LocationSearchingIcon />
+        </ToolbarButton>
+      },
+      {
+        index: 4, condition: true, dom: <ToolbarButton
+          active={false}
+          tooltip={translator.t('Must-cover Area')}
+          onClick={event => linesActions.selectToolDrawingLine('mustcover area')}>
+          <LocationSearchingIcon />
+        </ToolbarButton>
+      },
+      {
+        index: 5, condition: true, dom: <ToolbarButton
+          active={false}
+          tooltip={translator.t('Place Camera')}
+          >
+          <CameraAltIcon />
         </ToolbarButton>
       },
     ];
