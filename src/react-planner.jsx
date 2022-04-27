@@ -37,7 +37,7 @@ const sidebarW = 300;
 const footerBarH= 20;
 
 const wrapperStyle = {
-  // display: 'flex',
+  display: 'flex',
   flexFlow: 'row nowrap'
 };
 
@@ -81,7 +81,7 @@ class ReactPlanner extends Component {
   render() {
     let {width, height, state, stateExtractor, ...props} = this.props;
 
-    let contentW = width; //- sidebarW;
+    let contentW = width - toolbarW;
     let toolbarH = height - footerBarH;
     let contentH = height + 60;// - footerBarH;
     let sidebarH = height;// - footerBarH;
@@ -90,10 +90,14 @@ class ReactPlanner extends Component {
     let showHideSidepanel = this.state.showHideSidepanel;
 
     return (
+<<<<<<< Updated upstream
       <div style={{...wrapperStyle, height}}>
         {/*
         <Toolbar width={toolbarW} height={toolbarH} state={extractedState} {...props} />
     */}
+=======
+      <div style={{height}}>
+>>>>>>> Stashed changes
 
         <Loading left={(contentW-100)/2} />
 
@@ -106,8 +110,12 @@ class ReactPlanner extends Component {
         <InitialScreen state={extractedState} left={(contentW-320)/2} {...props} />
 
         <TutorialScale state={extractedState} left={contentW} {...props}/>
-        
-        <Content width={contentW} height={contentH-56} state={extractedState} {...props} onWheel={event => event.preventDefault()} />
+
+        <div style={{...wrapperStyle}}>
+          <Toolbar width={toolbarW} height={contentH-56} state={extractedState} {...props} />
+          
+          <Content width={contentW} height={contentH-56} state={extractedState} {...props} onWheel={event => event.preventDefault()} />
+        </div>
 
         <TopBar state={extractedState} {...props} />
 
@@ -120,7 +128,7 @@ class ReactPlanner extends Component {
         <CameraDefault state={extractedState} {...props} />*/}
 
   {
-        <Sidebar display = {'none'} width={sidebarW} height={75} left = {(contentW-520)/2} state={extractedState} {...props} />            
+        //<Sidebar width={sidebarW} height={75} left = {(contentW-520)/2} state={extractedState} {...props} />            
         //<FooterBar width={width} height={footerBarH} state={extractedState} {...props} />
   }
         

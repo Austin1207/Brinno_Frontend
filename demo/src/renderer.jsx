@@ -18,9 +18,6 @@ import {
   Plugins as PlannerPlugins,
 } from 'react-planner'; //react-planner
 
-import ResponsiveAppBar from './components/topbar/topbar';
-import './components/speeddial/speeddial.css'
-
 //define state
 let AppState = Map({
   'react-planner': new PlannerModels.State()
@@ -92,7 +89,6 @@ ReactDOM.render(
             width={width}
             height={height-68.5}
             plugins={plugins}
-            toolbarButtons={toolbarButtons}
             stateExtractor={state => state.get('react-planner')}
           />
         }
