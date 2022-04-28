@@ -144,7 +144,7 @@ export default function TopBar({ linesActions }) {
               defaultValue="Untitled Project"
               variant="filled"
               color="warning"/>
-            <Button
+            {/*<Button
             sx={{ my: 2, color: 'white', display: 'block' }}
             ref={anchorRef}
             id="composition-button"
@@ -192,39 +192,7 @@ export default function TopBar({ linesActions }) {
             sx={{ my: 2, color: 'white', display: 'block' }}
             >
             {'Place'}
-          </Button>
-          <Popper
-            open={openPoper}
-            anchorEl={anchorRef.current}
-            role={undefined}
-            placement="bottom-start"
-            transition
-            disablePortal
-          >
-            {({ TransitionProps, placement }) => (
-              <Grow
-                {...TransitionProps}
-                style={{
-                  transformOrigin:
-                    placement === 'bottom-start' ? 'left top' : 'left bottom',
-                }}
-              >
-                <Paper>
-                  <ClickAwayListener onClickAway={handlePoperClose}>
-                    <MenuList
-                      autoFocusItem={openPoper}
-                      id="composition-menu"
-                      aria-labelledby="composition-button"
-                      //onKeyDown={handleListKeyDown}
-                    >
-                      <MenuItem onClick={() => linesActions.selectToolDrawingLine('wall')}>Construction Area</MenuItem>
-                      <MenuItem onClick={() => linesActions.selectToolDrawingLine('interest area')}>Interest Area</MenuItem>
-                    </MenuList>
-                  </ClickAwayListener>
-                </Paper>
-              </Grow>
-            )}
-          </Popper>
+              </Button>*/}
         </Box> 
         <Box sx={{ flexGrow: 0 }}>        
           <Tooltip title="Open settings">
