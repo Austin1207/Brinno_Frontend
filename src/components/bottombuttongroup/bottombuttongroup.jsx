@@ -8,7 +8,35 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import StraightenIcon from '@mui/icons-material/Straighten';
 import Fab from '@mui/material/Fab';
 
-export default function BottomButtonGroup({projectActions}){
+import '@babel/polyfill'; //for async
+
+export default function BottomButtonGroup({projectActions, sceneActions, itemsActions, state}){
+
+  const ImageLayerMode = event => {
+    sceneActions.selectLayer("layer1")
+    itemsActions.selectItem("layer1", "xFAw434Nm");
+    }
+
+  async function SetScale() {
+
+    const json = state.get('scene').toJS();
+    const PicInJson = json["layers"]["layer1"]["items"]["xFAw434Nm"];
+
+    if ( PicInJson != undefined ) {
+      document.getElementById("TutorialScaleRectangular").style.display = "";
+      document.getElementById("TutorialScaleWord").style.display = "";
+      document.getElementById("TutorialScaleButton").style.display = "";
+  
+      await ImageLayerMode();
+  
+      RotateCircle1.style.display = "none";
+      RotateCircle2.style.display = "none";
+      }
+    else {
+      alert("Please upload your file first.")
+    }
+  }
+
     return (
         <Container 
           maxWidth='sm'
@@ -27,6 +55,7 @@ export default function BottomButtonGroup({projectActions}){
 
             <Button variant="contained"
             sx={{ position: 'absolute', bottom: 35, right: 136, backgroundColor: '#FFFFFF', "&:hover": {backgroundColor: '#FFFFFF'}}}
+            onClick = {SetScale}
             >
                 <StraightenIcon style={{ fill: 'black' }}/>
             </Button>
@@ -38,7 +67,8 @@ export default function BottomButtonGroup({projectActions}){
               right: 60,
               backgroundColor: '#FFFFFF',
               "&:hover": {backgroundColor: '#FFFFFF'}}}
-              //onClick={() => this.getLS()}
+              // onClick={() => this.getLS()}
+              onClick={() => test()}
               aria-label="Help">
                 <QuestionMarkIcon
                   style={{ fill: 'black' }} 

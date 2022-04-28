@@ -194,11 +194,10 @@ export class Group extends Record({
 }
 
 
-export const DefaultLayers = new Map(
-  {'layer1': new Layer({id: 'layer1', name: 'default'})},
-  {'layer2': new Layer({id: 'layer2', name: 'default2'})},
-  );
-
+export const DefaultLayers = new Map({
+  'layer1': new Layer({id: 'layer1', name: 'default'}),
+  'layer2': new Layer({id: 'layer2', name: 'default2'})
+  });
 
 export class Scene extends Record({
   unit: 'cm',

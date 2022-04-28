@@ -73,7 +73,7 @@ const handleCloseUserMenu = () => {
   console.log("4")
 };
 
-export default function TopBar({ linesActions }) {
+export default function TopBar({ linesActions, projectActions, sceneActions }) {
   const theme = useTheme();
   const [openPoper, setOpenPoper] = React.useState(false);
   const [openDrawer, setOpenDrawer] = React.useState(false);
@@ -121,6 +121,19 @@ export default function TopBar({ linesActions }) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  //Outline onlick with layer select
+  const DrawConstructionArea = () => {
+    projectActions.unselectAll();
+    sceneActions.selectLayer("layer2")
+    linesActions.selectToolDrawingLine('wall');
+  }
+
+  const DrawInterestArea = () => {
+    projectActions.unselectAll()
+    sceneActions.selectLayer("layer2")
+    linesActions.selectToolDrawingLine('install area')
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -193,6 +206,7 @@ export default function TopBar({ linesActions }) {
             >
             {'Place'}
               </Button>*/}
+
         </Box> 
         <Box sx={{ flexGrow: 0 }}>        
           <Tooltip title="Open settings">

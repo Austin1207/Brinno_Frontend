@@ -134,6 +134,7 @@ const InitialScreen = ({state,projectActions,left}) => {
             // fontFamily: "HelveticaNeue",
             border:"none",
             // borderRadius:"8px",
+            cursor:"pointer",
             display: ""
             }}>
               Upload new file
@@ -158,6 +159,7 @@ const InitialScreen = ({state,projectActions,left}) => {
             color: "#fff",
             border:"none",
             // borderRadius:"8px",
+            cursor:"pointer",
             display: ""
             }}>
               Outline your own

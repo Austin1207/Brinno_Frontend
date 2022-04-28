@@ -3,21 +3,25 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import {Map} from 'immutable';
 
-const grabCircleRadius = 10;
-const hoverCircleRadius = 14;
-const rulerColor = '#f45c42';
-const hoverColor = '#ff9900';
+const grabCircleRadius = 8;
+const hoverCircleRadius = 12;
+const rulerColor = '#ff8200';
+const hoverColor = '#ff8200';
 
+// 控制比例尺圓圈
+
+//沒有抓的時候
 const grabCircleStyle = {
   cursor: 'grab',
   fill: rulerColor,
-  transition: 'r 150ms ease-in'
+  transition: 'r 150ms ease-in',
 };
 
+//抓及移動的時候
 const hoverCircleStyle = {
   cursor: 'grab',
   fill: hoverColor,
-  transition: 'r 150ms ease-in'
+  transition: 'r 150ms ease-in',
 };
 
 const pointsDistance = (x1, y1, x2, y2) => {
@@ -29,7 +33,8 @@ const pointsDistance = (x1, y1, x2, y2) => {
     !isNaN(y2)
   ) {
     if (!(x1 == 0 && y1 == 0 && x2 == 0 && y2 == 0)) {
-      return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+      //*10改比例尺
+      return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2))*10;
     }
   }
 
@@ -52,6 +57,8 @@ export default class ImageFul extends Component {
     this.onMouseMove = this.onMouseMove.bind(this);
     this.toggleHover1 = this.toggleHover1.bind(this);
     this.toggleHover2 = this.toggleHover2.bind(this);
+
+    this.ClickCircle1 = this.ClickCircle1.bind(this);
   }
 
   onMouseDown(event) {
@@ -61,6 +68,10 @@ export default class ImageFul extends Component {
       if (target.attributes.name) {
         if (target.attributes.name.nodeValue === 'fst-anchor') {
           this.setState({handleMouseMove1: !this.state.handleMouseMove1});
+          this.setState({handleMouseMove2: !this.state.handleMouseMove2})
+          document.getElementById("Circle2").style.display = ""
+          document.getElementById("Line").style.display = ""
+
         }
         else if (target.attributes.name.nodeValue === 'snd-anchor') {
           this.setState({handleMouseMove2: !this.state.handleMouseMove2});
@@ -180,17 +191,29 @@ export default class ImageFul extends Component {
     this.setState({hover2: !this.state.hover2})
   }
 
+  //畫線功能
+
+  ClickCircle1(e) {
+    var Circle1 = document.getElementById("Circle1")
+    Circle1.style.display = ""
+    this.setState({handleMouseMove1:true})
+  }
+
+  //給此處線段及圓圈id再從TutorialScale控制
   render() {
     let dist = pointsDistance(this.props.x1, this.props.y1, this.props.x2, this.props.y2);
     //scalechange2
     let scale = !isNaN(dist) && dist ? (this.props.distance.length / (dist) ) : 0;
     let half_w = this.props.width / 2;
 
+    let ScaleRotation = Math.atan((this.props.y2 - this.props.y1)/(this.props.x2 - this.props.x1)) * 180 / Math.PI ;
+
     let ruler = !this.props.element.selected ? null : (
       <g>
-        <line key="1" x1={this.props.x1} y1={this.props.y1} x2={this.props.x2} y2={this.props.y2} stroke={rulerColor}
-              strokeWidth="3px"/>
-        <circle
+        {/* 此處控制比例尺線段 */}
+        <line id="Line" key="1" x1={this.props.x1} y1={this.props.y1} x2={this.props.x2} y2={this.props.y2} stroke={rulerColor}
+              strokeWidth="16px" style = {{display:"none"}}/>
+        <circle id = {"Circle1"}
           onMouseEnter={this.toggleHover1}
           onMouseLeave={this.toggleHover1}
           key="2"
@@ -198,8 +221,16 @@ export default class ImageFul extends Component {
           cx={this.props.x1}
           cy={this.props.y1}
           r={this.state.hover1 || this.state.handleMouseMove1 ? hoverCircleRadius : grabCircleRadius}
-          style={this.state.hover1 || this.state.handleMouseMove1 ? hoverCircleStyle : grabCircleStyle}/>
-        <circle
+          // style={this.state.hover1 || this.state.handleMouseMove1 ? hoverCircleStyle : grabCircleStyle}
+          style = {{
+            cursor: 'grab',
+            fill: rulerColor,
+            transition: 'r 150ms ease-in',
+            display:"none"
+          }}
+          onClick = {this.ClickCircle1}/>
+
+        <circle id = {"Circle2"}
           onMouseEnter={this.toggleHover2}
           onMouseLeave={this.toggleHover2}
           key="3"
@@ -207,7 +238,44 @@ export default class ImageFul extends Component {
           cx={this.props.x2}
           cy={this.props.y2}
           r={this.state.hover2 || this.state.handleMouseMove2 ? hoverCircleRadius : grabCircleRadius}
-          style={this.state.hover2 || this.state.handleMouseMove2 ? hoverCircleStyle : grabCircleStyle}/>
+          // style={this.state.hover2 || this.state.handleMouseMove2 ? hoverCircleStyle : grabCircleStyle}
+          style = {{
+            cursor: 'grab',
+            fill: rulerColor,
+            transition: 'r 150ms ease-in',
+            display:"none"
+          }}
+          />
+
+          {/* 顯示長度 */}
+
+          <line id="path1" key="4" x1={this.props.x1 + (Math.sqrt(2)/2) * 0.01 * (this.props.x2 - this.props.x1 + this.props.y1 - this.props.y2)} 
+            y1={this.props.y1 + (Math.sqrt(2)/2) * 0.01 * (this.props.x2 - this.props.x1 + this.props.y2 - this.props.y1) } 
+            x2={this.props.x1 + (Math.sqrt(2)/2) * 0.2 * (this.props.x2 - this.props.x1 + this.props.y1 - this.props.y2) } 
+            y2={this.props.y1 + (Math.sqrt(2)/2) * 0.2 * (this.props.x2 - this.props.x1 + this.props.y2 - this.props.y1) } 
+            stroke={rulerColor} strokeWidth="5px" style = {{display:"none"}}/>
+
+          <line id="path2" key="5" x1={this.props.x2 + (Math.sqrt(2)/2) * 0.01 * (this.props.x1 - this.props.x2 - this.props.y2 + this.props.y1)} 
+            y1={this.props.y2 + (Math.sqrt(2)/2) * 0.01 * (-this.props.x1 + this.props.x2 + this.props.y1 - this.props.y2) } 
+            x2={this.props.x2 + (Math.sqrt(2)/2) * 0.2 * (this.props.x1 - this.props.x2 - this.props.y2 + this.props.y1) } 
+            y2={this.props.y2 + (Math.sqrt(2)/2) * 0.2 * (-this.props.x1 + this.props.x2 + this.props.y1 - this.props.y2) } 
+            stroke={rulerColor} strokeWidth="5px" style = {{display:"none"}}/>
+
+          <text id = "DistanceNumber" key="6" fill = {rulerColor} 
+            dx = {(this.props.x1 + (Math.sqrt(2)/2) * 0.2 * (this.props.x2 - this.props.x1 + this.props.y1 - this.props.y2))*0.5 + (this.props.x2 + (Math.sqrt(2)/2) * 0.2 * (this.props.x1 - this.props.x2 - this.props.y2 + this.props.y1))*0.5 - 20}
+            dy = {(this.props.y1 + (Math.sqrt(2)/2) * 0.2 * (this.props.x2 - this.props.x1 + this.props.y2 - this.props.y1))*0.5 + (this.props.y2 + (Math.sqrt(2)/2) * 0.2 * (-this.props.x1 + this.props.x2 + this.props.y1 - this.props.y2))*0.5 } 
+            transform = {`rotate(${ScaleRotation} ${(this.props.x1 + (Math.sqrt(2)/2) * 0.2 * (this.props.x2 - this.props.x1 + this.props.y1 - this.props.y2))*0.5 + (this.props.x2 + (Math.sqrt(2)/2) * 0.2 * (this.props.x1 - this.props.x2 - this.props.y2 + this.props.y1))*0.5 }, ${(this.props.y1 + (Math.sqrt(2)/2) * 0.2 * (this.props.x2 - this.props.x1 + this.props.y2 - this.props.y1))*0.5 + (this.props.y2 + (Math.sqrt(2)/2) * 0.2 * (-this.props.x1 + this.props.x2 + this.props.y1 - this.props.y2))*0.5 } )`}
+            style = {{
+              fontSize: "16px",
+              fontWeight: "bold",
+              textAlign: "left",
+              display: "none"
+            }}>
+
+            {parseInt(this.props.distance.length/100)} m
+
+          </text>
+
       </g>
     );
 //SVG

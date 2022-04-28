@@ -20,15 +20,21 @@ export function loadimgjson (loadImageUrl) {
                         "selected": false,
                         "properties": {
                             "imageUri": loadImageUrl,
-                            "x1": 400,
-                            "y1": 315,
+                            // "x1": 400,
+                            // "y1": 315,
+                            // "x2": 500,
+                            // "y2": 315,
+                            "x1": 837.4240654477823,
+                            "y1": 1018.290005260071,
                             "x2": 500,
                             "y2": 315,
                             "distance": {
-                                "length": 100
+                                "length": 7800.460444371345
                             },
-                            "width": 891,
-                            "height": 630
+                            // "width": 891,
+                            // "height": 630
+                            "width": 960,
+                            "height": 540
                         },
                         "visible": true,
                         "x": 479.709994739929,

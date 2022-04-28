@@ -131,6 +131,7 @@ var CatalogChangeItem = function (_Component) {
       switch (element.name) {
         case 'camera_BAC2000':
           this.context.projectActions.remove();
+          this.context.itemsActions.directCreatItem('layer2', 'camera_BAC2000', cameraX, cameraY, cameraRotation);
           break;
         case 'camera_BCC200':
           this.context.projectActions.remove();
@@ -138,9 +139,11 @@ var CatalogChangeItem = function (_Component) {
           break;
         case 'camera_BCC2000':
           this.context.projectActions.remove();
+          this.context.itemsActions.directCreatItem('layer2', 'camera_BCC2000', cameraX, cameraY, cameraRotation);
           break;
         case 'camera_MAC200DN':
           this.context.projectActions.remove();
+          this.context.itemsActions.directCreatItem('layer2', 'camera_MAC200DN', cameraX, cameraY, cameraRotation);
           break;
       }
     }

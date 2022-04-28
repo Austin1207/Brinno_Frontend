@@ -1,5 +1,3 @@
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 import { SELECT_ITEM, SELECT_TOOL_DRAWING_ITEM, UPDATE_DRAWING_ITEM, END_DRAWING_ITEM, BEGIN_DRAGGING_ITEM, UPDATE_DRAGGING_ITEM, END_DRAGGING_ITEM, BEGIN_ROTATING_ITEM, UPDATE_ROTATING_ITEM, END_ROTATING_ITEM, DIRECT_CREATE_ITEM } from '../constants';
 
 export function selectItem(layerID, itemID) {
@@ -73,11 +71,9 @@ export function endRotatingItem(x, y) {
   };
 }
 
-export function directCreatItem(layerID, type, x, y, rotation) {
-  var _ref;
-
-  console.log("items-actions");
-  return _ref = {
+export function directCreatItem(layerID, itemtype, x, y, rotation) {
+  return {
     type: DIRECT_CREATE_ITEM,
-    layerID: layerID }, _defineProperty(_ref, "type", type), _defineProperty(_ref, "x", x), _defineProperty(_ref, "y", y), _defineProperty(_ref, "rotation", rotation), _ref;
+    layerID: layerID, itemtype: itemtype, x: x, y: y, rotation: rotation
+  };
 }
