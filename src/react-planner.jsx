@@ -90,15 +90,7 @@ class ReactPlanner extends Component {
     let showHideSidepanel = this.state.showHideSidepanel;
 
     return (
-<<<<<<< Updated upstream
-      <div style={{...wrapperStyle, height}}>
-
-        {/*
-        <Toolbar width={toolbarW} height={toolbarH} state={extractedState} {...props} />
-    */}
-=======
       <div style={{height}}>
->>>>>>> Stashed changes
 
         <Loading left={(contentW-100)/2} />
 
