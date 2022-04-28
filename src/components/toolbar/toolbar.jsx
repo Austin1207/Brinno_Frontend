@@ -70,19 +70,49 @@ export default class Toolbar extends Component {
 
     let {
       props: { state, width, height, toolbarButtons, allowProjectFileSupport },
-      context: { projectActions, viewer3DActions, translator, linesActions }
+      context: { projectActions, viewer3DActions, translator, linesActions, sceneActions }
     } = this;
 
     let mode = state.get('mode');
     let alterate = state.get('alterate');
     let alterateColor = alterate ? SharedStyle.MATERIAL_COLORS[500].orange : '';
 
+    const DrawConstructionArea = () => {
+      projectActions.unselectAll();
+      sceneActions.selectLayer("layer2")
+      linesActions.selectToolDrawingLine('construction area')
+    }
+  
+    const DrawInterestArea = () => {
+      projectActions.unselectAll()
+      sceneActions.selectLayer("layer2")
+      linesActions.selectToolDrawingLine('interest area')
+    }
+
+    const DrawObstacleArea = () => {
+      projectActions.unselectAll()
+      sceneActions.selectLayer("layer2")
+      linesActions.selectToolDrawingLine('obstacle area')
+    }
+
+    const DrawNoCameraArea = () => {
+      projectActions.unselectAll()
+      sceneActions.selectLayer("layer2")
+      linesActions.selectToolDrawingLine('nocamera area')
+    }
+
+    const DrawMustcoverArea = () => {
+      projectActions.unselectAll()
+      sceneActions.selectLayer("layer2")
+      linesActions.selectToolDrawingLine('mustcover area')
+    }
+
     let sorter = [
       {
         index: 1, condition: true, dom: <ToolbarButton
           active={false}
           tooltip={translator.t('Interest Area')}
-          onClick={event => linesActions.selectToolDrawingLine('interest area')}>
+          onClick={event => DrawInterestArea()}>
           <HighlightAltIcon />
         </ToolbarButton>
       },
@@ -90,7 +120,7 @@ export default class Toolbar extends Component {
         index: 0, condition: true, dom: <ToolbarButton
           active={false}
           tooltip={translator.t('Construction Area')}
-          onClick={event => linesActions.selectToolDrawingLine('construction area')}>
+          onClick={event => DrawConstructionArea()}>
           <HighlightAltIcon />
         </ToolbarButton>
       },
@@ -98,7 +128,7 @@ export default class Toolbar extends Component {
         index: 2, condition: true, dom: <ToolbarButton
           active={false}
           tooltip={translator.t('Obstacle Area')}
-          onClick={event => linesActions.selectToolDrawingLine('obstacle area')}>
+          onClick={event => DrawObstacleArea()}>
           <LocationSearchingIcon />
         </ToolbarButton>
       },
@@ -106,7 +136,7 @@ export default class Toolbar extends Component {
         index: 3, condition: true, dom: <ToolbarButton
           active={false}
           tooltip={translator.t('No Camera Area')}
-          onClick={event => linesActions.selectToolDrawingLine('nocamera area')}>
+          onClick={event => DrawNoCameraArea()}>
           <LocationSearchingIcon />
         </ToolbarButton>
       },
@@ -114,7 +144,7 @@ export default class Toolbar extends Component {
         index: 4, condition: true, dom: <ToolbarButton
           active={false}
           tooltip={translator.t('Must-cover Area')}
-          onClick={event => linesActions.selectToolDrawingLine('mustcover area')}>
+          onClick={event => DrawMustcoverArea()}>
           <LocationSearchingIcon />
         </ToolbarButton>
       },
@@ -162,6 +192,7 @@ Toolbar.contextTypes = {
   viewer2DActions: PropTypes.object.isRequired,
   viewer3DActions: PropTypes.object.isRequired,
   linesActions: PropTypes.object.isRequired,
+  sceneActions: PropTypes.object.isRequired,
   holesActions: PropTypes.object.isRequired,
   itemsActions: PropTypes.object.isRequired,
   translator: PropTypes.object.isRequired,
