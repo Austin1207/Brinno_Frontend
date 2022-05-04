@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Scene from './scene';
 import Snap from './snap';
 import * as SharedStyle from '../../shared-style';
+import Visibility_Polygon from './visibility-polygon';
 
 const guideStyle = {
   stroke: SharedStyle.SECONDARY_COLOR.main,
