@@ -9,14 +9,15 @@ import {
     Polygon,
   } from 'visibility-polygon';
 
-  export default function Visibility_Polygon() {
+  export default function Visibility_Polygon({sceneWidth, sceneHeight}) {
     const polygons = [];
     // this is the 'world' polygon, which bounds all the polygons you want to compute againts
+    console.log(sceneWidth, sceneHeight)
     polygons.push([
       [-1, -1],
-      [501, -1],
-      [501, 501],
-      [-1, 501],
+      [sceneWidth+1, -1],
+      [sceneWidth+1, sceneHeight+1],
+      [-1, sceneHeight+1],
     ]);
     // define vertexes of your polygons
     polygons.push([
@@ -24,11 +25,13 @@ import {
       [260, 140],
       [240, 140],
     ]);
+
+    polygons.push([[240,240],[260,240],[260,260],[240,260]]);
      
     const segments = breakIntersections(convertToSegments(polygons));
      
     // define your position in which the visibility should be calculated from
-    const position = [60, 60];
+    const position = [100, 200];
      
     // check if the position is inside the world polygon
     if (inPolygon(position, polygons[0])) {
@@ -41,10 +44,12 @@ import {
       [50, 50],
       [450, 450]
     );
-    console.log(viewportVisibility);
+    //console.log(viewportVisibility);
     return(
       <svg>
-        <polygon points="200,10 250,190 160,210" style="fill:lime"/>
+        <g>
+          {<polygon points={viewportVisibility.join()} fill="lime" />}
+        </g>
       </svg>
     )
   }
