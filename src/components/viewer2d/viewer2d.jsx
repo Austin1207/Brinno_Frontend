@@ -443,7 +443,6 @@ export default function Viewer2D(
           negativeUnitsNumber={0}
         /> : null }
       </div>
-      {/*<Visibility_Polygon/>*/}
       <ReactSVGPanZoom
         style={{ gridColumn: 2, gridRow: 2 }}
         width={width - rulerSize}
@@ -470,10 +469,6 @@ export default function Viewer2D(
           <g style={Object.assign(mode2Cursor(mode), mode2PointerEvents(mode))}>
             <State state={state} catalog={catalog} />
           </g>
-{          <Visibility_Polygon
-            sceneWidth={sceneWidth}
-            sceneHeight={sceneHeight}
-        />}
         </svg>
 
       </ReactSVGPanZoom>
