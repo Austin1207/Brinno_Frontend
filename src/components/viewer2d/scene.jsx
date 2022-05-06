@@ -16,18 +16,18 @@ export default class Scene extends Component {
 
     return (
       <g>
-        {<Grids scene={scene}/>}
+        <Grids scene={scene}/>
        
-{        <g style={{pointerEvents: 'none'}}>
+        <g style={{pointerEvents: 'none'}}>
           {
             layers
             .entrySeq()
             .filter(([layerID, layer]) => layerID !== scene.selectedLayer && layer.visible)
             .map(([layerID, layer]) => <Layer key={layerID} layer={layer} scene={scene} catalog={catalog}/>)
           }
-        </g>}
+        </g>
 
-        {<Layer key={selectedLayer.id} layer={selectedLayer} scene={scene} catalog={catalog}/>}         
+        <Layer key={selectedLayer.id} layer={selectedLayer} scene={scene} catalog={catalog}/>        
       </g>
       
     );

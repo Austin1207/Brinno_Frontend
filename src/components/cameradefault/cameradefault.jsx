@@ -24,15 +24,14 @@ export default class CameraDefault extends Component{
     const linesarr = Object.keys(lines);
     let wantArea = [];
     //const wantAreanum = lines.filter(i => i.type === "install area").length
-    /*
+    
     for(let i=0;i<linesarr.length;i++){
       if(lines.linesarr[i].type=="install area"){
         wantArea.append(lines.linesarr[i].vertices)
       }
     }
-    */
+    
     console.log(lines);
-    console.log(months);
   }
   
   render() {
