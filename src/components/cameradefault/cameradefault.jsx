@@ -18,21 +18,6 @@ export default class CameraDefault extends Component{
     this.setState({ showHideSidepanel: !this.state.showHideSidepanel });
   }
 
-  getLS(){
-    const data = JSON.parse(localStorage.getItem('react-planner_v0'));
-    let lines = Object.entries(data.layers.layer1.lines);
-    const linesarr = Object.keys(lines);
-    let wantArea = [];
-    //const wantAreanum = lines.filter(i => i.type === "install area").length
-    
-    for(let i=0;i<linesarr.length;i++){
-      if(lines.linesarr[i].type=="install area"){
-        wantArea.append(lines.linesarr[i].vertices)
-      }
-    }
-    
-    console.log(lines);
-  }
   
   render() {
 
@@ -41,6 +26,75 @@ export default class CameraDefault extends Component{
       context: { itemsActions,  linesActions}
     } = this;
     let showHideSidepanel = this.state.showHideSidepanel;
+
+    let getLS = (e) => {
+      const data = JSON.parse(localStorage.getItem('react-planner_v0'));
+      let lines = Object.entries(data.layers.layer1.lines);
+      let wantVertices = new Array();
+      for(let i=0;i<lines.length;i++){
+        if(lines[i][1].type=="install area"){
+          wantVertices.push(lines[i][1].vertices)
+        }
+      }
+      wantVertices = wantVertices.flat();
+      wantVertices = wantVertices.filter(function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+      });
+      console.log(wantVertices);
+      let vertices = Object.entries(data.layers.layer1.vertices);
+      let allX = new Array();
+      let allY = new Array();
+      for(let i=0;i<vertices.length;i++){
+        for(let j=0;j<wantVertices.length;j++){
+          if(vertices[i][1].id==wantVertices[j]){
+            allX.push(vertices[i][1].x);
+            allY.push(vertices[i][1].y);
+          }
+        }
+      }
+      console.log(allX);
+      console.log(allY);
+      let Xmax = Math.max(...allX);
+      let Xmin = Math.min(...allX);
+      let Ymax = Math.max(...allY);
+      let Ymin = Math.min(...allY);
+      console.log(Xmax,Xmin,Ymax,Ymin);
+      let {
+        context: {itemsActions}
+      } = this;
+      itemsActions.selectToolDrawingItem('camera_BAC2000');
+      itemsActions.endDrawingItem('layer1', Xmax, Ymax);
+      itemsActions.endDrawingItem('layer1', Xmax, Ymin);
+      itemsActions.endDrawingItem('layer1', Xmin, Ymax);
+      itemsActions.endDrawingItem('layer1', Xmin, Ymin);
+      let data_new = JSON.parse(localStorage.getItem('react-planner_v0'));
+      let items = Object.entries(data_new.layers.layer1.items);
+      console.log(items);
+      //let defaultCameras = new Array();
+      //for(let i=0;i<items.length;i++){
+        /*
+        if(items[i][1].x==Xmax&items[i][1].y==Ymax||
+          items[i][1].x==Xmax&items[i][1].y==Ymin||
+          items[i][1].x==Xmin&items[i][1].y==Ymax||
+          items[i][1].x==Xmin&items[i][1].y==Ymin){
+            */
+          //defaultCameras.push(items[i][1].x)
+        //}
+      //}
+      /*
+      let defaultCameras = items.map(function(element,index){
+        if(element[1].x==Xmax&element[1].y==Ymax||
+          element[1].x==Xmax&element[1].y==Ymin||
+          element[1].x==Xmin&element[1].y==Ymax||
+          element[1].x==Xmin&element[1].y==Ymin){
+            return element[1].id
+          }
+      });
+      */
+      //console.log(defaultCameras)
+      //itemsActions.beginRotatingItem('layer1', "RwwTliA30", Xmax, Ymax);
+      //itemsActions.endRotatingItem(0, 0);
+    }
 
     return (
       <div>
