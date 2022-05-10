@@ -356,7 +356,7 @@ export default {
     tag: ['security'],
     title: 'BAC2000', //use element.name to call
     description: '1080P 69°',
-    image: require('./BAC2000.png')
+    image: require('./BAC2000.png'),
   },
   properties: {
     color: {
@@ -393,7 +393,7 @@ export default {
 
     return (
       <g transform={`translate(${-WIDTH / 2},${-DEPTH/2})`}>
-      <rect key='1' x='0' y='0' width={WIDTH}  height={DEPTH}
+      <rect key='1' x='0' y='10' width={WIDTH}  height={DEPTH}
         style={style}/>
       <text key='2' x='0' y='0'
             transform={`translate(${WIDTH / 2}, ${DEPTH / 2}) scale(1,-1) rotate(${textRotation})`}
@@ -402,7 +402,7 @@ export default {
       </text>
       <circle key='3'
               cx="5"
-  		        cy="0"
+  		        cy="10"
               r="50"
               stroke="tomato"
               strokeWidth="100"
