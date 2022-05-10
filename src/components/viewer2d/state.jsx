@@ -24,6 +24,7 @@ export default function State({state, catalog}) {
     <g>
       <rect x="0" y="0" width={width} height={height} fill={SharedStyle.COLORS.white} />
       <Visibility_Polygon
+        state={state}
         sceneWidth={3000}
         sceneHeight={2000}
       />
