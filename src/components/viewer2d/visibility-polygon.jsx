@@ -87,7 +87,7 @@ export default function Visibility_Polygon({state, sceneWidth, sceneHeight}) {
     path = path.concat(cam_x,' ', cam_y, ' L ', x1, ' ', y1, ' A ', radius, ' ', radius, ' 0 0 1 ', x2, ' ', y2, ' Z');
     return path;
   }
-  console.log(state);
+  //console.log(state);
   let data = JSON.parse(localStorage.getItem('react-planner_v0'));
   let wallcamera_info = getWallCamera(data,sceneHeight);
   let wall_info = wallcamera_info[0];
@@ -120,7 +120,7 @@ export default function Visibility_Polygon({state, sceneWidth, sceneHeight}) {
   let rendered = [];
   for(let i=0;i<cameara_info.length;i++){
     position = [cameara_info[i].x, sceneHeight-cameara_info[i].y];
-    conepath = camera_cone(cameara_info[i].x, sceneHeight-cameara_info[i].y, 500, cameara_info[i].rotation, 69);
+    conepath = camera_cone(cameara_info[i].x, sceneHeight-cameara_info[i].y, 500, cameara_info[i].rotation, parseInt(cameara_info[i].fov));
     visibility = compute(position, segments);
     rendered.push(
       <g>
