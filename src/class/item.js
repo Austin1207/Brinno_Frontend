@@ -15,13 +15,13 @@ import {
 class Item{
 
   static create( state, layerID, type, x, y, width, height, rotation ) {
-    console.log("items.create")
     let itemID = IDBroker.acquireID();
 
     let item = state.catalog.factoryElement(type, {
       id: itemID,
       name: NameGenerator.generateName('items', state.catalog.getIn(['elements', type, 'info', 'title'])),
       type,
+      fov:  NameGenerator.generateName('items', state.catalog.getIn(['elements', type, 'info', 'fov'])),
       height,
       width,
       x,
@@ -193,7 +193,6 @@ class Item{
   }
 
   static directCreatItem(state, layerID, itemtype, x, y, rotation) {
-    console.log("item.directCreatItem")
     state = this.create( state, layerID, itemtype, x, y, 200, 100, rotation ).updatedState;
 
     return { updatedState: state };

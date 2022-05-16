@@ -356,6 +356,7 @@ export default {
     tag: ['security'],
     title: 'BAC2000', //use element.name to call
     description: '1080P 69°',
+    fov: '69',
     image: require('./BAC2000.png'),
   },
   properties: {

@@ -1,7 +1,7 @@
 const localStorage = window.hasOwnProperty('localStorage') ? window.localStorage : false;
 import { loadProject } from '../actions/project-actions';
 
-const TIMEOUT_DELAY = 500;
+const TIMEOUT_DELAY = 10; //change to 10(origin 500)
 
 let timeout = null;
 
