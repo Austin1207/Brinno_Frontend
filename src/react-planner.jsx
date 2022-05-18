@@ -32,7 +32,7 @@ const {Toolbar} = ToolbarComponents;
 const {Sidebar} = SidebarComponents;
 const {FooterBar} = FooterBarComponents;
 
-const toolbarW = 50;
+const toolbarW = 69;
 const sidebarW = 300;
 const footerBarH= 20;
 

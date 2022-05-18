@@ -11,6 +11,8 @@ import * as SharedStyle from '../../shared-style';
 import HighlightAltIcon from '@mui/icons-material/HighlightAlt';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import { createSvgIcon } from '@mui/material/utils';
+import Button from '@mui/material/Button';
 
 const iconTextStyle = {
   fontSize: '19px',
@@ -22,10 +24,30 @@ const iconTextStyle = {
 
 const Icon2D = ( {style} ) => <p style={{...iconTextStyle, ...style}}>2D</p>;
 const Icon3D = ( {style} ) => <p style={{...iconTextStyle, ...style}}>3D</p>;
+const IconConstruction = createSvgIcon(
+  <svg width="24" height="23.415" viewBox="0 0 24 23.415" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-width="1.7560975609756095" stroke-dasharray="4 4" d="M3.805 2.049h16.976v16.976h-16.976z"/>
+  </svg>,
+  'Construction',
+);
+const IconInterest = createSvgIcon(
+  <svg width="24" height="23.415" viewBox="0 0 24 23.415" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-width="1.7560975609756095" stroke-dasharray="4 4" d="M3.22 3.805h16.976v16.976h-16.976z"/>
+    <path d="M6.439 7.024h10.537v10.537H6.439z"/>
+  </svg>,
+  'Interest',
+);
+const IconObstacle = createSvgIcon(
+  <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12.17 1.745c-5.386 0 -9.754 4.368 -9.754 9.754c0 5.386 4.368 9.754 9.754 9.754s9.754 -4.368 9.754 -9.754C21.924 6.11 17.556 1.745 12.17 1.745zM18.266 13.327h-12.192V9.67h12.192V13.327z"/>
+  </svg>,
+  'Obstacle',
+);
 
 const ASIDE_STYLE = {
-  backgroundColor: SharedStyle.PRIMARY_COLOR.main,
-  padding: '10px'
+  backgroundColor: '#ffffff',
+  padding: '5px',
+  width: '100%'
 };
 
 const sortButtonsCb = (a, b) => {
@@ -109,19 +131,19 @@ export default class Toolbar extends Component {
 
     let sorter = [
       {
-        index: 1, condition: true, dom: <ToolbarButton
+        index: 0, condition: true, dom: <ToolbarButton
           active={false}
           tooltip={translator.t('Interest Area')}
           onClick={event => DrawInterestArea()}>
-          <HighlightAltIcon />
+          <IconConstruction sx={{ fontSize: 40 }}/>
         </ToolbarButton>
       },
       {
-        index: 0, condition: true, dom: <ToolbarButton
+        index: 1, condition: true, dom: <ToolbarButton
           active={false}
           tooltip={translator.t('Construction Area')}
           onClick={event => DrawConstructionArea()}>
-          <HighlightAltIcon />
+          <IconInterest sx={{ fontSize: 40 }}/>
         </ToolbarButton>
       },
       {
@@ -129,7 +151,7 @@ export default class Toolbar extends Component {
           active={false}
           tooltip={translator.t('Obstacle Area')}
           onClick={event => DrawObstacleArea()}>
-          <LocationSearchingIcon />
+          <IconObstacle sx={{ fontSize: 40 }}/>
         </ToolbarButton>
       },
       {
