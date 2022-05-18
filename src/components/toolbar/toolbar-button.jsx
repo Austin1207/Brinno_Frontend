@@ -5,13 +5,13 @@ import * as SharedStyle from '../../shared-style';
 //http://www.cssportal.com/css-tooltip-generator/
 
 const STYLE = {
-  width: '30px',
-  height: '30px',
+  width: '50px',
+  height: '50px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   marginBottom: '5px',
-  fontSize: '25px',
+  fontSize: '50px',
   position: 'relative',
   cursor: 'pointer'
 };
@@ -62,7 +62,7 @@ export default class ToolbarButton extends Component {
       <div style={STYLE}
         onMouseOver={event => this.setState({ active: true })}
         onMouseOut={event => this.setState({ active: false })}>
-        <div style={{ color }} onClick={props.onClick}>
+        <div style={{ color/*, fill: color, stroke: color*/ }} onClick={props.onClick}>
           {props.children}
         </div>
 

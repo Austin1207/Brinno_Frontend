@@ -123,7 +123,7 @@ export default function Visibility_Polygon({state, sceneWidth, sceneHeight}) {
     conepath = camera_cone(cameara_info[i].x, sceneHeight-cameara_info[i].y, 500, cameara_info[i].rotation, parseInt(cameara_info[i].fov));
     visibility = compute(position, segments);
     rendered.push(
-      <g>
+      <g key={`${cameara_info[i].id}_visibility`}>
         <clipPath id={`${cameara_info[i].id}_cone`}>  
           <path d={conepath}/>
         </clipPath>

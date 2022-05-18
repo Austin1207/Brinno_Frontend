@@ -13,6 +13,7 @@ import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { styled, useTheme } from '@mui/material/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
 import Paper from '@mui/material/Paper';
@@ -27,6 +28,11 @@ import { elementsToDisplay } from './elementstodisplay';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const drawerWidth = 260;
+const useStyles = makeStyles({
+  drawerPaper: {
+    marginLeft: "69px"
+  }
+});
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'openDrawer',
@@ -73,8 +79,9 @@ const handleCloseUserMenu = () => {
   console.log("4")
 };
 
-export default function TopBar({ linesActions, projectActions, sceneActions }) {
+export default function TopBar({ linesActions, projectActions, sceneActions, showDrawer}) {
   const theme = useTheme();
+  const classes = useStyles();
   const [openPoper, setOpenPoper] = React.useState(false);
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -217,7 +224,7 @@ export default function TopBar({ linesActions, projectActions, sceneActions }) {
       {/*<AppBar position="fixed" sx={{ bgcolor:"#222", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={open}>*/}
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <IconButton
+{/*            <IconButton
               color="inherit"
               aria-label="open drawer"
               onClick={handleDrawerOpen}
@@ -225,7 +232,7 @@ export default function TopBar({ linesActions, projectActions, sceneActions }) {
               sx={{ mr: 2, ...(openDrawer && { display: 'none' }) }}
             >
               <MenuIcon />
-            </IconButton>
+  </IconButton>*/}
             <TextField
               sx={{ input: { color: 'white' } }}
               hiddenLabel
@@ -233,58 +240,8 @@ export default function TopBar({ linesActions, projectActions, sceneActions }) {
               defaultValue="Untitled Project"
               variant="filled"
               color="warning"/>
-            {/*<Button
-            sx={{ my: 2, color: 'white', display: 'block' }}
-            ref={anchorRef}
-            id="composition-button"
-            aria-controls={openPoper ? 'composition-menu' : undefined}
-            aria-expanded={openPoper ? 'true' : undefined}
-            aria-haspopup="true"
-            onClick={handleToggle}
-          >
-            Outline
-          </Button>
-          <Popper
-            open={openPoper}
-            anchorEl={anchorRef.current}
-            role={undefined}
-            placement="bottom-start"
-            transition
-            disablePortal
-          >
-            {({ TransitionProps, placement }) => (
-              <Grow
-                {...TransitionProps}
-                style={{
-                  transformOrigin:
-                    placement === 'bottom-start' ? 'left top' : 'left bottom',
-                }}
-              >
-                <Paper>
-                  <ClickAwayListener onClickAway={handlePoperClose}>
-                    <MenuList
-                      autoFocusItem={openPoper}
-                      id="composition-menu"
-                      aria-labelledby="composition-button"
-                      //onKeyDown={handleListKeyDown}
-                    >
-                      <MenuItem onClick={() => linesActions.selectToolDrawingLine('wall')}>Construction Area</MenuItem>
-                      <MenuItem onClick={() => linesActions.selectToolDrawingLine('interest area')}>Interest Area</MenuItem>
-                    </MenuList>
-                  </ClickAwayListener>
-                </Paper>
-              </Grow>
-            )}
-          </Popper>
-          <Button
-            key={'Place'}
-            sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-            {'Place'}
-              </Button>*/}
-
-        </Box> 
-        <Box sx={{ flexGrow: 0 }}>        
+          </Box> 
+{/*        <Box sx={{ flexGrow: 0 }}>        
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -312,7 +269,7 @@ export default function TopBar({ linesActions, projectActions, sceneActions }) {
               </MenuItem>
             ))}
           </Menu>
-        </Box>
+            </Box>*/}
         <Box sx={{ flexGrow: 0 }}>
           <Button
               key={'Gernerate'}
@@ -332,15 +289,19 @@ export default function TopBar({ linesActions, projectActions, sceneActions }) {
             boxSizing: 'border-box',
           },
         }}
+        PaperProps={{ style: { height: "90vh", top: 68.5 } }}
         variant="persistent"
         anchor="left"
-        open={openDrawer}
+        open={showDrawer}
+        classes={{
+          paper: classes.drawerPaper
+        }}
       >
-        <DrawerHeader>
+{/*        <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
-        </DrawerHeader>
+      </DrawerHeader>*/}
         <Divider />
         {elementsToDisplay.map(elem => <CatalogItem key={elem.name} element={elem}/>)}
       </Drawer>
