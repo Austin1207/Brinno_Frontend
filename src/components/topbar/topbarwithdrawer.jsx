@@ -79,7 +79,7 @@ const handleCloseUserMenu = () => {
   console.log("4")
 };
 
-export default function TopBar({ linesActions, projectActions, sceneActions }) {
+export default function TopBar({ linesActions, projectActions, sceneActions, showDrawer}) {
   const theme = useTheme();
   const classes = useStyles();
   const [openPoper, setOpenPoper] = React.useState(false);
@@ -148,7 +148,7 @@ export default function TopBar({ linesActions, projectActions, sceneActions }) {
       {/*<AppBar position="fixed" sx={{ bgcolor:"#222", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={open}>*/}
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <IconButton
+{/*            <IconButton
               color="inherit"
               aria-label="open drawer"
               onClick={handleDrawerOpen}
@@ -156,7 +156,7 @@ export default function TopBar({ linesActions, projectActions, sceneActions }) {
               sx={{ mr: 2, ...(openDrawer && { display: 'none' }) }}
             >
               <MenuIcon />
-            </IconButton>
+  </IconButton>*/}
             <TextField
               sx={{ input: { color: 'white' } }}
               hiddenLabel
@@ -165,7 +165,7 @@ export default function TopBar({ linesActions, projectActions, sceneActions }) {
               variant="filled"
               color="warning"/>
           </Box> 
-        <Box sx={{ flexGrow: 0 }}>        
+{/*        <Box sx={{ flexGrow: 0 }}>        
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -193,7 +193,7 @@ export default function TopBar({ linesActions, projectActions, sceneActions }) {
               </MenuItem>
             ))}
           </Menu>
-        </Box>
+            </Box>*/}
         <Box sx={{ flexGrow: 0 }}>
           <Button
               key={'Gernerate'}
@@ -213,18 +213,19 @@ export default function TopBar({ linesActions, projectActions, sceneActions }) {
             boxSizing: 'border-box',
           },
         }}
+        PaperProps={{ style: { height: "90vh", top: 68.5 } }}
         variant="persistent"
         anchor="left"
-        open={openDrawer}
+        open={showDrawer}
         classes={{
           paper: classes.drawerPaper
         }}
       >
-        <DrawerHeader>
+{/*        <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
-        </DrawerHeader>
+      </DrawerHeader>*/}
         <Divider />
         {elementsToDisplay.map(elem => <CatalogItem key={elem.name} element={elem}/>)}
       </Drawer>

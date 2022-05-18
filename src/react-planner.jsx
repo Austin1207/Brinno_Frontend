@@ -70,8 +70,15 @@ class ReactPlanner extends Component {
   constructor(){
     super();
     this.state = {
-      showHideSidepanel: true
+      showHideSidepanel: true,
+      showDrawer: false
     };
+    this.getShowDrawer=this.getShowDrawer.bind(this);
+  }
+
+  getShowDrawer(bool){
+    this.setState({showDrawer:bool});
+    console.log(this.state.showDrawer)
   }
 
   hideSidepanel(){
@@ -88,6 +95,7 @@ class ReactPlanner extends Component {
 
     let extractedState = stateExtractor(state);
     let showHideSidepanel = this.state.showHideSidepanel;
+    let showDrawer = this.state.showDrawer;
 
     return (
       <div style={{height}}>
@@ -108,12 +116,12 @@ class ReactPlanner extends Component {
         <TutorialScale state={extractedState} left={contentW} {...props}/>
 
         <div style={{...wrapperStyle}}>
-          <Toolbar width={toolbarW} height={contentH-56} state={extractedState} {...props} />
+          <Toolbar width={toolbarW} height={contentH-56} state={extractedState} {...props} showDrawer={showDrawer} updateProp={this.getShowDrawer}/>
           
           <Content width={contentW} height={contentH-56} state={extractedState} {...props} onWheel={event => event.preventDefault()} />
         </div>
 
-        <TopBar state={extractedState} {...props} />
+        <TopBar state={extractedState} {...props} showDrawer={showDrawer}/>
 
         <BottomButtonGroup state={extractedState} {...props} />
         
