@@ -135,6 +135,82 @@ export default function TopBar({ linesActions, projectActions, sceneActions }) {
     linesActions.selectToolDrawingLine('install area')
   }
 
+  //Gernerate(checkforbidden及check403待輸出json出來後修改)
+  const s3jsoninputurl = "http://localhost:3000/s3jsoninputUrl"
+
+  function showLoading() {
+    document.getElementById("loading").style.display = "";
+  }
+
+  function closeLoading() {
+    document.getElementById("loading").style.display = "none";
+  }
+
+  // function checkForbidden (url, resultJson, status) {
+  //   var req = new XMLHttpRequest();
+  //   req.open('GET', url, false);
+  //   req.send();
+  //   if (req.status == 200) {
+  //     closeLoading();
+
+  //     projectActions.loadProject(resultJson);
+  //     status = 1;
+  //     return status;
+  //   }
+  // };
+
+  async function GernerateOnclick(){
+    showLoading();
+    const json_data = state.get('scene').toJS();
+    const {url} = await fetch(s3jsoninputurl).then(res => res.json());
+
+    await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(json_data)
+    })
+
+    console.log(url)
+
+    const InputUrl = url.split('?')[0]
+    const objName = InputUrl.split('/')[3]
+    const JsonUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + objName
+
+    console.log(JsonUrl);
+
+    // var Check403 = setInterval(function(){ 
+    //   var status = 0;
+    //   status = checkForbidden(imageUrl, Json, status);
+    //   if (status == 1) {
+    //     clearInterval(Check403);
+    //   }
+    // },1000)
+  }
+
+  // const dispatch = useDispatch();
+
+  const mongodburl = "http://localhost:3000/datas/";
+
+  const testmongodb = (e) => {
+    e.preventDefault();
+    state = Project.unselectAll( state ).updatedState;
+    const jsondata = state.get('scene').toJS();
+
+    const data2 = JSON.stringify(jsondata)
+
+    console.log(data2)
+
+    fetch(mongodburl, {
+      method: "POST",
+      body: data2,
+      headers: {
+        "Content-Type": "application/json"
+      },
+    })
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" sx={{bgcolor:"#222"}} openDrawer={openDrawer} openPoper={openPoper}>
