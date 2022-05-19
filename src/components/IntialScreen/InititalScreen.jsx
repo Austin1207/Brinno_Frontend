@@ -113,6 +113,20 @@ const InitialScreen = ({state,projectActions,left}) => {
     document.getElementById("OutlineRectangular").style.display = "none";
   }
 
+  //增加localstorage(重整不會被刪掉)的tutorial
+  const test123 = () => {
+    localStorage.setItem("Tutorial", "Done")
+  }
+
+  //驗證localstorage的tutorial，若為done則已使用過教學
+  const test234 = () => {
+    if (localStorage.getItem("Tutorial") == "Done") {
+      console.log("yes")
+    }
+    else {console.log("no")}
+  }
+  
+
   return(
     <div>
         <button id ="UploadRectangular" onClick = {upload} style = {{

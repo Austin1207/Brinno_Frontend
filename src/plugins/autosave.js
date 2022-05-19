@@ -18,7 +18,7 @@ export default function autosave(autosaveKey, delay) {
     if (localStorage.getItem(autosaveKey) !== null) {
       let data = localStorage.getItem(autosaveKey);
       let json = JSON.parse(data);
-      store.dispatch(loadProject(json));
+      // store.dispatch(loadProject(json));
     }
 
     //update
