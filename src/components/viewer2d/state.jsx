@@ -23,11 +23,11 @@ export default function State({state, catalog}) {
   return (
     <g>
       <rect x="0" y="0" width={width} height={height} fill={SharedStyle.COLORS.white} />
-      <Visibility_Polygon
+{/*      <Visibility_Polygon
         state={state}
         sceneWidth={3000}
         sceneHeight={2000}
-      />
+  />*/}
       <g transform={`translate(0, ${scene.height}) scale(1, -1)`} id="svg-drawing-paper">
 
         <Scene scene={scene} catalog={catalog}/>
@@ -37,6 +37,11 @@ export default function State({state, catalog}) {
         {snapElements}
 
       </g>
+      <Visibility_Polygon
+        state={state}
+        sceneWidth={3000}
+        sceneHeight={2000}
+  />
     </g>
   )
 }

@@ -163,7 +163,7 @@ export default class Toolbar extends Component {
 
     let sorter = [
       {
-        index: 0, condition: true, dom: <ToolbarButton
+        index: 1, condition: true, dom: <ToolbarButton
           active={false}
           tooltip={translator.t('Interest Area')}
           onClick={event => DrawInterestArea()}>
@@ -171,7 +171,7 @@ export default class Toolbar extends Component {
         </ToolbarButton>
       },
       {
-        index: 1, condition: true, dom: <ToolbarButton
+        index: 0, condition: true, dom: <ToolbarButton
           active={false}
           tooltip={translator.t('Construction Area')}
           onClick={event => DrawConstructionArea()}>
