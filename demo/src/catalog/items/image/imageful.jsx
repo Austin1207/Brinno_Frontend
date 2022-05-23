@@ -290,6 +290,7 @@ export default class ImageFul extends Component {
               y="0"
               width={this.props.width}
               height={this.props.height}
+              opacity="0.8"
             /> :
             <g>
               <rect x="0" y="0" width={this.props.width} height={this.props.height} fill="#CCC"></rect>

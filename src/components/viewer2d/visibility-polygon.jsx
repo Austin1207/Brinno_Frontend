@@ -128,7 +128,7 @@ export default function Visibility_Polygon({state, sceneWidth, sceneHeight}) {
           <path d={conepath}/>
         </clipPath>
         <g clipPath={`url(#${cameara_info[i].id}_cone)`}>
-          <polygon points={visibility.join()} fill="lime" />
+          <polygon points={visibility.join()} fill="#ff8200" fill-opacity="0.5"/>
         </g>
       </g>
     )
@@ -139,7 +139,7 @@ export default function Visibility_Polygon({state, sceneWidth, sceneHeight}) {
 
   //console.log(viewportVisibility);
   return(   
-    <g>
+    <g pointerEvents={'none'}>
       {rendered}
     </g>
   )
