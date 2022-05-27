@@ -22,11 +22,11 @@ export default function LineFactory(name, info) {
       let STYLE_LINE_SELECTED = {};
       switch(name){
         case 'construction area':
-          STYLE_LINE = { strokeWidth: 10, stroke: '#000000' };
+          STYLE_LINE = { strokeWidth: 5, stroke: '#222222' };
           STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
           break;
-        case 'interest area':
-          STYLE_LINE = { strokeWidth: 10, stroke: '#ff8200' };
+        case 'obstacle area':
+          STYLE_LINE = {strokeWidth: 5, stroke: '#75787b'};
           STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
           break;
       }
@@ -41,9 +41,9 @@ export default function LineFactory(name, info) {
       let textDistance = half_thickness + epsilon + extra_epsilon;
 
       return (element.selected) ?
-        <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE_SELECTED} strokeDasharray="20"/>
+        <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE_SELECTED}/>
         :
-        <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE} strokeDasharray="20"/>
+        <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE}/>
     },
 
     render3D: function (element, layer, scene) {
