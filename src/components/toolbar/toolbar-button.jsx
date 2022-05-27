@@ -62,7 +62,7 @@ export default class ToolbarButton extends Component {
       <div style={STYLE}
         onMouseOver={event => this.setState({ active: true })}
         onMouseOut={event => this.setState({ active: false })}>
-        <div style={{ color/*, fill: color, stroke: color*/ }} onClick={props.onClick}>
+        <div style={{ color }} onClick={props.onClick}>
           {props.children}
         </div>
 

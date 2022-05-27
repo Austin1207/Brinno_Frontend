@@ -10,6 +10,11 @@ import Fab from '@mui/material/Fab';
 
 import '@babel/polyfill'; //for async
 
+const buttonsStyle = {
+  maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px', bottom: '54px',
+  backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'},
+};
+
 export default function BottomButtonGroup({projectActions, sceneActions, itemsActions, state}){
 
   const ImageLayerMode = event => {
@@ -43,35 +48,40 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
           sx={{ pl: 0, pr: 0}}
           >
             <ButtonGroup variant="contained" aria-label="undo redo"
-            sx={{ position: 'absolute', bottom: 35, right: 219}}
+            sx={{ position: 'absolute', bottom: 54, right: 168}}
             >
-                <Button sx={{backgroundColor: '#FFFFFF', "&:hover": {backgroundColor: '#FFFFFF'}}} onClick={() => projectActions.undo()}>
-                    <UndoIcon style={{ fill: 'black' }}/>
+                <Button
+                  sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'},}}
+                  onClick={() => projectActions.undo()}>
+                    <UndoIcon />
                     </Button>
-                <Button sx={{backgroundColor: '#FFFFFF', "&:hover": {backgroundColor: '#FFFFFF'}}}>
-                    <RedoIcon style={{ fill: 'black' }}/>
+                <Button sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'},}}
+                    disabled>
+                    <RedoIcon />
                     </Button>
             </ButtonGroup>
 
             <Button variant="contained"
-            sx={{ position: 'absolute', bottom: 35, right: 136, backgroundColor: '#FFFFFF', "&:hover": {backgroundColor: '#FFFFFF'}}}
+            sx={{ position: 'absolute', bottom: 54, right: 114, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+            backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
             onClick = {SetScale}
             >
-                <StraightenIcon style={{ fill: 'black' }}/>
+                <StraightenIcon />
             </Button>
 
             <Fab
               sx={
               {position: 'absolute',
-              bottom: 35,
+              bottom: 54,
               right: 60,
-              backgroundColor: '#FFFFFF',
-              "&:hover": {backgroundColor: '#FFFFFF'}}}
+              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
               // onClick={() => this.getLS()}
               onClick={() => test()}
               aria-label="Help">
                 <QuestionMarkIcon
-                  style={{ fill: 'black' }} 
                 />
             </Fab>
         </Container>
