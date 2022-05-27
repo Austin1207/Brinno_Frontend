@@ -1,4 +1,7 @@
-export function loadimgjson (loadImageUrl) {
+export function loadimgjson (loadImageUrl, jsonleft, top) {
+    console.log(jsonleft)
+    console.log(top)
+
     var loadjson = {
         "unit": "cm",
         "layers": {
@@ -37,8 +40,10 @@ export function loadimgjson (loadImageUrl) {
                             "height": 540
                         },
                         "visible": true,
-                        "x": 479.709994739929,
-                        "y": 1629.5759345522179,
+                        // "x": 479.709994739929,
+                        // "y": 1629.5759345522179,
+                        "x": jsonleft,
+                        "y": 2000-top,
                         "rotation": 90
                     }
                 },

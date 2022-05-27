@@ -24,7 +24,8 @@ const STYLE_TEXT = {
 
 export default function Ruler({length, unit, transform}) {
 
-  let distanceText = `${length.toFixed(2)} ${unit}`;
+  //修正線段顯示長度
+  let distanceText = `${(length/10).toFixed(2)} ${"m"}`;
 
   return (
     <g transform={transform}>

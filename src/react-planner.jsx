@@ -109,7 +109,7 @@ class ReactPlanner extends Component {
           zIndex: 9999
           }}></div>
 
-        <InitialScreen state={extractedState} left={(contentW-320)/2} {...props} />
+        <InitialScreen state={extractedState} left={(contentW-320)/2} jsonleft={width/2} top={height/2} {...props} />
 
         {/* <Bottom /> */}
 

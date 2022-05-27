@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import {Map} from 'immutable';
 
-const grabCircleRadius = 8;
-const hoverCircleRadius = 12;
-const rulerColor = '#ff8200';
-const hoverColor = '#ff8200';
+const grabCircleRadius = "6px";
+const hoverCircleRadius = "6px";
+const rulerColor = '#ff6200';
+const hoverColor = '#ff6200';
 
 // 控制比例尺圓圈
 
@@ -212,7 +212,7 @@ export default class ImageFul extends Component {
       <g>
         {/* 此處控制比例尺線段 */}
         <line id="Line" key="1" x1={this.props.x1} y1={this.props.y1} x2={this.props.x2} y2={this.props.y2} stroke={rulerColor}
-              strokeWidth="16px" style = {{display:"none"}}/>
+              strokeWidth="4px" style = {{display:"none"}}/>
         <circle id = {"Circle1"}
           onMouseEnter={this.toggleHover1}
           onMouseLeave={this.toggleHover1}

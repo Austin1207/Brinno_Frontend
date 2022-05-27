@@ -25,6 +25,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Avatar from '@mui/material/Avatar';
 import PropTypes from 'prop-types';
 import { elementsToDisplay } from './elementstodisplay';
+import { fontSize } from '@mui/system';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const drawerWidth = 260;
@@ -220,7 +221,7 @@ export default function TopBar({ linesActions, projectActions, sceneActions, sho
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" sx={{bgcolor:"#222"}} openDrawer={openDrawer} openPoper={openPoper}>
+      <AppBar position="fixed" sx={{bgcolor:"#15110d"}} style = {{height:"70px"}} openDrawer={openDrawer} openPoper={openPoper}>
       {/*<AppBar position="fixed" sx={{ bgcolor:"#222", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={open}>*/}
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -233,13 +234,14 @@ export default function TopBar({ linesActions, projectActions, sceneActions, sho
             >
               <MenuIcon />
   </IconButton>*/}
-            <TextField
+            {/* <TextField
               sx={{ input: { color: 'white' } }}
               hiddenLabel
               id="project-name"
               defaultValue="Untitled Project"
               variant="filled"
-              color="warning"/>
+              color="warning"
+              /> */}
           </Box> 
 {/*        <Box sx={{ flexGrow: 0 }}>        
           <Tooltip title="Open settings">
@@ -272,10 +274,11 @@ export default function TopBar({ linesActions, projectActions, sceneActions, sho
             </Box>*/}
         <Box sx={{ flexGrow: 0 }}>
           <Button
-              key={'Gernerate'}
-              sx={{ my: 2, color: 'white', display: 'block' }}
+              key={'Generate'}
+              sx={{ my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontWeight: "normal", fontStretch: "normal", fontStyle:"normal", textTransform:"capitalize"}}
+              style = {{ width: "134px", height: "41px", borderRadius: "10px", backgroundColor: "#ffdfbf"}}
               >
-              {'Gernerate'}
+              {'Generate'}
           </Button>
         </Box>
         </Toolbar>

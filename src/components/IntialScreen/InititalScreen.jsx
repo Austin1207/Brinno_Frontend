@@ -2,7 +2,7 @@ import * as React from 'react';
 import { loadimgjson } from './loadjson';
 import '@babel/polyfill'; //for async
 
-const InitialScreen = ({state,projectActions,left}) => {
+const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
   //+Upload onclick
   function UploadFile() {
     return new Promise(function (resolve, reject) {
@@ -38,10 +38,14 @@ const InitialScreen = ({state,projectActions,left}) => {
 
   function showLoading() {
     document.getElementById("loading").style.display = "";
+    document.getElementById("overlay").style.display = "";
+    
   }
 
   function closeLoading() {
     document.getElementById("loading").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+
   }
 
   //upload
@@ -50,10 +54,10 @@ const InitialScreen = ({state,projectActions,left}) => {
     event.preventDefault();
     UploadFile().then(async (file) => {
         
-      document.getElementById("UploadRectangular").style.display = "none";
-      document.getElementById("OutlineRectangular").style.display = "none";
-        
       if ( file.type.indexOf("image") == 0 ){
+        document.getElementById("UploadRectangular").style.display = "none";
+        document.getElementById("OutlineRectangular").style.display = "none";
+        document.getElementById("Initialoverlay").style.display = "none";
         const {url} = await fetch(s3imgurl).then(res => res.json());
 
         await fetch(url, {
@@ -66,13 +70,16 @@ const InitialScreen = ({state,projectActions,left}) => {
 
         const imageUrl = url.split('?')[0]
         console.log(imageUrl)
-        const imageJson = loadimgjson(imageUrl)
+        const imageJson = loadimgjson(imageUrl, jsonleft, top)
         setTimeout( function () {
             projectActions.loadProject(imageJson);
         },1000);
       }
 
       else if ( file.type.indexOf("pdf") == 12 ){
+        document.getElementById("UploadRectangular").style.display = "none";
+        document.getElementById("OutlineRectangular").style.display = "none";
+        document.getElementById("Initialoverlay").style.display = "none";
         showLoading();
         const {url} = await fetch(s3pdfurl).then(res => res.json());
 
@@ -90,7 +97,7 @@ const InitialScreen = ({state,projectActions,left}) => {
 
         const imageUrl = "https://react-planner-img.s3.ap-northeast-1.amazonaws.com/" + dicName + ".jpg"
         console.log(imageUrl)
-        const imageJson = loadimgjson(imageUrl)
+        const imageJson = loadimgjson(imageUrl, jsonleft, top)
 
         var Check403 = setInterval(function(){ 
           var status = 0;
@@ -111,6 +118,8 @@ const InitialScreen = ({state,projectActions,left}) => {
   const Outline = event => {
     document.getElementById("UploadRectangular").style.display = "none";
     document.getElementById("OutlineRectangular").style.display = "none";
+
+    document.getElementById("Initialoverlay").style.display = "none";
   }
 
   //增加localstorage(重整不會被刪掉)的tutorial
@@ -125,60 +134,80 @@ const InitialScreen = ({state,projectActions,left}) => {
     }
     else {console.log("no")}
   }
-  
 
   return(
+    
     <div>
-        <button id ="UploadRectangular" onClick = {upload} style = {{
+        <button id ="UploadRectangular" onClick = {upload} 
+        style = {{
             position: "absolute",
-            width: "320px",
-            height: "64px",
+            width: "379.9px",
+            // width: "26.4%",
+            height: "66px",
+            // height: "6.4%",
             zIndex: 9999,
             backgroundColor: "#ff8200",
             // left: "560px",
             left: left,
-            top: "373px",
+            // left: "36.8%",
+            // top: "373px",
+            top: "29.6%",
+            // margin: "0 0 47px",
+            // padding: "21px 129.9px 21.2px 130px",
             color: "#fff",
-            fontSize: "16px",
-            fontWeight: "bold",
+            fontSize: "18px",
+            fontWeight: "normal",
             fontStretch: "normal",
             fontStyle: "normal",
             lineHeight: "normal",
             letterSpacing: "normal",
-            // fontFamily: "HelveticaNeue",
+            // fontFamily: "SFProDisplay",
             border:"none",
-            // borderRadius:"8px",
+            borderRadius:"5px",
             cursor:"pointer",
             display: ""
-            }}>
+            }}
+            >
               Upload new file
           </button>
 
         <button id ="OutlineRectangular" onClick = {Outline} style = {{
             position: "absolute",
-            width: "320px",
-            height: "64px",
+            width: "379.9px",
+            height: "66px",
             zIndex: 9999,
             backgroundColor: "#ff8200",
             // left: "560px",
             left: left,
-            top: "463px",
+            // top: "463px",
+            top: "40.6%",
             // fontFamily: "HelveticaNeue",
-            fontSize: "16px",
-            fontWeight: "bold",
+            fontSize: "18px",
+            fontWeight: "normal",
             fontStretch: "normal",
             fontStyle: "normal",
             lineHeight: "normal",
             letterSpacing: "normal",
             color: "#fff",
             border:"none",
-            // borderRadius:"8px",
+            borderRadius:"5px",
             cursor:"pointer",
             display: ""
             }}>
               Outline your own
         </button>
 
+        <button id = "Initialoverlay" style = {{
+                position: "absolute",
+                top:0,
+                left:0,
+                width: "100%",
+                height:"100%",
+                zIndex: 9998,
+                border:"none",
+                backgroundColor: "transparent",
+                display: "",
+            }}/>
     </div>
   )
 }
