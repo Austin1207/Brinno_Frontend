@@ -11,5 +11,5 @@ const info = {
   }
 };
 
-export default ElementsFactories.TargetFactory('obstacle area', info);
+export default ElementsFactories.LineFactory('obstacle area', info);
 

@@ -19,27 +19,27 @@ export default function TargetFactory(name, info) {
 
       let epsilon = 20;
       //let STYLE_LINE = { stroke: SharedStyle.LINE_MESH_COLOR.selected };
-      let STYLE_RECT = {};
-      let STYLE_RECT_SELECTED = {};
+      let STYLE_LINE = {};
+      let STYLE_LINE_SELECTED = {};
       switch(name){
-        case 'obstacle area':
-          STYLE_RECT = { strokeWidth: 3, stroke: '#ff8200', fill: '#000000'};
-          STYLE_RECT_SELECTED = { ...STYLE_RECT, stroke: SharedStyle.LINE_MESH_COLOR.selected };
+        case 'interest area':
+          STYLE_LINE = { strokeWidth: 5, stroke: '#ff8200'};
+          STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
           break;
         case 'nocamera area':
-          STYLE_RECT = { strokeWidth: 3, stroke: '#000000', fill: '#f14242'};
-          STYLE_RECT_SELECTED = { ...STYLE_RECT, stroke: SharedStyle.LINE_MESH_COLOR.selected };
+          STYLE_LINE = { strokeWidth: 5, stroke: '#e45d65'};
+          STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
           break;
         case 'mustcover area':
-          STYLE_RECT = { strokeWidth: 3, stroke: '#494948', fill: '#ff8200'};
-          STYLE_RECT_SELECTED = { ...STYLE_RECT, stroke: SharedStyle.LINE_MESH_COLOR.selected };
+          STYLE_LINE = { strokeWidth: 5, stroke: '#8f4900'};
+          STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
           break;
       }
 
       let length = Geometry.pointsDistance(x1, y1, x2, y2);
       let length_5 = length / 5;
 
-      let thickness = 11;
+      let thickness = 5;
       let half_thickness = thickness / 2;
       let half_thickness_eps = half_thickness + epsilon;
       let char_height = 11;
@@ -47,9 +47,9 @@ export default function TargetFactory(name, info) {
       let textDistance = half_thickness + epsilon + extra_epsilon;
 
       return (element.selected) ?
-        <rect x="0" y={-half_thickness} width={length} height={thickness} style={STYLE_RECT_SELECTED} strokeDasharray="3"/>
+        <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE_SELECTED} strokeDasharray="20"/>
         :
-        <rect x="0" y={-half_thickness} width={length} height={thickness} style={STYLE_RECT} strokeDasharray="3"/>
+        <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE} strokeDasharray="20"/>
     },
 
     render3D: function (element, layer, scene) {

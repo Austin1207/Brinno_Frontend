@@ -11,5 +11,5 @@ const info = {
   }
 };
 
-export default ElementsFactories.LineFactory('interest area', info);
+export default ElementsFactories.TargetFactory('interest area', info);
 
