@@ -9,7 +9,9 @@ import { RulerX, RulerY } from './export';
 import { elementsToDisplay } from '../topbar/elementstodisplay';
 import CatalogChangeItem from '../catalog-view/catalog-changeitem';
 import Visibility_Polygon from './visibility-polygon';
-
+import Button from '@mui/material/Button';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
@@ -152,8 +154,16 @@ export default function Viewer2D(
     setOpen(false);
     setInfo(false);
   };
-
   /* item button */
+  /* camera coverage button*/
+  const buttonsStyle = { position: 'absolute', top: 94, right: 41, width: '210px', height: '36px',
+        backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}};
+  const buttonsInuseStyle = { position: 'absolute', top: 94, right: 41, width: '210px', height: '36px',
+        backgroundColor: '#FFFFFF', color: '#ff8200', "&:hover": {backgroundColor: '#ff8200', color: '#ffffff'}};
+  const [openCoverage, setCoverage] = React.useState(true);
+  const handleCoverageButton = () => {
+    setCoverage(!openCoverage);
+  };
 
   let { viewer2D, mode, scene } = state;
 
@@ -386,8 +396,9 @@ export default function Viewer2D(
       position: 'relative',
       cursor: 'context-menu'
     }}
-    onContextMenu={handleContextMenu}>
-      <Drawer
+    //onContextMenu={handleContextMenu}
+    >
+{/*      <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -413,7 +424,7 @@ export default function Viewer2D(
         {
           type && elementsToDisplay.map(elem => <CatalogChangeItem key={elem.name} element={elem} state={state}/>)
         }
-      </Drawer>
+      </Drawer>*/}
       <div style={{ gridColumn: 1, gridRow: 1, backgroundColor: rulerBgColor }}></div>
       <div style={{ gridRow: 1, gridColumn: 2, position: 'relative', overflow: 'hidden' }} id="rulerX">
       { sceneWidth ? <RulerX
@@ -467,12 +478,17 @@ export default function Viewer2D(
             </pattern>
           </defs>
           <g style={Object.assign(mode2Cursor(mode), mode2PointerEvents(mode))}>
-            <State state={state} catalog={catalog} />
+            <State state={state} catalog={catalog} openCoverage={openCoverage}/>
           </g>
         </svg>
 
       </ReactSVGPanZoom>
-      <Menu
+      <Button variant="contained" startIcon={openCoverage ? <VisibilityIcon/> : <VisibilityOffIcon/>}
+        sx={openCoverage ? buttonsInuseStyle : buttonsStyle}
+        onClick={handleCoverageButton}>
+        Camera Coverage
+      </Button>
+{/*      <Menu
         open={contextMenu}
         onClose={handleContextMenuClose}
         anchorReference="anchorPosition"
@@ -483,7 +499,7 @@ export default function Viewer2D(
         <MenuItem onClick={handleInfo}>Info</MenuItem>
         <MenuItem onClick={handleClickDelete}>Delete</MenuItem>
         <MenuItem onClick={handleType}>Change</MenuItem>
-      </Menu>
+      </Menu>*/}
     </div>
   );
 }

@@ -78,7 +78,7 @@ class ReactPlanner extends Component {
 
   getShowDrawer(bool){
     this.setState({showDrawer:bool});
-    console.log(this.state.showDrawer)
+    //console.log(this.state.showDrawer)
   }
 
   hideSidepanel(){

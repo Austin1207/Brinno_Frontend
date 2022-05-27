@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { MdSettings, MdUndo, MdDirectionsRun } from 'react-icons/md';
 import { FaFile, FaMousePointer, FaPlus } from 'react-icons/fa';
-import ToolbarButton from './toolbar-button';
+//import ToolbarButton from './toolbar-button';
 import ToolbarSaveButton from './toolbar-save-button';
 import ToolbarLoadButton from './toolbar-load-button';
 import ToolbarLoadImgButton from './toolbar-load-image';//test
@@ -12,8 +12,14 @@ import HighlightAltIcon from '@mui/icons-material/HighlightAlt';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import { createSvgIcon } from '@mui/material/utils';
+import { styled } from '@material-ui/styles';
 import Button from '@mui/material/Button';
-import Drawer from '@mui/material/Drawer';
+import Divider from '@mui/material/Divider';
+import {
+  MODE_DRAWING_LINE,
+  MODE_WAITING_DRAWING_LINE
+} from '../../constants';
+//import * as SharedStyle from '../../shared-style';
 
 const iconTextStyle = {
   fontSize: '19px',
@@ -22,6 +28,23 @@ const iconTextStyle = {
   margin: '0px',
   userSelect: 'none'
 };
+const buttonsStyle = {
+    maxWidth: '59px', maxHeight: '59px', minWidth: '59px', minHeight: '59px',
+    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'},
+};
+const buttonsInuseStyle = {
+  maxWidth: '59px', maxHeight: '59px', minWidth: '59px', minHeight: '59px',
+  backgroundColor: '#FFFFFF', color: '#ff8200', "&:hover": {backgroundColor: '#ff8200', color: '#ffffff'},
+};
+const ToolbarButton = styled(Button)({
+  maxWidth: '59px',
+  maxHeight: '59px',
+  minWidth: '59px',
+  minHeight: '59px',
+  background: '#FFFFFF',
+  color: '#222222',
+  "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'},
+});
 
 const Icon2D = ( {style} ) => <p style={{...iconTextStyle, ...style}}>2D</p>;
 const Icon3D = ( {style} ) => <p style={{...iconTextStyle, ...style}}>3D</p>;
@@ -101,7 +124,8 @@ export default class Toolbar extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      showDrawer: this.props.showDrawer
+      showDrawer: this.props.showDrawer,
+      inuseTool: ''
     };
   }
 
@@ -116,12 +140,11 @@ export default class Toolbar extends Component {
     this.setState({
       showDrawer: !this.props.showDrawer
     })
-    this.props.updateProp(this.state.showDrawer)
-    console.log(this.state .showDrawer)
+    this.props.updateProp(!this.state.showDrawer)
+    //console.log(this.state.showDrawer)
   }
 
   render() {
-
     let {
       props: { state, width, height, toolbarButtons, allowProjectFileSupport },
       context: { projectActions, viewer3DActions, translator, linesActions, sceneActions }
@@ -133,83 +156,106 @@ export default class Toolbar extends Component {
 
     const DrawConstructionArea = () => {
       projectActions.unselectAll();
-      sceneActions.selectLayer("layer2")
-      linesActions.selectToolDrawingLine('construction area')
+      sceneActions.selectLayer("layer2");
+      linesActions.selectToolDrawingLine('construction area');
+      this.setState({
+        inuseTool: 'construction area'
+      });
     }
   
     const DrawInterestArea = () => {
-      projectActions.unselectAll()
-      sceneActions.selectLayer("layer2")
-      linesActions.selectToolDrawingLine('interest area')
+      projectActions.unselectAll();
+      sceneActions.selectLayer("layer2");
+      linesActions.selectToolDrawingLine('interest area');
+      this.setState({
+        inuseTool: 'interest area'
+      });
     }
 
     const DrawObstacleArea = () => {
       projectActions.unselectAll()
       sceneActions.selectLayer("layer2")
       linesActions.selectToolDrawingLine('obstacle area')
+      this.setState({
+        inuseTool: 'obstacle area'
+      })
     }
 
     const DrawNoCameraArea = () => {
       projectActions.unselectAll()
       sceneActions.selectLayer("layer2")
       linesActions.selectToolDrawingLine('nocamera area')
+      this.setState({
+        inuseTool: 'nocamera area'
+      })
     }
 
     const DrawMustcoverArea = () => {
       projectActions.unselectAll()
       sceneActions.selectLayer("layer2")
       linesActions.selectToolDrawingLine('mustcover area')
-    }
+      this.setState({
+        inuseTool: 'mustcover area'
+      })
+    }    
 
     let sorter = [
       {
-        index: 1, condition: true, dom: <ToolbarButton
-          active={false}
-          tooltip={translator.t('Interest Area')}
-          onClick={event => DrawInterestArea()}>
-          <IconInterest sx={{ fontSize: 40 }}/>
-        </ToolbarButton>
-      },
-      {
-        index: 0, condition: true, dom: <ToolbarButton
-          active={false}
-          tooltip={translator.t('Construction Area')}
+        index: 0, condition: true, dom: <Button 
+          sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
           onClick={event => DrawConstructionArea()}>
-          <IconConstruction sx={{ fontSize: 40 }}/>
-        </ToolbarButton>
+          <IconConstruction sx={{ fontSize: 40 }} />
+        </Button>
       },
       {
-        index: 2, condition: true, dom: <ToolbarButton
-          active={false}
-          tooltip={translator.t('Obstacle Area')}
+        index: 1, condition: true, dom: <Divider/>
+      },
+      {
+        index: 2, condition: true, dom: <Button
+          sx={this.state.inuseTool == 'interest area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
+        onClick={event => DrawInterestArea()}>
+          <IconInterest sx={{ fontSize: 40 }} />
+        </Button>
+      },
+      {
+        index: 3, condition: true, dom: <Divider/>
+      },
+      {
+        index: 4, condition: true, dom: <Button
+          sx={this.state.inuseTool == 'obstacle area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
           onClick={event => DrawObstacleArea()}>
           <IconObstacle sx={{ fontSize: 40 }}/>
-        </ToolbarButton>
+        </Button>
       },
       {
-        index: 3, condition: true, dom: <ToolbarButton
-          active={false}
-          tooltip={translator.t('No Camera Area')}
+        index: 5, condition: true, dom: <Divider/>
+      },
+      {
+        index: 6, condition: true, dom: <Button
+          sx={this.state.inuseTool == 'nocamera area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
           onClick={event => DrawNoCameraArea()}>
           <IconNoCam sx={{ fontSize: 40 }}/>
-        </ToolbarButton>
+        </Button>
       },
       {
-        index: 4, condition: true, dom: <ToolbarButton
-          active={false}
-          tooltip={translator.t('Must-cover Area')}
+        index: 7, condition: true, dom: <Divider/>
+      },
+      {
+        index: 8, condition: true, dom: <Button
+          sx={this.state.inuseTool == 'mustcover area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
           onClick={event => DrawMustcoverArea()}>
           <IconMust sx={{ fontSize: 40 }}/>
-        </ToolbarButton>
+        </Button>
       },
       {
-        index: 5, condition: true, dom: <ToolbarButton
-          active={false}
-          tooltip={translator.t('Place Camera')}
+        index: 9, condition: true, dom: <Divider/>
+      },
+      {
+        index: 10, condition: true, dom: <Button sx={buttonsStyle}
           onClick={() => this.handleDrawChange()}>
           <IconAddCam sx={{ fontSize: 40 }}/>
-        </ToolbarButton>
-      },
+        </Button>
+      }
     ];
 
     sorter = sorter.concat(toolbarButtons.map((Component, key) => {

@@ -21,6 +21,7 @@ import Popper from '@mui/material/Popper';
 import MenuList from '@mui/material/MenuList';
 import TextField from '@mui/material/TextField';
 import CatalogItem from '../catalog-view/catalog-item';
+import CatalogChangeItem from '../catalog-view/catalog-changeitem';
 import Tooltip from '@mui/material/Tooltip';
 import Avatar from '@mui/material/Avatar';
 import PropTypes from 'prop-types';
@@ -79,7 +80,7 @@ const handleCloseUserMenu = () => {
   console.log("4")
 };
 
-export default function TopBar({ linesActions, projectActions, sceneActions, showDrawer}) {
+export default function TopBar({ state, linesActions, projectActions, sceneActions, showDrawer}) {
   const theme = useTheme();
   const classes = useStyles();
   const [openPoper, setOpenPoper] = React.useState(false);
@@ -141,6 +142,8 @@ export default function TopBar({ linesActions, projectActions, sceneActions, sho
     sceneActions.selectLayer("layer2")
     linesActions.selectToolDrawingLine('install area')
   }
+  //change camera
+  let camearaSelected = state.getIn(['scene', 'layers', 'layer2', 'selected']).items.size == 1;
 
   //Gernerate(checkforbidden及check403待輸出json出來後修改)
   const s3jsoninputurl = "http://localhost:3000/s3jsoninputUrl"
@@ -289,7 +292,7 @@ export default function TopBar({ linesActions, projectActions, sceneActions, sho
             boxSizing: 'border-box',
           },
         }}
-        PaperProps={{ style: { height: "90vh", top: 68.5 } }}
+        PaperProps={{ style: { height: "95vh", top: 68.5 } }}
         variant="persistent"
         anchor="left"
         open={showDrawer}
@@ -303,7 +306,7 @@ export default function TopBar({ linesActions, projectActions, sceneActions, sho
           </IconButton>
       </DrawerHeader>*/}
         <Divider />
-        {elementsToDisplay.map(elem => <CatalogItem key={elem.name} element={elem}/>)}
+        {elementsToDisplay.map(elem => camearaSelected ? <CatalogChangeItem key={elem.name} element={elem} state={state}/> : <CatalogItem key={elem.name} element={elem}/>)}
       </Drawer>
     </Box>
   );

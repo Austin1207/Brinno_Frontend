@@ -10,7 +10,7 @@ const guideStyle = {
   strokewidth:'2.5px'
 };
 
-export default function State({state, catalog}) {
+export default function State({state, catalog, openCoverage}) {
 
   let {activeSnapElement, snapElements, scene} = state;
   let {width, height} = scene;
@@ -37,11 +37,11 @@ export default function State({state, catalog}) {
         {snapElements}
 
       </g>
-      <Visibility_Polygon
+      {openCoverage&&<Visibility_Polygon
         state={state}
         sceneWidth={3000}
         sceneHeight={2000}
-  />
+  />}
     </g>
   )
 }

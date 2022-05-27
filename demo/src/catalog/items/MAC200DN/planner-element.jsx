@@ -397,7 +397,7 @@ export default {
         style={{textAnchor: 'middle', fontSize: '11px'}}>
         {element.name}
       </text>
-      <circle key='3'
+      {element.selected && <circle key='3'
               cx="5"
   		        cy="10"
               r="50"
@@ -406,12 +406,12 @@ export default {
               style={{strokeOpacity: element.selected? "1" : "0.5"}} 
               fill="transparent"
               strokeDasharray ="calc(100 * 3.1415926 * 70/360) 314.15926"
-              strokeDashoffset="calc(-100 * 3.1415926 * 235/360)"/>
-        <text key='4' x='0' y='30'
+              strokeDashoffset="calc(-100 * 3.1415926 * 235/360)"/>}
+        {element.selected && <text key='4' x='0' y='30'
               transform={`translate(${WIDTH / 2}, ${DEPTH / 2}) scale(1,-1) rotate(${textRotation})`}
               style={{textAnchor: 'middle', fontSize: '11px', fill: 'white'}}>
               {"70°"}
-        </text>
+        </text>}
         </g>
     )
   },
