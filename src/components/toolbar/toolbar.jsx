@@ -155,6 +155,7 @@ export default class Toolbar extends Component {
     let alterateColor = alterate ? SharedStyle.MATERIAL_COLORS[500].orange : '';
 
     const DrawConstructionArea = () => {
+      document.getElementById("SetScaleSuccessRectangular").style.display = "none";
       projectActions.unselectAll();
       sceneActions.selectLayer("layer2");
       linesActions.selectToolDrawingLine('construction area');

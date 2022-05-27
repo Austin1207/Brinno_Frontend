@@ -24,7 +24,9 @@ export default function PanelElementEditor({state}, {projectActions, translator}
     <Panel key={element.id} name={translator.t('Properties: [{0}] {1}', element.type, element.id)} opened={true}>
       {/* 調整distance參數,輸入,單位位置 */}
       <div style={{
-        padding: '66px 0px',
+        // padding: '66px 0px',
+        paddingTop: '107px',
+        paddingRight: '315px'
         // color: "#ff8200"
       }}>
         <ElementEditor element={element} layer={layer} state={state}/>

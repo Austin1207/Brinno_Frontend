@@ -3,129 +3,148 @@ import ImageFul from '../../../demo/src/catalog/items/image/imageful';
 
 const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}) => {
 
-    const TutoialScaleOk = event => {
-        document.getElementById("TutorialScaleRectangular").style.display = "none";
-        document.getElementById("TutorialScaleWord").style.display = "none";
-        document.getElementById("TutorialScaleButton").style.display = "none";
+    // const TutoialScaleOk = event => {
+    //     document.getElementById("TutorialScaleRectangular").style.display = "none";
+    //     document.getElementById("TutorialScaleWord").style.display = "none";
+    //     document.getElementById("TutorialScaleButton").style.display = "none";
         
-        document.getElementById("TutorialScalePopupRectangular").style.display = "";
-        document.getElementById("TutorialScalePopupWord").style.display = "";
-        document.getElementById("TutorialScalePopupShowmeButton").style.display = "";
-        document.getElementById("TutorialScalePopupOkButton").style.display = "";
+    //     document.getElementById("TutorialScalePopupRectangular").style.display = "";
+    //     document.getElementById("TutorialScalePopupWord").style.display = "";
+    //     document.getElementById("TutorialScalePopupShowmeButton").style.display = "";
+    //     document.getElementById("TutorialScalePopupOkButton").style.display = "";
 
-        itemsActions.selectItem("layer1", "xFAw434Nm");
-        DrawingScale();
-      }
+    //     itemsActions.selectItem("layer1", "xFAw434Nm");
+    //     DrawingScale();
+    //   }
 
-    const PopShowme = event => {
-        console.log("Not yet")
-    }
+    // const PopShowme = event => {
+    //     console.log("Not yet")
+    // }
 
-    const PopOk = event => {
-        document.getElementById("sidebar").style.display = "";
+    // const PopOk = event => {
+    //     document.getElementById("sidebar").style.display = "";
 
-        document.getElementById("TutorialScalePopupRectangular").style.display = "none";
-        document.getElementById("TutorialScalePopupWord").style.display = "none";
-        document.getElementById("TutorialScalePopupShowmeButton").style.display = "none";
-        document.getElementById("TutorialScalePopupOkButton").style.display = "none";
+    //     document.getElementById("TutorialScalePopupRectangular").style.display = "none";
+    //     document.getElementById("TutorialScalePopupWord").style.display = "none";
+    //     document.getElementById("TutorialScalePopupShowmeButton").style.display = "none";
+    //     document.getElementById("TutorialScalePopupOkButton").style.display = "none";
 
-        document.getElementById("TutorialScaleMeasureWord").style.display = "";
-        document.getElementById("TutorialScaleMeasureLine").style.display = "";
-        document.getElementById("TutorialScaleMeasureTriangle").style.display = "";
-        document.getElementById("TutorialScaleMeasureBackButton").style.display = "";
-        document.getElementById("TutorialScaleMeasureOkButton").style.display = "";
+    //     document.getElementById("TutorialScaleMeasureWord").style.display = "";
+    //     document.getElementById("TutorialScaleMeasureLine").style.display = "";
+    //     // document.getElementById("TutorialScaleMeasureTriangle").style.display = "";
+    //     document.getElementById("TutorialScaleMeasureBackButton").style.display = "";
+    //     document.getElementById("TutorialScaleMeasureOkButton").style.display = "";
 
-        itemsActions.selectItem("layer1", "xFAw434Nm");
-    }
+    //     itemsActions.selectItem("layer1", "xFAw434Nm");
+    // }
 
     const MeasureBack = event => {
         document.getElementById("sidebar").style.display = "none";
 
-        document.getElementById("TutorialScalePopupRectangular").style.display = "";
-        document.getElementById("TutorialScalePopupWord").style.display = "";
-        document.getElementById("TutorialScalePopupShowmeButton").style.display = "";
-        document.getElementById("TutorialScalePopupOkButton").style.display = "";
-
         document.getElementById("TutorialScaleMeasureWord").style.display = "none";
+        document.getElementById("TutorialScaleMeasureWord2").style.display = "none";
+        document.getElementById("TutorialScaleMeasureWord3").style.display = "none";
         document.getElementById("TutorialScaleMeasureLine").style.display = "none";
-        document.getElementById("TutorialScaleMeasureTriangle").style.display = "none";
         document.getElementById("TutorialScaleMeasureBackButton").style.display = "none";
         document.getElementById("TutorialScaleMeasureOkButton").style.display = "none";
+
+        document.getElementById("Circle2").style.display = "none"
+        document.getElementById("Line").style.display = "none"
+        DrawingScale()
 
     }
 
     const MeasureOk = event => {
+
+        var scaleinput = document.getElementById("scaleinput")
+        CircleMove(scaleinput);
+
         document.getElementById("sidebar").style.display = "none";
 
         document.getElementById("TutorialScaleMeasureWord").style.display = "none";
+        document.getElementById("TutorialScaleMeasureWord2").style.display = "none";
+        document.getElementById("TutorialScaleMeasureWord3").style.display = "none";
         document.getElementById("TutorialScaleMeasureLine").style.display = "none";
-        document.getElementById("TutorialScaleMeasureTriangle").style.display = "none";
         document.getElementById("TutorialScaleMeasureBackButton").style.display = "none";
         document.getElementById("TutorialScaleMeasureOkButton").style.display = "none";
 
-        document.getElementById("TutorialScalePopupRectangular").style.display = "";
-        document.getElementById("TutorialScaleSetWord").style.display = "";
-        document.getElementById("TutorialScaleSetBackButton").style.display = "";
-        document.getElementById("TutorialScaleSetOkButton").style.display = "";
-
-        document.getElementById("path1").style.display = "";
-        document.getElementById("path2").style.display = "";
-        document.getElementById("DistanceNumber").style.display = "";
-
-
-    }
-
-    const SetBack = event => {
-        document.getElementById("sidebar").style.display = "";
-
-        document.getElementById("TutorialScaleMeasureWord").style.display = "";
-        document.getElementById("TutorialScaleMeasureLine").style.display = "";
-        document.getElementById("TutorialScaleMeasureTriangle").style.display = "";
-        document.getElementById("TutorialScaleMeasureBackButton").style.display = "";
-        document.getElementById("TutorialScaleMeasureOkButton").style.display = "";
-
-        document.getElementById("TutorialScalePopupRectangular").style.display = "none";
-        document.getElementById("TutorialScaleSetWord").style.display = "none";
-        document.getElementById("TutorialScaleSetBackButton").style.display = "none";
-        document.getElementById("TutorialScaleSetOkButton").style.display = "none";
-
-        document.getElementById("path1").style.display = "none";
-        document.getElementById("path2").style.display = "none";
-        document.getElementById("DistanceNumber").style.display = "none";
-    }
-
-    const SetOk = event => {
-        document.getElementById("TutorialScaleSetWord").style.display = "none";
-        document.getElementById("TutorialScaleSetBackButton").style.display = "none";
-        document.getElementById("TutorialScaleSetOkButton").style.display = "none";
-
-        document.getElementById("TutorialScaleFinalWord").style.display = "";
-        document.getElementById("TutorialScaleFinalShowmeButton").style.display = "";
-        document.getElementById("TutorialScaleFinalOkButton").style.display = "";
-
-        document.getElementById("path1").style.display = "none";
-        document.getElementById("path2").style.display = "none";
-        document.getElementById("DistanceNumber").style.display = "none";
+        document.getElementById("SetScaleSuccessRectangular").style.display = "";
 
         document.getElementById("Circle1").style.display = "none";
         document.getElementById("Circle2").style.display = "none";
         document.getElementById("Line").style.display = "none";
 
-    }
-
-    const FinalShowme = event => {
-        console.log("FinalShowme")
-    }
-
-    const FinalOk = event => {
-        document.getElementById("TutorialScalePopupRectangular").style.display = "none";
-        document.getElementById("TutorialScaleFinalWord").style.display = "none";
-        document.getElementById("TutorialScaleFinalShowmeButton").style.display = "none";
-        document.getElementById("TutorialScaleFinalOkButton").style.display = "none";
-
         projectActions.unselectAll()
         sceneActions.selectLayer("layer2")
+
+
+        // document.getElementById("TutorialScaleMeasureWord").style.display = "none";
+        // document.getElementById("TutorialScaleMeasureLine").style.display = "none";
+        // document.getElementById("TutorialScaleMeasureBackButton").style.display = "none";
+        // document.getElementById("TutorialScaleMeasureOkButton").style.display = "none";
+
+        // document.getElementById("TutorialScalePopupRectangular").style.display = "";
+        // document.getElementById("TutorialScaleSetWord").style.display = "";
+        // document.getElementById("TutorialScaleSetBackButton").style.display = "";
+        // document.getElementById("TutorialScaleSetOkButton").style.display = "";
+
+        // document.getElementById("path1").style.display = "";
+        // document.getElementById("path2").style.display = "";
+        // document.getElementById("DistanceNumber").style.display = "";
+
     }
+
+    // const SetBack = event => {
+    //     document.getElementById("sidebar").style.display = "";
+
+    //     document.getElementById("TutorialScaleMeasureWord").style.display = "";
+    //     document.getElementById("TutorialScaleMeasureLine").style.display = "";
+    //     // document.getElementById("TutorialScaleMeasureTriangle").style.display = "";
+    //     document.getElementById("TutorialScaleMeasureBackButton").style.display = "";
+    //     document.getElementById("TutorialScaleMeasureOkButton").style.display = "";
+
+    //     document.getElementById("TutorialScalePopupRectangular").style.display = "none";
+    //     document.getElementById("TutorialScaleSetWord").style.display = "none";
+    //     document.getElementById("TutorialScaleSetBackButton").style.display = "none";
+    //     document.getElementById("TutorialScaleSetOkButton").style.display = "none";
+
+    //     document.getElementById("path1").style.display = "none";
+    //     document.getElementById("path2").style.display = "none";
+    //     document.getElementById("DistanceNumber").style.display = "none";
+    // }
+
+    // const SetOk = event => {
+    //     document.getElementById("TutorialScaleSetWord").style.display = "none";
+    //     document.getElementById("TutorialScaleSetBackButton").style.display = "none";
+    //     document.getElementById("TutorialScaleSetOkButton").style.display = "none";
+
+    //     document.getElementById("TutorialScaleFinalWord").style.display = "";
+    //     document.getElementById("TutorialScaleFinalShowmeButton").style.display = "";
+    //     document.getElementById("TutorialScaleFinalOkButton").style.display = "";
+
+    //     document.getElementById("path1").style.display = "none";
+    //     document.getElementById("path2").style.display = "none";
+    //     document.getElementById("DistanceNumber").style.display = "none";
+
+    //     document.getElementById("Circle1").style.display = "none";
+    //     document.getElementById("Circle2").style.display = "none";
+    //     document.getElementById("Line").style.display = "none";
+
+    // }
+
+    // const FinalShowme = event => {
+    //     console.log("FinalShowme")
+    // }
+
+    // const FinalOk = event => {
+    //     document.getElementById("TutorialScalePopupRectangular").style.display = "none";
+    //     document.getElementById("TutorialScaleFinalWord").style.display = "none";
+    //     document.getElementById("TutorialScaleFinalShowmeButton").style.display = "none";
+    //     document.getElementById("TutorialScaleFinalOkButton").style.display = "none";
+
+    //     projectActions.unselectAll()
+    //     sceneActions.selectLayer("layer2")
+    // }
 
     //畫Scale
     const CircleMove = (circle) => {
@@ -142,8 +161,8 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
     return(
         <div>
-
-            {/* TutorialScale */}
+{/* 
+            TutorialScale
 
             <div id ="TutorialScaleRectangular" style = {{
                 position: "absolute",
@@ -201,7 +220,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
             {/* popup */}
 
-            <div id ="TutorialScalePopupRectangular" style = {{
+            {/* <div id ="TutorialScalePopupRectangular" style = {{
                 position: "absolute",
                 width: "520px",
                 height: "204px",
@@ -287,49 +306,102 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 display: "none"
             }}>
                 Ok
-            </button>
+            </button>  */}
 
             {/* TutorialScaleMeasure */}
 
+            {/* <div id ="TutorialScaleMeasureRectangular" style = {{
+                position: "absolute",
+                width: "431px",
+                height: "269px",
+                zIndex: 10000,
+                backgroundColor: "#222222",
+                borderRadius: "8px",
+                left: (left-431)/2,
+                top: "231px",
+                border:"none",
+                display: "none"
+                }}/> */}
+
             <span id = "TutorialScaleMeasureWord" style = {{
                 position: "absolute",
-                top: "123px",
-                // left: "559px",
-                left: ((left-520)/2) + 99,
-                width: "323px",
-                height: "23px",
+                top: "267px",
+                left: ((left-431)/2) + 36,
+                width: "359px",
+                height: "19px",
                 zIndex: 10000,
                 // fontFamily: "HelveticaNeue",
-                fontSize: "16px",
+                fontSize: "20px",
+                fontWeight: "normal",
+                fontStretch: "normal",
+                fontStyle: "normal",
+                lineHeight: "normal",
+                letterSpacing: "normal",
+                textAlign: "left",
+                color: "#ffffff",
+                display: "none"
+            }}>
+                Enter the length of the actual wall or object
+            </span>
+
+            <span id = "TutorialScaleMeasureWord2" style = {{
+                position: "absolute",
+                top: "312px",
+                left: ((left-431)/2) + 36,
+                width: "45px",
+                height: "17px",
+                zIndex: 10000,
+                // fontFamily: "HelveticaNeue",
+                fontSize: "14px",
+                fontWeight: "bold",
+                fontStretch: "normal",
+                fontStyle: "normal",
+                lineHeight: "normal",
+                letterSpacing: "normal",
+                textAlign: "left",
+                color: "#ff8200",
+                display: "none"
+            }}>
+                Length
+            </span>
+
+            <span id = "TutorialScaleMeasureWord3" style = {{
+                position: "absolute",
+                top: "347px",
+                left: ((left-431)/2) + 234,
+                width: "79px",
+                height: "31px",
+                zIndex: 10000,
+                // fontFamily: "HelveticaNeue",
+                fontSize: "26px",
                 fontWeight: 500,
                 fontStretch: "normal",
                 fontStyle: "normal",
                 lineHeight: "normal",
                 letterSpacing: "normal",
-                textAlign: "center",
-                color: "#fff",
+                textAlign: "left",
+                color: "#dcddde",
                 display: "none"
             }}>
-                Please enter the length of the two points selected
+                Meters
             </span>
 
             <div id ="TutorialScaleMeasureLine" style = {{
                 position: "absolute",
-                width: "88px",
-                height: "5px",
+                width: "325px",
+                height: "2px",
                 zIndex: 10000,
-                backgroundColor: "#d8d8d8",
+                backgroundColor: "#c7c7c7",
                 borderRadius: "2px",
-                left: (left-160)/2,
+                left: (left-431)/2 + 36,
                 // left: "640px",
-                top: "210px",
+                top: "388px",
                 border:"none",
-                borderRadius:"8px",
                 display: "none"
                 }}/>
 
                 
-            <div id ="TutorialScaleMeasureTriangle" style = {{
+            {/* <div id ="TutorialScaleMeasureTriangle" style = {{
                 position: "absolute",
                 zIndex: 10000,
                 left: "785px",
@@ -340,62 +412,63 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 borderRight:"7px solid transparent",
                 borderBottom:"7px solid transparent",
                 display: "none"
-                }}/>
+                }}/> */}
 
             <button id = "TutorialScaleMeasureBackButton" onClick = {MeasureBack} style ={{
                 position: "absolute",
-                width: "160px",
-                height: "44px",
+                width: "162px",
+                height: "49px",
                 zIndex: 10000,
                 // left: "525px",
-                left: (left-386)/2,
-                top: "230px",
+                left: (left-431)/2 + 36,
+                top: "408px",
                 // fontFamily: "HelveticaNeue",
-                fontSize: "14px",
-                fontWeight: 500,
+                fontSize: "18px",
+                fontWeight: "normal",
                 fontStretch: "normal",
                 fontStyle: "normal",
                 lineHeight: "normal",
                 letterSpacing: "normal",
                 textAlign: "center",
-                color: "#969696",
+                color: "#ffffff",
+                backgroundColor:"#b9bbbc",
                 border:"none",
-                borderRadius:"8px",
+                borderRadius:"10px",
                 cursor:"pointer",
                 display: "none"
             }}>
-                Back
+                Go Back
             </button>
 
             <button id = "TutorialScaleMeasureOkButton" onClick = {MeasureOk} style ={{
                 position: "absolute",
-                width: "160px",
-                height: "44px",
+                width: "162px",
+                height: "49px",
                 zIndex: 10000,
-                backgroundColor: "#ff8200",
+                backgroundColor: "#ffa140",
                 // left: "755px",
-                left: (left + 70)/2,
-                top: "230px",
+                left: (left -431)/2 + 233,
+                top: "408px",
                 // fontFamily: "HelveticaNeue",
-                fontSize: "14px",
-                fontWeight: 500,
+                fontSize: "18px",
+                fontWeight: "normal",
                 fontStretch: "normal",
                 fontStyle: "normal",
                 lineHeight: "normal",
                 letterSpacing: "normal",
                 textAlign: "center",
-                color: "#fff",
+                color: "#ffffff",
                 border:"none",
-                borderRadius:"8px",
+                borderRadius:"10px",
                 cursor:"pointer",
                 display: "none"
             }}>
-                Ok
+                Enter
             </button>
 
         {/* TutorialScaleSet */}
 
-            <span id = "TutorialScaleSetWord" style = {{
+            {/* <span id = "TutorialScaleSetWord" style = {{
                 position: "absolute",
                 top: "150px",
                 // left: "527px",
@@ -415,9 +488,9 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 display: "none"
             }}>
                 Scale successfully adjusted
-            </span>
+            </span> */}
 
-            <button id = "TutorialScaleSetBackButton" onClick = {SetBack} style ={{
+            {/* <button id = "TutorialScaleSetBackButton" onClick = {SetBack} style ={{
                 position: "absolute",
                 width: "160px",
                 height: "44px",
@@ -470,7 +543,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
             {/* PlaceToolV4_11 */}
 
-            <span id = "TutorialScaleFinalWord" style = {{
+            {/* <span id = "TutorialScaleFinalWord" style = {{
                 position: "absolute",
                 top: "133px",
                 // left: "527px",
@@ -541,7 +614,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 display: "none"
             }}>
                 Ok
-            </button>
+            </button> */}
 
             {/* <button id = "TutorialScaleFinalOkButton" onClick = {testimage} style ={{
                 position: "absolute",
@@ -568,7 +641,30 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Ok
             </button> */}
 
-        </div>
+            <button id="SetScaleSuccessRectangular" style = {{
+                position: "absolute",
+                width: "304px",
+                height: "79px",
+                zIndex: 9999,
+                backgroundColor: "#222222",
+                // left: "340px",
+                left: (left-304)/2,
+                // top: "937px",
+                top: "97px",
+                border:"none",
+                borderRadius:"10px",
+                fontSize:"20px",
+                fontWeight:"normal",
+                fontStretch:"normal",
+                fontStyle:"normal",
+                lineHeight:"normal",
+                color:"#ffffff",
+                display: "none"
+                }}>
+                Scale successfully adjusted 
+            </button>
+
+            </div>
     )
 }
 

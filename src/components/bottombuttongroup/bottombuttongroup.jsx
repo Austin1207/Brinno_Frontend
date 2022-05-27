@@ -22,20 +22,34 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     itemsActions.selectItem("layer1", "xFAw434Nm");
     }
 
+  //畫Scale
+  const CircleMove = (circle) => {
+    var e = document.createEvent("MouseEvents");
+    e.initEvent("click", true, true);
+    circle.dispatchEvent(e);
+    }
+
+  const DrawingScale = event => {
+    var Circle1 = document.getElementById("Circle1")
+    CircleMove(Circle1);
+    }
+
   async function SetScale() {
 
     const json = state.get('scene').toJS();
     const PicInJson = json["layers"]["layer1"]["items"]["xFAw434Nm"];
 
     if ( PicInJson != undefined ) {
-      document.getElementById("TutorialScaleRectangular").style.display = "";
-      document.getElementById("TutorialScaleWord").style.display = "";
-      document.getElementById("TutorialScaleButton").style.display = "";
+      // document.getElementById("TutorialScaleRectangular").style.display = "";
+      // document.getElementById("TutorialScaleWord").style.display = "";
+      // document.getElementById("TutorialScaleButton").style.display = "";
+      projectActions.unselectAll();
   
       await ImageLayerMode();
   
       RotateCircle1.style.display = "none";
       RotateCircle2.style.display = "none";
+      DrawingScale();
       }
     else {
       alert("Please upload your file first.")

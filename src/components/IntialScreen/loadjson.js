@@ -3,7 +3,7 @@ export function loadimgjson (loadImageUrl, jsonleft, top) {
     console.log(top)
 
     var loadjson = {
-        "unit": "cm",
+        "unit": "m",
         "layers": {
             "layer1": {
                 "id": "layer1",

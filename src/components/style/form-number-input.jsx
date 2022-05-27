@@ -8,15 +8,27 @@ import { KEYBOARD_BUTTON_CODE } from '../../constants';
 
 const STYLE_INPUT = {
   display: 'block',
-  width: '100px',
-  height: '53px',
-  padding: '0 2px',
-  fontSize: '44px',
-  lineHeight: '1.25',
-  color: "#ff8200",
-  backgroundColor: '#271807',
-  backgroundImage: 'none',
-  border: '1px solid rgba(0,0,0,.15)',
+  // width: '100px',
+  // height: '53px',
+  // padding: '0 2px',
+  // fontSize: '44px',
+  // lineHeight: '1.25',
+  // color: "#ff8200",
+  // backgroundColor: '#271807',
+  // backgroundImage: 'none',
+  // border: '1px solid rgba(0,0,0,.15)',
+  width: '71px',
+  height: '45px',
+  // padding: '0 2px',
+  fontSize: '38px',
+  fontStretch:"normal",
+  fontStyle:"normal",
+  lineHeight: 'normal',
+  letterSpacing:"normal",
+  color: "#c7c7c7",
+  backgroundColor: '#222222',
+  // backgroundImage: 'none',
+  // border: '1px solid rgba(0,0,0,.15)',
   outline: 'none'
 };
 
@@ -79,6 +91,7 @@ export default class FormNumberInput extends Component {
     return (
       <div style={{ position: 'relative' }}>
         <input
+          id = "scaleinput"
           type="text"
           value={currValue}
           style={numericInputStyle}
@@ -95,6 +108,7 @@ export default class FormNumberInput extends Component {
 
             this.setState({ valid });
           }}
+          onClick = {e => saveFn(e)}
           onFocus={e => this.setState({ focus: true })}
           onBlur={e => this.setState({ focus: false })}
           onKeyDown={e => {

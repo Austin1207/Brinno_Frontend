@@ -17,8 +17,15 @@ const STYLE = {
   // overflowY: 'hidden',
   // overflowX: 'hidden',
   position: 'absolute',
-  top: '90px',
+  // top: '90px',
+  // border:"none",
+  top: '231px',
+  borderRadius:"10px",
   border:"none",
+  width:"431px",
+  height:"269px",
+  backgroundColor: "#222222",
+  display:"none"
   // left: '460px',
 };
 
