@@ -203,7 +203,8 @@ export default class Toolbar extends Component {
       {
         index: 0, condition: true, dom: <Button 
           sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
-          onClick={event => DrawConstructionArea()}>
+          onClick={event => DrawConstructionArea()}
+          disabled={false}>
           <IconConstruction sx={{ fontSize: 40 }} />
         </Button>
       },
@@ -213,7 +214,8 @@ export default class Toolbar extends Component {
       {
         index: 2, condition: true, dom: <Button
           sx={this.state.inuseTool == 'interest area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
-        onClick={event => DrawInterestArea()}>
+          onClick={event => DrawInterestArea()}
+          disabled={false}>
           <IconInterest sx={{ fontSize: 40 }} />
         </Button>
       },
@@ -223,7 +225,8 @@ export default class Toolbar extends Component {
       {
         index: 4, condition: true, dom: <Button
           sx={this.state.inuseTool == 'obstacle area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
-          onClick={event => DrawObstacleArea()}>
+          onClick={event => DrawObstacleArea()}
+          disabled={false}>
           <IconObstacle sx={{ fontSize: 40 }}/>
         </Button>
       },
@@ -233,7 +236,8 @@ export default class Toolbar extends Component {
       {
         index: 6, condition: true, dom: <Button
           sx={this.state.inuseTool == 'nocamera area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
-          onClick={event => DrawNoCameraArea()}>
+          onClick={event => DrawNoCameraArea()}
+          disabled={false}>
           <IconNoCam sx={{ fontSize: 40 }}/>
         </Button>
       },
@@ -243,7 +247,8 @@ export default class Toolbar extends Component {
       {
         index: 8, condition: true, dom: <Button
           sx={this.state.inuseTool == 'mustcover area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
-          onClick={event => DrawMustcoverArea()}>
+          onClick={event => DrawMustcoverArea()}
+          disabled={false}>
           <IconMust sx={{ fontSize: 40 }}/>
         </Button>
       },
@@ -252,10 +257,14 @@ export default class Toolbar extends Component {
       },
       {
         index: 10, condition: true, dom: <Button sx={buttonsStyle}
-          onClick={() => this.handleDrawChange()}>
+          onClick={() => this.handleDrawChange()}
+          disabled={false}>
           <IconAddCam sx={{ fontSize: 40 }}/>
         </Button>
-      }
+      },
+      {
+        index: 11, condition: true, dom: <Divider/>
+      },
     ];
 
     sorter = sorter.concat(toolbarButtons.map((Component, key) => {
