@@ -14,7 +14,11 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import { createSvgIcon } from '@mui/material/utils';
 import { styled } from '@material-ui/styles';
 import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
 import Divider from '@mui/material/Divider';
+import Box from '@material-ui/core/Box';
+import AppBar from '@mui/material/AppBar';
+import { shadows } from '@material-ui/system';
 import {
   MODE_DRAWING_LINE,
   MODE_WAITING_DRAWING_LINE
@@ -34,7 +38,25 @@ const buttonsStyle = {
 };
 const buttonsInuseStyle = {
   maxWidth: '59px', maxHeight: '59px', minWidth: '59px', minHeight: '59px',
-  backgroundColor: '#FFFFFF', color: '#ff8200', "&:hover": {backgroundColor: '#ff8200', color: '#ffffff'},
+  backgroundColor: '#FFFFFF', color: '#ff8200', "&:hover": {backgroundColor: '#FFFFFF'},
+};
+const tooltipStyle = {
+  tooltip: {
+    sx: {
+      width: '237px',
+      //height: '50px',
+      color: '#ffa140',
+      backgroundColor: '#222222',
+      fontSize: '16px',
+      textAlign: 'center',
+      textVerticalAlign: 'middle'
+    }
+  },
+  arrow:{
+    sx: {
+      color: '#222222',
+    }
+  }
 };
 const ToolbarButton = styled(Button)({
   maxWidth: '59px',
@@ -88,11 +110,18 @@ const IconAddCam = createSvgIcon(
   </svg>,
   'AddCam',
 );
+const IconSum = createSvgIcon(
+  <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.808 15.978A6.212 6.212 0 0 0 18.222 12.48h-4.594l3.18 3.498zm-1.04 0.996A6.213 6.213 0 0 1 12 18.24c-3.446 0 -6.24 -2.794 -6.24 -6.24 0 -3.203 2.413 -5.842 5.52 -6.199V11.76c0 0.179 0.067 0.352 0.187 0.484l4.301 4.73zM12 4.32C7.758 4.32 4.32 7.758 4.32 12s3.438 7.68 7.68 7.68 7.68 -3.438 7.68 -7.68S16.242 4.32 12 4.32zm0.72 1.481V11.04h5.447c-0.426 -2.757 -2.656 -4.918 -5.447 -5.239z"/>
+  </svg>,
+  'Sum',
+);
 
 const ASIDE_STYLE = {
   backgroundColor: '#ffffff',
   padding: '5px',
-  width: '100%'
+  width: '100%',
+  //boxShadow: '5px 4px 20px 0 rgba(188, 188, 188, 0.2)'
 };
 
 const sortButtonsCb = (a, b) => {
@@ -202,66 +231,102 @@ export default class Toolbar extends Component {
 
     let sorter = [
       {
-        index: 0, condition: true, dom: <Button 
-          sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
-          onClick={event => DrawConstructionArea()}
-          disabled={false}>
-          <IconConstruction sx={{ fontSize: 40 }} />
-        </Button>
+        index: 0, condition: true, dom: 
+        <Box pb={5/8}>
+          <Tooltip title="Outline Contruction Area" placement="right" arrow 
+            componentsProps={tooltipStyle}>
+            <Button 
+              sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
+              onClick={event => DrawConstructionArea()}
+              disabled={false}>
+              <IconConstruction sx={{ fontSize: 40 }} />
+            </Button>
+          </Tooltip>
+        </Box>
       },
       {
         index: 1, condition: true, dom: <Divider/>
       },
       {
-        index: 2, condition: true, dom: <Button
-          sx={this.state.inuseTool == 'interest area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
-          onClick={event => DrawInterestArea()}
-          disabled={false}>
-          <IconInterest sx={{ fontSize: 40 }} />
-        </Button>
+        index: 2, condition: true, dom: 
+        <Box pt={5/8} pb={5/8}>
+          <Tooltip title="Place Obstacle Area" placement="right" arrow 
+            componentsProps={tooltipStyle}>
+            <Button
+              sx={this.state.inuseTool == 'interest area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
+              onClick={event => DrawInterestArea()}
+              disabled={false}>
+              <IconInterest sx={{ fontSize: 40 }} />
+            </Button>
+          </Tooltip>
+        </Box>
       },
       {
         index: 3, condition: true, dom: <Divider/>
       },
       {
-        index: 4, condition: true, dom: <Button
-          sx={this.state.inuseTool == 'obstacle area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
-          onClick={event => DrawObstacleArea()}
-          disabled={false}>
-          <IconObstacle sx={{ fontSize: 40 }}/>
-        </Button>
+        index: 4, condition: true, dom: 
+        <Box pt={5/8} pb={5/8}>
+          <Tooltip title="Outline Contruction Area" placement="right" arrow 
+            componentsProps={tooltipStyle}>
+            <Button
+              sx={this.state.inuseTool == 'obstacle area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
+              onClick={event => DrawObstacleArea()}
+              disabled={false}>
+              <IconObstacle sx={{ fontSize: 40 }}/>
+            </Button>
+          </Tooltip>
+        </Box>
       },
       {
         index: 5, condition: true, dom: <Divider/>
       },
       {
-        index: 6, condition: true, dom: <Button
-          sx={this.state.inuseTool == 'nocamera area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
-          onClick={event => DrawNoCameraArea()}
-          disabled={false}>
-          <IconNoCam sx={{ fontSize: 40 }}/>
-        </Button>
+        index: 6, condition: true, dom: 
+        <Box pt={5/8} pb={5/8}>
+          <Tooltip title="Place no-camera area" placement="right" arrow 
+            componentsProps={tooltipStyle}>
+            <Button
+              sx={this.state.inuseTool == 'nocamera area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
+              onClick={event => DrawNoCameraArea()}
+              disabled={false}>
+              <IconNoCam sx={{ fontSize: 40 }}/>
+            </Button>
+          </Tooltip>
+        </Box>
       },
       {
         index: 7, condition: true, dom: <Divider/>
       },
       {
-        index: 8, condition: true, dom: <Button
-          sx={this.state.inuseTool == 'mustcover area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
-          onClick={event => DrawMustcoverArea()}
-          disabled={false}>
-          <IconMust sx={{ fontSize: 40 }}/>
-        </Button>
+        index: 8, condition: true, dom:
+        <Box pt={5/8} pb={5/8}>
+          <Tooltip title="Place must-cover area" placement="right" arrow 
+            componentsProps={tooltipStyle}>
+            <Button
+              sx={this.state.inuseTool == 'mustcover area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
+              onClick={event => DrawMustcoverArea()}
+              disabled={false}>
+              <IconMust sx={{ fontSize: 40 }}/>
+            </Button>
+          </Tooltip>
+        </Box>
       },
       {
         index: 9, condition: true, dom: <Divider/>
       },
       {
-        index: 10, condition: true, dom: <Button sx={buttonsStyle}
-          onClick={() => this.handleDrawChange()}
-          disabled={false}>
-          <IconAddCam sx={{ fontSize: 40 }}/>
-        </Button>
+        index: 10, condition: true, dom: 
+        <Box pt={5/8} pb={5/8}>
+          <Tooltip title="Camera Tool" placement="right" arrow 
+            componentsProps={tooltipStyle}>
+            <Button sx={buttonsStyle}
+              onClick={() => this.handleDrawChange()}
+              disabled={false}>
+              <IconAddCam sx={{ fontSize: 40 }}/>
+            </Button>
+          </Tooltip>
+        </Box>
       },
       {
         index: 11, condition: true, dom: <Divider/>
@@ -282,9 +347,22 @@ export default class Toolbar extends Component {
     }));
 
     return (
-      <aside style={{ ...ASIDE_STYLE, maxWidth: width, maxHeight: height }} className='toolbar'>
-        {sorter.sort(sortButtonsCb).map(mapButtonsCb)}
-      </aside>
+      <AppBar style={{ ...ASIDE_STYLE, maxWidth: width, height: height, top: '70px', left: 0 }} className='toolbar'>
+        <Box sx={{ flexGrow: 1 }}>
+          {sorter.sort(sortButtonsCb).map(mapButtonsCb)}
+        </Box>
+        <Box sx={{ flexGrow: 0 }}>
+          <Divider/>
+          <Box pt={5/8} pb={5/8}>
+            <Button sx={buttonsStyle}
+              //style={{top: height}}
+              //onClick={() => this.handleDrawChange()}
+              disabled={true}>
+              <IconSum sx={{ fontSize: 40 }}/>
+            </Button>
+          </Box>
+        </Box>
+      </AppBar>
     )
   }
 }

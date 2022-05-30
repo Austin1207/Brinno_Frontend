@@ -88,7 +88,7 @@ class ReactPlanner extends Component {
   render() {
     let {width, height, state, stateExtractor, ...props} = this.props;
 
-    let contentW = width - toolbarW;
+    let contentW = width;// - toolbarW;
     let toolbarH = height - footerBarH;
     let contentH = height + 60;// - footerBarH;
     let sidebarH = height;// - footerBarH;

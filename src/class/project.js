@@ -143,6 +143,8 @@ class Project{
       rotatingSupport: new Map(),
     });
 
+    state = this.unselectAll( state ).updatedState;
+
     return { updatedState: state };
   }
 

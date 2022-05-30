@@ -224,7 +224,7 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" sx={{bgcolor:"#15110d"}} style = {{height:"70px"}} openDrawer={openDrawer} openPoper={openPoper}>
+      <AppBar position="fixed" sx={{bgcolor:"#15110d"}} style = {{height:"70px"}} elevation={0} openDrawer={openDrawer} openPoper={openPoper}>
       {/*<AppBar position="fixed" sx={{ bgcolor:"#222", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={open}>*/}
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -295,7 +295,7 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
             boxSizing: 'border-box',
           },
         }}
-        PaperProps={{ style: { height: "95vh", top: 68.5 } }}
+        PaperProps={{ style: { height: "95vh", top: 70 } }}
         variant="persistent"
         anchor="left"
         open={showDrawer}
