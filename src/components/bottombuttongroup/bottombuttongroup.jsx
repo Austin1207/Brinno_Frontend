@@ -73,6 +73,9 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
       RotateCircle1.style.display = "none";
       RotateCircle2.style.display = "none";
       DrawingScale();
+      document.getElementById('Question2').style.display = ""
+
+
       }
     else {
       alert("Please upload your file first.")

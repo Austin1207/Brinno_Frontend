@@ -190,6 +190,8 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'construction area'
       });
+      document.getElementById('Outine Interest Area1').style.display = "none"
+      document.getElementById('Outine Interest Area2').style.display = ""
     }
   
     const DrawInterestArea = () => {
@@ -199,6 +201,8 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'interest area'
       });
+      document.getElementById('Place Obstacle Area1').style.display = "none"
+      document.getElementById('Place Obstacle Area2').style.display = ""
     }
 
     const DrawObstacleArea = () => {
@@ -208,6 +212,8 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'obstacle area'
       })
+      document.getElementById('Place no-camera area1').style.display = "none"
+      document.getElementById('Place no-camera area2').style.display = ""
     }
 
     const DrawNoCameraArea = () => {
@@ -217,6 +223,8 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'nocamera area'
       })
+      document.getElementById('Place must-cover area1').style.display = "none"
+      document.getElementById('Place must-cover area2').style.display = ""
     }
 
     const DrawMustcoverArea = () => {
@@ -226,6 +234,8 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'mustcover area'
       })
+      document.getElementById('Camera Tool1').style.display = "none"
+      document.getElementById('Camera Tool2').style.display = ""
     }    
 
     let sorter = [
@@ -234,32 +244,26 @@ export default class Toolbar extends Component {
         <Box pb={5/8}>
           <Tooltip title="Outline Contruction Area" placement="right" arrow 
             componentsProps={tooltipStyle}>
-            <Button
+            <Button id ="Outline Contruction Area1"
               sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawConstructionArea()}
-              // disabled={true}
+              disabled
+              >
+              <IconConstruction sx={{ fontSize: 40 }} />
+            </Button>
+          </Tooltip>
+          <Tooltip title="Outline Contruction Area" placement="right" arrow 
+            componentsProps={tooltipStyle}>
+            <Button id ="Outline Contruction Area2"
+              sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
+              onClick={event => DrawConstructionArea()}
+              style = {{display:"none"}}
               >
               <IconConstruction sx={{ fontSize: 40 }} />
             </Button>
           </Tooltip>
         </Box>
       },
-
-      // {
-      //   index: 1, condition: true, dom: 
-      //   <Box pb={5/8}>
-      //     <Tooltip title="Outline Contruction Area" placement="right" arrow 
-      //       componentsProps={tooltipStyle}>
-      //       <Button id="co2"
-      //         sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
-      //         onClick={event => DrawConstructionArea()}
-      //         style = {{display:"none"}}
-      //         >
-      //         <IconConstruction sx={{ fontSize: 40 }} />
-      //       </Button>
-      //     </Tooltip>
-      //   </Box>
-      // },
 
       {
         index: 1, condition: true, dom: <Divider/>
@@ -269,34 +273,58 @@ export default class Toolbar extends Component {
         <Box pt={5/8} pb={5/8}>
           <Tooltip title="Outline Interest Area" placement="right" arrow 
             componentsProps={tooltipStyle}>
-            <Button
+            <Button id = "Outine Interest Area1"
               sx={this.state.inuseTool == 'interest area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawInterestArea()}
-              // disabled={true}
+              disabled={true}
+              style = {{display:""}}
+              >
+              <IconInterest sx={{ fontSize: 40 }} />
+            </Button>
+          </Tooltip>
+          <Tooltip title="Outline Interest Area" placement="right" arrow 
+            componentsProps={tooltipStyle}>
+            <Button id = "Outine Interest Area2"
+              sx={this.state.inuseTool == 'interest area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
+              onClick={event => DrawInterestArea()}
+              style = {{display:"none"}}
               >
               <IconInterest sx={{ fontSize: 40 }} />
             </Button>
           </Tooltip>
         </Box>
       },
+      
       {
         index: 3, condition: true, dom: <Divider/>
       },
+
       {
         index: 4, condition: true, dom: 
         <Box pt={5/8} pb={5/8}>
           <Tooltip title="Place Obstacle Area" placement="right" arrow 
             componentsProps={tooltipStyle}>
-            <Button
+            <Button id = "Place Obstacle Area1"
               sx={this.state.inuseTool == 'obstacle area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawObstacleArea()}
-              // disabled={true}
+              disabled={true}
+              >
+              <IconObstacle sx={{ fontSize: 40 }}/>
+            </Button>
+          </Tooltip>
+          <Tooltip title="Place Obstacle Area" placement="right" arrow 
+            componentsProps={tooltipStyle}>
+            <Button id = "Place Obstacle Area2"
+              sx={this.state.inuseTool == 'obstacle area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
+              onClick={event => DrawObstacleArea()}
+              style = {{display:"none"}}
               >
               <IconObstacle sx={{ fontSize: 40 }}/>
             </Button>
           </Tooltip>
         </Box>
       },
+
       {
         index: 5, condition: true, dom: <Divider/>
       },
@@ -305,16 +333,27 @@ export default class Toolbar extends Component {
         <Box pt={5/8} pb={5/8}>
           <Tooltip title="Place no-camera area" placement="right" arrow 
             componentsProps={tooltipStyle}>
-            <Button
+            <Button id = "Place no-camera area1"
               sx={this.state.inuseTool == 'nocamera area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawNoCameraArea()}
-              // disabled={true}
+              disabled={true}
+              >
+              <IconNoCam sx={{ fontSize: 40 }}/>
+            </Button>
+          </Tooltip>
+          <Tooltip title="Place no-camera area" placement="right" arrow 
+            componentsProps={tooltipStyle}>
+            <Button id = "Place no-camera area2"
+              sx={this.state.inuseTool == 'nocamera area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
+              onClick={event => DrawNoCameraArea()}
+              style = {{display:"none"}}
               >
               <IconNoCam sx={{ fontSize: 40 }}/>
             </Button>
           </Tooltip>
         </Box>
       },
+
       {
         index: 7, condition: true, dom: <Divider/>
       },
@@ -323,33 +362,57 @@ export default class Toolbar extends Component {
         <Box pt={5/8} pb={5/8}>
           <Tooltip title="Place must-cover area" placement="right" arrow 
             componentsProps={tooltipStyle}>
-            <Button
+            <Button id ="Place must-cover area1"
               sx={this.state.inuseTool == 'mustcover area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawMustcoverArea()}
-              // disabled={true}
+              disabled={true}
+              >
+              <IconMust sx={{ fontSize: 40 }}/>
+            </Button>
+          </Tooltip>
+          <Tooltip title="Place must-cover area" placement="right" arrow 
+            componentsProps={tooltipStyle}>
+            <Button id ="Place must-cover area2"
+              sx={this.state.inuseTool == 'mustcover area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
+              onClick={event => DrawMustcoverArea()}
+              style = {{display:"none"}}
               >
               <IconMust sx={{ fontSize: 40 }}/>
             </Button>
           </Tooltip>
         </Box>
       },
+
       {
         index: 9, condition: true, dom: <Divider/>
       },
+
       {
         index: 10, condition: true, dom: 
         <Box pt={5/8} pb={5/8}>
           <Tooltip title="Camera Tool" placement="right" arrow 
             componentsProps={tooltipStyle}>
             <Button sx={buttonsStyle}
+              id = "Camera Tool1"
               onClick={() => this.handleDrawChange()}
-              // disabled={true}
+              disabled={true}
+              >
+              <IconAddCam sx={{ fontSize: 40 }}/>
+            </Button>
+          </Tooltip>
+          <Tooltip title="Camera Tool" placement="right" arrow 
+            componentsProps={tooltipStyle}>
+            <Button sx={buttonsStyle}
+              id = "Camera Tool2"
+              onClick={() => this.handleDrawChange()}
+              style = {{display:"none"}}
               >
               <IconAddCam sx={{ fontSize: 40 }}/>
             </Button>
           </Tooltip>
         </Box>
       },
+
       {
         index: 11, condition: true, dom: <Divider/>
       },

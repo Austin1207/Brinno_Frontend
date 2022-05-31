@@ -77,9 +77,14 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
         document.getElementById("SetScaleSuccessRectangular").style.display = "";
 
+        document.getElementById('Outline Contruction Area1').style.display = "none"
+        document.getElementById('Outline Contruction Area2').style.display = ""
+
         setTimeout( function () {
             document.getElementById("SetScaleSuccessRectangular").style.display = "none";
         },3000);
+
+        
 
 
 

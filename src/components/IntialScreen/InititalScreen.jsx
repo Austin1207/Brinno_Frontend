@@ -160,10 +160,10 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
 
     document.getElementById('UndoRedo').style.display = ""
     document.getElementById('Scale2').style.display = ""
-    document.getElementById('Question2').style.display = ""
+    
+    document.getElementById('Outline Contruction Area1').style.display = "none"
+    document.getElementById('Outline Contruction Area2').style.display = ""
 
-    // document.getElementById('co1').style.display = "none"
-    // document.getElementById('co2').style.display = ""
   }
 
   //增加localstorage(重整不會被刪掉)的tutorial
@@ -252,7 +252,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
                 zIndex: 9998,
                 border:"none",
                 backgroundColor: "transparent",
-                display: "none"
+                display: ""
             }}/>
     </div>
   )
