@@ -234,7 +234,7 @@ export default class Toolbar extends Component {
         <Box pb={5/8}>
           <Tooltip title="Outline Contruction Area" placement="right" arrow 
             componentsProps={tooltipStyle}>
-            <Button 
+            <Button
               sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawConstructionArea()}
               // disabled={true}
@@ -244,13 +244,30 @@ export default class Toolbar extends Component {
           </Tooltip>
         </Box>
       },
+
+      // {
+      //   index: 1, condition: true, dom: 
+      //   <Box pb={5/8}>
+      //     <Tooltip title="Outline Contruction Area" placement="right" arrow 
+      //       componentsProps={tooltipStyle}>
+      //       <Button id="co2"
+      //         sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
+      //         onClick={event => DrawConstructionArea()}
+      //         style = {{display:"none"}}
+      //         >
+      //         <IconConstruction sx={{ fontSize: 40 }} />
+      //       </Button>
+      //     </Tooltip>
+      //   </Box>
+      // },
+
       {
         index: 1, condition: true, dom: <Divider/>
       },
       {
         index: 2, condition: true, dom: 
         <Box pt={5/8} pb={5/8}>
-          <Tooltip title="Place Obstacle Area" placement="right" arrow 
+          <Tooltip title="Outline Interest Area" placement="right" arrow 
             componentsProps={tooltipStyle}>
             <Button
               sx={this.state.inuseTool == 'interest area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
@@ -268,7 +285,7 @@ export default class Toolbar extends Component {
       {
         index: 4, condition: true, dom: 
         <Box pt={5/8} pb={5/8}>
-          <Tooltip title="Outline Contruction Area" placement="right" arrow 
+          <Tooltip title="Place Obstacle Area" placement="right" arrow 
             componentsProps={tooltipStyle}>
             <Button
               sx={this.state.inuseTool == 'obstacle area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
@@ -362,7 +379,8 @@ export default class Toolbar extends Component {
             <Button sx={buttonsStyle}
               //style={{top: height}}
               //onClick={() => this.handleDrawChange()}
-              disabled={true}>
+              disabled={true}
+              >
               <IconSum sx={{ fontSize: 40 }}/>
             </Button>
           </Box>
