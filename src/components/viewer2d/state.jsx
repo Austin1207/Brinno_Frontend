@@ -39,8 +39,11 @@ export default function State({state, catalog, openCoverage}) {
       </g>
       {openCoverage&&<Visibility_Polygon
         state={state}
-        sceneWidth={3000}
-        sceneHeight={2000}
+        // sceneWidth={3000}
+        // sceneHeight={2000}
+        // 修改畫布大小
+        sceneWidth={30000}
+        sceneHeight={20000}
   />}
     </g>
   )

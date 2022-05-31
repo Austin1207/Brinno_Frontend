@@ -66,9 +66,6 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     const PicInJson = json["layers"]["layer1"]["items"]["xFAw434Nm"];
 
     if ( PicInJson != undefined ) {
-      // document.getElementById("TutorialScaleRectangular").style.display = "";
-      // document.getElementById("TutorialScaleWord").style.display = "";
-      // document.getElementById("TutorialScaleButton").style.display = "";
       projectActions.unselectAll();
   
       await ImageLayerMode();
@@ -82,6 +79,24 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     }
   }
 
+  function test1234() {
+    // console.log(document.getElementById("Undo").disabled)
+    // document.getElementById("Undo").disabled = false;
+    // console.log(document.getElementById("Undo").disabled)
+    // document.getElementById("Redo").disabled = false;
+    // console.log(document.getElementById("Undo"))
+    // console.log(document.getElementById("Scale"))
+    // console.log(document.getElementById("Scale").disabled)
+    // document.getElementById("Scale").disabled=false
+    // document.getElementById('Redo2').style.display = "";
+    // document.getElementById('Redo').style.display = "none";
+    // console.log(document.getElementById('UndoRedo').style)
+    // document.getElementById('UndoRedo').style.display = ""
+    // document.getElementById('Scale2').style.display = ""
+    // document.getElementById('Scale').removeAttribute("disabled");
+    console.log("123")
+  }
+
     return (
         <Container 
           maxWidth='sm'
@@ -91,27 +106,60 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             sx={{ position: 'absolute', bottom: 54, right: 168}}
             >
                 <Button
+                  id = "Undo"
                   sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'},}}
-                  onClick={() => projectActions.undo()}>
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+                  onClick={() => projectActions.undo()}
+                  disabled
+                  >
                     <IconUndo sx={{ fontSize: 36 }}/>
-                    </Button>
-                <Button sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'},}}
-                    disabled>
-                    <IconRedo sx={{ fontSize: 36 }}/>
-                    </Button>
+                  </Button>
+                <Button 
+                  id = "Redo"
+                  sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+                  backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'},}}
+                  disabled>
+                  <IconRedo sx={{ fontSize: 36 }}/>
+                </Button>
             </ButtonGroup>
 
-            <Button variant="contained"
-            sx={{ position: 'absolute', bottom: 54, right: 114, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-            backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
-            onClick = {SetScale}
+            {/* 暫時代替diabled方案 */}
+            <ButtonGroup id = "UndoRedo" variant="contained" aria-label="undo redo"
+            sx={{ position: 'absolute', bottom: 54, right: 168}}
+            style = {{display:"none"}}
             >
+                <Button
+                  id = "Undo2"
+                  sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, display:""}}
+                  onClick={() => projectActions.undo()}
+                  >
+                    <IconUndo sx={{ fontSize: 36 }}/>
+                  </Button>
+                <Button 
+                  id = "Redo2"
+                  sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+                  backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, display:""}}
+                  >
+                  <IconRedo sx={{ fontSize: 36 }}/>
+                </Button>
+            </ButtonGroup>
+
+            {/* 分隔 */}
+
+            <Button
+              id = "Scale1"
+              variant="contained"
+              sx={{ position: 'absolute', bottom: 54, right: 114, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              onClick = {SetScale}
+              disabled
+              >
                 <IconScale sx={{ fontSize: 36 }}/>
             </Button>
 
             <Fab
+              id = "Question1"
               sx={
               {position: 'absolute',
               bottom: 54,
@@ -119,10 +167,41 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
               backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
               // onClick={() => this.getLS()}
-              onClick={() => test()}
+              // onClick={() => test()}
+              onClick={() => test1234()}
+              disabled
               aria-label="Help">
                 <QuestionMarkIcon/>
             </Fab>
+
+            {/* 暫時代替disable */}
+            <Button
+              variant="contained"
+              id = "Scale2"
+              sx={{ position: 'absolute', bottom: 54, right: 114, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              style = {{display:"none"}}
+              onClick = {SetScale}
+              >
+                <IconScale sx={{ fontSize: 36 }}/>
+            </Button>
+
+            <Fab
+              id = "Question2"
+              sx={
+              {position: 'absolute',
+              bottom: 54,
+              right: 60,
+              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              style = {{display:"none"}}
+              // onClick={() => this.getLS()}
+              // onClick={() => test()}
+              onClick={() => test1234()}
+              aria-label="Help">
+                <QuestionMarkIcon/>
+            </Fab>
+            
         </Container>
       );
 }

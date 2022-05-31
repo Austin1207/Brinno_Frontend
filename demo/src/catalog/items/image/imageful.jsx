@@ -75,18 +75,21 @@ export default class ImageFul extends Component {
         }
         else if (target.attributes.name.nodeValue === 'snd-anchor') {
           this.setState({handleMouseMove2: !this.state.handleMouseMove2});
-          document.getElementById("sidebar").style.display = "";
 
-          document.getElementById("TutorialScaleMeasureWord").style.display = "";
-          document.getElementById("TutorialScaleMeasureWord2").style.display = "";
-          document.getElementById("TutorialScaleMeasureWord3").style.display = "";
-          document.getElementById("TutorialScaleMeasureLine").style.display = "";
-          document.getElementById("TutorialScaleMeasureBackButton").style.display = "";
-          document.getElementById("TutorialScaleMeasureOkButton").style.display = "";
+          setTimeout( function () {
+            document.getElementById("sidebar").style.display = "";
+
+            document.getElementById("TutorialScaleMeasureWord").style.display = "";
+            document.getElementById("TutorialScaleMeasureWord2").style.display = "";
+            document.getElementById("TutorialScaleMeasureWord3").style.display = "";
+            document.getElementById("TutorialScaleMeasureLine").style.display = "";
+            document.getElementById("TutorialScaleMeasureBackButton").style.display = "";
+            document.getElementById("TutorialScaleMeasureOkButton").style.display = "";
+            itemsActions.selectItem("layer1", "xFAw434Nm");
+          },250);
 
           // projectActions.unselectAll();
           
-          itemsActions.selectItem("layer1", "xFAw434Nm");
         }
       }
     }
@@ -298,6 +301,7 @@ export default class ImageFul extends Component {
           this.props.imageUri && !this.state.imageLoadError ?
             <image
               xlinkHref={this.props.imageUri}
+              // 這邊可以改圖片預設放置位置
               x="0"
               y="0"
               width={this.props.width}

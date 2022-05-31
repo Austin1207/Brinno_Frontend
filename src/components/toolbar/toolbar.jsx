@@ -44,12 +44,12 @@ const tooltipStyle = {
   tooltip: {
     sx: {
       width: '237px',
-      //height: '50px',
+      height: '59px',
       color: '#ffa140',
       backgroundColor: '#222222',
       fontSize: '16px',
       textAlign: 'center',
-      textVerticalAlign: 'middle'
+      lineHeight: '59px'
     }
   },
   arrow:{
@@ -184,7 +184,6 @@ export default class Toolbar extends Component {
     let alterateColor = alterate ? SharedStyle.MATERIAL_COLORS[500].orange : '';
 
     const DrawConstructionArea = () => {
-      document.getElementById("SetScaleSuccessRectangular").style.display = "none";
       projectActions.unselectAll();
       sceneActions.selectLayer("layer2");
       linesActions.selectToolDrawingLine('construction area');
@@ -238,7 +237,8 @@ export default class Toolbar extends Component {
             <Button 
               sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawConstructionArea()}
-              disabled={false}>
+              // disabled={true}
+              >
               <IconConstruction sx={{ fontSize: 40 }} />
             </Button>
           </Tooltip>
@@ -255,7 +255,8 @@ export default class Toolbar extends Component {
             <Button
               sx={this.state.inuseTool == 'interest area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawInterestArea()}
-              disabled={false}>
+              // disabled={true}
+              >
               <IconInterest sx={{ fontSize: 40 }} />
             </Button>
           </Tooltip>
@@ -272,7 +273,8 @@ export default class Toolbar extends Component {
             <Button
               sx={this.state.inuseTool == 'obstacle area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawObstacleArea()}
-              disabled={false}>
+              // disabled={true}
+              >
               <IconObstacle sx={{ fontSize: 40 }}/>
             </Button>
           </Tooltip>
@@ -289,7 +291,8 @@ export default class Toolbar extends Component {
             <Button
               sx={this.state.inuseTool == 'nocamera area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawNoCameraArea()}
-              disabled={false}>
+              // disabled={true}
+              >
               <IconNoCam sx={{ fontSize: 40 }}/>
             </Button>
           </Tooltip>
@@ -306,7 +309,8 @@ export default class Toolbar extends Component {
             <Button
               sx={this.state.inuseTool == 'mustcover area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawMustcoverArea()}
-              disabled={false}>
+              // disabled={true}
+              >
               <IconMust sx={{ fontSize: 40 }}/>
             </Button>
           </Tooltip>
@@ -322,7 +326,8 @@ export default class Toolbar extends Component {
             componentsProps={tooltipStyle}>
             <Button sx={buttonsStyle}
               onClick={() => this.handleDrawChange()}
-              disabled={false}>
+              // disabled={true}
+              >
               <IconAddCam sx={{ fontSize: 40 }}/>
             </Button>
           </Tooltip>

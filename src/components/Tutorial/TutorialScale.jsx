@@ -68,14 +68,19 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("TutorialScaleMeasureBackButton").style.display = "none";
         document.getElementById("TutorialScaleMeasureOkButton").style.display = "none";
 
-        document.getElementById("SetScaleSuccessRectangular").style.display = "";
-
         document.getElementById("Circle1").style.display = "none";
         document.getElementById("Circle2").style.display = "none";
         document.getElementById("Line").style.display = "none";
 
         projectActions.unselectAll()
         sceneActions.selectLayer("layer2")
+
+        document.getElementById("SetScaleSuccessRectangular").style.display = "";
+
+        setTimeout( function () {
+            document.getElementById("SetScaleSuccessRectangular").style.display = "none";
+        },3000);
+
 
 
         // document.getElementById("TutorialScaleMeasureWord").style.display = "none";
