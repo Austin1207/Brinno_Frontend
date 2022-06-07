@@ -83,21 +83,23 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
   }
 
   function test1234() {
-    // console.log(document.getElementById("Undo").disabled)
-    // document.getElementById("Undo").disabled = false;
-    // console.log(document.getElementById("Undo").disabled)
-    // document.getElementById("Redo").disabled = false;
-    // console.log(document.getElementById("Undo"))
-    // console.log(document.getElementById("Scale"))
-    // console.log(document.getElementById("Scale").disabled)
-    // document.getElementById("Scale").disabled=false
-    // document.getElementById('Redo2').style.display = "";
-    // document.getElementById('Redo').style.display = "none";
-    // console.log(document.getElementById('UndoRedo').style)
-    // document.getElementById('UndoRedo').style.display = ""
-    // document.getElementById('Scale2').style.display = ""
-    // document.getElementById('Scale').removeAttribute("disabled");
     console.log("123")
+  }
+
+  function undotest() {
+    console.log("undotest1")
+    console.log(state)
+    projectActions.undo()
+    console.log("undotest2")
+    console.log(state)
+  }
+
+  function redotest() {
+    console.log("redotest1")
+    console.log(state)
+    projectActions.redo()
+    console.log("redotest2")
+    console.log(state)
   }
 
     return (
@@ -120,7 +122,9 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                 <Button 
                   id = "Redo"
                   sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                  backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'},}}
+                  backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+                  //TESTING REDO
+                  onClick={() => projectActions.redo()}
                   disabled>
                   <IconRedo sx={{ fontSize: 36 }}/>
                 </Button>
@@ -135,7 +139,8 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                   id = "Undo2"
                   sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
                     backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, display:""}}
-                  onClick={() => projectActions.undo()}
+                  // onClick={() => projectActions.undo()}
+                  onClick={() => undotest()}
                   >
                     <IconUndo sx={{ fontSize: 36 }}/>
                   </Button>
@@ -143,6 +148,9 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                   id = "Redo2"
                   sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
                   backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, display:""}}
+                  //TESTING REDO
+                  // onClick={() => projectActions.redo()}
+                  onClick={() => redotest()}
                   >
                   <IconRedo sx={{ fontSize: 36 }}/>
                 </Button>

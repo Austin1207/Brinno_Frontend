@@ -11,6 +11,8 @@ import {
   SET_HOLES_ATTRIBUTES,
   REMOVE,
   UNDO,
+  //Testing REDO
+  REDO,
   ROLLBACK,
   OPEN_PROJECT_CONFIGURATOR,
   SET_PROJECT_PROPERTIES,
@@ -139,6 +141,14 @@ export function remove() {
 export function undo() {
   return {
     type: UNDO
+  };
+}
+
+//TESTING REDO
+
+export function redo() {
+  return {
+    type: REDO
   };
 }
 

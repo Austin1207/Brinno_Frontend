@@ -12,6 +12,8 @@ import {
   SET_HOLES_ATTRIBUTES,
   REMOVE,
   UNDO,
+  //TESTING REDO
+  REDO,
   ROLLBACK,
   SET_PROJECT_PROPERTIES,
   OPEN_PROJECT_CONFIGURATOR,
@@ -84,6 +86,11 @@ export default function (state, action) {
 
     case UNDO:
       return Project.undo(state).updatedState;
+
+    //TESTING REDO
+
+    case REDO:
+      return Project.redo(state).updatedState;
 
     case ROLLBACK:
       return Project.rollback(state).updatedState;

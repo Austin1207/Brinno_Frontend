@@ -108,8 +108,12 @@ class Project{
     return { updatedState: state };
   }
 
+  //TESTING REDO
+
   static undo(state) {
     let sceneHistory = state.sceneHistory;
+    let redoHistory = state.redoHistory;
+    redoHistory = history.historyPush(redoHistory, sceneHistory.last);
     if (state.scene === sceneHistory.last && sceneHistory.list.size > 1) {
       sceneHistory = history.historyPop(sceneHistory);
     }
@@ -117,7 +121,39 @@ class Project{
     state = state.merge({
       mode: MODE_IDLE,
       scene: sceneHistory.last,
-      sceneHistory: history.historyPop(sceneHistory)
+      redoHistory: redoHistory,
+      sceneHistory: history.historyPop(sceneHistory),
+    });
+
+    return { updatedState: state };
+  }
+
+  //TESTING REDO
+
+  static redo(state) {
+    let sceneHistory = state.sceneHistory;
+    let redoHistory = state.redoHistory;
+
+    if (redoHistory.list.size === 0) {
+      state = state.merge({
+        mode: MODE_IDLE,
+        scene: sceneHistory.last,
+        sceneHistory: sceneHistory,
+        redoHistory: redoHistory
+      });
+      return { updatedState: state };
+    }
+
+    sceneHistory = history.historyPush(sceneHistory, redoHistory.last);
+    if (state.scene === redoHistory.last && redoHistory.list.size > 1) {
+      redoHistory = history.historyPop(redoHistory);
+    }
+
+    state = state.merge({
+      mode: MODE_IDLE,
+      scene: redoHistory.last,
+      sceneHistory: sceneHistory,
+      redoHistory: history.historyPop(redoHistory),
     });
 
     return { updatedState: state };

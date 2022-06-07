@@ -303,6 +303,8 @@ export class State extends Record({
   mode: MODE_IDLE,
   scene: new Scene(),
   sceneHistory: new HistoryStructure(),
+  //Testing redo
+  redoHistory: new HistoryStructure(),
   catalog: new Catalog(),
   viewer2D: new Map(),
   mouse: new Map({x: 0, y: 0}),
@@ -325,6 +327,8 @@ export class State extends Record({
       ...json,
       scene: new Scene(json.scene),
       sceneHistory: new HistoryStructure(json),
+      //Testing Redo
+      redoHistory: new HistoryStructure(json),
       catalog: new Catalog(json.catalog || {}),
       viewer2D: new Map(json.viewer2D || {}),
       drawingSupport: new Map(json.drawingSupport || {}),
