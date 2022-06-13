@@ -137,6 +137,10 @@ export class Area extends Record({
 export class Item extends Record({
   ...sharedAttributes,
   fov: '',
+  battery: '',
+  distance: '',
+  price: '',
+  coverage: '',
   prototype: 'items',
   x: 0,
   y: 0,

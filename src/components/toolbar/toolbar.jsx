@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { MdSettings, MdUndo, MdDirectionsRun } from 'react-icons/md';
-import { FaFile, FaMousePointer, FaPlus } from 'react-icons/fa';
-//import ToolbarButton from './toolbar-button';
-import ToolbarSaveButton from './toolbar-save-button';
-import ToolbarLoadButton from './toolbar-load-button';
-import ToolbarLoadImgButton from './toolbar-load-image';//test
 import If from '../../utils/react-if';
 import * as SharedStyle from '../../shared-style';
-import HighlightAltIcon from '@mui/icons-material/HighlightAlt';
-import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
-import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import { createSvgIcon } from '@mui/material/utils';
 import { styled } from '@material-ui/styles';
 import Button from '@mui/material/Button';
@@ -18,12 +9,10 @@ import Tooltip from '@mui/material/Tooltip';
 import Divider from '@mui/material/Divider';
 import Box from '@material-ui/core/Box';
 import AppBar from '@mui/material/AppBar';
-import { shadows } from '@material-ui/system';
 import {
   MODE_DRAWING_LINE,
   MODE_WAITING_DRAWING_LINE
 } from '../../constants';
-//import * as SharedStyle from '../../shared-style';
 
 const iconTextStyle = {
   fontSize: '19px',
@@ -68,8 +57,6 @@ const ToolbarButton = styled(Button)({
   "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'},
 });
 
-const Icon2D = ( {style} ) => <p style={{...iconTextStyle, ...style}}>2D</p>;
-const Icon3D = ( {style} ) => <p style={{...iconTextStyle, ...style}}>3D</p>;
 const IconConstruction = createSvgIcon(
   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="M4.32 4.32h1.44v0.96h-0.48v0.48H4.32V4.32zm0 13.92v1.44h1.44v-0.96h-0.48v-0.48H4.32zm13.92 1.44h1.44v-1.44h-0.96v0.48h-0.48v0.96zm1.44 -13.92V4.32h-1.44v0.96h0.48v0.48h0.96zM7.2 4.32v1.44h1.92V4.32h-1.92zm3.84 0v1.44h1.92V4.32h-1.92zm3.84 0v1.44h1.92V4.32h-1.92zm4.8 2.88h-1.44v1.92h1.44v-1.92zm0 3.84h-1.44v1.92h1.44v-1.92zm0 3.84h-1.44v1.92h1.44v-1.92zm-2.88 4.8v-1.44h-1.92v1.44h1.92zm-3.84 0v-1.44h-1.92v1.44h1.92zm-3.84 0v-1.44h-1.92v1.44h1.92zM4.32 16.8h1.44v-1.92H4.32v1.92zm0 -3.84h1.44v-1.92H4.32v1.92zm0 -3.84h1.44v-1.92H4.32v1.92z"/>
@@ -121,7 +108,6 @@ const ASIDE_STYLE = {
   backgroundColor: '#ffffff',
   padding: '5px',
   width: '100%',
-  //boxShadow: '5px 4px 20px 0 rgba(188, 188, 188, 0.2)'
 };
 
 const sortButtonsCb = (a, b) => {
@@ -153,7 +139,8 @@ export default class Toolbar extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      showDrawer: this.props.showDrawer,
+      showCamDrawer: this.props.showCamDrawer,
+      showSumDrawer: this.props.showSumDrawer,
       inuseTool: ''
     };
   }
@@ -165,12 +152,23 @@ export default class Toolbar extends Component {
       this.props.state.alterate !== nextProps.state.alterate;
   }
 
-  handleDrawChange(){
+  handleCamDrawChange(){
     this.setState({
-      showDrawer: !this.props.showDrawer
+      showSumDrawer: false,
+      showCamDrawer: !this.state.showCamDrawer
     })
-    this.props.updateProp(!this.state.showDrawer)
-    //console.log(this.state.showDrawer)
+    this.props.updateCam(!this.state.showCamDrawer)
+    this.props.updateSum(false)
+    //console.log(this.state.showCamDrawer)
+  }
+
+  handleSumDrawChange(){
+    this.setState({
+      showCamDrawer: false,
+      showSumDrawer: !this.state.showSumDrawer
+    })
+    this.props.updateSum(!this.state.showSumDrawer)
+    this.props.updateCam(false)
   }
 
   render() {
@@ -394,8 +392,8 @@ export default class Toolbar extends Component {
             componentsProps={tooltipStyle}>
             <Button sx={buttonsStyle}
               id = "Camera Tool1"
-              onClick={() => this.handleDrawChange()}
-              disabled={true}
+              onClick={() => this.handleCamDrawChange()}
+              //disabled={true}
               >
               <IconAddCam sx={{ fontSize: 40 }}/>
             </Button>
@@ -404,7 +402,7 @@ export default class Toolbar extends Component {
             componentsProps={tooltipStyle}>
             <Button sx={buttonsStyle}
               id = "Camera Tool2"
-              onClick={() => this.handleDrawChange()}
+              onClick={() => this.handleCamDrawChange()}
               style = {{display:"none"}}
               >
               <IconAddCam sx={{ fontSize: 40 }}/>
@@ -441,8 +439,8 @@ export default class Toolbar extends Component {
           <Box pt={5/8} pb={5/8}>
             <Button sx={buttonsStyle}
               //style={{top: height}}
-              //onClick={() => this.handleDrawChange()}
-              disabled={true}
+              onClick={() => this.handleSumDrawChange()}
+              //disabled={true}
               >
               <IconSum sx={{ fontSize: 40 }}/>
             </Button>
