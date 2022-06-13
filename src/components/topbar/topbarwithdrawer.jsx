@@ -27,9 +27,10 @@ import Avatar from '@mui/material/Avatar';
 import PropTypes from 'prop-types';
 import { elementsToDisplay } from './elementstodisplay';
 import { fontSize } from '@mui/system';
+import SummaryTable from '../summarytable/summarytable';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const drawerWidth = 260;
+const drawerWidth = 360;
 const useStyles = makeStyles({
   drawerPaper: {
     marginLeft: "69px"
@@ -81,7 +82,7 @@ const handleCloseUserMenu = () => {
   console.log("4")
 };
 
-export default function TopBar({ state, linesActions, projectActions, sceneActions, showDrawer}) {
+export default function TopBar({ state, linesActions, projectActions, sceneActions, showCamDrawer, showSumDrawer}) {
   const theme = useTheme();
   const classes = useStyles();
   const [openPoper, setOpenPoper] = React.useState(false);
@@ -298,7 +299,7 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
         PaperProps={{ style: { height: "95vh", top: 70 } }}
         variant="persistent"
         anchor="left"
-        open={showDrawer}
+        open={showCamDrawer||showSumDrawer}
         classes={{
           paper: classes.drawerPaper
         }}
@@ -309,7 +310,8 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
           </IconButton>
       </DrawerHeader>*/}
         <Divider />
-        {elementsToDisplay.map(elem => camearaSelected ? <CatalogChangeItem key={elem.name} element={elem} state={state}/> : <CatalogItem key={elem.name} element={elem}/>)}
+        {!showCamDrawer && showSumDrawer && <SummaryTable/>}
+        {showCamDrawer && !showSumDrawer && elementsToDisplay.map(elem => camearaSelected ? <CatalogChangeItem key={elem.name} element={elem} state={state}/> : <CatalogItem key={elem.name} element={elem}/>)}
       </Drawer>
     </Box>
   );

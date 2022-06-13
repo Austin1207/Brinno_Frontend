@@ -71,14 +71,21 @@ class ReactPlanner extends Component {
     super();
     this.state = {
       showHideSidepanel: true,
-      showDrawer: false
+      showCamDrawer: false,
+      showSumDrawer: false
     };
-    this.getShowDrawer=this.getShowDrawer.bind(this);
+    this.getShowCamDrawer=this.getShowCamDrawer.bind(this);
+    this.getShowSumDrawer=this.getShowSumDrawer.bind(this);
   }
 
-  getShowDrawer(bool){
-    this.setState({showDrawer:bool});
-    //console.log(this.state.showDrawer)
+  getShowCamDrawer(bool){
+    this.setState({showCamDrawer:bool});
+    console.log(this.state.showCamDrawer);
+  }
+
+  getShowSumDrawer(bool){
+    this.setState({showSumDrawer:bool});
+    console.log(this.state.showSumDrawer);
   }
 
   hideSidepanel(){
@@ -95,7 +102,8 @@ class ReactPlanner extends Component {
 
     let extractedState = stateExtractor(state);
     let showHideSidepanel = this.state.showHideSidepanel;
-    let showDrawer = this.state.showDrawer;
+    let showCamDrawer = this.state.showCamDrawer;
+    let showSumDrawer = this.state.showSumDrawer;
 
     return (
       <div style={{height}}>
@@ -116,12 +124,12 @@ class ReactPlanner extends Component {
         <TutorialScale state={extractedState} left={contentW} {...props}/>
 
         <div style={{...wrapperStyle}}>
-          <Toolbar width={toolbarW} height={contentH-56} state={extractedState} {...props} showDrawer={showDrawer} updateProp={this.getShowDrawer}/>
+          <Toolbar width={toolbarW} height={contentH-56} state={extractedState} {...props} showCamDrawer={showCamDrawer} showSumDrawer={showSumDrawer} updateCam={this.getShowCamDrawer} updateSum={this.getShowSumDrawer}/>
           
           <Content width={contentW} height={contentH-56} state={extractedState} {...props} onWheel={event => event.preventDefault()} />
         </div>
 
-        <TopBar state={extractedState} {...props} showDrawer={showDrawer}/>
+        <TopBar state={extractedState} {...props} showCamDrawer={showCamDrawer} showSumDrawer={showSumDrawer}/>
 
         <BottomButtonGroup state={extractedState} {...props} />
         
