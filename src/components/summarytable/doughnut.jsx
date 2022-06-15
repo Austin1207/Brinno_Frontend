@@ -80,7 +80,7 @@ export default function Doughnut() {
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
-      <PieChart width={360} height={238+36+10}>
+      <PieChart width={359} height={238+36+10} >
       {!selectIndex && <g>
           <text x={180} y={180-20} dx={5} dy={-(119+36-10-5)} fontSize='20px' textAnchor="middle" fill='#222222'>
             All Cameras
