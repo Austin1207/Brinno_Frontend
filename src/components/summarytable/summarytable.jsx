@@ -48,7 +48,7 @@ export default function SummaryTable() {
     };
 
     return(
-        <div style={{width: '360px', textAlign: 'center'}}>
+        <div style={{width: '359px', textAlign: 'center'}}>
             <div style={{height: 54-20, marginTop: '10px'}}>
                 <p style={STYLE_NEEDUPDATE}>Summary is not the most updated version.</p>
                 <a id="updatesum" href="#" style={STYLE_NEEDUPDATE}>Update now</a>
