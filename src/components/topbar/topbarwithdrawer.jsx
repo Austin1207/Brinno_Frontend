@@ -308,8 +308,8 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
-      </DrawerHeader>*/}
-        <Divider />
+      </DrawerHeader>
+        <Divider />*/}
         {!showCamDrawer && showSumDrawer && <SummaryTable/>}
         {showCamDrawer && !showSumDrawer && elementsToDisplay.map(elem => camearaSelected ? <CatalogChangeItem key={elem.name} element={elem} state={state}/> : <CatalogItem key={elem.name} element={elem}/>)}
       </Drawer>
