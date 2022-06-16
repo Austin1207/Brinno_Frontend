@@ -1298,8 +1298,9 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             <div class="Polygon-3-2" id="7-8-2" style = {{
                 position: "absolute",
                 // left: "81px",
-                left: "66px",
-                top: "430px",
+                left: "65px",
+                // top: "430px",
+                top: "425px",
                 zIndex: 10000,
                 display:"none"
             }}></div>

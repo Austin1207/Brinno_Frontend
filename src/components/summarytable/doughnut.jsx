@@ -85,8 +85,8 @@ export default function Doughnut() {
           <text x={180} y={180-20} dx={5} dy={-(119+36-10-5)} fontSize='20px' textAnchor="middle" fill='#222222'>
             All Cameras
           </text>
-          <text x={180} y={180-20} dx={5} dy={15+5} fontSize='40px' textAnchor="middle" fill='#222222'>
-            {`${(totalcoverage * 100).toFixed(0)}%`}
+          <text id ="totalCoverage" x={180} y={180-20} dx={5} dy={15+5} fontSize='40px' textAnchor="middle" fill='#222222'>
+            {/* {`${(totalcoverage * 100).toFixed(0)}%`} */}
           </text>
         </g>}
         <Pie

@@ -101,6 +101,9 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
 
       document.getElementById('Camera Tool1').style.display = "none"
       document.getElementById('Camera Tool2').style.display = ""
+
+      document.getElementById('Generate1').style.display = "none"
+      document.getElementById('Generate2').style.display = ""
     }
     else {
       document.getElementById('1-8-1').style.display = ""
@@ -229,6 +232,9 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
 
       document.getElementById('Camera Tool1').style.display = "none"
       document.getElementById('Camera Tool2').style.display = ""
+
+      document.getElementById('Generate1').style.display = "none"
+      document.getElementById('Generate2').style.display = ""
     }
     else {    
     document.getElementById('2-8-1').style.display = ""

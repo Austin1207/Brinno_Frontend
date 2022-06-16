@@ -153,7 +153,7 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
   function showOptimizing() {
     document.getElementById("overlay").style.display = "";
     document.getElementById("optimizing").style.display = "";
-    for (var i = 1; i < 160; i++) {
+    for (var i = 1; i < 400; i++) {
       setTimeout(function(){
         document.getElementById("optimizing").innerHTML = "Optimizing.";
       },1500*i - 1000)
@@ -203,34 +203,63 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
 
         sceneActions.selectLayer("layer2")
       }
-
-      // var img = new Image();
-      // img.src = url;
-      // if (img.complete) {
-      //   if (img.width >= img.height){
-      //     projectActions.loadProject(loadimgjson(url, jsonleft, top));
-      //   }
-      //   else {
-      //     projectActions.loadProject(loadimgjson2(url, jsonleft, top));
-      //   }
-      // }
-      // else {
-      //   img.onload = function(){
-      //     if (img.width >= img.height){
-      //       projectActions.loadProject(loadimgjson(url, jsonleft, top));
-      //     }
-      //     else {
-      //       projectActions.loadProject(loadimgjson2(url, jsonleft, top));
-      //     }
-      //   }
-      // }
-      // document.getElementById("Undo").disabled = false;
       status = 1;
       return status;
       }
     }
 
+    function checkForbidden_cam (url, status) {
+      var req = new XMLHttpRequest();
+      req.open('GET', url, false);
+      req.send();
+      if (req.status == 200) {  
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', url, true)
+        xhr.send()
+        xhr.onload = function(){
+          var data = JSON.parse(this.responseText);
+          console.log(data)
+          // var BAC_2000_count = data[camera_BAC2000]
+          // document.getElementById("Cameras_count").secondary = String(BAC_2000_count);
+        }
+        status = 1;
+        return status;
+        }
+      }
+
+      function checkForbidden_score (url, status) {
+        var req = new XMLHttpRequest();
+        req.open('GET', url, false);
+        req.send();
+        if (req.status == 200) {  
+          var xhr = new XMLHttpRequest()
+          xhr.open('GET', url, true)
+          xhr.send()
+          xhr.onload = function(){
+            var data = JSON.parse(this.responseText);
+            console.log(data)
+            var score = data["score"]
+            document.getElementById("totalCoverage").innerHTML = String(score) + "%";
+          }
+          status = 1;
+          return status;
+          }
+        }
+
+  const ClickSummary = (summary) => {
+    var e = document.createEvent("MouseEvents");
+    e.initEvent("click", true, true);
+    summary.dispatchEvent(e);
+    }
+
+  const OpenSummary = event => {
+    var SummaryClick = document.getElementById("SummaryPage2")
+    ClickSummary(SummaryClick);
+    }
+
   async function GernerateOnclick(){
+    document.getElementById("SummaryPage1").style.display = "none";
+    document.getElementById("SummaryPage2").style.display = "";
     showOptimizing();
     const json_data = state.get('scene').toJS();
     const {url} = await fetch(s3jsoninputurl).then(res => res.json());
@@ -243,43 +272,61 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
       body: JSON.stringify(json_data)
     })
 
-    console.log(url)
+    // console.log(url)
 
     const InputUrl = url.split('?')[0]
     const objName = InputUrl.split('/')[3]
     const JsonUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + objName
+    const CamUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "cam_" + objName
+    const ScoreUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "score_" + objName
 
-    console.log(JsonUrl);
+    // console.log(JsonUrl);
+
+    // var Check403_2 = setInterval(function(){ 
+    //   var status = 0;
+    //   status = checkForbidden_cam(CamUrl, status);
+    //   if (status == 1) {
+    //     clearInterval(Check403_2);
+    //   }
+    // },1000)
+
+    var Check403_3 = setInterval(function(){ 
+      var status = 0;
+      status = checkForbidden_score(ScoreUrl, status);
+      if (status == 1) {
+        clearInterval(Check403_3);
+      }
+    },1000)
 
     var Check403 = setInterval(function(){ 
       var status = 0;
       status = checkForbidden(JsonUrl, status);
       if (status == 1) {
         clearInterval(Check403);
+        OpenSummary();
       }
     },1000)
-  }
 
-  // const dispatch = useDispatch();
+  // }
 
-  const mongodburl = "http://localhost:3000/datas/";
+  // const mongodburl = "http://localhost:3000/datas/";
 
-  const testmongodb = (e) => {
-    e.preventDefault();
-    state = Project.unselectAll( state ).updatedState;
-    const jsondata = state.get('scene').toJS();
+  // const testmongodb = (e) => {
+  //   e.preventDefault();
+  //   state = Project.unselectAll( state ).updatedState;
+  //   const jsondata = state.get('scene').toJS();
 
-    const data2 = JSON.stringify(jsondata)
+  //   const data2 = JSON.stringify(jsondata)
 
-    console.log(data2)
+  //   console.log(data2)
 
-    fetch(mongodburl, {
-      method: "POST",
-      body: data2,
-      headers: {
-        "Content-Type": "application/json"
-      },
-    })
+  //   fetch(mongodburl, {
+  //     method: "POST",
+  //     body: data2,
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //   })
   }
 
   return (
@@ -337,9 +384,19 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
             </Box>*/}
         <Box sx={{ flexGrow: 0 }}>
           <Button
-              key={'Generate'}
+              id = "Generate1"
+              key={'Generat1'}
               sx={{ my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontWeight: "normal", fontStretch: "normal", fontStyle:"normal", textTransform:"capitalize"}}
               style = {{ width: "134px", height: "41px", borderRadius: "10px", backgroundColor: "#ffdfbf"}}
+              // onClick = {GernerateOnclick}
+              >
+              {'Generate'}
+          </Button>
+          <Button
+              id = "Generate2"
+              key={'Generat'}
+              sx={{ my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontWeight: "normal", fontStretch: "normal", fontStyle:"normal", textTransform:"capitalize"}}
+              style = {{ width: "134px", height: "41px", borderRadius: "10px", backgroundColor: "#ff8200", display: "none"}}
               onClick = {GernerateOnclick}
               >
               {'Generate'}

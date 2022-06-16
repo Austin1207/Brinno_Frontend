@@ -103,7 +103,9 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
   }
 
   function test1234() {
-    console.log("123")
+    // console.log("123")
+    console.log(document.getElementById("Cameras_count"))
+    // document.getElementById("totalCoverage").innerHTML = String(50);
   }
 
   function undotest() {

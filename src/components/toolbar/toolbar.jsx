@@ -157,7 +157,6 @@ export default class Toolbar extends Component {
       showSumDrawer: false,
       showCamDrawer: !this.state.showCamDrawer
     })
-// <<<<<<< HEAD
     this.props.updateCam(!this.state.showCamDrawer)
     this.props.updateSum(false)
     if (localStorage.getItem("Tutorial") !== "Done"){
@@ -167,6 +166,9 @@ export default class Toolbar extends Component {
       document.getElementById('7-8-4').style.display = "none"
       document.getElementById('7-8-5').style.display = "none"
       document.getElementById('7-8-6').style.display = "none"
+
+      document.getElementById('Generate1').style.display = "none"
+      document.getElementById('Generate2').style.display = ""
 
       localStorage.setItem("Tutorial", "Done")
     }
@@ -180,20 +182,6 @@ export default class Toolbar extends Component {
     })
     this.props.updateSum(!this.state.showSumDrawer)
     this.props.updateCam(false)
-// =======
-//     this.props.updateProp(!this.state.showDrawer)
-//     //console.log(this.state.showDrawer)
-//     if (localStorage.getItem("Tutorial") !== "Done"){
-//       document.getElementById('7-8-1').style.display = "none"
-//       document.getElementById('7-8-2').style.display = "none"
-//       document.getElementById('7-8-3').style.display = "none"
-//       document.getElementById('7-8-4').style.display = "none"
-//       document.getElementById('7-8-5').style.display = "none"
-//       document.getElementById('7-8-6').style.display = "none"
-
-//       localStorage.setItem("Tutorial", "Done")
-//     }
-// >>>>>>> 0616
   }
 
   render() {
@@ -511,7 +499,7 @@ export default class Toolbar extends Component {
             <Button sx={buttonsStyle}
               id = "Camera Tool1"
               onClick={() => this.handleCamDrawChange()}
-              //disabled={true}
+              disabled={true}
               >
               <IconAddCam sx={{ fontSize: 40 }}/>
             </Button>
@@ -555,10 +543,23 @@ export default class Toolbar extends Component {
         <Box sx={{ flexGrow: 0 }}>
           <Divider/>
           <Box pt={5/8} pb={5/8}>
-            <Button sx={buttonsStyle}
+            <Button
+              id = "SummaryPage1" 
+              sx={buttonsStyle}
               //style={{top: height}}
               onClick={() => this.handleSumDrawChange()}
-              //disabled={true}
+              disabled={true}
+              >
+              <IconSum sx={{ fontSize: 40 }}/>
+            </Button>
+
+            <Button
+              id = "SummaryPage2" 
+              sx={buttonsStyle}
+              //style={{top: height}}
+              onClick={() => this.handleSumDrawChange()}
+              // disabled={true}
+              style = {{display:"none"}}
               >
               <IconSum sx={{ fontSize: 40 }}/>
             </Button>
