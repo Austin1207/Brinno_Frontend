@@ -198,6 +198,21 @@ class Layer{
       state = Item.create( state, layerID, 'camera_BAC2000', Xmax, Ymin, 200, 100, -135 ).updatedState;
       state = Item.create( state, layerID, 'camera_BAC2000', Xmin, Ymax, 200, 100, 45 ).updatedState;
       state = Item.create( state, layerID, 'camera_BAC2000', Xmin, Ymin, 200, 100, 135 ).updatedState;
+
+      //Record that user has used before
+      // localStorage.setItem("Tutorial", "Done")
+
+      if (localStorage.getItem("Tutorial") !== "Done"){
+      
+        document.getElementById('2-8-14-disabled').style.display = "none"
+        document.getElementById('2-8-14').style.display = ""
+
+        document.getElementById('2-8-16').style.display = ""
+        
+        setTimeout(function(){
+          document.getElementById('2-8-16').style.display = "none"
+        },3000)
+      }
     }
 
     return { updatedState: state };

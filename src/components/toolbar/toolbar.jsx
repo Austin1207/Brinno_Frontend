@@ -171,6 +171,16 @@ export default class Toolbar extends Component {
     })
     this.props.updateProp(!this.state.showDrawer)
     //console.log(this.state.showDrawer)
+    if (localStorage.getItem("Tutorial") !== "Done"){
+      document.getElementById('7-8-1').style.display = "none"
+      document.getElementById('7-8-2').style.display = "none"
+      document.getElementById('7-8-3').style.display = "none"
+      document.getElementById('7-8-4').style.display = "none"
+      document.getElementById('7-8-5').style.display = "none"
+      document.getElementById('7-8-6').style.display = "none"
+
+      localStorage.setItem("Tutorial", "Done")
+    }
   }
 
   render() {
@@ -190,8 +200,26 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'construction area'
       });
-      document.getElementById('Outine Interest Area1').style.display = "none"
-      document.getElementById('Outine Interest Area2').style.display = ""
+      // document.getElementById('Outine Interest Area1').style.display = "none"
+      // document.getElementById('Outine Interest Area2').style.display = ""
+      if (localStorage.getItem("Tutorial") !== "Done"){
+        document.getElementById('2-8-1').style.display = "none"
+        document.getElementById('2-8-2').style.display = "none"
+        document.getElementById('2-8-3').style.display = "none"
+        document.getElementById('2-8-4').style.display = "none"
+        document.getElementById('2-8-5').style.display = "none"
+        document.getElementById('2-8-6').style.display = "none"
+        document.getElementById('2-8-7').style.display = "none"
+
+        document.getElementById('2-8-8').style.display = ""
+        document.getElementById('2-8-9').style.display = ""
+        document.getElementById('2-8-10').style.display = ""
+        document.getElementById('2-8-11').style.display = ""
+        document.getElementById('2-8-12').style.display = ""
+        document.getElementById('2-8-13').style.display = ""
+        document.getElementById('2-8-14-disabled').style.display = ""
+        document.getElementById('2-8-15').style.display = ""
+      }
     }
   
     const DrawInterestArea = () => {
@@ -201,8 +229,26 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'interest area'
       });
-      document.getElementById('Place Obstacle Area1').style.display = "none"
-      document.getElementById('Place Obstacle Area2').style.display = ""
+      // document.getElementById('Place Obstacle Area1').style.display = "none"
+      // document.getElementById('Place Obstacle Area2').style.display = ""
+      if (localStorage.getItem("Tutorial") !== "Done"){
+        document.getElementById('3-8-1').style.display = "none"
+        document.getElementById('3-8-2').style.display = "none"
+        document.getElementById('3-8-3').style.display = "none"
+        document.getElementById('3-8-4').style.display = "none"
+        document.getElementById('3-8-5').style.display = "none"
+        document.getElementById('3-8-6').style.display = "none"
+        document.getElementById('3-8-7').style.display = "none"
+
+        document.getElementById('3-8-8').style.display = ""
+        document.getElementById('3-8-9').style.display = ""
+        document.getElementById('3-8-10').style.display = ""
+        document.getElementById('3-8-11').style.display = ""
+        document.getElementById('3-8-12').style.display = ""
+        document.getElementById('3-8-13').style.display = ""
+        document.getElementById('3-8-14').style.display = ""
+        document.getElementById('3-8-15').style.display = ""
+      }
     }
 
     const DrawObstacleArea = () => {
@@ -212,8 +258,27 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'obstacle area'
       })
-      document.getElementById('Place no-camera area1').style.display = "none"
-      document.getElementById('Place no-camera area2').style.display = ""
+      // document.getElementById('Place no-camera area1').style.display = "none"
+      // document.getElementById('Place no-camera area2').style.display = ""
+      if (localStorage.getItem("Tutorial") !== "Done"){
+        document.getElementById('4-8-1').style.display = "none"
+        document.getElementById('4-8-2').style.display = "none"
+        document.getElementById('4-8-3').style.display = "none"
+        document.getElementById('4-8-4').style.display = "none"
+        document.getElementById('4-8-5').style.display = "none"
+        document.getElementById('4-8-6').style.display = "none"
+        document.getElementById('4-8-7').style.display = "none"
+
+        document.getElementById('4-8-8').style.display = ""
+        document.getElementById('4-8-9').style.display = ""
+        document.getElementById('4-8-10').style.display = ""
+        document.getElementById('4-8-11').style.display = ""
+        document.getElementById('4-8-12').style.display = ""
+        document.getElementById('4-8-13').style.display = ""
+        document.getElementById('4-8-14').style.display = ""
+        document.getElementById('4-8-15').style.display = ""
+        document.getElementById('4-8-16').style.display = ""
+      }
     }
 
     const DrawNoCameraArea = () => {
@@ -223,8 +288,27 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'nocamera area'
       })
-      document.getElementById('Place must-cover area1').style.display = "none"
-      document.getElementById('Place must-cover area2').style.display = ""
+      // document.getElementById('Place must-cover area1').style.display = "none"
+      // document.getElementById('Place must-cover area2').style.display = ""
+      if (localStorage.getItem("Tutorial") !== "Done"){
+        document.getElementById('5-8-1').style.display = "none"
+        document.getElementById('5-8-2').style.display = "none"
+        document.getElementById('5-8-3').style.display = "none"
+        document.getElementById('5-8-4').style.display = "none"
+        document.getElementById('5-8-5').style.display = "none"
+        document.getElementById('5-8-6').style.display = "none"
+        document.getElementById('5-8-7').style.display = "none"
+
+        document.getElementById('5-8-8').style.display = ""
+        document.getElementById('5-8-9').style.display = ""
+        document.getElementById('5-8-10').style.display = ""
+        document.getElementById('5-8-11').style.display = ""
+        document.getElementById('5-8-12').style.display = ""
+        document.getElementById('5-8-13').style.display = ""
+        document.getElementById('5-8-14').style.display = ""
+        document.getElementById('5-8-15').style.display = ""
+        document.getElementById('5-8-16').style.display = ""
+      }
     }
 
     const DrawMustcoverArea = () => {
@@ -234,14 +318,33 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'mustcover area'
       })
-      document.getElementById('Camera Tool1').style.display = "none"
-      document.getElementById('Camera Tool2').style.display = ""
+      // document.getElementById('Camera Tool1').style.display = "none"
+      // document.getElementById('Camera Tool2').style.display = ""
+      if (localStorage.getItem("Tutorial") !== "Done"){
+        document.getElementById('6-8-1').style.display = "none"
+        document.getElementById('6-8-2').style.display = "none"
+        document.getElementById('6-8-3').style.display = "none"
+        document.getElementById('6-8-4').style.display = "none"
+        document.getElementById('6-8-5').style.display = "none"
+        document.getElementById('6-8-6').style.display = "none"
+        document.getElementById('6-8-7').style.display = "none"
+
+        document.getElementById('6-8-8').style.display = ""
+        document.getElementById('6-8-9').style.display = ""
+        document.getElementById('6-8-10').style.display = ""
+        document.getElementById('6-8-11').style.display = ""
+        document.getElementById('6-8-12').style.display = ""
+        document.getElementById('6-8-13').style.display = ""
+        document.getElementById('6-8-14').style.display = ""
+        document.getElementById('6-8-15').style.display = ""
+        document.getElementById('6-8-16').style.display = ""
+      }
     }    
 
     let sorter = [
       {
         index: 0, condition: true, dom: 
-        <Box pb={5/8}>
+        <Box pb={5/8} >
           <Tooltip title="Outline Contruction Area" placement="right" arrow 
             componentsProps={tooltipStyle}>
             <Button id ="Outline Contruction Area1"

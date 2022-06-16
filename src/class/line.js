@@ -18,6 +18,8 @@ import {
   MODE_DRAWING_LINE,
   MODE_DRAGGING_LINE
 } from '../constants';
+// clear redoHistort
+import { HistoryStructure } from '../models';
 
 class Line{
 
@@ -37,6 +39,11 @@ class Line{
     }, properties);
 
     state = state.setIn(['scene', 'layers', layerID, 'lines', lineID], line);
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return {updatedState: state, line};
   }
@@ -49,6 +56,11 @@ class Line{
     state = Layer.selectElement( state, layerID, 'lines', lineID ).updatedState;
     state = Layer.selectElement( state, layerID, 'vertices', line.vertices.get(0) ).updatedState;
     state = Layer.selectElement( state, layerID, 'vertices', line.vertices.get(1) ).updatedState;
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return {updatedState: state};
   }
@@ -65,6 +77,11 @@ class Line{
 
       state.getIn(['scene', 'groups']).forEach( group => state = Group.removeElement(state, group.id, layerID, 'lines', lineID).updatedState );
     }
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return {updatedState: state};
   }
@@ -77,6 +94,11 @@ class Line{
       state = Layer.unselect( state, layerID, 'vertices', line.vertices.get(1) ).updatedState;
       state = Layer.unselect( state, layerID, 'lines', lineID ).updatedState;
     }
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return {updatedState: state};
   }
@@ -133,6 +155,11 @@ class Line{
     });
 
     state = Line.remove( state, layerID, lineID ).updatedState;
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state, lines: new List([line0, line1]) };
   }
@@ -166,6 +193,11 @@ class Line{
       }
 
       lines.push( line );
+    });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
     });
 
     return { updatedState: state, lines: new List(lines) };
@@ -209,12 +241,22 @@ class Line{
         reducedState = this.split( reducedState, layerID, line.id, intersection.point.x, intersection.point.y ).updatedState;
         points.push(intersection.point);
       }
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
       return reducedState;
 
     }, state );
 
     let { updatedState, lines } = Line.addFromPoints( state, layerID, type, points, oldProperties, oldHoles );
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState, lines };
   }
@@ -228,6 +270,11 @@ class Line{
 
     state = state.setIn(['scene', 'layers', layerID, 'lines', lineID, 'vertices', vertexIndex], vertex.id);
     state = state.setIn(['scene', 'layers', layerID, 'lines', lineID], state.getIn(['scene', 'layers', layerID, 'lines', lineID]) );
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state, line: state.getIn(['scene', 'layers', layerID, 'lines', lineID]), vertex };
   }
@@ -238,6 +285,11 @@ class Line{
       drawingSupport: new Map({
         type: sceneComponentType
       })
+    });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
     });
 
     return { updatedState: state };
@@ -273,6 +325,11 @@ class Line{
       activeSnapElement: snap ? snap.snap : null,
       drawingSupport
     });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -292,6 +349,11 @@ class Line{
 
     state = this.select( state, layerID, lineID ).updatedState;
     state = state.merge({ activeSnapElement: snap ? snap.snap : null });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -320,6 +382,11 @@ class Line{
       snapElements: new List(),
       activeSnapElement: null
     });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -346,6 +413,11 @@ class Line{
         startVertex1X: vertex1.x,
         startVertex1Y: vertex1.y,
       })
+    });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
     });
 
     return { updatedState: state };
@@ -411,7 +483,9 @@ class Line{
         return layer;
       }))
     });
-
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
     return { updatedState: state };
   }
 
@@ -525,6 +599,11 @@ class Line{
       activeSnapElement: null,
       snapElements: new List()
     });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -532,10 +611,21 @@ class Line{
   static setProperties( state, layerID, lineID, properties ) {
     state = state.mergeIn(['scene', 'layers', layerID, 'lines', lineID, 'properties'], properties);
 
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
+    
     return { updatedState: state };
   }
 
   static setJsProperties( state, layerID, lineID, properties ) {
+
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
+
     return this.setProperties( state, layerID, lineID, fromJS(properties) );
   }
 
@@ -545,10 +635,21 @@ class Line{
         state = state.mergeIn(['scene', 'layers', layerID, 'lines', lineID, 'properties', k], v);
     });
 
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
+    
     return { updatedState: state };
   }
 
   static updateJsProperties( state, layerID, lineID, properties) {
+
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
+    
     return this.updateProperties( state, layerID, lineID, fromJS(properties) );
   }
 
@@ -575,6 +676,11 @@ class Line{
 
     state = Layer.detectAndUpdateAreas( state, layerID ).updatedState;
 
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
+    
     return { updatedState: state };
   }
 
@@ -583,6 +689,11 @@ class Line{
     state = Vertex.setAttributes( state, layerID, line.vertices.get(0), new Map({ x: x1, y: y1 }) ).updatedState;
     state = Vertex.setAttributes( state, layerID, line.vertices.get(1), new Map({ x: x2, y: y2 }) ).updatedState;
 
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
+    
     return { updatedState: state };
   }
 

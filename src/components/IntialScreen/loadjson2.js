@@ -40,7 +40,7 @@ export function loadimgjson2 (loadImageUrl, jsonleft, top) {
                         // "x": 479.709994739929,
                         // "y": 1629.5759345522179,
                         "x": jsonleft,
-                        "y": 20000-top,
+                        "y": 2000-top,
                         "rotation": 90
                     }
                 },
@@ -98,8 +98,8 @@ export function loadimgjson2 (loadImageUrl, jsonleft, top) {
         },
         "selectedLayer": "layer1",
         "groups": {},
-        "width": 30000,
-        "height": 20000,
+        "width": 3000,
+        "height": 2000,
         "meta": {},
         "guides": {
             "horizontal": {},

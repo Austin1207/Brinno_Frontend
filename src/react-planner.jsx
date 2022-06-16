@@ -27,6 +27,7 @@ import {VERSION} from './version';
 import './styles/export';
 
 import preview from './preview.png'
+import Optimizing from './components/loading/optimizing';
 
 const {Toolbar} = ToolbarComponents;
 const {Sidebar} = SidebarComponents;
@@ -101,6 +102,7 @@ class ReactPlanner extends Component {
       <div style={{height}}>
 
         <Loading left={(contentW-100)/2} />
+        <Optimizing left={(contentW-100)/2} />
 
         {/* 修正上方topbar遮蔽 */}
         <div style={{

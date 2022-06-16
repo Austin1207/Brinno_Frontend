@@ -12,6 +12,9 @@ import {
   MODE_ROTATING_ITEM
 } from '../constants';
 
+// clear redoHistort
+import { HistoryStructure } from '../models';
+
 class Item{
 
   static create( state, layerID, type, x, y, width, height, rotation ) {
@@ -30,6 +33,11 @@ class Item{
     });
 
     state = state.setIn(['scene', 'layers', layerID, 'items', itemID], item);
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state, item };
   }
@@ -37,6 +45,11 @@ class Item{
   static select( state, layerID, itemID ){
     state = Layer.select( state, layerID ).updatedState;
     state = Layer.selectElement( state, layerID, 'items', itemID ).updatedState;
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return {updatedState: state};
   }
@@ -46,12 +59,22 @@ class Item{
     state = Layer.removeElement( state, layerID, 'items', itemID ).updatedState;
 
     state.getIn(['scene', 'groups']).forEach( group => state = Group.removeElement(state, group.id, layerID, 'items', itemID).updatedState );
+   
+    // clear redoHistort
+    // state = state.merge({
+    //   redoHistory:  new HistoryStructure()
+    // });
 
     return { updatedState: state };
   }
 
   static unselect( state, layerID, itemID ) {
     state = Layer.unselect( state, layerID, 'items', itemID ).updatedState;
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -62,6 +85,11 @@ class Item{
       drawingSupport: new Map({
         type: sceneComponentType
       })
+    });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
     });
 
     return { updatedState: state };
@@ -76,6 +104,11 @@ class Item{
       state = Item.select( stateI, layerID, item.id ).updatedState;
       state = state.setIn(['drawingSupport','currentID'], item.id);
     }
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -88,6 +121,11 @@ class Item{
       drawingSupport: Map({
         type: state.drawingSupport.get('type')
       })
+    });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
     });
 
     return { updatedState: state };
@@ -107,6 +145,11 @@ class Item{
         originalX: item.x,
         originalY: item.y
       })
+    });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
     });
 
     return { updatedState: state };
@@ -134,6 +177,11 @@ class Item{
     state = state.merge({
       scene: scene.mergeIn(['layers', layerID, 'items', itemID], item)
     });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -141,6 +189,11 @@ class Item{
   static endDraggingItem(state, x, y) {
     state = this.updateDraggingItem(state, x, y).updatedState;
     state = state.merge({ mode: MODE_IDLE });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -152,6 +205,11 @@ class Item{
         layerID,
         itemID
       })
+    });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
     });
 
     return { updatedState: state };
@@ -181,6 +239,11 @@ class Item{
     state = state.merge({
       scene: scene.mergeIn(['layers', layerID, 'items', itemID], item)
     });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -188,23 +251,44 @@ class Item{
   static endRotatingItem(state, x, y) {
     state = this.updateRotatingItem(state, x, y).updatedState;
     state = state.merge({ mode: MODE_IDLE });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
 
   static directCreatItem(state, layerID, itemtype, x, y, rotation) {
     state = this.create( state, layerID, itemtype, x, y, 200, 100, rotation ).updatedState;
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
 
   static setProperties( state, layerID, itemID, properties ) {
     state = state.mergeIn(['scene', 'layers', layerID, 'items', itemID, 'properties'], properties);
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
 
   static setJsProperties( state, layerID, itemID, properties ) {
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
+
     return this.setProperties( state, layerID, itemID, fromJS(properties) );
   }
 
@@ -213,21 +297,44 @@ class Item{
       if( state.hasIn(['scene', 'layers', layerID, 'items', itemID, 'properties', k]) )
         state = state.mergeIn(['scene', 'layers', layerID, 'items', itemID, 'properties', k], v);
     });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
 
   static updateJsProperties( state, layerID, itemID, properties) {
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
+
     return this.updateProperties( state, layerID, itemID, fromJS(properties) );
   }
 
   static setAttributes( state, layerID, itemID, itemAttributes) {
     state = state.mergeIn(['scene', 'layers', layerID, 'items', itemID], itemAttributes);
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
+
     return { updatedState: state };
   }
 
   static setJsAttributes( state, layerID, itemID, itemAttributes) {
     itemAttributes = fromJS(itemAttributes);
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
+
     return this.setAttributes(state, layerID, itemID, itemAttributes);
   }
 

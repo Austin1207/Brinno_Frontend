@@ -10,6 +10,7 @@ import CameraDefault from './cameradefault/cameradefault';
 import ResponsiveAppBar from './topbar/topbar';
 import TopBar from './topbar/topbarwithdrawer';
 import Loading from './loading/loading';
+import Optimizing from './loading/optimizing';
 import InitialScreen from './IntialScreen/InititalScreen';
 import TutorialScale from './Tutorial/TutorialScale';
 
@@ -28,6 +29,7 @@ export {
   ResponsiveAppBar,
   TopBar,
   Loading,
+  Optimizing,
   InitialScreen,
   TutorialScale,
 
@@ -47,6 +49,7 @@ export default {
   ResponsiveAppBar,
   TopBar,
   Loading,
+  Optimizing,
   InitialScreen,
   TutorialScale,
   BottomButtonGroup

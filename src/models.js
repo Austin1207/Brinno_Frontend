@@ -209,8 +209,8 @@ export class Scene extends Record({
   // width: 3000,
   // height: 2000,
   // 修改畫布大小
-  width: 30000,
-  height: 20000,
+  width: 3000,
+  height: 2000,
   meta: new Map(),   //additional info
   guides: new Map()
 }, 'Scene') {

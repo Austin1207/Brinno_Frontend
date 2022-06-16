@@ -1,0 +1,494 @@
+/* Rectangle */
+.Rectangle-13 {
+    width: 302px;
+    height: 158.6px;
+    flex-grow: 0;
+    /* margin: 0 0 15.4px; */
+    /* padding: 22px 0 13.6px 1px; */
+    border-radius: 8px;
+    background-color: #222222;
+  }
+
+.Rectangle-13-2 {
+  width: 302px;
+  height: 150px;
+  flex-grow: 0;
+  /* margin: 0 0 15.4px; */
+  /* padding: 22px 0 13.6px 1px; */
+  border-radius: 8px;
+  background-color: #222222;
+}
+
+.Rectangle-13-3 {
+  width: 302px;
+  height: 133px;
+  flex-grow: 0;
+  /* margin: 0 0 15.4px; */
+  /* padding: 22px 0 13.6px 1px; */
+  border-radius: 8px;
+  background-color: #222222;
+}
+
+.Rectangle-15 {
+  width: 293px;
+  height: 284px;
+  flex-grow: 0;
+  /* margin: 0 0 0 20px;
+  padding: 22px 0 12px 1px; */
+  border-radius: 8px;
+  border: solid 1px #000;
+  background-color: #222222;
+  }
+
+.Rectangle-16 {
+  width: 292px;
+  height: 333px;
+  flex-grow: 0;
+  /* margin: 58px 166px 347px 13px; */
+  border-radius: 8px;
+  background-color: #222222;
+}
+
+.Successful {
+  width: 594px;
+  height: 84px;
+  /* display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start; */
+  /* gap: 10px; */
+  /* margin: 57px 122px 158px 353px;
+  padding: 30px 36px; */
+  border-radius: 8px;
+  background-color: #222222;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color:#ffffff
+}
+
+/* polygon */
+.Polygon-3 {
+width: 0;
+height: 0;
+border-style: solid;
+border-width: 15px 15px 0 15px;
+border-color: #222222 transparent transparent transparent;
+}
+
+.Polygon-3-2 {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 28.8px 49.9px 28.8px 0;
+  border-color: transparent #222222 transparent transparent;
+  }
+
+/* Line */
+
+.Line-15 {
+    width: 266.1px;
+    height: 2px;
+    flex-grow: 0;
+    /* margin: 21.1px 0px 26px 34.9px; */
+    background-color: #dcddde;
+  }
+
+.Line-14 {
+    width: 35.9px;
+    height: 2px;
+    flex-grow: 0;
+    /* margin: 21.1px 0px 26px 34.9px; */
+    background-color: #ffa140;
+}
+
+.Line-14-2 {
+  width: 64px;
+  height: 2px;
+  flex-grow: 0;
+  /* margin: 21.1px 0px 26px 34.9px; */
+  background-color: #ffa140;
+}
+
+.Line-16 {
+  width: 258.1px;
+  height: 2px;
+  flex-grow: 0;
+  /* margin: 21.1px 0px 26px 34.9px; */
+  background-color: #dcddde;
+}
+
+.Line-17 {
+  width: 123px;
+  height: 2px;
+  flex-grow: 0;
+  /* margin: 21.1px 0px 26px 34.9px; */
+  background-color: #ffa140;
+}
+
+.Line-18 {
+  width: 164px;
+  height: 2px;
+  flex-grow: 0;
+  /* margin: 21.1px 0px 26px 34.9px; */
+  background-color: #ffa140;
+}
+
+.Line-19 {
+  width: 205px;
+  height: 2px;
+  flex-grow: 0;
+  /* margin: 21.1px 0px 26px 34.9px; */
+  background-color: #ffa140;
+}
+
+.Line-20 {
+  width: 246px;
+  height: 2px;
+  flex-grow: 0;
+  /* margin: 21.1px 0px 26px 34.9px; */
+  background-color: #ffa140;
+}
+
+.Line-21 {
+  width: 300px;
+  height: 2px;
+  flex-grow: 0;
+  /* margin: 21.1px 0px 26px 34.9px; */
+  background-color: #ffa140;
+}
+
+/* word */
+
+.-of-7 {
+    width: 35px;
+    /* height: 14px; */
+    flex-grow: 0;
+    /* margin: 12px 137px 0 135px; */
+    /* font-family: SFProDisplay; */
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+  }
+
+.Scale-Tool {
+width: 91.4px;
+height: 15.7px;
+flex-grow: 0;
+/* font-family: SFProDisplay; */
+font-size: 16px;
+font-weight: bold;
+font-stretch: normal;
+font-style: normal;
+line-height: normal;
+letter-spacing: normal;
+text-align: left;
+color: #ffa140;
+}
+
+.Use-the-scale-tool-to-select-from-one-point-to-the-other-point-on-your-canvas-to-set-your-scale {
+    width: 250px;
+    height: 50.3px;
+    flex-grow: 0;
+    /* font-family: SFProDisplay; */
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+  } 
+
+.Use-your-cursor-by-clicking-on-one-point-of-the-screen-to-connect-to-another-point-to-form-a-linewa {
+    width: 241px;
+    height: 50px;
+    flex-grow: 0;
+    margin: 16px 0 0;
+    /* font-family: SFProDisplay; */
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+  }
+
+.Outline-Contruction-Area {
+  width: 190px;
+  height: 19px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffa140;
+}
+
+.Outline-the-general-enclosed-area-of-your-construction-site {
+  width: 250px;
+  height: 34px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.Use-your-cursor-to-click-on-the-canvas-to-form-any-shape-you-like {
+  width: 241px;
+  height: 34px;
+  flex-grow: 0;
+  margin: 12px 0 0;
+  /* font-family: SFProDisplay; */
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.Outline-Interest-Area {
+  width: 190px;
+  height: 19px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffa140;
+}
+
+.Outline-the-area-of-the-site-where-you-are-interested-in-capturing {
+  width: 250px;
+  height: 34px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.Place-Obstacle-Area {
+  width: 190px;
+  height: 19px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffa140;
+}
+
+.Mark-the-area-where-obstacles-may-block-the-camera-view {
+  width: 250px;
+  height: 34px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.Place-no-camera-area {
+  width: 190px;
+  height: 19px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffa140;
+}
+
+.Mark-the-area-where-cameras-cannot-be-place-in-your-construction-site {
+  width: 250px;
+  height: 34px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.Place-must-cover-area {
+  width: 190px;
+  height: 19px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffa140;
+}
+
+.Mark-the-targeted-area-where-the-cameras-must-cover {
+  width: 250px;
+  height: 34px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.Camera-Tool {
+  width: 111px;
+  height: 19px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffa140;
+}
+
+.Add-or-edit-a-camera-on-to-your-canvas {
+  width: 250px;
+  height: 17px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+/* picture */
+
+.Screen-Shot-2022-02-10-at-41152-PM {
+width: 241px;
+height: 132px;
+flex-grow: 0;
+/* margin: 0 0 16px; */
+/* padding: 42.4px 26px 48px 25px; */
+}
+
+/* button */
+
+.button-Next {
+  width: 104px;
+  height: 41px;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: flex-end; */
+  align-items: center;
+  gap: 10px;
+  padding: 11px 36px;
+  border-radius: 10px;
+  background-color: #ffa140;
+  color: #ffffff;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  cursor: pointer;
+}
+
+.button-Next-disabled {
+  width: 104px;
+  height: 41px;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: flex-end; */
+  align-items: center;
+  gap: 10px;
+  padding: 11px 36px;
+  border:none;
+  border-radius: 10px;
+  background-color: #ffdfbf;
+  color: #ffffff;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  cursor: pointer;
+}
+
+.button-Skip {
+  width: 104px;
+  height: 41px;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: flex-end; */
+  align-items: center;
+  gap: 10px;
+  padding: 11px 36px;
+  border-radius: 10px;
+  background-color: #b9bbbc;
+  color: #ffffff;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
