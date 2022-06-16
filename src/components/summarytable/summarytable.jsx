@@ -19,6 +19,8 @@ import StarBorder from '@mui/icons-material/StarBorder';
 import CameraIcon from './camera.png';
 import BatteryIcon from './battery.png';
 import CostIcon from './cost.png';
+import Button from '@mui/material/Button';
+import LaunchIcon from '@mui/icons-material/Launch';
 
 const STYLE_TITLE = {
     height: '24px',
@@ -53,6 +55,15 @@ export default function SummaryTable() {
                 <p style={STYLE_NEEDUPDATE}>Summary is not the most updated version.</p>
                 <a id="updatesum" href="#" style={STYLE_NEEDUPDATE}>Update now</a>
             </div>
+            <Button
+              id = "Scale1"
+              variant="contained"
+              sx={{ position: 'absolute', top: 14, right: 14, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              //onClick = {SetScale}
+              >
+                <LaunchIcon />
+            </Button>
             <p style={STYLE_TITLE}>
                 Camera Coverage
                 </p>

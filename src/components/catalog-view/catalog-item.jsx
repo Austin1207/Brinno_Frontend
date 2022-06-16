@@ -4,14 +4,14 @@ import {FaPlusCircle as IconAdd} from 'react-icons/fa';
 import * as SharedStyle from '../../shared-style';
 
 const STYLE_BOX = {
-  width: '14em',
-  height: '14em',
-  padding: '0.625em',
-  background: '#f7f7f9',
+  width: '300px',
+  height: '300px',
+  padding: '30px',
+  background: '#ffffff',
   border: '1px solid #e1e1e8',
   cursor: 'pointer',
   position: 'relative',
-  boxShadow: '0 1px 6px 0 rgba(0, 0, 0, 0.11), 0 1px 4px 0 rgba(0, 0, 0, 0.11)',
+  //boxShadow: '0 1px 6px 0 rgba(0, 0, 0, 0.11), 0 1px 4px 0 rgba(0, 0, 0, 0.11)',
   borderRadius: '2px',
   transition: 'all .15s ease-in-out',
   WebkitTransition: 'all .15s ease-in-out',
@@ -39,12 +39,13 @@ const STYLE_TITLE_HOVER = {
 
 const STYLE_IMAGE_CONTAINER = {
   width: '100%',
-  height: '8em',
+  height: '200px',
   position:'relative',
   overflow:'hidden',
   border: 'solid 1px #e6e6e6',
   padding:0,
   margin:0,
+  border:0,
   marginBottom: '5px'
 };
 
@@ -142,9 +143,7 @@ export default class CatalogItem extends Component {
       >
         <b style={ !hover ? STYLE_TITLE : STYLE_TITLE_HOVER }>{element.info.title}</b>
         <div style={ STYLE_IMAGE_CONTAINER }>
-          <div style={{...( !hover ? STYLE_IMAGE: STYLE_IMAGE_HOVER ), backgroundImage: 'url(' + element.info.image + ')'}}>
-            { hover ? <IconAdd style={STYLE_PLUS_HOVER} /> : null }
-          </div>
+          <div style={{...( !hover ? STYLE_IMAGE: STYLE_IMAGE_HOVER ), backgroundImage: 'url(' + element.info.image + ')'}}></div>
         </div>
         <ul style={STYLE_TAGS}>
           {element.info.tag.map((tag, index) => <li style={STYLE_TAG} key={index}>{tag}</li>)}
