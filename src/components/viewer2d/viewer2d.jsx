@@ -160,7 +160,8 @@ export default function Viewer2D(
         backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}};
   const buttonsInuseStyle = { position: 'absolute', top: 94, right: 41, width: '210px', height: '36px',
         backgroundColor: '#FFFFFF', color: '#ff8200', "&:hover": {backgroundColor: '#ff8200', color: '#ffffff'}};
-  const [openCoverage, setCoverage] = React.useState(true);
+  //fix camera coverage bug when restart tool by setting useState to false
+  const [openCoverage, setCoverage] = React.useState(false);
   const handleCoverageButton = () => {
     setCoverage(!openCoverage);
   };

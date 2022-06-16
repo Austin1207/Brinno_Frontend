@@ -150,12 +150,25 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
   //Gernerate(checkforbidden及check403待輸出json出來後修改)
   const s3jsoninputurl = "http://localhost:3000/s3jsoninputUrl"
 
-  function showLoading() {
-    document.getElementById("loading").style.display = "";
+  function showOptimizing() {
+    document.getElementById("overlay").style.display = "";
+    document.getElementById("optimizing").style.display = "";
+    for (var i = 1; i < 160; i++) {
+      setTimeout(function(){
+        document.getElementById("optimizing").innerHTML = "Optimizing.";
+      },1500*i - 1000)
+      setTimeout(function(){
+        document.getElementById("optimizing").innerHTML = "Optimizing..";
+      },1500*i -500)
+      setTimeout(function(){
+        document.getElementById("optimizing").innerHTML = "Optimizing...";
+      },1500*i)
+    }
   }
 
-  function closeLoading() {
-    document.getElementById("loading").style.display = "none";
+  function closeOptimizing() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("optimizing").style.display = "none";
   }
 
   // function checkForbidden (url, resultJson, status) {
@@ -171,8 +184,54 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
   //   }
   // };
 
+  
+  function checkForbidden (url, status) {
+    var req = new XMLHttpRequest();
+    req.open('GET', url, false);
+    req.send();
+    if (req.status == 200) {
+      closeOptimizing();
+
+      var xhr = new XMLHttpRequest()
+      xhr.open('GET', url, true)
+      xhr.send()
+      xhr.onload = function(){
+        var data = JSON.parse(this.responseText);
+        console.log(data)
+
+        projectActions.loadProject(data)
+
+        sceneActions.selectLayer("layer2")
+      }
+
+      // var img = new Image();
+      // img.src = url;
+      // if (img.complete) {
+      //   if (img.width >= img.height){
+      //     projectActions.loadProject(loadimgjson(url, jsonleft, top));
+      //   }
+      //   else {
+      //     projectActions.loadProject(loadimgjson2(url, jsonleft, top));
+      //   }
+      // }
+      // else {
+      //   img.onload = function(){
+      //     if (img.width >= img.height){
+      //       projectActions.loadProject(loadimgjson(url, jsonleft, top));
+      //     }
+      //     else {
+      //       projectActions.loadProject(loadimgjson2(url, jsonleft, top));
+      //     }
+      //   }
+      // }
+      // document.getElementById("Undo").disabled = false;
+      status = 1;
+      return status;
+      }
+    }
+
   async function GernerateOnclick(){
-    showLoading();
+    showOptimizing();
     const json_data = state.get('scene').toJS();
     const {url} = await fetch(s3jsoninputurl).then(res => res.json());
 
@@ -192,13 +251,13 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
 
     console.log(JsonUrl);
 
-    // var Check403 = setInterval(function(){ 
-    //   var status = 0;
-    //   status = checkForbidden(imageUrl, Json, status);
-    //   if (status == 1) {
-    //     clearInterval(Check403);
-    //   }
-    // },1000)
+    var Check403 = setInterval(function(){ 
+      var status = 0;
+      status = checkForbidden(JsonUrl, status);
+      if (status == 1) {
+        clearInterval(Check403);
+      }
+    },1000)
   }
 
   // const dispatch = useDispatch();
@@ -281,6 +340,7 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
               key={'Generate'}
               sx={{ my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontWeight: "normal", fontStretch: "normal", fontStyle:"normal", textTransform:"capitalize"}}
               style = {{ width: "134px", height: "41px", borderRadius: "10px", backgroundColor: "#ffdfbf"}}
+              onClick = {GernerateOnclick}
               >
               {'Generate'}
           </Button>
