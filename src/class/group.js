@@ -11,6 +11,9 @@ import { Map, List } from 'immutable';
 import { Group as GroupModel } from '../models';
 import { IDBroker, MathUtils, GeometryUtils } from '../utils/export';
 
+// clear redoHistort
+import { HistoryStructure } from '../models';
+
 class Group{
 
   static select( state, groupID ){
@@ -37,6 +40,11 @@ class Group{
     let groups = state.getIn(['scene', 'groups']).map( g  => g.set('selected', false) );
 
     state = state.setIn(['scene', 'groups'], groups).setIn([ 'scene', 'groups', groupID, 'selected' ], true);
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -45,6 +53,11 @@ class Group{
     let layerList = state.getIn([ 'scene', 'groups', groupID, 'elements' ]);
     let reduced = layerList.reduce( ( newState, layer, layerID ) => Layer.unselectAll( newState, layerID ).updatedState, state );
     state = reduced.setIn([ 'scene', 'groups', groupID, 'selected' ], false);
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -53,6 +66,11 @@ class Group{
     let groupID = IDBroker.acquireID();
 
     state = state.setIn(['scene', 'groups', groupID], new GroupModel({ id: groupID, name: groupID}) );
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -76,6 +94,11 @@ class Group{
         layerElements[elementPrototype].forEach( el => state = this.addElement( state, groupID, layerID, elementPrototype, el.get('id') ).updatedState );
       }
     });
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return {updatedState: state};
   }
@@ -88,6 +111,11 @@ class Group{
 
       state = this.reloadBaricenter( state, groupID ).updatedState;
     }
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -95,6 +123,11 @@ class Group{
   static setBarycenter( state, groupID, x, y ) {
     if (typeof x !== 'undefined') state = state.setIn(['scene', 'groups', groupID, 'x'], x);
     if (typeof y !== 'undefined') state = state.setIn(['scene', 'groups', groupID, 'y'], y);
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -170,6 +203,11 @@ class Group{
     if( elementCount ) {
       state = this.setBarycenter( state, groupID, xBar / elementCount, yBar / elementCount ).updatedState;
     }
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -179,28 +217,54 @@ class Group{
 
     if( !actualList || !actualList.contains(elementID) )
     {
+         
+      // clear redoHistort
+      state = state.merge({
+        redoHistory:  new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
 
     state = state.setIn(['scene', 'groups', groupID, 'elements', layerID, elementPrototype], actualList.filterNot( el => el === elementID ));
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState : state };
   }
 
   static setAttributes( state, groupID, attributes ){
     state = state.mergeIn(['scene', 'groups', groupID], attributes);
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState : state };
   }
 
   static setProperties( state, groupID, properties ){
     state = state.mergeIn(['scene', 'groups', groupID, 'properties'], properties);
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState : state };
   }
 
   static remove( state, groupID ) {
     state = state.removeIn(['scene', 'groups', groupID]);
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState : state };
   }
@@ -230,6 +294,11 @@ class Group{
     });
 
     state = state.deleteIn([ 'scene', 'groups', groupID ]);
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -284,6 +353,11 @@ class Group{
     state = this.setBarycenter( state, groupID, x, y ).updatedState;
 
     state = Group.select( state, groupID ).updatedState;
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }
@@ -344,6 +418,11 @@ class Group{
     });
 
     state = Group.select( state, groupID ).updatedState;
+   
+    // clear redoHistort
+    state = state.merge({
+      redoHistory:  new HistoryStructure()
+    });
 
     return { updatedState: state };
   }

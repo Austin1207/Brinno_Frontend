@@ -172,6 +172,7 @@ export default function Viewer2D(
         backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}};
   const buttonsInuseStyle = { position: 'absolute', textTransform: 'none', width: '210px', height: '36px', justifyContent: 'flex-start', padding: '6px',
         backgroundColor: '#FFFFFF', color: '#ff8200', "&:hover": {backgroundColor: '#ff8200', color: '#ffffff'}};
+
   const [openCoverage, setCoverage] = React.useState(false);
   const handleCoverageButton = () => {
     setCoverage(!openCoverage);

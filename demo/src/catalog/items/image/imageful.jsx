@@ -72,6 +72,14 @@ export default class ImageFul extends Component {
           document.getElementById("Circle2").style.display = ""
           document.getElementById("Line").style.display = ""
 
+          document.getElementById('1-8-8').style.display = "none"
+          document.getElementById('1-8-9').style.display = "none"
+          document.getElementById('1-8-10').style.display = "none"
+          document.getElementById('1-8-11').style.display = "none"
+          document.getElementById('1-8-12').style.display = "none"
+          document.getElementById('1-8-13').style.display = "none"
+          document.getElementById('1-8-14').style.display = "none"
+
         }
         else if (target.attributes.name.nodeValue === 'snd-anchor') {
           this.setState({handleMouseMove2: !this.state.handleMouseMove2});

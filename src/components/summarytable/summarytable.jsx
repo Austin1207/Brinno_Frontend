@@ -49,6 +49,11 @@ export default function SummaryTable() {
       setOpen(!open);
     };
 
+    const exportTest = () => {
+        var url = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/export.pdf";
+        window.open(url)
+    }
+
     return(
         <div style={{width: '359px', textAlign: 'center'}}>
             <div style={{height: 54-20, marginTop: '10px'}}>
@@ -56,11 +61,11 @@ export default function SummaryTable() {
                 <a id="updatesum" href="#" style={STYLE_NEEDUPDATE}>Update now</a>
             </div>
             <Button
-              id = "Scale1"
+              id = "Export"
               variant="contained"
               sx={{ position: 'absolute', top: 14, right: 14, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
               backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
-              //onClick = {SetScale}
+              onClick = {exportTest}
               >
                 <LaunchIcon />
             </Button>
@@ -75,7 +80,7 @@ export default function SummaryTable() {
                         <ListItemAvatar>
                         <img src={CameraIcon} alt={"CameraIcon"} style={{margin: 'auto 20px auto 4px'}}/>
                         </ListItemAvatar>
-                        <ListItemText primary="Cameras Needed" secondary="4" primaryTypographyProps={{fontSize: '20px'}} secondaryTypographyProps={{fontSize: '20px'}}/>
+                        <ListItemText primary="Cameras Needed" secondary="2" primaryTypographyProps={{fontSize: '20px'}} secondaryTypographyProps={{fontSize: '20px'}}/>
                     </ListItem>
                     <Divider/>
                     <ListItem>
@@ -89,7 +94,7 @@ export default function SummaryTable() {
                         <ListItemAvatar>
                         <img src={CostIcon} alt={"CostIcon"} style={{margin: 'auto 20px auto 4px'}}/>
                         </ListItemAvatar>
-                        <ListItemText primary="Total Cost" secondary="7,800 USD" primaryTypographyProps={{fontSize: '20px'}} secondaryTypographyProps={{fontSize: '20px'}}/>
+                        <ListItemText primary="Total Cost" secondary="2,800 USD" primaryTypographyProps={{fontSize: '20px'}} secondaryTypographyProps={{fontSize: '20px'}}/>
                         {open ? <ExpandLess /> : <ExpandMore />}
                     </ListItemButton>
                     <Divider/>
@@ -104,7 +109,7 @@ export default function SummaryTable() {
                             </ListItemIcon>
                             <ListItemText primary={
                                 <div style={{display: 'flex', flexFlow: 'row wrap'}}>
-                                    <p style={{ flexGrow: 1, margin: '0 auto 0 auto' }}>BCC2000<br/>x1</p>
+                                    <p style={{ flexGrow: 1, margin: '0 auto 0 auto' }}>BCC2000<br/>x2</p>
                                     <p style={{ flexGrow: 1, margin: '0 auto 0 auto' }}>$2,800</p>
                                 </div>}
                                 secondary={

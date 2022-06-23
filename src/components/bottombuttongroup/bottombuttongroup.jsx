@@ -75,6 +75,26 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
       DrawingScale();
       document.getElementById('Question2').style.display = ""
 
+      if (localStorage.getItem("Tutorial") !== "Done") { 
+        document.getElementById('1-8-1').style.display = "none"
+        document.getElementById('1-8-2').style.display = "none"
+        document.getElementById('1-8-3').style.display = "none"
+        document.getElementById('1-8-4').style.display = "none"
+        document.getElementById('1-8-5').style.display = "none"
+        document.getElementById('1-8-6').style.display = "none"
+        document.getElementById('1-8-7').style.display = "none"
+
+        document.getElementById('Scale2').style.zIndex = "9999"
+        document.getElementById('overlay').style.display = "none"
+
+        document.getElementById('1-8-8').style.display = ""
+        document.getElementById('1-8-9').style.display = ""
+        document.getElementById('1-8-10').style.display = ""
+        document.getElementById('1-8-11').style.display = ""
+        document.getElementById('1-8-12').style.display = ""
+        document.getElementById('1-8-13').style.display = ""
+        document.getElementById('1-8-14').style.display = ""
+      }
 
       }
     else {
@@ -83,7 +103,9 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
   }
 
   function test1234() {
-    console.log("123")
+    // console.log("123")
+    console.log(document.getElementById("Cameras_count"))
+    // document.getElementById("totalCoverage").innerHTML = String(50);
   }
 
   function undotest() {
