@@ -3,16 +3,19 @@ import PropTypes from 'prop-types';
 import {FaPlusCircle as IconAdd} from 'react-icons/fa';
 import * as SharedStyle from '../../shared-style';
 import { Item } from '../../class/export';
+import batteryIcon from './battery.png'
+import fullHDIcon from './fullHD.png'
+import HDRIcon from './HDR.png'
 
 const STYLE_BOX = {
-  width: '14em',
-  height: '14em',
-  padding: '0.625em',
-  background: '#f7f7f9',
+  width: '300px',
+  height: '300px',
+  padding: '30px',
+  background: '#ffffff',
   border: '1px solid #e1e1e8',
   cursor: 'pointer',
   position: 'relative',
-  boxShadow: '0 1px 6px 0 rgba(0, 0, 0, 0.11), 0 1px 4px 0 rgba(0, 0, 0, 0.11)',
+  //boxShadow: '0 1px 6px 0 rgba(0, 0, 0, 0.11), 0 1px 4px 0 rgba(0, 0, 0, 0.11)',
   borderRadius: '2px',
   transition: 'all .15s ease-in-out',
   WebkitTransition: 'all .15s ease-in-out',
@@ -27,7 +30,8 @@ const STYLE_BOX_HOVER = {
 
 const STYLE_TITLE = {
   width:'100%',
-  textAlign:'center',
+  fontSize: '20px',
+  textAlign:'left',
   display:'block',
   marginBottom:'.5em',
   textTransform: 'capitalize'
@@ -40,12 +44,13 @@ const STYLE_TITLE_HOVER = {
 
 const STYLE_IMAGE_CONTAINER = {
   width: '100%',
-  height: '8em',
+  height: '200px',
   position:'relative',
   overflow:'hidden',
   border: 'solid 1px #e6e6e6',
   padding:0,
   margin:0,
+  border:0,
   marginBottom: '5px'
 };
 
@@ -79,30 +84,14 @@ const STYLE_DESCRIPTION = {
   display: '-webkit-box',
   height: '2em',
   margin: '0 auto',
-  fontSize: '0.75em',
-  fontStyle:'italic',
+  fontSize: '14px',
+  color: '#838689',
+  //fontStyle:'italic',
   lineHeight: '1em',
   WebkitLineClamp: '2',
   WebkitBoxOrient: 'vertical',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
-};
-
-const STYLE_TAGS = {
-  listStyle: 'none',
-  margin: '0px',
-  padding: '0px',
-  fontSize: '11px',
-  marginBottom: '3px'
-};
-
-const STYLE_TAG = {
-  display: 'inline-block',
-  background: '#337ab7',
-  color: SharedStyle.COLORS.white,
-  padding: '1px 4px',
-  marginRight: '3px',
-  borderRadius: '3px'
 };
 
 export default class CatalogChangeItem extends Component {
@@ -151,16 +140,20 @@ export default class CatalogChangeItem extends Component {
         onMouseEnter={e => this.setState({hover: true})}
         onMouseLeave={e => this.setState({hover: false})}
       >
-        <b style={ !hover ? STYLE_TITLE : STYLE_TITLE_HOVER }>{element.info.title}</b>
         <div style={ STYLE_IMAGE_CONTAINER }>
-          <div style={{...( !hover ? STYLE_IMAGE: STYLE_IMAGE_HOVER ), backgroundImage: 'url(' + element.info.image + ')'}}>
-            { hover ? <IconAdd style={STYLE_PLUS_HOVER} /> : null }
-          </div>
+          <div style={{...( !hover ? STYLE_IMAGE: STYLE_IMAGE_HOVER ), backgroundImage: 'url(' + element.info.image + ')'}}></div>
         </div>
-        <ul style={STYLE_TAGS}>
+        <b style={ !hover ? STYLE_TITLE : STYLE_TITLE_HOVER }>{element.info.title}</b>
+        <p style={STYLE_DESCRIPTION}>{element.info.description}</p>
+        <div>
+            <img src={batteryIcon} alt={"batteryIcon"} style={{margin: 'auto 12px auto 12px'}}/>
+            <img src={fullHDIcon} alt={"fullHDIcon"} style={{margin: 'auto 12px auto 12px'}}/>
+            <img src={HDRIcon} alt={"HDRIcon"} style={{margin: 'auto 12px auto 12px'}}/>
+        </div>
+{/*        <ul style={STYLE_TAGS}>
           {element.info.tag.map((tag, index) => <li style={STYLE_TAG} key={index}>{tag}</li>)}
-        </ul>
-        <div style={STYLE_DESCRIPTION}>{element.info.description}</div>
+    </ul>
+        <div style={STYLE_DESCRIPTION}>{element.info.description}</div>*/}
       </div>
     );
   }

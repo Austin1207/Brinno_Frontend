@@ -19,6 +19,18 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Collapse from '@mui/material/Collapse';
+import Paper from '@mui/material/Paper';
+import Fade from '@mui/material/Fade';
+import Popper from '@mui/material/Popper';
+import Box from '@material-ui/core/Box';
+import {IconConstructionLine, IconInterestLine, IconObstacleLine, IconNoCamLine, IconMustLine} from './lineicon'
 
 const drawerWidth = 260;
 
@@ -156,14 +168,22 @@ export default function Viewer2D(
   };
   /* item button */
   /* camera coverage button*/
-  const buttonsStyle = { position: 'absolute', top: 94, right: 41, width: '210px', height: '36px',
+  const buttonsStyle = { position: 'absolute', textTransform: 'none', width: '210px', height: '36px', justifyContent: 'flex-start', padding: '6px',
         backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}};
-  const buttonsInuseStyle = { position: 'absolute', top: 94, right: 41, width: '210px', height: '36px',
+  const buttonsInuseStyle = { position: 'absolute', textTransform: 'none', width: '210px', height: '36px', justifyContent: 'flex-start', padding: '6px',
         backgroundColor: '#FFFFFF', color: '#ff8200', "&:hover": {backgroundColor: '#ff8200', color: '#ffffff'}};
-  //fix camera coverage bug when restart tool by setting useState to false
+
   const [openCoverage, setCoverage] = React.useState(false);
   const handleCoverageButton = () => {
     setCoverage(!openCoverage);
+  };
+  /* Area legend*/
+  const [openLegend, setOpenLegend] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleLegendButton = (event) => {
+    setAnchorEl(event.currentTarget);
+    setOpenLegend(!openLegend);
   };
 
   let { viewer2D, mode, scene } = state;
@@ -484,11 +504,64 @@ export default function Viewer2D(
         </svg>
 
       </ReactSVGPanZoom>
-      <Button variant="contained" startIcon={openCoverage ? <VisibilityIcon/> : <VisibilityOffIcon/>}
-        sx={openCoverage ? buttonsInuseStyle : buttonsStyle}
+      <Button variant="contained" 
+        sx={{...(openCoverage ? buttonsInuseStyle : buttonsStyle), top: 24, right: 41, }}
         onClick={handleCoverageButton}>
-        Camera Coverage
+        {openCoverage ? <VisibilityIcon sx={{paddingRight: '6px'}}/> : <VisibilityOffIcon sx={{paddingRight: '6px'}}/>}
+        <Divider orientation="vertical" flexItem={true}/>
+        <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Camera Coverage</Typography>
       </Button>
+      <Button variant="contained" 
+        sx={{...(openLegend ? buttonsInuseStyle : buttonsStyle), top: 39+36, right: 41,}}
+        onClick={handleLegendButton}>
+        {openLegend ? <ExpandLess sx={{paddingRight: '6px'}}/> : <ExpandMore sx={{paddingRight: '6px'}}/>}
+        <Divider orientation="vertical" flexItem={true}/>
+        <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Area Legend</Typography>
+      </Button>
+      <Popper open={openLegend} anchorEl={anchorEl} placement='bottom-start' transition>
+        {({ TransitionProps }) => (
+          <Fade {...TransitionProps} timeout={350}>
+            <Paper sx={{width: 210-12, height: 'auto', justifyContent: 'flex-start', padding: '6px',}}>
+              <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
+                <IconConstructionLine sx={{paddingRight: '6px'}}/>
+                <Divider orientation="vertical" flexItem={true}/>
+                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Contruction Area</Typography>
+              </Box>
+              <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
+                <IconInterestLine sx={{paddingRight: '6px'}}/>
+                <Divider orientation="vertical" flexItem={true}/>
+                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Interest Area</Typography>
+              </Box>
+              <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
+                <IconObstacleLine sx={{paddingRight: '6px'}}/>
+                <Divider orientation="vertical" flexItem={true}/>
+                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Obstacle Area</Typography>
+              </Box>
+              <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
+                <IconNoCamLine sx={{paddingRight: '6px'}}/>
+                <Divider orientation="vertical" flexItem={true}/>
+                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>No Camera Area</Typography>
+              </Box>
+              <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
+                <IconMustLine sx={{paddingRight: '6px'}}/>
+                <Divider orientation="vertical" flexItem={true}/>
+                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Must Cover Area</Typography>
+              </Box>
+            </Paper>
+          </Fade>
+        )}
+      </Popper>
+{/*      <Collapse in={openLegend} timeout="auto" unmountOnExit>
+        <Paper sx={{ top: 39+36+36, right: 41, zIndex: '999'}}>
+          <List component="div" disablePadding >
+            <ListItem>
+              <ListItemIcon>
+              </ListItemIcon>
+              <ListItemText primary='Contruction Area' primaryTypographyProps={{fontSize: '10px'}} />
+            </ListItem>
+          </List>
+        </Paper>
+        </Collapse>*/}
 {/*      <Menu
         open={contextMenu}
         onClose={handleContextMenuClose}

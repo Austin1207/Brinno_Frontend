@@ -144,14 +144,14 @@ export default class Toolbar extends Component {
       inuseTool: ''
     };
   }
-
+/*
   shouldComponentUpdate(nextProps, nextState) {
     return this.props.state.mode !== nextProps.state.mode ||
       this.props.height !== nextProps.height ||
       this.props.width !== nextProps.width ||
       this.props.state.alterate !== nextProps.state.alterate;
   }
-
+*/
   handleCamDrawChange(){
     this.setState({
       showSumDrawer: false,
@@ -496,7 +496,7 @@ export default class Toolbar extends Component {
         <Box pt={5/8} pb={5/8}>
           <Tooltip title="Camera Tool" placement="right" arrow 
             componentsProps={tooltipStyle}>
-            <Button sx={buttonsStyle}
+            <Button sx={this.state.showCamDrawer ? buttonsInuseStyle : buttonsStyle}
               id = "Camera Tool1"
               onClick={() => this.handleCamDrawChange()}
               disabled={true}
@@ -506,7 +506,7 @@ export default class Toolbar extends Component {
           </Tooltip>
           <Tooltip title="Camera Tool" placement="right" arrow 
             componentsProps={tooltipStyle}>
-            <Button sx={buttonsStyle}
+            <Button sx={this.state.showCamDrawer ? buttonsInuseStyle : buttonsStyle}
               id = "Camera Tool2"
               onClick={() => this.handleCamDrawChange()}
               style = {{display:"none"}}
@@ -543,9 +543,10 @@ export default class Toolbar extends Component {
         <Box sx={{ flexGrow: 0 }}>
           <Divider/>
           <Box pt={5/8} pb={5/8}>
-            <Button
+
+            <Button 
               id = "SummaryPage1" 
-              sx={buttonsStyle}
+              sx={this.state.showSumDrawer ? buttonsInuseStyle : buttonsStyle}
               //style={{top: height}}
               onClick={() => this.handleSumDrawChange()}
               disabled={true}
