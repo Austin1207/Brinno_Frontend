@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {FaPlusCircle as IconAdd} from 'react-icons/fa';
 import * as SharedStyle from '../../shared-style';
+import batteryIcon from './battery.png'
+import fullHDIcon from './fullHD.png'
+import HDRIcon from './HDR.png'
 
 const STYLE_BOX = {
   width: '300px',
@@ -26,7 +29,8 @@ const STYLE_BOX_HOVER = {
 
 const STYLE_TITLE = {
   width:'100%',
-  textAlign:'center',
+  fontSize: '20px',
+  textAlign:'left',
   display:'block',
   marginBottom:'.5em',
   textTransform: 'capitalize'
@@ -79,8 +83,9 @@ const STYLE_DESCRIPTION = {
   display: '-webkit-box',
   height: '2em',
   margin: '0 auto',
-  fontSize: '0.75em',
-  fontStyle:'italic',
+  fontSize: '14px',
+  color: '#838689',
+  //fontStyle:'italic',
   lineHeight: '1em',
   WebkitLineClamp: '2',
   WebkitBoxOrient: 'vertical',
@@ -141,14 +146,20 @@ export default class CatalogItem extends Component {
         onMouseEnter={e => this.setState({hover: true})}
         onMouseLeave={e => this.setState({hover: false})}
       >
-        <b style={ !hover ? STYLE_TITLE : STYLE_TITLE_HOVER }>{element.info.title}</b>
         <div style={ STYLE_IMAGE_CONTAINER }>
           <div style={{...( !hover ? STYLE_IMAGE: STYLE_IMAGE_HOVER ), backgroundImage: 'url(' + element.info.image + ')'}}></div>
         </div>
-        <ul style={STYLE_TAGS}>
+        <b style={ !hover ? STYLE_TITLE : STYLE_TITLE_HOVER }>{element.info.title}</b>
+        <p style={STYLE_DESCRIPTION}>{element.info.description}</p>
+        <div>
+            <img src={batteryIcon} alt={"batteryIcon"} style={{margin: 'auto 12px auto 12px'}}/>
+            <img src={fullHDIcon} alt={"fullHDIcon"} style={{margin: 'auto 12px auto 12px'}}/>
+            <img src={HDRIcon} alt={"HDRIcon"} style={{margin: 'auto 12px auto 12px'}}/>
+        </div>
+{/*        <ul style={STYLE_TAGS}>
           {element.info.tag.map((tag, index) => <li style={STYLE_TAG} key={index}>{tag}</li>)}
-        </ul>
-        <div style={STYLE_DESCRIPTION}>{element.info.description}</div>
+    </ul>
+        <div style={STYLE_DESCRIPTION}>{element.info.description}</div>*/}
       </div>
     );
   }
