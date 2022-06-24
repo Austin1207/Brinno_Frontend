@@ -11,5 +11,5 @@ const info = {
   }
 };
 
-export default ElementsFactories.LineFactory('construction area', info);
+export default ElementsFactories.TargetFactory('construction area', info);
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { SnapUtils } from '../../utils/export';
 import { ReactSVGPanZoom, TOOL_NONE, TOOL_PAN, TOOL_ZOOM_IN, TOOL_ZOOM_OUT, TOOL_AUTO } from 'react-svg-pan-zoom';
 import * as constants from '../../constants';
 import State from './state';
@@ -119,7 +119,7 @@ export default function Viewer2D(
   { state, width, height },
   { viewer2DActions, linesActions, holesActions, verticesActions, itemsActions, areaActions, projectActions, catalog }) {
   
-  /* item button */
+  /* item button 
   const [contextMenu, setContextMenu] = React.useState(false);
   const [cursorPositionX, setX] = React.useState(0);
   const [cursorPositionY, setY] = React.useState(0);
@@ -153,6 +153,7 @@ export default function Viewer2D(
     setInfo(true);
     setType(false);
     setContextMenu(false);
+    console.log(selectItem);
   };
 
   const handleType = () => {
@@ -166,7 +167,7 @@ export default function Viewer2D(
     setOpen(false);
     setInfo(false);
   };
-  /* item button */
+   item button */
   /* camera coverage button*/
   const buttonsStyle = { position: 'absolute', textTransform: 'none', width: '210px', height: '36px', justifyContent: 'flex-start', padding: '6px',
         backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}};
@@ -243,8 +244,8 @@ export default function Viewer2D(
   };
 
   let onMouseDown = viewerEvent => {
-    setSelectItem(false);
-    setInfo(false);// item button
+    //setSelectItem(false);
+    //setInfo(false);// item button
     let event = viewerEvent.originalEvent;
 
     //workaround that allow imageful component to work
@@ -315,8 +316,8 @@ export default function Viewer2D(
 
           case 'items':
             itemsActions.selectItem(elementData.layer, elementData.id);
-            setSelectItem(true);
-            setInfo(true);// item button
+            //setSelectItem(true);
+            //setInfo(true);// item button
             break;
 
           case 'none':
@@ -330,9 +331,20 @@ export default function Viewer2D(
         break;
 
       case constants.MODE_DRAWING_LINE:
+        /* Stop drawing line*/
+        let snap = SnapUtils.nearestSnap(state.snapElements, x, y, state.snapMask);
+        if (snap) {
+          console.log('touch point');
+          linesActions.endDrawingLine(x, y, state.snapMask);
+          break;
+        }
+        else{
+        console.log('no touch point');
         linesActions.endDrawingLine(x, y, state.snapMask);
         linesActions.beginDrawingLine(layerID, x, y, state.snapMask);
-        break;
+        break;          
+        }
+
 
       case constants.MODE_DRAWING_HOLE:
         holesActions.endDrawingHole(layerID, x, y);
@@ -352,7 +364,7 @@ export default function Viewer2D(
 
       case constants.MODE_DRAGGING_ITEM:
         itemsActions.endDraggingItem(x, y);
-        setSelectItem(true);// item button
+        //setSelectItem(true);// item button
         break;
 
       case constants.MODE_DRAGGING_HOLE:
@@ -438,7 +450,7 @@ export default function Viewer2D(
         <Divider />
         {
           info && !type &&
-          <Typography Info>
+          <Typography>
             Info
           </Typography>
         }

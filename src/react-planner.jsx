@@ -81,12 +81,12 @@ class ReactPlanner extends Component {
 
   getShowCamDrawer(bool){
     this.setState({showCamDrawer:bool});
-    console.log(this.state.showCamDrawer);
+    //console.log(this.state.showCamDrawer);
   }
 
   getShowSumDrawer(bool){
     this.setState({showSumDrawer:bool});
-    console.log(this.state.showSumDrawer);
+    //console.log(this.state.showSumDrawer);
   }
 
   hideSidepanel(){

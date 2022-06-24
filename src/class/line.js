@@ -359,10 +359,11 @@ class Line{
   }
 
   static endDrawingLine(state, x, y) {
-
     if (state.snapMask && !state.snapMask.isEmpty()) {
       let snap = SnapUtils.nearestSnap(state.snapElements, x, y, state.snapMask);
-      if (snap) ({x, y} = snap.point);
+      if (snap) {
+        ({x, y} = snap.point);
+      }
     }
 
     let layerID = state.getIn(['drawingSupport', 'layerID']);
@@ -378,7 +379,7 @@ class Line{
     state = Layer.detectAndUpdateAreas( state, layerID ).updatedState;
 
     state = state.merge({
-      mode: MODE_WAITING_DRAWING_LINE,
+      mode: MODE_IDLE,
       snapElements: new List(),
       activeSnapElement: null
     });

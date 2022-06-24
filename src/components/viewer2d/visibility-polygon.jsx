@@ -39,7 +39,7 @@ export default function Visibility_Polygon({state, sceneWidth, sceneHeight}) {
       let lines = Object.entries(json.layers.layer2.lines);
       let walls_vertices = [];
       for(let i=0;i<lines.length;i++){
-          if(lines[i][1].type=="obstacle area"||lines[i][1].type=="construction area"){
+          if(lines[i][1].type=="obstacle area"/*||lines[i][1].type=="construction area"*/){
               walls_vertices.push([lines[i][1].vertices])
           }
       }

@@ -165,6 +165,10 @@ class Project{
     if (!sceneHistory.last && sceneHistory.list.isEmpty()) {
       return { updatedState: state };
     }
+    //prevent MODE_IDLE rollback
+    if (state.mode === 'MODE_IDLE') {
+      return { updatedState: state };
+    }
 
     state = this.unselectAll( state ).updatedState;
 

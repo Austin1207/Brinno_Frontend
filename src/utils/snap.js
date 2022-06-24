@@ -9,10 +9,10 @@ export const SNAP_GUIDE = 'SNAP_GUIDE';
 
 export const SNAP_MASK = new Map({
   SNAP_POINT : true,
-  SNAP_LINE : true,
-  SNAP_SEGMENT : true,
+  SNAP_LINE : false,
+  SNAP_SEGMENT : false,
   SNAP_GRID : false,
-  SNAP_GUIDE : true
+  SNAP_GUIDE : false
 });
 
 class PointSnap extends Record({
