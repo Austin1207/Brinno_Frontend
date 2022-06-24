@@ -22,6 +22,10 @@ export default function TargetFactory(name, info) {
       let STYLE_LINE = {};
       let STYLE_LINE_SELECTED = {};
       switch(name){
+        case 'construction area':
+          STYLE_LINE = { strokeWidth: 5, stroke: '#222222'};
+          STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
+          break;
         case 'interest area':
           STYLE_LINE = { strokeWidth: 5, stroke: '#ff8200'};
           STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
