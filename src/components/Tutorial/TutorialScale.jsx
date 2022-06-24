@@ -6,6 +6,7 @@ import interestArea from './interestArea.png';
 import obstacleArea from './obstacleArea.png';
 import noCameraArea from './noCameraArea.png';
 import mustCoverArea from './mustCoverArea.png';
+import rotate from './rotate.png';
 
 const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}) => {
 
@@ -191,6 +192,93 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
         document.getElementById('Camera Tool1').style.display = "none"
         document.getElementById('Camera Tool2').style.display = ""
+    }
+
+    const Next_6 = event => {
+        document.getElementById("7-8-19").style.display = "none"
+        document.getElementById("7-8-20").style.display = "none"
+        document.getElementById("7-8-21").style.display = "none"
+        document.getElementById("7-8-22").style.display = "none"
+        document.getElementById("7-8-23").style.display = "none"
+        document.getElementById("7-8-24").style.display = "none"
+        document.getElementById("7-8-25").style.display = "none"
+        document.getElementById("7-8-26").style.display = "none"
+
+        var CameraX = parseInt(localStorage.getItem("CameraX"))
+        var CameraY = parseInt(localStorage.getItem("CameraY"))
+
+        document.getElementById("7-8-27").style.left = `${CameraX + 40}px`
+        document.getElementById("7-8-27").style.top = `${CameraY - 40}px`
+        document.getElementById("7-8-28").style.left = `${CameraX + 24}px`
+        document.getElementById("7-8-28").style.top = `${CameraY - 33}px`
+        document.getElementById("7-8-29").style.left = `${CameraX + 40}px`
+        document.getElementById("7-8-29").style.top = `${CameraY + 238.1}px`
+        document.getElementById("7-8-30").style.left = `${CameraX + 170}px`
+        document.getElementById("7-8-30").style.top = `${CameraY + 256}px`
+        document.getElementById("7-8-31").style.left = `${CameraX + 65.5}px`
+        document.getElementById("7-8-31").style.top = `${CameraY + 120}px`
+        document.getElementById("7-8-32").style.left = `${CameraX + 65.5}px`
+        document.getElementById("7-8-32").style.top = `${CameraY + 176}px`
+        document.getElementById("7-8-33").style.left = `${CameraX + 202.5}px`
+        document.getElementById("7-8-33").style.top = `${CameraY + 176}px`
+        document.getElementById("7-8-34").style.left = `${CameraX + 65.5}px`
+        document.getElementById("7-8-34").style.top = `${CameraY - 14}px`
+
+        document.getElementById("7-8-27").style.display = ""
+        document.getElementById("7-8-28").style.display = ""
+        document.getElementById("7-8-29").style.display = ""
+        document.getElementById("7-8-30").style.display = ""
+        document.getElementById("7-8-31").style.display = ""
+        document.getElementById("7-8-32").style.display = ""
+        document.getElementById("7-8-33").style.display = ""
+        document.getElementById("7-8-34").style.display = ""
+
+        localStorage.setItem("RotateCamera","Ing")
+
+    }
+
+    const ClickCatalog = (Catalog) => {
+        var e = document.createEvent("MouseEvents");
+        e.initEvent("click", true, true);
+        Catalog.dispatchEvent(e);
+        }
+    
+    const CloseCatalog = event => {
+        var CatalogClick = document.getElementById("Camera Tool2")
+        ClickCatalog(CatalogClick);
+        setTimeout(() => {
+            document.getElementById('7-8-7').style.display = "none"
+            document.getElementById('7-8-8').style.display = "none"
+            document.getElementById('7-8-9').style.display = "none"
+            document.getElementById('7-8-10').style.display = "none"
+            document.getElementById('7-8-11').style.display = "none"
+            document.getElementById('7-8-12').style.display = "none"
+        }, 50);
+        }
+
+    const Next_7 = event => {
+        document.getElementById("7-8-27").style.display = "none"
+        document.getElementById("7-8-28").style.display = "none"
+        document.getElementById("7-8-29").style.display = "none"
+        document.getElementById("7-8-30").style.display = "none"
+        document.getElementById("7-8-31").style.display = "none"
+        document.getElementById("7-8-32").style.display = "none"
+        document.getElementById("7-8-33").style.display = "none"
+        document.getElementById("7-8-34").style.display = "none"
+
+        localStorage.setItem("RotateCamera","")
+
+        document.getElementById('Generate1').style.display = "none"
+        document.getElementById('Generate2').style.display = ""
+
+        if (localStorage.getItem("Tutorial") !== "Done"){
+            document.getElementById("8-8-1").style.display = ""
+            document.getElementById("8-8-2").style.display = ""
+            document.getElementById("8-8-3").style.display = ""
+            document.getElementById("8-8-4").style.display = ""
+            CloseCatalog()
+        }
+        
     }
 
 
@@ -1348,86 +1436,319 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             </span>
 
 
-            {/* Camera Tool部分等Camera目錄及hover做好再改 */}
-            {/* <div class="Rectangle-16" style = {{
+            <div class="Rectangle-17" id="7-8-7" style = {{
                 position: "absolute",
-                left: "105px",
-                top: "335px",
+                left: "419px",
+                top: "103px",
                 zIndex: 10000,
                 display:"none"
             }}></div>
 
-            <div class="Polygon-3-2" style = {{
+            <div class="Polygon-3-2" id="7-8-8" style = {{
                 position: "absolute",
-                left: "84px",
-                top: "355px",
+                left: "403px",
+                top: "110px",
                 zIndex: 10000,
                 display:"none"
             }}></div>
 
-            <div class="Line-16" style = {{
+            <div class="Line-21" id="7-8-9" style = {{
                 position: "absolute",
-                left: "138.9px",
-                top: "612.9px",
+                left: "419px",
+                top: "207px",
                 zIndex: 10000,
                 display:"none"
             }}></div>
 
-            <div class="Line-20" style = {{
+            <span class="-of-7" id="7-8-10" style = {{
                 position: "absolute",
-                left: "104px",
-                top: "612.9px",
-                zIndex: 10000,
-                display:"none"
-            }}></div>
-
-            <span class="-of-7" style = {{
-                position: "absolute",
-                left: "235px",
-                top: "631px",
+                left: "555.5px",
+                top: "222px",
                 zIndex: 10000,
                 display:"none"
             }}>
-            6 of 7
+            7 of 7
             </span>
 
-            <span class="Use-your-cursor-to-click-on-the-canvas-to-form-any-shape-you-like" style = {{
+            <span class="Camera-Tool" id="7-8-11" style = {{
                 position: "absolute",
-                left: "130.5px",
-                top: "495px",
+                // left: "122.5px",
+                left: "445.5px",
+                top: "125px",
                 zIndex: 10000,
                 display:"none"
             }}>
-            Use your cursor to click on the canvas to form any shape you like.
+            Camera Tool
             </span>
 
-            <button class = "button-Skip" style = {{
+            <span class="Add-a-camera-by-clicking-on-any-camera-on-this-panel-to-add-to-your-canvas" id="7-8-12" style = {{
                 position: "absolute",
-                left: "130.5px",
-                top: "551px",
+                // left: "122.5px",
+                left: "445.5px",
+                top: "150px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+            Add a camera by clicking on any camera on this panel to add to your canvas
+            </span>
+
+
+            <div class="Rectangle-17" id="7-8-13" style = {{
+                position: "absolute",
+                left: "419px",
+                top: "103px",
+                zIndex: 10000,
+                display:"none"
+            }}></div>
+
+            <div class="Polygon-3-2" id="7-8-14" style = {{
+                position: "absolute",
+                left: "403px",
+                top: "110px",
+                zIndex: 10000,
+                display:"none"
+            }}></div>
+
+            <div class="Line-21" id="7-8-15" style = {{
+                position: "absolute",
+                left: "419px",
+                top: "207px",
+                zIndex: 10000,
+                display:"none"
+            }}></div>
+
+            <span class="-of-7" id="7-8-16" style = {{
+                position: "absolute",
+                left: "555.5px",
+                top: "222px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+            7 of 7
+            </span>
+
+            <span class="Click-for-more-camera-options" id="7-8-17" style = {{
+                position: "absolute",
+                // left: "122.5px",
+                left: "445.5px",
+                top: "125px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+            Click for more camera options
+            </span>
+
+            <span class="Add-a-camera-by-clicking-on-any-camera-on-this-panel-to-add-to-your-canvas" id="7-8-18" style = {{
+                position: "absolute",
+                // left: "122.5px",
+                left: "445.5px",
+                top: "150px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+            Click the camera to open the camera panel to edit your camera
+            </span>
+
+
+            <div class="Rectangle-18" id="7-8-19" style = {{
+                position: "absolute",
+                left: "419px",
+                top: "103px",
+                zIndex: 10000,
+                display:"none"
+            }}></div>
+
+            <div class="Polygon-3-2" id="7-8-20" style = {{
+                position: "absolute",
+                left: "403px",
+                top: "110px",
+                zIndex: 10000,
+                display:"none"
+            }}></div>
+
+            <div class="Line-21" id="7-8-21" style = {{
+                position: "absolute",
+                left: "419px",
+                top: "273px",
+                zIndex: 10000,
+                display:"none"
+            }}></div>
+
+            <span class="-of-7" id="7-8-22" style = {{
+                position: "absolute",
+                left: "555.5px",
+                top: "287px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+            7 of 7
+            </span>
+
+            <span class="Camera-Tool" id="7-8-23" style = {{
+                position: "absolute",
+                // left: "122.5px",
+                left: "445.5px",
+                top: "125px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+            Camera Tool
+            </span>
+
+            <span class="Add-a-camera-by-clicking-on-any-camera-on-this-panel-to-add-to-your-canvas" id="7-8-24" style = {{
+                position: "absolute",
+                // left: "122.5px",
+                left: "445.5px",
+                top: "150px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+            When the camera is selected, you may change your camera to another type from this panel
+            </span>
+
+            <button id="7-8-25" class = "button-Skip" onClick={Next_6} style = {{
+                position: "absolute",
+                // left: "130.5px",
+                // left: "100.5px",
+                left: "445.5px",
+                top: "215px",
                 zIndex: 10000,
                 display:"none"
             }}>
                 Skip
             </button>
 
-            <button class = "button-Next" style = {{
+            <button id="7-8-26" class = "button-Next" onClick={Next_6} style = {{
                 position: "absolute",
-                left: "267.5px",
-                top: "551px",
+                // left: "267.5px",
+                left: "582.5px",
+                top: "215px",
                 zIndex: 10000,
                 display:"none"
             }}>
                 Next
             </button>
 
-            <img class="Screen-Shot-2022-02-10-at-41152-PM"  src = {mustCoverArea} style = {{
+
+            <div id="7-8-27" class="Rectangle-16" style = {{
                 position: "absolute",
-                left: "130.5px",
-                top: "361px",
+                // left: "105px",
+                left: "75px",
+                top: "202px",
                 zIndex: 10000,
                 display:"none"
-            }}></img> */}
+            }}></div>
+
+            <div id="7-8-28" class="Polygon-3-2" style = {{
+                position: "absolute",
+                // left: "84px",
+                // top: "220px",
+                left: "66px",
+                top: "216px",
+                zIndex: 10000,
+                display:"none"
+            }}></div>
+
+            <div id="7-8-29" class="Line-22" style = {{
+                position: "absolute",
+                // left: "138.9px",
+                left: "108.9px",
+                top: "480.1px",
+                zIndex: 10000,
+                display:"none"
+            }}></div>
+
+            <span id="7-8-30" class="-of-7" style = {{
+                position: "absolute",
+                // left: "235px",
+                left: "205px",
+                top: "498px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+            7 of 7
+            </span>
+
+            <span id="7-8-31" class="Use-your-cursor-to-click-on-the-canvas-to-form-any-shape-you-like" style = {{
+                position: "absolute",
+                // left: "130.5px",
+                left: "100.5px",
+                top: "362px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+            Use your cursor to rotate the camera by the corners
+            </span>
+
+            <button id="7-8-32" class = "button-Skip" onClick={Next_7} style = {{
+                position: "absolute",
+                // left: "130.5px",
+                left: "100.5px",
+                top: "418px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+                Skip
+            </button>
+
+            <button id="7-8-33" class = "button-Next" onClick={Next_7} style = {{
+                position: "absolute",
+                // left: "267.5px",
+                left: "237.5px",
+                top: "418px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+                Next
+            </button>
+
+            <img id="7-8-34" class="Screen-Shot-2022-02-10-at-41152-PM"  src = {rotate} style = {{
+                position: "absolute",
+                // left: "130.5px",
+                left: "100.5px",
+                top: "228px",
+                zIndex: 10000,
+                display:"none"
+            }}></img>
+
+
+            <div id="8-8-1" class="Rectangle-19" style = {{
+                position: "absolute",
+                right: "46px",
+                top: "101px",
+                zIndex: 10000,
+                display:"none"
+            }}></div>
+
+            <div id="8-8-2" class="Polygon-3-3" style = {{
+                position: "absolute",
+                right: "71px",
+                top: "81px",
+                zIndex: 10000,
+                display:"none"
+            }}></div>
+
+            <span id="8-8-3" class="Generate-your-first-report" style = {{
+                position: "absolute",
+                // left: "130.5px",
+                right: "128px",
+                top: "123px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+            Generate your first report!
+            </span>
+
+            <span id="8-8-4" class="Click-generate-to-see-your-first-summary" style = {{
+                position: "absolute",
+                // left: "130.5px",
+                right: "58px",
+                top: "148px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+            Click generate to see your first summary!
+            </span>
             
 
         </div>

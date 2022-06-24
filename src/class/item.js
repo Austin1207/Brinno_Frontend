@@ -37,6 +37,15 @@ class Item{
     });
 
     state = state.setIn(['scene', 'layers', layerID, 'items', itemID], item);
+
+    if (localStorage.getItem("Tutorial") !== "Done" && localStorage.getItem("CreateCamera") == "Ing"){
+      document.getElementById('7-8-7').style.display = "none"
+      document.getElementById('7-8-8').style.display = "none"
+      document.getElementById('7-8-9').style.display = "none"
+      document.getElementById('7-8-10').style.display = "none"
+      document.getElementById('7-8-11').style.display = "none"
+      document.getElementById('7-8-12').style.display = "none"
+    }
    
     // clear redoHistort
     state = state.merge({
@@ -49,6 +58,26 @@ class Item{
   static select( state, layerID, itemID ){
     state = Layer.select( state, layerID ).updatedState;
     state = Layer.selectElement( state, layerID, 'items', itemID ).updatedState;
+
+    if (localStorage.getItem("Tutorial") !== "Done" && localStorage.getItem("ReplaceCamera") == "Ing"){
+      document.getElementById("7-8-13").style.display = "none"
+      document.getElementById("7-8-14").style.display = "none"
+      document.getElementById("7-8-15").style.display = "none"
+      document.getElementById("7-8-16").style.display = "none"
+      document.getElementById("7-8-17").style.display = "none"
+      document.getElementById("7-8-18").style.display = "none"
+
+      document.getElementById("7-8-19").style.display = ""
+      document.getElementById("7-8-20").style.display = ""
+      document.getElementById("7-8-21").style.display = ""
+      document.getElementById("7-8-22").style.display = ""
+      document.getElementById("7-8-23").style.display = ""
+      document.getElementById("7-8-24").style.display = ""
+      document.getElementById("7-8-25").style.display = ""
+      document.getElementById("7-8-26").style.display = ""
+
+      localStorage.setItem("ReplaceCamera","")
+    }
    
     // clear redoHistort
     state = state.merge({
@@ -126,6 +155,37 @@ class Item{
         type: state.drawingSupport.get('type')
       })
     });
+
+    // Tutorial Camera Click
+    if (localStorage.getItem("Tutorial") !== "Done" && localStorage.getItem("CreateCamera") == "Ing"){
+      var e = window.event;
+      console.log(e.clientX)
+      document.getElementById("7-8-13").style.left = `${e.clientX + 40}px`
+      document.getElementById("7-8-13").style.top = `${e.clientY - 40}px`
+      document.getElementById("7-8-14").style.left = `${e.clientX + 24}px`
+      document.getElementById("7-8-14").style.top = `${e.clientY - 33}px`
+      document.getElementById("7-8-15").style.left = `${e.clientX + 40}px`
+      document.getElementById("7-8-15").style.top = `${e.clientY + 64}px`
+      document.getElementById("7-8-16").style.left = `${e.clientX + 176.5}px`
+      document.getElementById("7-8-16").style.top = `${e.clientY + 79}px`
+      document.getElementById("7-8-17").style.left = `${e.clientX + 66.5}px`
+      document.getElementById("7-8-17").style.top = `${e.clientY -18 }px`
+      document.getElementById("7-8-18").style.left = `${e.clientX + 66.5}px`
+      document.getElementById("7-8-18").style.top = `${e.clientY + 7}px`
+
+      document.getElementById("7-8-13").style.display = ""
+      document.getElementById("7-8-14").style.display = ""
+      document.getElementById("7-8-15").style.display = ""
+      document.getElementById("7-8-16").style.display = ""
+      document.getElementById("7-8-17").style.display = ""
+      document.getElementById("7-8-18").style.display = ""
+
+      localStorage.setItem("CreateCamera","")
+      localStorage.setItem("ReplaceCamera","Ing")
+      localStorage.setItem("CameraX",`${e.clientX}`)
+      localStorage.setItem("CameraY",`${e.clientY}`)
+
+      }
    
     // clear redoHistort
     state = state.merge({
@@ -243,6 +303,17 @@ class Item{
     state = state.merge({
       scene: scene.mergeIn(['layers', layerID, 'items', itemID], item)
     });
+
+    if (localStorage.getItem("Tutorial") !== "Done" && localStorage.getItem("RotateCamera") == "Ing"){
+      document.getElementById("7-8-27").style.display = "none"
+      document.getElementById("7-8-28").style.display = "none"
+      document.getElementById("7-8-29").style.display = "none"
+      document.getElementById("7-8-30").style.display = "none"
+      document.getElementById("7-8-31").style.display = "none"
+      document.getElementById("7-8-32").style.display = "none"
+      document.getElementById("7-8-33").style.display = "none"
+      document.getElementById("7-8-34").style.display = "none"
+    }
    
     // clear redoHistort
     state = state.merge({
@@ -260,6 +331,17 @@ class Item{
     state = state.merge({
       redoHistory:  new HistoryStructure()
     });
+
+    if (localStorage.getItem("Tutorial") !== "Done" && localStorage.getItem("RotateCamera") == "Ing"){
+      document.getElementById("7-8-27").style.display = ""
+      document.getElementById("7-8-28").style.display = ""
+      document.getElementById("7-8-29").style.display = ""
+      document.getElementById("7-8-30").style.display = ""
+      document.getElementById("7-8-31").style.display = ""
+      document.getElementById("7-8-32").style.display = ""
+      document.getElementById("7-8-33").style.display = ""
+      document.getElementById("7-8-34").style.display = ""
+    }
 
     return { updatedState: state };
   }

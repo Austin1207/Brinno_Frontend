@@ -39,8 +39,8 @@ export function loadimgjson (loadImageUrl, jsonleft, top) {
                         "visible": true,
                         // "x": 479.709994739929,
                         // "y": 1629.5759345522179,
-                        "x": jsonleft,
-                        "y": 2000-top,
+                        "x": jsonleft+750,
+                        "y": 1350-top,
                         "rotation": 0
                     }
                 },

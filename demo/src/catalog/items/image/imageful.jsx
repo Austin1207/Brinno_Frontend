@@ -88,13 +88,16 @@ export default class ImageFul extends Component {
           setTimeout( function () {
             document.getElementById("sidebar").style.display = "";
 
+            var scaleinput = document.getElementById("scaleinput")
+            scaleinput.focus();
+
             document.getElementById("TutorialScaleMeasureWord").style.display = "";
             document.getElementById("TutorialScaleMeasureWord2").style.display = "";
             document.getElementById("TutorialScaleMeasureWord3").style.display = "";
             document.getElementById("TutorialScaleMeasureLine").style.display = "";
             document.getElementById("TutorialScaleMeasureBackButton").style.display = "";
             document.getElementById("TutorialScaleMeasureOkButton").style.display = "";
-            itemsActions.selectItem("layer1", "xFAw434Nm");
+            // itemsActions.selectItem("layer1", "xFAw434Nm");
           },250);
 
           // projectActions.unselectAll();
@@ -248,7 +251,7 @@ export default class ImageFul extends Component {
           // style={this.state.hover1 || this.state.handleMouseMove1 ? hoverCircleStyle : grabCircleStyle}
           style = {{
             // cursor: 'grab',
-            cursor: 'url(./123.png), pointer',
+            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/cursor_scale1.png"), pointer',
             fill: rulerColor,
             transition: 'r 150ms ease-in',
             display:"none"
@@ -265,7 +268,8 @@ export default class ImageFul extends Component {
           r={this.state.hover2 || this.state.handleMouseMove2 ? hoverCircleRadius : grabCircleRadius}
           // style={this.state.hover2 || this.state.handleMouseMove2 ? hoverCircleStyle : grabCircleStyle}
           style = {{
-            cursor: 'grab',
+            // cursor: 'grab',
+            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/cursor_scale1.png"), pointer',
             fill: rulerColor,
             transition: 'r 150ms ease-in',
             display:"none"
@@ -311,7 +315,6 @@ export default class ImageFul extends Component {
           this.props.imageUri && !this.state.imageLoadError ?
             <image
               xlinkHref={this.props.imageUri}
-              // 這邊可以改圖片預設放置位置
               x="0"
               y="0"
               width={this.props.width}

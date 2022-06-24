@@ -49,6 +49,33 @@
   background-color: #222222;
 }
 
+.Rectangle-17 {
+  width: 302px;
+  height: 154px;
+  flex-grow: 0;
+  /* margin: 58px 166px 347px 13px; */
+  border-radius: 8px;
+  background-color: #222222;
+}
+
+.Rectangle-18 {
+  width: 302px;
+  height: 208px;
+  flex-grow: 0;
+  /* margin: 58px 166px 347px 13px; */
+  border-radius: 8px;
+  background-color: #222222;
+}
+
+.Rectangle-19 {
+  width: 302px;
+  height: 93px;
+  flex-grow: 0;
+  /* margin: 58px 166px 347px 13px; */
+  border-radius: 8px;
+  background-color: #222222;
+}
+
 .Successful {
   width: 594px;
   height: 84px;
@@ -86,6 +113,14 @@ border-color: #222222 transparent transparent transparent;
   border-width: 28.8px 49.9px 28.8px 0;
   border-color: transparent #222222 transparent transparent;
   }
+
+  .Polygon-3-3 {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 29.5px 40px 29.5px;
+    border-color: transparent transparent #222222 transparent;
+    }
 
 /* Line */
 
@@ -155,6 +190,14 @@ border-color: #222222 transparent transparent transparent;
 
 .Line-21 {
   width: 300px;
+  height: 2px;
+  flex-grow: 0;
+  /* margin: 21.1px 0px 26px 34.9px; */
+  background-color: #ffa140;
+}
+
+.Line-22 {
+  width: 292px;
   height: 2px;
   flex-grow: 0;
   /* margin: 21.1px 0px 26px 34.9px; */
@@ -421,6 +464,66 @@ color: #ffa140;
   color: #ffffff;
 }
 
+.Add-a-camera-by-clicking-on-any-camera-on-this-panel-to-add-to-your-canvas {
+  width: 255px;
+  height: 34px;
+  margin: 6px 0 0;
+  /* font-family: SFProDisplay; */
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.Click-for-more-camera-options {
+  width: 250px;
+  height: 19px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffa140;
+}
+
+.Generate-your-first-report {
+  width: 200px;
+  height: 19px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffa140;
+}
+
+.Click-generate-to-see-your-first-summary {
+  width: 270px;
+  height: 17px;
+  flex-grow: 0;
+  /* font-family: SFProDisplay; */
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
 /* picture */
 
 .Screen-Shot-2022-02-10-at-41152-PM {
@@ -491,4 +594,5 @@ flex-grow: 0;
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
+  cursor: pointer;
 }

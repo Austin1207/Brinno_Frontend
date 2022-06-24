@@ -219,8 +219,10 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
         xhr.onload = function(){
           var data = JSON.parse(this.responseText);
           console.log(data)
-          // var BAC_2000_count = data[camera_BAC2000]
-          // document.getElementById("Cameras_count").secondary = String(BAC_2000_count);
+          var Cam_count = Object.values(data)
+          var BAC_2000_count = String(Cam_count[7])
+          localStorage.setItem("Camera_Count", BAC_2000_count)
+
         }
         status = 1;
         return status;
@@ -258,6 +260,13 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
     }
 
   async function GernerateOnclick(){
+    if (localStorage.getItem("Tutorial") !== "Done"){
+      document.getElementById("8-8-1").style.display = "none"
+      document.getElementById("8-8-2").style.display = "none"
+      document.getElementById("8-8-3").style.display = "none"
+      document.getElementById("8-8-4").style.display = "none"
+      localStorage.setItem("Tutorial","Done")
+  }
     document.getElementById("SummaryPage1").style.display = "none";
     document.getElementById("SummaryPage2").style.display = "";
     showOptimizing();
@@ -282,13 +291,13 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
 
     // console.log(JsonUrl);
 
-    // var Check403_2 = setInterval(function(){ 
-    //   var status = 0;
-    //   status = checkForbidden_cam(CamUrl, status);
-    //   if (status == 1) {
-    //     clearInterval(Check403_2);
-    //   }
-    // },1000)
+    var Check403_2 = setInterval(function(){ 
+      var status = 0;
+      status = checkForbidden_cam(CamUrl, status);
+      if (status == 1) {
+        clearInterval(Check403_2);
+      }
+    },1000)
 
     var Check403_3 = setInterval(function(){ 
       var status = 0;

@@ -64,7 +64,7 @@ function mode2PointerEvents(mode) {
       return {};
   }
 }
-
+// contorl Cursor
 function mode2Cursor(mode) {
   switch (mode) {
     case constants.MODE_DRAGGING_HOLE:
@@ -79,6 +79,7 @@ function mode2Cursor(mode) {
     case constants.MODE_WAITING_DRAWING_LINE:
     case constants.MODE_DRAWING_LINE:
       return { cursor: 'crosshair' };
+      // return { cursor: 'url("http://wiki-devel.sugarlabs.org/images/e/e2/Arrow.cur"),pointer' };
     default:
       return { cursor: 'default' };
   }
@@ -418,6 +419,7 @@ export default function Viewer2D(
   let rulerYElements = Math.ceil( sceneHeight / rulerUnitPixelSize ) + 1;
 
   return (
+    // Control Dragging line cursor
     <div style={{
       margin: 0,
       padding: 0,
@@ -427,7 +429,8 @@ export default function Viewer2D(
       gridTemplateColumns: `${rulerSize}px ${width - rulerSize}px`,
       gridTemplateRows: `${rulerSize}px ${height - rulerSize}px`,
       position: 'relative',
-      cursor: 'context-menu'
+      // cursor: 'context-menu'
+      cursor: 'crosshair'
     }}
     //onContextMenu={handleContextMenu}
     >
@@ -487,10 +490,11 @@ export default function Viewer2D(
           negativeUnitsNumber={0}
         /> : null }
       </div>
+      {/* change bottom/right & width/height to let screen to canvas middle */}
       <ReactSVGPanZoom
-        style={{ gridColumn: 2, gridRow: 2 }}
-        width={width - rulerSize}
-        height={height - rulerSize}
+        style={{ gridColumn: 2, gridRow: 2 , bottom:650, right:750}}
+        width={width - rulerSize + 750}
+        height={height - rulerSize + 650}
         value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
         onChangeValue={onChangeValue}
         tool={mode2Tool(mode)}

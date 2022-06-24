@@ -159,6 +159,7 @@ export default class Toolbar extends Component {
     })
     this.props.updateCam(!this.state.showCamDrawer)
     this.props.updateSum(false)
+    // sceneActions.selectLayer("layer2");
     if (localStorage.getItem("Tutorial") !== "Done"){
       document.getElementById('7-8-1').style.display = "none"
       document.getElementById('7-8-2').style.display = "none"
@@ -167,12 +168,22 @@ export default class Toolbar extends Component {
       document.getElementById('7-8-5').style.display = "none"
       document.getElementById('7-8-6').style.display = "none"
 
-      document.getElementById('Generate1').style.display = "none"
-      document.getElementById('Generate2').style.display = ""
+      // document.getElementById('Generate1').style.display = "none"
+      // document.getElementById('Generate2').style.display = ""
 
-      localStorage.setItem("Tutorial", "Done")
+      document.getElementById('7-8-7').style.display = ""
+      document.getElementById('7-8-8').style.display = ""
+      document.getElementById('7-8-9').style.display = ""
+      document.getElementById('7-8-10').style.display = ""
+      document.getElementById('7-8-11').style.display = ""
+      document.getElementById('7-8-12').style.display = ""
+
+      localStorage.setItem("CreateCamera","Ing")
+
+      // localStorage.setItem("Tutorial", "Done")
     }
     //console.log(this.state.showCamDrawer)
+
   }
 
   handleSumDrawChange(){
@@ -342,6 +353,12 @@ export default class Toolbar extends Component {
       }
     }    
 
+    const OpenCameraTool = () => {
+      projectActions.unselectAll();
+      sceneActions.selectLayer("layer2");
+      this.handleCamDrawChange()
+    }
+
     let sorter = [
       {
         index: 0, condition: true, dom: 
@@ -498,7 +515,8 @@ export default class Toolbar extends Component {
             componentsProps={tooltipStyle}>
             <Button sx={this.state.showCamDrawer ? buttonsInuseStyle : buttonsStyle}
               id = "Camera Tool1"
-              onClick={() => this.handleCamDrawChange()}
+              // onClick={() => this.handleCamDrawChange()}
+              onClick={() => OpenCameraTool()}
               disabled={true}
               >
               <IconAddCam sx={{ fontSize: 40 }}/>
@@ -508,7 +526,8 @@ export default class Toolbar extends Component {
             componentsProps={tooltipStyle}>
             <Button sx={this.state.showCamDrawer ? buttonsInuseStyle : buttonsStyle}
               id = "Camera Tool2"
-              onClick={() => this.handleCamDrawChange()}
+              // onClick={() => this.handleCamDrawChange()}
+              onClick={() => OpenCameraTool()}
               style = {{display:"none"}}
               >
               <IconAddCam sx={{ fontSize: 40 }}/>
@@ -557,7 +576,7 @@ export default class Toolbar extends Component {
             <Button
               id = "SummaryPage2" 
               sx={buttonsStyle}
-              //style={{top: height}}
+              //style={{top: height}}OpenCameraTool
               onClick={() => this.handleSumDrawChange()}
               // disabled={true}
               style = {{display:"none"}}

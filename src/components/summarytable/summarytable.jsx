@@ -21,6 +21,7 @@ import BatteryIcon from './battery.png';
 import CostIcon from './cost.png';
 import Button from '@mui/material/Button';
 import LaunchIcon from '@mui/icons-material/Launch';
+import { createTheme } from '@mui/material';
 
 const STYLE_TITLE = {
     height: '24px',
@@ -54,6 +55,10 @@ export default function SummaryTable() {
         window.open(url)
     }
 
+    const Camera_Count = localStorage.getItem("Camera_Count")
+    const Camera_Cost = parseInt(Camera_Count)*1400
+    const Camera_Cost_USD = String(parseInt(Camera_Count)*1400) + " USD"
+
     return(
         <div style={{width: '359px', textAlign: 'center'}}>
             <div style={{height: 54-20, marginTop: '10px'}}>
@@ -80,7 +85,7 @@ export default function SummaryTable() {
                         <ListItemAvatar>
                         <img src={CameraIcon} alt={"CameraIcon"} style={{margin: 'auto 20px auto 4px'}}/>
                         </ListItemAvatar>
-                        <ListItemText primary="Cameras Needed" secondary="2" primaryTypographyProps={{fontSize: '20px'}} secondaryTypographyProps={{fontSize: '20px'}}/>
+                        <ListItemText primary="Cameras Needed" secondary={Camera_Count} primaryTypographyProps={{fontSize: '20px'}} secondaryTypographyProps={{fontSize: '20px'}}/>
                     </ListItem>
                     <Divider/>
                     <ListItem>
@@ -94,7 +99,7 @@ export default function SummaryTable() {
                         <ListItemAvatar>
                         <img src={CostIcon} alt={"CostIcon"} style={{margin: 'auto 20px auto 4px'}}/>
                         </ListItemAvatar>
-                        <ListItemText primary="Total Cost" secondary="2,800 USD" primaryTypographyProps={{fontSize: '20px'}} secondaryTypographyProps={{fontSize: '20px'}}/>
+                        <ListItemText primary="Total Cost" secondary={Camera_Cost_USD} primaryTypographyProps={{fontSize: '20px'}} secondaryTypographyProps={{fontSize: '20px'}}/>
                         {open ? <ExpandLess /> : <ExpandMore />}
                     </ListItemButton>
                     <Divider/>
@@ -109,13 +114,13 @@ export default function SummaryTable() {
                             </ListItemIcon>
                             <ListItemText primary={
                                 <div style={{display: 'flex', flexFlow: 'row wrap'}}>
-                                    <p style={{ flexGrow: 1, margin: '0 auto 0 auto' }}>BCC2000<br/>x2</p>
-                                    <p style={{ flexGrow: 1, margin: '0 auto 0 auto' }}>$2,800</p>
+                                    <p style={{ flexGrow: 1, margin: '0 auto 0 auto' }}>BCC2000<br/>*{Camera_Count}</p>
+                                    <p style={{ flexGrow: 1, margin: '0 auto 0 auto' }}>${Camera_Cost}</p>
                                 </div>}
                                 secondary={
                                 <div style={{display: 'flex', flexFlow: 'row wrap'}}>
                                     <p style={{ flexGrow: 1, margin: '0 auto 0 auto' }}>Unit Price</p>
-                                    <p style={{ flexGrow: 1, margin: '0 auto 0 auto' }}>$1,400</p>
+                                    <p style={{ flexGrow: 1, margin: '0 auto 0 auto' }}>$1400</p>
                                 </div>}
                                 primaryTypographyProps={{fontSize: '12px'}} secondaryTypographyProps={{fontSize: '12px'}} />
                         </ListItem>
