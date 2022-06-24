@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import {Map} from 'immutable';
+// import ScaleCursor from './cursor_scale1.png';
 
 const grabCircleRadius = "6px";
 const hoverCircleRadius = "6px";
@@ -246,7 +247,8 @@ export default class ImageFul extends Component {
           r={this.state.hover1 || this.state.handleMouseMove1 ? hoverCircleRadius : grabCircleRadius}
           // style={this.state.hover1 || this.state.handleMouseMove1 ? hoverCircleStyle : grabCircleStyle}
           style = {{
-            cursor: 'grab',
+            // cursor: 'grab',
+            cursor: 'url(./123.png), pointer',
             fill: rulerColor,
             transition: 'r 150ms ease-in',
             display:"none"
