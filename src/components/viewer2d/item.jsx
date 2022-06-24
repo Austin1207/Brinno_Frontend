@@ -46,9 +46,26 @@ export default function Item({layer, item, scene, catalog}) {
            data-layer={layer.id}
            data-part="rotation-anchor"
         >
-          <circle id = "RotateCircle1" cx="0" cy="150" r="10" style={{
-            fill: "#0096fd",
+
+          <rect id = "RotateCircle2" x="-13" y="-13" width="40" height="40" transform="rotate(45)"
+            style={{
+            fill: "none",
             stroke: "#0096fd",
+            cursor: "ew-resize",
+            display:""
+          }}/>
+
+          <circle id = "RotateCircle1" cx="0" cy="38" r="2" style={{
+            fill: "#ffffff",
+            stroke: "#0096fd",
+            cursor: "ew-resize",
+            display:"",
+          }}/>
+          
+          {/* prototype */}
+          {/* <circle id = "RotateCircle1" cx="0" cy="150" r="10" style={{
+            fill: "#ffffff",
+            stroke: "#ffffff",
             cursor: "ew-resize",
             display:""
           }}/>
@@ -58,7 +75,7 @@ export default function Item({layer, item, scene, catalog}) {
             stroke: "#0096fd",
             cursor: "ew-resize",
             display:""
-          }}/>
+          }}/> */}
         </g>
       </If>
     </g>

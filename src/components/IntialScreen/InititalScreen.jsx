@@ -302,7 +302,9 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
             // fontFamily: "SFProDisplay",
             border:"none",
             borderRadius:"5px",
-            cursor:"pointer",
+            // cursor:"pointer",
+            cursor:"url('./ScaleCursor2.jpg'), pointer",
+            // cursor:`url('http://qazlove0315.sg1009.myweb.hinet.net/7.ico'), pointer`,
             display: ""
             }}
             >
