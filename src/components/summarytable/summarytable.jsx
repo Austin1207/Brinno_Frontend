@@ -21,7 +21,12 @@ import BatteryIcon from './battery.png';
 import CostIcon from './cost.png';
 import Button from '@mui/material/Button';
 import LaunchIcon from '@mui/icons-material/Launch';
+import BAC2000Icon from '../../../demo/src/catalog/items/BAC2000/BAC2000.png';
 import { createTheme } from '@mui/material';
+import jsPDF from 'jspdf';
+//import {PdfReport} from './pdfreport';
+import html2canvas from 'html2canvas';
+import {coverage_base64, camera_base64, battery_base64, BAC2000_base64} from './pdfimages'
 
 const STYLE_TITLE = {
     height: '24px',
@@ -55,6 +60,68 @@ export default function SummaryTable() {
         window.open(url)
     }
 
+    const exportjsPDF = () => {
+        let doc = new jsPDF('p', 'pt', [ 595.28,  841.89]);
+        let coverage = localStorage.getItem("Coverage");
+        let camera_count = localStorage.getItem("Camera_Count");
+        doc.setFontSize(20);
+        doc.text("Summary Report", 32, 24+20);
+        doc.setFontSize(16);
+        doc.setTextColor('#989a9c');
+        doc.text("Most Cost-Effective Plan", 210, 26.5+16);
+        doc.line(32, 65, 32+532, 65);
+        //Summary Box
+        doc.setDrawColor(0);
+        doc.setFillColor('#ffdfbf');
+        doc.roundedRect(24, 449, 190, 33, 8, 8, "F");
+        doc.setFontSize(16);
+        doc.setTextColor('#e57500');
+        doc.text("Summary", 44, 456+16);
+        doc.addImage(coverage_base64, "PNG", 36, 502);
+        doc.setFontSize(13.6);
+        doc.setTextColor('#989a9c');
+        doc.text("Camera Coverage", 108, 501.5+13.6);
+        doc.setFontSize(15.9);
+        doc.setTextColor('#222222');
+        doc.text(String(coverage)+"%", 108, 529.5+15.9);        
+        doc.addImage(camera_base64, "PNG", 36, 583);
+        doc.setFontSize(13.6);
+        doc.setTextColor('#989a9c');
+        doc.text("Cameras Needed", 108, 585.5+13.6);
+        doc.setFontSize(15.9);
+        doc.setTextColor('#222222');
+        doc.text(String(camera_count), 108, 613.5+15.9);
+        doc.addImage(battery_base64, "PNG", 36, 659);
+        doc.setFontSize(13.6);
+        doc.setTextColor('#989a9c');
+        doc.text("Battery Life", 108, 661.5+13.6);
+        doc.setFontSize(15.9);
+        doc.setTextColor('#222222');
+        doc.text("7 Days", 108, 689.5+15.9);
+
+        //Camera Details Box
+        doc.setDrawColor(0);
+        doc.setFillColor('#ffdfbf');
+        doc.roundedRect(263, 449, 308, 33, 8, 8, "F");
+        doc.setFontSize(16);
+        doc.setTextColor('#e57500');
+        doc.text("Camera Details", 283, 456+16);
+        doc.addImage(BAC2000_base64, "PNG", 263, 486, 81, 81);
+        doc.setFontSize(12);
+        doc.setTextColor('#222222');
+        doc.text("BAC2000", 372, 496+12);
+        doc.setFontSize(12);
+        doc.setTextColor('#989a9c');
+        doc.text("Qty.", 372, 526+12);
+
+        doc.line(263, 572, 263+308, 572);
+        doc.setFontSize(15.9);
+        doc.setTextColor('#222222');
+        doc.text("Total Cost", 372, 572+6+15.9);
+
+        doc.save('Summary Report.pdf');
+    }
+
     const Camera_Count = localStorage.getItem("Camera_Count")
     const Camera_Cost = parseInt(Camera_Count)*1400
     const Camera_Cost_USD = String(parseInt(Camera_Count)*1400) + " USD"
@@ -70,7 +137,7 @@ export default function SummaryTable() {
               variant="contained"
               sx={{ position: 'absolute', top: 14, right: 14, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
               backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
-              onClick = {exportTest}
+              onClick = {exportjsPDF}
               >
                 <LaunchIcon />
             </Button>
@@ -81,6 +148,7 @@ export default function SummaryTable() {
             <Box pt={20/8}>
                 <Divider/>
                 <List>
+                    <Box id='NumbersBattery'>
                     <ListItem>
                         <ListItemAvatar>
                         <img src={CameraIcon} alt={"CameraIcon"} style={{margin: 'auto 20px auto 4px'}}/>
@@ -94,6 +162,7 @@ export default function SummaryTable() {
                         </ListItemAvatar>
                         <ListItemText primary="Battery Life" secondary="7 Days" primaryTypographyProps={{fontSize: '20px'}} secondaryTypographyProps={{fontSize: '20px'}}/>
                     </ListItem>
+                    </Box>
                     <Divider/>
                     <ListItemButton onClick={handleClick}>
                         <ListItemAvatar>
@@ -109,9 +178,9 @@ export default function SummaryTable() {
                             <ListItemText secondary="Camera Details" secondaryTypographyProps={{fontSize: '20px', textAlign: 'center' }}/>
                         </ListItem>
                         <ListItem>
-                            <ListItemIcon>
-                            <StarBorder />
-                            </ListItemIcon>
+                            <ListItemAvatar>
+                            <img src={BAC2000Icon} alt={"BAC2000Icon"} style={{margin: 'auto 20px auto 4px', width: '60px', height:'60px'}}/>
+                            </ListItemAvatar>
                             <ListItemText primary={
                                 <div style={{display: 'flex', flexFlow: 'row wrap'}}>
                                     <p style={{ flexGrow: 1, margin: '0 auto 0 auto' }}>BCC2000<br/>*{Camera_Count}</p>
