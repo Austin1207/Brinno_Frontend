@@ -7,6 +7,7 @@ import obstacleArea from './obstacleArea.png';
 import noCameraArea from './noCameraArea.png';
 import mustCoverArea from './mustCoverArea.png';
 import rotate from './rotate.png';
+import { Layers } from 'three';
 
 const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}) => {
 
@@ -64,7 +65,17 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             }
             document.getElementById('Outline Contruction Area1').style.display = "none"
             document.getElementById('Outline Contruction Area2').style.display = ""
+
         },3000);
+
+        if ( localStorage.getItem("Mode") == "Outline" ){
+            var PlanJs = state.scene.toJS()
+            var ScaleProperty = PlanJs.layers.layer1.items.xFAw434Nm.properties
+            var PointDistance = ((ScaleProperty.x1 - ScaleProperty.x2)**2 + (ScaleProperty.y1 - ScaleProperty.y2)**2)**0.5
+            var DistanceValue = localStorage.getItem("ScaleValue")
+            var OutlineScale = (DistanceValue*10)/PointDistance
+            localStorage.setItem("Scale", OutlineScale)
+        }
 
     }
 
@@ -73,7 +84,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
     const CircleMove = (circle) => {
         var e = document.createEvent("MouseEvents");
         e.initEvent("click", true, true);
-        circle.dispatchEvent(e);
+        circle.dispatchEvent(e);        
     }
     
     const DrawingScale = event => {

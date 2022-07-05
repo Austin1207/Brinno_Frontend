@@ -69,17 +69,26 @@ function mode2Cursor(mode) {
   switch (mode) {
     case constants.MODE_DRAGGING_HOLE:
     case constants.MODE_DRAGGING_LINE:
+      // return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png"),pointer' };
+
     case constants.MODE_DRAGGING_VERTEX:
+      // return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png"),pointer' };
+
     case constants.MODE_DRAGGING_ITEM:
       return { cursor: 'move' };
+      // return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/add+camera.png"),pointer' };
 
     case constants.MODE_ROTATING_ITEM:
-      return { cursor: 'ew-resize' };
+      // return { cursor: 'ew-resize' };
+      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/rotate_2.png"),pointer' };
+
 
     case constants.MODE_WAITING_DRAWING_LINE:
+      // return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png"),pointer' };
+
     case constants.MODE_DRAWING_LINE:
-      return { cursor: 'crosshair' };
-      // return { cursor: 'url("http://wiki-devel.sugarlabs.org/images/e/e2/Arrow.cur"),pointer' };
+      // return { cursor: 'crosshair' };
+      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png"),pointer' };
     default:
       return { cursor: 'default' };
   }
@@ -419,18 +428,19 @@ export default function Viewer2D(
   let rulerYElements = Math.ceil( sceneHeight / rulerUnitPixelSize ) + 1;
 
   return (
-    // Control Dragging line cursor
+    // Control Dragging line and put camera cursor
     <div style={{
       margin: 0,
       padding: 0,
       display: 'grid',
       gridRowGap: '0',
-      gridColumnGap: '0',
+      gridColumnGap: '50',
       gridTemplateColumns: `${rulerSize}px ${width - rulerSize}px`,
       gridTemplateRows: `${rulerSize}px ${height - rulerSize}px`,
       position: 'relative',
       // cursor: 'context-menu'
-      cursor: 'crosshair'
+      // cursor: 'crosshair'
+      // cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png"),pointer'
     }}
     //onContextMenu={handleContextMenu}
     >

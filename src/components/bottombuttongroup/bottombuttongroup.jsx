@@ -41,7 +41,14 @@ const IconQuestion = createSvgIcon(
   'Scale',
 );
 
-export default function BottomButtonGroup({projectActions, sceneActions, itemsActions, state}){
+const IconSetting = createSvgIcon(
+  <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M30.5 34a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" fill="#222"/>
+  </svg>,
+  'Setting',
+)
+
+export default function BottomButtonGroup({projectActions, sceneActions, itemsActions, state, viewer2DActions}){
 
   const ImageLayerMode = event => {
     sceneActions.selectLayer("layer1")
@@ -74,6 +81,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
       RotateCircle2.style.display = "none";
       DrawingScale();
       document.getElementById('Question2').style.display = ""
+      document.getElementById('Setting2').style.display = ""
 
       if (localStorage.getItem("Tutorial") !== "Done") { 
         document.getElementById('1-8-1').style.display = "none"
@@ -104,8 +112,19 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
   function test1234() {
     // console.log("123")
-    console.log(document.getElementById("Cameras_count"))
+    // console.log(document.getElementById("Cameras_count"))
     // document.getElementById("totalCoverage").innerHTML = String(50);
+    // console.log("123")
+    // console.log(state.zoom)
+    // viewer2DActions.selectToolZoomIn()
+    // projectActions.updateZoomScale(0.5)
+    // console.log(state.zoom)
+    // console.log(viewer2DActions.updateCameraView)
+    // var ZoomScaleJson = state.viewer2D.toJS()
+    // ZoomScaleJson.a = 0.5
+    // ZoomScaleJson.d = 0.5
+    // viewer2DActions.updateCameraView(ZoomScaleJson)
+    console.log(state.scene.toJS().layers.layer1.items.xFAw434Nm.properties)
   }
 
   function undotest() {
@@ -124,13 +143,58 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     console.log(state)
   }
 
+  function Setting() {
+    console.log("Setting")
+  }
+
+  function ZoomScale1() {
+    var ZoomScaleJson = state.viewer2D.toJS()
+    console.log(ZoomScaleJson)
+    ZoomScaleJson.a = 0.5
+    ZoomScaleJson.d = 0.5
+    viewer2DActions.updateCameraView(ZoomScaleJson)
+  }
+  
+  function ZoomScale2() {
+    var ZoomScaleJson = state.viewer2D.toJS()
+    ZoomScaleJson.a = 0.7
+    ZoomScaleJson.d = 0.7
+    viewer2DActions.updateCameraView(ZoomScaleJson)
+  }
+  function ZoomScale3() {
+    var ZoomScaleJson = state.viewer2D.toJS()
+    ZoomScaleJson.a = 1
+    ZoomScaleJson.d = 1
+    viewer2DActions.updateCameraView(ZoomScaleJson)
+  }
+  function ZoomScale4() {
+    var ZoomScaleJson = state.viewer2D.toJS()
+    console.log(ZoomScaleJson)
+    ZoomScaleJson.a = 1.5
+    ZoomScaleJson.d = 1.5
+    viewer2DActions.updateCameraView(ZoomScaleJson)
+  }
+
+  function ZoomScale5() {
+    var ZoomScaleJson = state.viewer2D.toJS()
+    var ZoomX = localStorage.getItem("Xmin")
+    var ZoomY = localStorage.getItem("Ymax")
+    var ZoomContentScale = localStorage.getItem("ZoomScale")*0.6
+    ZoomScaleJson.a = ZoomContentScale
+    ZoomScaleJson.d = ZoomContentScale
+    ZoomScaleJson.e = 820 - (ZoomX - 100) * ZoomContentScale
+    ZoomScaleJson.f = 660 - (2000 - ZoomY - 100) * ZoomContentScale
+    console.log("e" + ZoomScaleJson.e)
+    console.log("f" + ZoomScaleJson.f)
+    viewer2DActions.updateCameraView(ZoomScaleJson)
+  }
     return (
         <Container 
           maxWidth='sm'
           sx={{ pl: 0, pr: 0}}
           >
             <ButtonGroup variant="contained" aria-label="undo redo"
-            sx={{ position: 'absolute', bottom: 54, right: 168}}
+            sx={{ position: 'absolute', bottom: 54, right: 258}}
             >
                 <Button
                   id = "Undo"
@@ -154,7 +218,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
             {/* 暫時代替diabled方案 */}
             <ButtonGroup id = "UndoRedo" variant="contained" aria-label="undo redo"
-            sx={{ position: 'absolute', bottom: 54, right: 168}}
+            sx={{ position: 'absolute', bottom: 54, right: 258}}
             style = {{display:"none"}}
             >
                 <Button
@@ -183,7 +247,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             <Button
               id = "Scale1"
               variant="contained"
-              sx={{ position: 'absolute', bottom: 54, right: 114, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              sx={{ position: 'absolute', bottom: 54, right: 204, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
               backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
               onClick = {SetScale}
               disabled
@@ -192,11 +256,27 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             </Button>
 
             <Fab
+              id = "Setting1"
+              sx={
+              {position: 'absolute',
+              bottom: 54,
+              right: 150,
+              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              // onClick={() => this.getLS()}
+              // onClick={() => test()}
+              onClick={Setting}
+              disabled
+              aria-label="Help">
+                <IconSetting/>
+            </Fab>
+
+            <Fab
               id = "Question1"
               sx={
               {position: 'absolute',
               bottom: 54,
-              right: 60,
+              right: 96,
               maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
               backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
               // onClick={() => this.getLS()}
@@ -211,7 +291,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             <Button
               variant="contained"
               id = "Scale2"
-              sx={{ position: 'absolute', bottom: 54, right: 114, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              sx={{ position: 'absolute', bottom: 54, right: 204, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
               backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
               style = {{display:"none"}}
               onClick = {SetScale}
@@ -220,11 +300,27 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             </Button>
 
             <Fab
+              id = "Setting2"
+              sx={
+              {position: 'absolute',
+              bottom: 54,
+              right: 150,
+              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              style = {{display:"none"}}
+              // onClick={() => this.getLS()}
+              // onClick={() => test()}
+              onClick={Setting}
+              aria-label="Help">
+                <IconSetting/>
+            </Fab>
+
+            <Fab
               id = "Question2"
               sx={
               {position: 'absolute',
               bottom: 54,
-              right: 60,
+              right: 96,
               maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
               backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
               style = {{display:"none"}}
@@ -234,7 +330,82 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               aria-label="Help">
                 <QuestionMarkIcon/>
             </Fab>
+
             
+            <Fab
+              id = "ZoomScale1"
+              sx={
+              {position: 'absolute',
+              bottom: 54,
+              right: 400,
+              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              style = {{display:""}}
+              onClick={ZoomScale1}
+              aria-label="Help">
+                <span>50%</span>
+            </Fab>
+
+            <Fab
+              id = "ZoomScale2"
+              sx={
+              {position: 'absolute',
+              bottom: 54,
+              right: 450,
+              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              style = {{display:""}}
+              onClick={ZoomScale2}
+              aria-label="Help">
+                <span>70%</span>
+            </Fab>
+
+            <Fab
+              id = "ZoomScale3"
+              sx={
+              {position: 'absolute',
+              bottom: 54,
+              right: 500,
+              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              style = {{display:""}}
+              onClick={ZoomScale3}
+              aria-label="Help">
+                <span>100%</span>
+            </Fab>
+
+            <Fab
+              id = "ZoomScale4"
+              sx={
+              {position: 'absolute',
+              bottom: 54,
+              right: 550,
+              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              style = {{display:""}}
+              onClick={ZoomScale4}
+              aria-label="Help">
+                <span>150%</span>
+            </Fab>
+
+            <Fab
+              id = "ZoomScale5"
+              sx={
+              {position: 'absolute',
+              bottom: 54,
+              right: 600,
+              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              style = {{display:""}}
+              onClick={ZoomScale5}
+              aria-label="Help">
+                <span>Con</span>
+            </Fab>
+
+
+
         </Container>
+
+        
       );
 }

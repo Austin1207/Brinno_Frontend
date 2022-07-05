@@ -272,7 +272,7 @@ export default class ImageFul extends Component {
             cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/cursor_scale1.png"), pointer',
             fill: rulerColor,
             transition: 'r 150ms ease-in',
-            display:"none"
+            display:"none",
           }}
           />
 

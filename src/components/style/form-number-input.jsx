@@ -82,6 +82,7 @@ export default class FormNumberInput extends Component {
 
       if (this.state.valid) {
         let savedValue = (this.state.showedValue !== '' && this.state.showedValue !== '-') ? parseFloat(this.state.showedValue) : 0;
+        localStorage.setItem("ScaleValue",savedValue)
 
         this.setState({ showedValue: savedValue });
         onChange({ target: { value: savedValue } });

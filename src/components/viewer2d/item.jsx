@@ -52,15 +52,18 @@ export default function Item({layer, item, scene, catalog}) {
             fill: "none",
             stroke: "#0096fd",
             cursor: "ew-resize",
+            // cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/rotate_2.png"),pointer',
             display:""
           }}/>
 
           <circle id = "RotateCircle1" cx="0" cy="38" r="2" style={{
             fill: "#ffffff",
             stroke: "#0096fd",
-            cursor: "ew-resize",
+            // cursor: "ew-resize",
+            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/rotate_2.png"),pointer',
             display:"",
-          }}/>
+          }}
+          />
           
           {/* prototype */}
           {/* <circle id = "RotateCircle1" cx="0" cy="150" r="10" style={{

@@ -145,6 +145,7 @@ class ReactPlanner extends Component {
         <Sidebar width={sidebarW} height={75} left = {(contentW-431)/2} state={extractedState} display={"none"} {...props} />           
         //<FooterBar width={width} height={footerBarH} state={extractedState} {...props} />
   }
+
         
       </div>
   

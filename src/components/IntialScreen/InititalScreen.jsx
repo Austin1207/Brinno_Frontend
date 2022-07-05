@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { loadimgjson } from './loadjson';
 import { loadimgjson2 } from './loadjson2';
+import { loadimgjson3 } from './loadjson3';
 import '@babel/polyfill'; //for async
 
 const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
@@ -134,6 +135,9 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
         
       if ( file.type.indexOf("image") == 0 ){
 
+        localStorage.setItem("Mode", "Upload")
+        localStorage.setItem("Scale", 1)
+
         const {url} = await fetch(s3imgurl).then(res => res.json());
 
         await fetch(url, {
@@ -160,9 +164,13 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
         document.getElementById('UndoRedo').style.display = ""
         document.getElementById('Scale2').style.display = ""
         document.getElementById('Question2').style.display = ""
+        document.getElementById('Setting2').style.display = ""
       }
 
       else if ( file.type.indexOf("pdf") == 12 ){
+
+        localStorage.setItem("Mode", "Upload")
+        localStorage.setItem("Scale", 1)
 
         const {url} = await fetch(s3pdfurl).then(res => res.json());
 
@@ -191,6 +199,8 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
         document.getElementById('UndoRedo').style.display = ""
         document.getElementById('Scale2').style.display = ""
         document.getElementById('Question2').style.display = ""
+        document.getElementById('Setting2').style.display = ""
+
 
     }
 
@@ -208,6 +218,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
     document.getElementById("UploadRectangular").style.display = "none";
     document.getElementById("OutlineRectangular").style.display = "none";
     document.getElementById('Question2').style.display = ""
+    document.getElementById('Setting2').style.display = ""
 
     document.getElementById("Initialoverlay").style.display = "none";
 
@@ -216,6 +227,11 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
     
     document.getElementById('Outline Contruction Area1').style.display = "none"
     document.getElementById('Outline Contruction Area2').style.display = ""
+
+    localStorage.setItem("Mode", "Outline")
+    localStorage.setItem("Scale", 1)
+
+    projectActions.loadProject(loadimgjson3("https://example-img.s3.ap-northeast-1.amazonaws.com/small.png", jsonleft, top));
 
     if (localStorage.getItem("Tutorial") == "Done") {
       document.getElementById('Outine Interest Area1').style.display = "none"
@@ -273,10 +289,14 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
     else {console.log("no")}
   }
 
+  const test111 = (e) => {
+    console.log(state)
+  }
+
   return(
     
     <div>
-        <button id ="UploadRectangular" onClick = {upload} 
+        <button id ="UploadRectangular" onClick = {upload} onWheel = {test111}
         style = {{
             position: "absolute",
             width: "379.9px",
@@ -302,9 +322,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
             // fontFamily: "SFProDisplay",
             border:"none",
             borderRadius:"5px",
-            // cursor:"pointer",
-            cursor:"url('./ScaleCursor2.jpg'), pointer",
-            // cursor:`url('http://qazlove0315.sg1009.myweb.hinet.net/7.ico'), pointer`,
+            cursor:"pointer",
             display: ""
             }}
             >

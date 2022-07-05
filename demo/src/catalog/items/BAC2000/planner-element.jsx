@@ -379,7 +379,7 @@ export default {
     let style = {
       stroke: !element.selected ? ReactPlannerSharedStyle.LINE_MESH_COLOR.unselected : ReactPlannerSharedStyle.MESH_SELECTED,
       strokeWidth: 2,
-      fill: element.properties.get('color')
+      fill: element.properties.get('color'),
     };
 
     let angle = element.rotation + 90;
