@@ -8,8 +8,25 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import StraightenIcon from '@mui/icons-material/Straighten';
 import Fab from '@mui/material/Fab';
 import { createSvgIcon } from '@mui/material/utils';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 import '@babel/polyfill'; //for async
+// const options = [
+//   {name: 'Zoom to Content', do: ZoomScale5},
+//   {name: '150%', do: ZoomScale4},
+//   {name: '100%', do: ZoomScale3},
+//   {name: '70%', do: ZoomScale2},
+//   {name: '50%', do: ZoomScale1},
+//   //'Zoom to Content', '150%', '100%', '70%', '50%'
+// ];
+//const scaleOptions = [1,1.5,1,0.7,0.5];
 
 const buttonsStyle = {
   maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px', bottom: '54px',
@@ -147,12 +164,22 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     console.log("Setting")
   }
 
+  const ZoomScale = (scale)=>{
+    let ZoomScaleJson = state.viewer2D.toJS();
+    ZoomScaleJson.a = scale;
+    ZoomScaleJson.d = scale;
+    viewer2DActions.updateCameraView(ZoomScaleJson);
+  }
+
   function ZoomScale1() {
     var ZoomScaleJson = state.viewer2D.toJS()
     console.log(ZoomScaleJson)
     ZoomScaleJson.a = 0.5
     ZoomScaleJson.d = 0.5
     viewer2DActions.updateCameraView(ZoomScaleJson)
+    setSelectedIndex(4);
+    setScale(0.5);
+    setOpen(false);
   }
   
   function ZoomScale2() {
@@ -160,12 +187,18 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     ZoomScaleJson.a = 0.7
     ZoomScaleJson.d = 0.7
     viewer2DActions.updateCameraView(ZoomScaleJson)
+    setSelectedIndex(3);
+    setScale(0.7);
+    setOpen(false);
   }
   function ZoomScale3() {
     var ZoomScaleJson = state.viewer2D.toJS()
     ZoomScaleJson.a = 1
     ZoomScaleJson.d = 1
     viewer2DActions.updateCameraView(ZoomScaleJson)
+    setSelectedIndex(2);
+    setScale(1);
+    setOpen(false);
   }
   function ZoomScale4() {
     var ZoomScaleJson = state.viewer2D.toJS()
@@ -173,6 +206,9 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     ZoomScaleJson.a = 1.5
     ZoomScaleJson.d = 1.5
     viewer2DActions.updateCameraView(ZoomScaleJson)
+    setSelectedIndex(1);
+    setScale(1.5);
+    setOpen(false);
   }
 
   function ZoomScale5() {
@@ -187,7 +223,67 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     console.log("e" + ZoomScaleJson.e)
     console.log("f" + ZoomScaleJson.f)
     viewer2DActions.updateCameraView(ZoomScaleJson)
+    setSelectedIndex(0);
+    setScale(1);
+    setOpen(false);
   }
+  const options = [
+    {name: 'Zoom to Content', do: ZoomScale5},
+    {name: '150%', do: ZoomScale4},
+    {name: '100%', do: ZoomScale3},
+    {name: '70%', do: ZoomScale2},
+    {name: '50%', do: ZoomScale1},
+    //'Zoom to Content', '150%', '100%', '70%', '50%'
+  ];
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
+  const [selectedIndex, setSelectedIndex] = React.useState(2);
+  const [scale, setScale] = React.useState(1);
+
+  // const handleClick = () => {
+  //   console.info(`You clicked ${options[selectedIndex]}`);
+  // };
+
+  // const handleMenuItemClick = (event, index) => {
+  //   setSelectedIndex(index);
+  //   setScale(scaleOptions[index]);
+  //   //ZoomScale(scale);
+  //   setOpen(false);
+  // };
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  // const mounted = React.useRef();
+  // React.useEffect(() => {
+  //   if(mounted.current===false){
+  //     mounted.current=true;
+  //     /* 下面是 componentDidMount*/
+  
+  
+  //     /* 上面是 componentDidMount */      
+  //   }
+  //   else{
+  //     /* 下面是componentDidUpdate */
+  //     if(scale==0.7){
+  //       //console.log('0.7');
+  //       ZoomScale(scale);
+  //     }
+  
+  //     /* 上面是componentDidUpdate */
+
+  //   }
+  // }, [scale]);
+
     return (
         <Container 
           maxWidth='sm'
@@ -402,8 +498,55 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                 <span>Con</span>
             </Fab>
 
-
-
+            <ButtonGroup variant="contained" ref={anchorRef} aria-label="zoom"
+            sx={{ position: 'absolute', bottom: 54, right: 348}}>
+              <Button sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}>
+                <RemoveIcon />
+              </Button>
+              <Button
+              sx={{width: '67px', height: '36px',
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              onClick={handleToggle}>{/*options[selectedIndex]*/scale*100}%</Button>
+              <Button sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}>
+                <AddIcon />
+              </Button>
+            </ButtonGroup>
+            <Popper
+              open={open}
+              anchorEl={anchorRef.current}
+              role={undefined}
+              transition
+              disablePortal
+            >
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  style={{
+                    transformOrigin:
+                      placement === 'bottom' ? 'center top' : 'center bottom',
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleClose}>
+                      <MenuList id="split-button-menu" autoFocusItem>
+                        {options.map((option, index) => (
+                          <MenuItem
+                            key={option.name}
+                            selected={index === selectedIndex}
+                            //onClick={(event) => handleMenuItemClick(event, index)}
+                            onClick={option.do}
+                          >
+                            {option.name}
+                          </MenuItem>
+                        ))}
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
         </Container>
 
         
