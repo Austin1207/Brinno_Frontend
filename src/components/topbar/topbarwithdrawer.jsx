@@ -242,6 +242,7 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
             console.log(data)
             var score = data["score"]
             document.getElementById("totalCoverage").innerHTML = String(score) + "%";
+            localStorage.setItem("Coverage",score);
           }
           status = 1;
           return status;
