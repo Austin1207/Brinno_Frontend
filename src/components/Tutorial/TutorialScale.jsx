@@ -390,7 +390,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 backgroundColor:"#b9bbbc",
                 border:"none",
                 borderRadius:"10px",
-                cursor:"pointer",
+                cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
                 display: "none"
             }}>
                 Go Back
@@ -416,7 +416,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 color: "#ffffff",
                 border:"none",
                 borderRadius:"10px",
-                cursor:"pointer",
+                cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
                 display: "none"
             }}>
                 Enter

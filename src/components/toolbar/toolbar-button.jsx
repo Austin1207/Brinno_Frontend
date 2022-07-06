@@ -13,7 +13,7 @@ const STYLE = {
   marginBottom: '5px',
   fontSize: '50px',
   position: 'relative',
-  cursor: 'pointer'
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
 };
 
 const STYLE_TOOLTIP = {

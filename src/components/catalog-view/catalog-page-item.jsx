@@ -9,7 +9,7 @@ const STYLE_BOX = {
   padding: '0.625em',
   background: '#f7f7f9',
   border: '1px solid #e1e1e8',
-  cursor: 'pointer',
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
   position: 'relative',
   boxShadow: '0 1px 6px 0 rgba(0, 0, 0, 0.11), 0 1px 4px 0 rgba(0, 0, 0, 0.11)',
   borderRadius: '2px',

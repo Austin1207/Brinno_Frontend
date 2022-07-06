@@ -130,13 +130,13 @@ export default function SummaryTable() {
         <div style={{width: '359px', textAlign: 'center'}}>
             <div style={{height: 54-20, marginTop: '10px'}}>
                 <p style={STYLE_NEEDUPDATE}>Summary is not the most updated version.</p>
-                <a id="updatesum" href="#" style={STYLE_NEEDUPDATE}>Update now</a>
+                <a id="updatesum" href="#" style={{...STYLE_NEEDUPDATE, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}>Update now</a>
             </div>
             <Button
               id = "Export"
               variant="contained"
               sx={{ position: 'absolute', top: 14, right: 14, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
               onClick = {exportjsPDF}
               >
                 <LaunchIcon />
@@ -164,7 +164,7 @@ export default function SummaryTable() {
                     </ListItem>
                     </Box>
                     <Divider/>
-                    <ListItemButton onClick={handleClick}>
+                    <ListItemButton onClick={handleClick} style={{cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}>
                         <ListItemAvatar>
                         <img src={CostIcon} alt={"CostIcon"} style={{margin: 'auto 20px auto 4px'}}/>
                         </ListItemAvatar>

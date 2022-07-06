@@ -13,7 +13,7 @@ const labelContainerStyle = {
 const toggleButtonStyle = {
   color: '#CCC',
   textAlign: 'center',
-  cursor: 'pointer',
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
   userSelect: 'none'
 };
 

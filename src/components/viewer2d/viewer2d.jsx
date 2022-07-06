@@ -75,8 +75,9 @@ function mode2Cursor(mode) {
       // return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png"),pointer' };
 
     case constants.MODE_DRAGGING_ITEM:
-      return { cursor: 'move' };
+      // return { cursor: 'move' };
       // return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/add+camera.png"),pointer' };
+      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer' }
 
     case constants.MODE_ROTATING_ITEM:
       // return { cursor: 'ew-resize' };

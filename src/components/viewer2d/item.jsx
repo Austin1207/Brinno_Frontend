@@ -34,7 +34,7 @@ export default function Item({layer, item, scene, catalog}) {
       data-id={item.id}
       data-selected={item.selected}
       data-layer={layer.id}
-      style={item.selected ? {cursor: "move"} : {}}
+      style={item.selected ? {cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'} : {}}
       transform={`translate(${x},${y}) rotate(${rotation})`}>
 
       {renderedItem}
