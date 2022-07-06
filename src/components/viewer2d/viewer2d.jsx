@@ -531,18 +531,18 @@ export default function Viewer2D(
 
       </ReactSVGPanZoom>
       <Button variant="contained" 
-        sx={{...(openCoverage ? buttonsInuseStyle : buttonsStyle), top: 24, right: 41, }}
+        sx={{...(openCoverage ? buttonsInuseStyle : buttonsStyle), top: 24, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
         onClick={handleCoverageButton}>
         {openCoverage ? <VisibilityIcon sx={{paddingRight: '6px'}}/> : <VisibilityOffIcon sx={{paddingRight: '6px'}}/>}
         <Divider orientation="vertical" flexItem={true}/>
-        <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Camera Coverage</Typography>
+        <Typography sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}>Camera Coverage</Typography>
       </Button>
       <Button variant="contained" 
-        sx={{...(openLegend ? buttonsInuseStyle : buttonsStyle), top: 39+36, right: 41,}}
+        sx={{...(openLegend ? buttonsInuseStyle : buttonsStyle), top: 39+36, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
         onClick={handleLegendButton}>
         {openLegend ? <ExpandLess sx={{paddingRight: '6px'}}/> : <ExpandMore sx={{paddingRight: '6px'}}/>}
         <Divider orientation="vertical" flexItem={true}/>
-        <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Area Legend</Typography>
+        <Typography sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}>Area Legend</Typography>
       </Button>
       <Popper open={openLegend} anchorEl={anchorEl} placement='bottom-start' transition>
         {({ TransitionProps }) => (
@@ -551,7 +551,7 @@ export default function Viewer2D(
               <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
                 <IconConstructionLine sx={{paddingRight: '6px'}}/>
                 <Divider orientation="vertical" flexItem={true}/>
-                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Contruction Area</Typography>
+                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Construction Area</Typography>
               </Box>
               <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
                 <IconInterestLine sx={{paddingRight: '6px'}}/>
@@ -583,7 +583,7 @@ export default function Viewer2D(
             <ListItem>
               <ListItemIcon>
               </ListItemIcon>
-              <ListItemText primary='Contruction Area' primaryTypographyProps={{fontSize: '10px'}} />
+              <ListItemText primary='Construction Area' primaryTypographyProps={{fontSize: '10px'}} />
             </ListItem>
           </List>
         </Paper>

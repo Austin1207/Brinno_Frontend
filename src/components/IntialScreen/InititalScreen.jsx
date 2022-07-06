@@ -85,8 +85,8 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
 
   function CheckUserTest () {
     if (localStorage.getItem("Tutorial") == "Done") {
-      document.getElementById('Outline Contruction Area1').style.display = "none"
-      document.getElementById('Outline Contruction Area2').style.display = ""
+      document.getElementById('Outline Construction Area1').style.display = "none"
+      document.getElementById('Outline Construction Area2').style.display = ""
 
       document.getElementById('Outine Interest Area1').style.display = "none"
       document.getElementById('Outine Interest Area2').style.display = ""
@@ -225,8 +225,8 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
     document.getElementById('UndoRedo').style.display = ""
     document.getElementById('Scale2').style.display = ""
     
-    document.getElementById('Outline Contruction Area1').style.display = "none"
-    document.getElementById('Outline Contruction Area2').style.display = ""
+    document.getElementById('Outline Construction Area1').style.display = "none"
+    document.getElementById('Outline Construction Area2').style.display = ""
 
     localStorage.setItem("Mode", "Outline")
     localStorage.setItem("Scale", 1)
@@ -322,7 +322,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
             // fontFamily: "SFProDisplay",
             border:"none",
             borderRadius:"5px",
-            cursor:"pointer",
+            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
             display: ""
             }}
             >
@@ -351,7 +351,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
             color: "#fff",
             border:"none",
             borderRadius:"5px",
-            cursor:"pointer",
+            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
             display: ""
             }}>
               Outline your own

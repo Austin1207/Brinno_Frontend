@@ -406,7 +406,7 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
               id = "Generate2"
               key={'Generat'}
               sx={{ my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontWeight: "normal", fontStretch: "normal", fontStyle:"normal", textTransform:"capitalize"}}
-              style = {{ width: "134px", height: "41px", borderRadius: "10px", backgroundColor: "#ff8200", display: "none"}}
+              style = {{ width: "134px", height: "41px", borderRadius: "10px", backgroundColor: "#ff8200", display: "none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
               onClick = {GernerateOnclick}
               >
               {'Generate'}

@@ -30,7 +30,7 @@ import '@babel/polyfill'; //for async
 
 const buttonsStyle = {
   height: '36px', bottom: '54px',
-  backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'},
+  backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',},
 };
 const IconUndo = createSvgIcon(
   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -330,7 +330,6 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                 <Button
                   id = "Undo2"
                   sx={{...buttonsStyle, width: '36px', bottom: '0px'}}
-                  // onClick={() => projectActions.undo()}
                   onClick={() => undotest()}
                   >
                     <IconUndo sx={{ fontSize: 36 }}/>
@@ -338,8 +337,6 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                 <Button 
                   id = "Redo2"
                   sx={{...buttonsStyle, width: '36px', bottom: '0px'}}
-                  //TESTING REDO
-                  // onClick={() => projectActions.redo()}
                   onClick={() => redotest()}
                   >
                   <IconRedo sx={{ fontSize: 36 }}/>
@@ -361,8 +358,6 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             <Fab
               id = "Setting1"
               sx={{...buttonsStyle, width: '36px', right: 150, position: 'absolute',}}
-              // onClick={() => this.getLS()}
-              // onClick={() => test()}
               onClick={Setting}
               disabled
               aria-label="Help">
@@ -372,8 +367,6 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             <Fab
               id = "Question1"
               sx={{...buttonsStyle, width: '36px', right: 96, position: 'absolute',}}
-              // onClick={() => this.getLS()}
-              // onClick={() => test()}
               onClick={() => test1234()}
               disabled
               aria-label="Help">
@@ -395,8 +388,6 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               id = "Setting2"
               sx={{...buttonsStyle, width: '36px', right: 150, position: 'absolute',}}
               style = {{display:"none"}}
-              // onClick={() => this.getLS()}
-              // onClick={() => test()}
               onClick={Setting}
               aria-label="Help">
                 <IconSetting/>
@@ -404,99 +395,27 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
             <Fab
               id = "Question2"
-              sx={{...buttonsStyle, width: '36px', right: 96, position: 'absolute',}}
+              sx={{...buttonsStyle, width: '36px', right: 96, position: 'absolute', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
               style = {{display:"none"}}
-              // onClick={() => this.getLS()}
-              // onClick={() => test()}
               onClick={() => test1234()}
               aria-label="Help">
                 <QuestionMarkIcon/>
             </Fab>
 
-            
-            <Fab
-              id = "ZoomScale1"
-              sx={
-              {position: 'absolute',
-              bottom: 54,
-              right: 400,
-              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
-              style = {{display:""}}
-              onClick={ZoomScale1}
-              aria-label="Help">
-                <span>50%</span>
-            </Fab>
-
-            <Fab
-              id = "ZoomScale2"
-              sx={
-              {position: 'absolute',
-              bottom: 54,
-              right: 450,
-              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
-              style = {{display:""}}
-              onClick={ZoomScale2}
-              aria-label="Help">
-                <span>70%</span>
-            </Fab>
-
-            <Fab
-              id = "ZoomScale3"
-              sx={
-              {position: 'absolute',
-              bottom: 54,
-              right: 500,
-              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
-              style = {{display:""}}
-              onClick={ZoomScale3}
-              aria-label="Help">
-                <span>100%</span>
-            </Fab>
-
-            <Fab
-              id = "ZoomScale4"
-              sx={
-              {position: 'absolute',
-              bottom: 54,
-              right: 550,
-              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
-              style = {{display:""}}
-              onClick={ZoomScale4}
-              aria-label="Help">
-                <span>150%</span>
-            </Fab>
-
-            <Fab
-              id = "ZoomScale5"
-              sx={
-              {position: 'absolute',
-              bottom: 54,
-              right: 600,
-              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
-              style = {{display:""}}
-              onClick={ZoomScale5}
-              aria-label="Help">
-                <span>Con</span>
-            </Fab>
-
             <ButtonGroup variant="contained" ref={anchorRef} aria-label="zoom"
             sx={{ position: 'absolute', bottom: 54, right: 348}}>
               <Button sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
                     onClick={handleOut}>
+
                 <RemoveIcon />
               </Button>
               <Button
               sx={{width: '67px', height: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
               onClick={handleToggle}>{/*options[selectedIndex]*/(scale*100).toFixed(0)}%</Button>
               <Button sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
                     onClick={handleIn}>
                 <AddIcon />
               </Button>
@@ -525,6 +444,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                             selected={index === selectedIndex}
                             //onClick={(event) => handleMenuItemClick(event, index)}
                             onClick={option.do}
+                            style = {{cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
                           >
                             {option.name}
                           </MenuItem>

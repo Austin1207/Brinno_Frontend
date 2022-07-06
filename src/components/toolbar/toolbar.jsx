@@ -363,9 +363,9 @@ export default class Toolbar extends Component {
       {
         index: 0, condition: true, dom: 
         <Box pb={5/8} >
-          <Tooltip title="Outline Contruction Area" placement="right" arrow 
+          <Tooltip title="Outline Construction Area" placement="right" arrow 
             componentsProps={tooltipStyle}>
-            <Button id ="Outline Contruction Area1"
+            <Button id ="Outline Construction Area1"
               sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawConstructionArea()}
               disabled
@@ -373,12 +373,12 @@ export default class Toolbar extends Component {
               <IconConstruction sx={{ fontSize: 40 }} />
             </Button>
           </Tooltip>
-          <Tooltip title="Outline Contruction Area" placement="right" arrow 
+          <Tooltip title="Outline Construction Area" placement="right" arrow 
             componentsProps={tooltipStyle}>
-            <Button id ="Outline Contruction Area2"
+            <Button id ="Outline Construction Area2"
               sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawConstructionArea()}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
               >
               <IconConstruction sx={{ fontSize: 40 }} />
             </Button>
@@ -408,7 +408,7 @@ export default class Toolbar extends Component {
             <Button id = "Outine Interest Area2"
               sx={this.state.inuseTool == 'interest area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawInterestArea()}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
               >
               <IconInterest sx={{ fontSize: 40 }} />
             </Button>
@@ -438,7 +438,7 @@ export default class Toolbar extends Component {
             <Button id = "Place Obstacle Area2"
               sx={this.state.inuseTool == 'obstacle area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawObstacleArea()}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
               >
               <IconObstacle sx={{ fontSize: 40 }}/>
             </Button>
@@ -467,7 +467,7 @@ export default class Toolbar extends Component {
             <Button id = "Place no-camera area2"
               sx={this.state.inuseTool == 'nocamera area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawNoCameraArea()}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
               >
               <IconNoCam sx={{ fontSize: 40 }}/>
             </Button>
@@ -496,7 +496,7 @@ export default class Toolbar extends Component {
             <Button id ="Place must-cover area2"
               sx={this.state.inuseTool == 'mustcover area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawMustcoverArea()}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
               >
               <IconMust sx={{ fontSize: 40 }}/>
             </Button>
@@ -528,7 +528,7 @@ export default class Toolbar extends Component {
               id = "Camera Tool2"
               // onClick={() => this.handleCamDrawChange()}
               onClick={() => OpenCameraTool()}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
               >
               <IconAddCam sx={{ fontSize: 40 }}/>
             </Button>
@@ -566,9 +566,8 @@ export default class Toolbar extends Component {
             <Button 
               id = "SummaryPage1" 
               sx={this.state.showSumDrawer ? buttonsInuseStyle : buttonsStyle}
-              //style={{top: height}}
               onClick={() => this.handleSumDrawChange()}
-              //disabled={true}
+              disabled={true}
               >
               <IconSum sx={{ fontSize: 40 }}/>
             </Button>
@@ -576,10 +575,9 @@ export default class Toolbar extends Component {
             <Button
               id = "SummaryPage2" 
               sx={buttonsStyle}
-              //style={{top: height}}OpenCameraTool
               onClick={() => this.handleSumDrawChange()}
               // disabled={true}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
               >
               <IconSum sx={{ fontSize: 40 }}/>
             </Button>
