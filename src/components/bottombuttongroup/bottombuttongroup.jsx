@@ -320,8 +320,8 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                 <Button
                   id = "Undo2"
                   sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, display:""}}
-                  // onClick={() => projectActions.undo()}
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, display:"", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
+            // onClick={() => projectActions.undo()}
                   onClick={() => undotest()}
                   >
                     <IconUndo sx={{ fontSize: 36 }}/>
@@ -329,7 +329,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                 <Button 
                   id = "Redo2"
                   sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                  backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, display:""}}
+                  backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, display:"", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
                   //TESTING REDO
                   // onClick={() => projectActions.redo()}
                   onClick={() => redotest()}
@@ -388,7 +388,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               variant="contained"
               id = "Scale2"
               sx={{ position: 'absolute', bottom: 54, right: 204, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
               style = {{display:"none"}}
               onClick = {SetScale}
               >
@@ -402,7 +402,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               bottom: 54,
               right: 150,
               maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
               style = {{display:"none"}}
               // onClick={() => this.getLS()}
               // onClick={() => test()}
@@ -418,7 +418,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               bottom: 54,
               right: 96,
               maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
               style = {{display:"none"}}
               // onClick={() => this.getLS()}
               // onClick={() => test()}
@@ -428,7 +428,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             </Fab>
 
             
-            <Fab
+            {/* <Fab
               id = "ZoomScale1"
               sx={
               {position: 'absolute',
@@ -496,20 +496,20 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               onClick={ZoomScale5}
               aria-label="Help">
                 <span>Con</span>
-            </Fab>
+            </Fab> */}
 
             <ButtonGroup variant="contained" ref={anchorRef} aria-label="zoom"
             sx={{ position: 'absolute', bottom: 54, right: 348}}>
               <Button sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}>
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}>
                 <RemoveIcon />
               </Button>
               <Button
               sx={{width: '67px', height: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
               onClick={handleToggle}>{/*options[selectedIndex]*/scale*100}%</Button>
               <Button sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}>
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}>
                 <AddIcon />
               </Button>
             </ButtonGroup>
@@ -537,6 +537,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                             selected={index === selectedIndex}
                             //onClick={(event) => handleMenuItemClick(event, index)}
                             onClick={option.do}
+                            style = {{cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
                           >
                             {option.name}
                           </MenuItem>

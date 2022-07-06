@@ -60,11 +60,9 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 document.getElementById('2-8-5').style.display = ""
                 document.getElementById('2-8-6').style.display = ""
                 document.getElementById('2-8-7').style.display = ""
-                // document.getElementById('Outline Contruction Area2').style.zIndex = "99999"
-                // document.getElementById('overlay').style.display = ""
             }
-            document.getElementById('Outline Contruction Area1').style.display = "none"
-            document.getElementById('Outline Contruction Area2').style.display = ""
+            document.getElementById('Outline Construction Area1').style.display = "none"
+            document.getElementById('Outline Construction Area2').style.display = ""
 
         },3000);
 
@@ -616,14 +614,14 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             2 of 7
             </span>
 
-            <span id="2-8-6" class="Outline-Contruction-Area" style = {{
+            <span id="2-8-6" class="Outline-Construction-Area" style = {{
                 position: "absolute",
                 left: "101.5px",
                 top: "93px",
                 zIndex: 10000,
                 display:"none"
             }}>
-            Outline Contruction Area
+            Outline Construction Area
             </span>
 
             <span id="2-8-7" class="Outline-the-general-enclosed-area-of-your-construction-site" style = {{
