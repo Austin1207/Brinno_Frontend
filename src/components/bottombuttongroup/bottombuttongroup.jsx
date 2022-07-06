@@ -29,7 +29,7 @@ import '@babel/polyfill'; //for async
 //const scaleOptions = [1,1.5,1,0.7,0.5];
 
 const buttonsStyle = {
-  maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px', bottom: '54px',
+  height: '36px', bottom: '54px',
   backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'},
 };
 const IconUndo = createSvgIcon(
@@ -259,9 +259,21 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
+
+  const handleIn = () => {
+    ZoomScale(Number(scale.toFixed(1))+0.1);
+    setScale(Number(scale.toFixed(1))+0.1);
+    setSelectedIndex(null);
+  };
+
+  const handleOut = () => {
+    ZoomScale(Number(scale.toFixed(1))-0.1);
+    setScale(Number(scale.toFixed(1))-0.1);
+    setSelectedIndex(null);
+  };
+
 
   // const mounted = React.useRef();
   // React.useEffect(() => {
@@ -294,8 +306,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             >
                 <Button
                   id = "Undo"
-                  sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+                  sx={{...buttonsStyle, width: '36px', bottom: '0px'}}
                   onClick={() => projectActions.undo()}
                   disabled
                   >
@@ -303,8 +314,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                   </Button>
                 <Button 
                   id = "Redo"
-                  sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                  backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+                  sx={{...buttonsStyle, width: '36px', bottom: '0px'}}
                   //TESTING REDO
                   onClick={() => projectActions.redo()}
                   disabled>
@@ -312,15 +322,14 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                 </Button>
             </ButtonGroup>
 
-            {/* 暫時代替diabled方案 */}
+            {/* 暫時代替disabled方案 */}
             <ButtonGroup id = "UndoRedo" variant="contained" aria-label="undo redo"
             sx={{ position: 'absolute', bottom: 54, right: 258}}
             style = {{display:"none"}}
             >
                 <Button
                   id = "Undo2"
-                  sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, display:""}}
+                  sx={{...buttonsStyle, width: '36px', bottom: '0px'}}
                   // onClick={() => projectActions.undo()}
                   onClick={() => undotest()}
                   >
@@ -328,8 +337,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                   </Button>
                 <Button 
                   id = "Redo2"
-                  sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                  backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, display:""}}
+                  sx={{...buttonsStyle, width: '36px', bottom: '0px'}}
                   //TESTING REDO
                   // onClick={() => projectActions.redo()}
                   onClick={() => redotest()}
@@ -343,8 +351,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             <Button
               id = "Scale1"
               variant="contained"
-              sx={{ position: 'absolute', bottom: 54, right: 204, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              sx={{...buttonsStyle, maxWidth: '36px', minWidth: '36px', right: 204, position: 'absolute',}}
               onClick = {SetScale}
               disabled
               >
@@ -353,12 +360,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
             <Fab
               id = "Setting1"
-              sx={
-              {position: 'absolute',
-              bottom: 54,
-              right: 150,
-              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              sx={{...buttonsStyle, width: '36px', right: 150, position: 'absolute',}}
               // onClick={() => this.getLS()}
               // onClick={() => test()}
               onClick={Setting}
@@ -369,12 +371,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
             <Fab
               id = "Question1"
-              sx={
-              {position: 'absolute',
-              bottom: 54,
-              right: 96,
-              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              sx={{...buttonsStyle, width: '36px', right: 96, position: 'absolute',}}
               // onClick={() => this.getLS()}
               // onClick={() => test()}
               onClick={() => test1234()}
@@ -387,8 +384,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             <Button
               variant="contained"
               id = "Scale2"
-              sx={{ position: 'absolute', bottom: 54, right: 204, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              sx={{...buttonsStyle, maxWidth: '36px', minWidth: '36px', right: 204, position: 'absolute',}}
               style = {{display:"none"}}
               onClick = {SetScale}
               >
@@ -397,12 +393,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
             <Fab
               id = "Setting2"
-              sx={
-              {position: 'absolute',
-              bottom: 54,
-              right: 150,
-              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              sx={{...buttonsStyle, width: '36px', right: 150, position: 'absolute',}}
               style = {{display:"none"}}
               // onClick={() => this.getLS()}
               // onClick={() => test()}
@@ -413,12 +404,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
             <Fab
               id = "Question2"
-              sx={
-              {position: 'absolute',
-              bottom: 54,
-              right: 96,
-              maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              sx={{...buttonsStyle, width: '36px', right: 96, position: 'absolute',}}
               style = {{display:"none"}}
               // onClick={() => this.getLS()}
               // onClick={() => test()}
@@ -501,15 +487,17 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             <ButtonGroup variant="contained" ref={anchorRef} aria-label="zoom"
             sx={{ position: 'absolute', bottom: 54, right: 348}}>
               <Button sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}>
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+                    onClick={handleOut}>
                 <RemoveIcon />
               </Button>
               <Button
               sx={{width: '67px', height: '36px',
                     backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
-              onClick={handleToggle}>{/*options[selectedIndex]*/scale*100}%</Button>
+              onClick={handleToggle}>{/*options[selectedIndex]*/(scale*100).toFixed(0)}%</Button>
               <Button sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}>
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+                    onClick={handleIn}>
                 <AddIcon />
               </Button>
             </ButtonGroup>
