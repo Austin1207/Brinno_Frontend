@@ -17,7 +17,10 @@ const STYLE_INPUT = {
   // backgroundColor: '#271807',
   // backgroundImage: 'none',
   // border: '1px solid rgba(0,0,0,.15)',
-  width: '71px',
+  // width: '71px',
+  position: 'absolute',
+  right: '-27px',
+  width: '100px',
   height: '45px',
   // padding: '0 2px',
   fontSize: '38px',
@@ -63,8 +66,10 @@ export default class FormNumberInput extends Component {
 
   render() {
 
-    let { value, min, max, precision, onChange, onValid, onInvalid, style, placeholder } = this.props;
+    // let { value, min, max, precision, onChange, onValid, onInvalid, style, placeholder } = this.props;
+    let { value, min, max, onChange, onValid, onInvalid, style, placeholder } = this.props;
     let numericInputStyle = { ...STYLE_INPUT, ...style };
+    let precision = 2;
 
     if (this.state.focus) numericInputStyle.border = `1px solid ${SharedStyle.SECONDARY_COLOR.main}`;
 

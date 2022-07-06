@@ -201,6 +201,7 @@ state = Item.create( state, layerID, 'camera_BAC2000', Xmin+10, Ymin+10, 200, 10
 
       localStorage.setItem("Xmin", Xmin)
       localStorage.setItem("Ymax", Ymax)
+      localStorage.setItem("Ymin", Ymin)
       localStorage.setItem("ZoomScale", Math.min(1500/(Xmax-Xmin),750/(Ymax-Ymin)))
 
 

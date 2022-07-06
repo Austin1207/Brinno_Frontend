@@ -137,11 +137,12 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     // projectActions.updateZoomScale(0.5)
     // console.log(state.zoom)
     // console.log(viewer2DActions.updateCameraView)
-    // var ZoomScaleJson = state.viewer2D.toJS()
+    var ZoomScaleJson = state.viewer2D.toJS()
     // ZoomScaleJson.a = 0.5
     // ZoomScaleJson.d = 0.5
     // viewer2DActions.updateCameraView(ZoomScaleJson)
-    console.log(state.scene.toJS().layers.layer1.items.xFAw434Nm.properties)
+    // console.log(state.scene.toJS().layers.layer1.items.xFAw434Nm.properties)
+    console.log(ZoomScaleJson)
   }
 
   function undotest() {
@@ -166,16 +167,27 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
   const ZoomScale = (scale)=>{
     let ZoomScaleJson = state.viewer2D.toJS();
+    const OriginalScale = ZoomScaleJson.a
+    const OriginalX = ZoomScaleJson.e
+    const OriginalY = ZoomScaleJson.f
     ZoomScaleJson.a = scale;
     ZoomScaleJson.d = scale;
+    ZoomScaleJson.a = scale
+    ZoomScaleJson.d = scale
+    ZoomScaleJson.e = 15070 - (15070 - OriginalX)*scale/OriginalScale
+    ZoomScaleJson.f = 9660 - (9660 - OriginalY)*scale/OriginalScale
     viewer2DActions.updateCameraView(ZoomScaleJson);
   }
-
+  
   function ZoomScale1() {
     var ZoomScaleJson = state.viewer2D.toJS()
-    console.log(ZoomScaleJson)
+    const OriginalScale = ZoomScaleJson.a
+    const OriginalX = ZoomScaleJson.e
+    const OriginalY = ZoomScaleJson.f
     ZoomScaleJson.a = 0.5
     ZoomScaleJson.d = 0.5
+    ZoomScaleJson.e = 15070 - (15070 - OriginalX)*0.5/OriginalScale
+    ZoomScaleJson.f = 9660 - (9660 - OriginalY)*0.5/OriginalScale
     viewer2DActions.updateCameraView(ZoomScaleJson)
     setSelectedIndex(4);
     setScale(0.5);
@@ -184,8 +196,13 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
   
   function ZoomScale2() {
     var ZoomScaleJson = state.viewer2D.toJS()
+    const OriginalScale = ZoomScaleJson.a
+    const OriginalX = ZoomScaleJson.e
+    const OriginalY = ZoomScaleJson.f
     ZoomScaleJson.a = 0.7
     ZoomScaleJson.d = 0.7
+    ZoomScaleJson.e = 15070 - (15070 - OriginalX)*0.7/OriginalScale
+    ZoomScaleJson.f = 9660 - (9660 - OriginalY)*0.7/OriginalScale
     viewer2DActions.updateCameraView(ZoomScaleJson)
     setSelectedIndex(3);
     setScale(0.7);
@@ -193,8 +210,13 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
   }
   function ZoomScale3() {
     var ZoomScaleJson = state.viewer2D.toJS()
+    const OriginalScale = ZoomScaleJson.a
+    const OriginalX = ZoomScaleJson.e
+    const OriginalY = ZoomScaleJson.f
     ZoomScaleJson.a = 1
     ZoomScaleJson.d = 1
+    ZoomScaleJson.e = 15070 - (15070 - OriginalX)*1/OriginalScale
+    ZoomScaleJson.f = 9660 - (9660 - OriginalY)*1/OriginalScale
     viewer2DActions.updateCameraView(ZoomScaleJson)
     setSelectedIndex(2);
     setScale(1);
@@ -202,9 +224,13 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
   }
   function ZoomScale4() {
     var ZoomScaleJson = state.viewer2D.toJS()
-    console.log(ZoomScaleJson)
+    const OriginalScale = ZoomScaleJson.a
+    const OriginalX = ZoomScaleJson.e
+    const OriginalY = ZoomScaleJson.f
     ZoomScaleJson.a = 1.5
     ZoomScaleJson.d = 1.5
+    ZoomScaleJson.e = 15070 - (15070 - OriginalX)*1.5/OriginalScale
+    ZoomScaleJson.f = 9660 - (9660 - OriginalY)*1.5/OriginalScale
     viewer2DActions.updateCameraView(ZoomScaleJson)
     setSelectedIndex(1);
     setScale(1.5);
@@ -215,11 +241,14 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     var ZoomScaleJson = state.viewer2D.toJS()
     var ZoomX = localStorage.getItem("Xmin")
     var ZoomY = localStorage.getItem("Ymax")
-    var ZoomContentScale = localStorage.getItem("ZoomScale")*0.6
+    var ZoomYmin = localStorage.getItem("Ymin")
+    var ZoomContentScale = localStorage.getItem("ZoomScale")*0.5
     ZoomScaleJson.a = ZoomContentScale
     ZoomScaleJson.d = ZoomContentScale
-    ZoomScaleJson.e = 820 - (ZoomX - 100) * ZoomContentScale
-    ZoomScaleJson.f = 660 - (2000 - ZoomY - 100) * ZoomContentScale
+    ZoomScaleJson.e = 15070 - (ZoomX - 100) * ZoomContentScale
+    ZoomScaleJson.f = 9660 - (20000 - ZoomY - 100* ((6.5/ZoomContentScale) - (ZoomY - ZoomYmin)/100)/2) * ZoomContentScale
+    console.log(ZoomContentScale)
+    console.log("y1" + ZoomY + ",y2" +　ZoomYmin)
     console.log("e" + ZoomScaleJson.e)
     console.log("f" + ZoomScaleJson.f)
     viewer2DActions.updateCameraView(ZoomScaleJson)

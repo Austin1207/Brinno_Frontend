@@ -42,8 +42,8 @@ export default function State({state, catalog, openCoverage}) {
         // sceneWidth={3000}
         // sceneHeight={2000}
         // 修改畫布大小
-        sceneWidth={3000}
-        sceneHeight={2000}
+        sceneWidth={30000}
+        sceneHeight={20000}
   />}
     </g>
   )

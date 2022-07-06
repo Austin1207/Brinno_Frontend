@@ -441,7 +441,7 @@ export default function Viewer2D(
       position: 'relative',
       // cursor: 'context-menu'
       // cursor: 'crosshair'
-      // cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png"),pointer'
+      cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/add+camera.png"),pointer'
     }}
     //onContextMenu={handleContextMenu}
     >
@@ -503,9 +503,12 @@ export default function Viewer2D(
       </div>
       {/* change bottom/right & width/height to let screen to canvas middle */}
       <ReactSVGPanZoom
-        style={{ gridColumn: 2, gridRow: 2 , bottom:650, right:750}}
-        width={width - rulerSize + 750}
-        height={height - rulerSize + 650}
+        // style={{ gridColumn: 2, gridRow: 2 , bottom:650, right:750}}
+        // width={width - rulerSize + 750}
+        // height={height - rulerSize + 650}
+        style={{ gridColumn: 2, gridRow: 2 , bottom:9650, right:15000}}
+        width={width - rulerSize + 15000}
+        height={height - rulerSize + 9650}
         value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
         onChangeValue={onChangeValue}
         tool={mode2Tool(mode)}
