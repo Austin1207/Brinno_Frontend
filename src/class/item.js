@@ -38,13 +38,16 @@ class Item{
 
     state = state.setIn(['scene', 'layers', layerID, 'items', itemID], item);
 
-    if (localStorage.getItem("Tutorial") !== "Done" && localStorage.getItem("CreateCamera") == "Ing"){
+    if ((localStorage.getItem("Tutorial_CameraTool_1") == "Done") && (localStorage.getItem("Tutorial_CameraTool_2") !== "Done")){
+
       document.getElementById('7-8-7').style.display = "none"
       document.getElementById('7-8-8').style.display = "none"
       document.getElementById('7-8-9').style.display = "none"
       document.getElementById('7-8-10').style.display = "none"
       document.getElementById('7-8-11').style.display = "none"
       document.getElementById('7-8-12').style.display = "none"
+      localStorage.setItem("Tutorial_CameraTool_2", "Done")
+
     }
    
     // clear redoHistort
@@ -59,7 +62,7 @@ class Item{
     state = Layer.select( state, layerID ).updatedState;
     state = Layer.selectElement( state, layerID, 'items', itemID ).updatedState;
 
-    if (localStorage.getItem("Tutorial") !== "Done" && localStorage.getItem("ReplaceCamera") == "Ing"){
+    if ((localStorage.getItem("Tutorial_CameraTool_2") == "Done") && (localStorage.getItem("Tutorial_CameraTool_3") == "Done")  && (localStorage.getItem("Tutorial_CameraTool_4") !== "Done")) {
       document.getElementById("7-8-13").style.display = "none"
       document.getElementById("7-8-14").style.display = "none"
       document.getElementById("7-8-15").style.display = "none"
@@ -76,7 +79,7 @@ class Item{
       document.getElementById("7-8-25").style.display = ""
       document.getElementById("7-8-26").style.display = ""
 
-      localStorage.setItem("ReplaceCamera","")
+      localStorage.setItem("Tutorial_CameraTool_3", "Done")
     }
    
     // clear redoHistort
@@ -157,7 +160,7 @@ class Item{
     });
 
     // Tutorial Camera Click
-    if (localStorage.getItem("Tutorial") !== "Done" && localStorage.getItem("CreateCamera") == "Ing"){
+    if (localStorage.getItem("Tutorial_CameraTool_3") !== "Done"){
       var e = window.event;
       console.log(e.clientX)
       document.getElementById("7-8-13").style.left = `${e.clientX + 40}px`
@@ -180,13 +183,14 @@ class Item{
       document.getElementById("7-8-17").style.display = ""
       document.getElementById("7-8-18").style.display = ""
 
-      localStorage.setItem("CreateCamera","")
-      localStorage.setItem("ReplaceCamera","Ing")
+      // localStorage.setItem("CreateCamera","")
+      // localStorage.setItem("ReplaceCamera","Ing")
       localStorage.setItem("CameraX",`${e.clientX}`)
       localStorage.setItem("CameraY",`${e.clientY}`)
+      localStorage.setItem("Tutorial_CameraTool_3", "Done")
 
       }
-   
+
     // clear redoHistort
     state = state.merge({
       redoHistory:  new HistoryStructure()
@@ -304,7 +308,7 @@ class Item{
       scene: scene.mergeIn(['layers', layerID, 'items', itemID], item)
     });
 
-    if (localStorage.getItem("Tutorial") !== "Done" && localStorage.getItem("RotateCamera") == "Ing"){
+    if ((localStorage.getItem("Tutorial_CameraTool_5") !== "Done") && (localStorage.getItem("Tutorial_CameraTool_4") == "Done")){
       document.getElementById("7-8-27").style.display = "none"
       document.getElementById("7-8-28").style.display = "none"
       document.getElementById("7-8-29").style.display = "none"
@@ -332,7 +336,7 @@ class Item{
       redoHistory:  new HistoryStructure()
     });
 
-    if (localStorage.getItem("Tutorial") !== "Done" && localStorage.getItem("RotateCamera") == "Ing"){
+    if ((localStorage.getItem("Tutorial_CameraTool_5") !== "Done") && (localStorage.getItem("Tutorial_CameraTool_4") == "Done")){
       document.getElementById("7-8-27").style.display = ""
       document.getElementById("7-8-28").style.display = ""
       document.getElementById("7-8-29").style.display = ""

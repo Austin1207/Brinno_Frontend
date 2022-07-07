@@ -52,7 +52,10 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
         setTimeout( function () {
             document.getElementById("SetScaleSuccessRectangular").style.display = "none";
-            if (localStorage.getItem("Tutorial") !== "Done"){
+            localStorage.setItem("Tutorial_Setscale", "Done")
+            if ((localStorage.getItem("Tutorial_ConstructionArea") !== "Done") && (localStorage.getItem("Mode") == "Upload")){
+                document.getElementById('Outline Construction Area1').style.display = "none"
+                document.getElementById('Outline Construction Area2').style.display = ""
                 document.getElementById('2-8-1').style.display = ""
                 document.getElementById('2-8-2').style.display = ""
                 document.getElementById('2-8-3').style.display = ""
@@ -61,19 +64,27 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 document.getElementById('2-8-6').style.display = ""
                 document.getElementById('2-8-7').style.display = ""
             }
-            document.getElementById('Outline Construction Area1').style.display = "none"
-            document.getElementById('Outline Construction Area2').style.display = ""
 
+
+            else if ((localStorage.getItem("Tutorial_InterestArea") !== "Done") && (localStorage.getItem("Mode") == "Outline")){
+                document.getElementById('Outine Interest Area1').style.display = "none"
+                document.getElementById('Outine Interest Area2').style.display = ""
+                document.getElementById('3-8-1').style.display = ""
+                document.getElementById('3-8-2').style.display = ""
+                document.getElementById('3-8-3').style.display = ""
+                document.getElementById('3-8-4').style.display = ""
+                document.getElementById('3-8-5').style.display = ""
+                document.getElementById('3-8-6').style.display = ""
+                document.getElementById('3-8-7').style.display = ""
+
+                var PlanJs = state.scene.toJS()
+                var ScaleProperty = PlanJs.layers.layer1.items.xFAw434Nm.properties
+                var PointDistance = ((ScaleProperty.x1 - ScaleProperty.x2)**2 + (ScaleProperty.y1 - ScaleProperty.y2)**2)**0.5
+                var DistanceValue = localStorage.getItem("ScaleValue")
+                var OutlineScale = (DistanceValue*10)/PointDistance
+                localStorage.setItem("Scale", OutlineScale)
+            }
         },3000);
-
-        if ( localStorage.getItem("Mode") == "Outline" ){
-            var PlanJs = state.scene.toJS()
-            var ScaleProperty = PlanJs.layers.layer1.items.xFAw434Nm.properties
-            var PointDistance = ((ScaleProperty.x1 - ScaleProperty.x2)**2 + (ScaleProperty.y1 - ScaleProperty.y2)**2)**0.5
-            var DistanceValue = localStorage.getItem("ScaleValue")
-            var OutlineScale = (DistanceValue*10)/PointDistance
-            localStorage.setItem("Scale", OutlineScale)
-        }
 
     }
 
@@ -101,64 +112,98 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById('2-8-15').style.display = "none"
         document.getElementById('2-8-16').style.display = "none"
 
-        document.getElementById('3-8-1').style.display = ""
-        document.getElementById('3-8-2').style.display = ""
-        document.getElementById('3-8-3').style.display = ""
-        document.getElementById('3-8-4').style.display = ""
-        document.getElementById('3-8-5').style.display = ""
-        document.getElementById('3-8-6').style.display = ""
-        document.getElementById('3-8-7').style.display = ""
+        localStorage.setItem("Tutorial_ConstructionArea", "Done")
 
-        document.getElementById('Outine Interest Area1').style.display = "none"
-        document.getElementById('Outine Interest Area2').style.display = ""
+        if ((localStorage.getItem("Tutorial_InterestArea") !== "Done") && (localStorage.getItem("Mode") == "Upload")){
+            document.getElementById('3-8-1').style.display = ""
+            document.getElementById('3-8-2').style.display = ""
+            document.getElementById('3-8-3').style.display = ""
+            document.getElementById('3-8-4').style.display = ""
+            document.getElementById('3-8-5').style.display = ""
+            document.getElementById('3-8-6').style.display = ""
+            document.getElementById('3-8-7').style.display = ""
+    
+            document.getElementById('Outine Interest Area1').style.display = "none"
+            document.getElementById('Outine Interest Area2').style.display = ""
+        }
+
+        else if ((localStorage.getItem("Tutorial_Setscale") !== "Done") && (localStorage.getItem("Mode") == "Outline")){
+            document.getElementById('1-8-1').style.display = ""
+            document.getElementById('1-8-2').style.display = ""
+            document.getElementById('1-8-3').style.display = ""
+            document.getElementById('1-8-4').style.display = ""
+            document.getElementById('1-8-5').style.display = ""
+            document.getElementById('1-8-6').style.display = ""
+            document.getElementById('1-8-7').style.display = ""
+      
+            document.getElementById('Scale2').style.zIndex = "999999"
+            document.getElementById('overlay').style.display = ""
+        }
     }
 
     const Next_2 = event => {
-        document.getElementById('3-8-8').style.display = "none"
-        document.getElementById('3-8-9').style.display = "none"
-        document.getElementById('3-8-10').style.display = "none"
-        document.getElementById('3-8-11').style.display = "none"
-        document.getElementById('3-8-12').style.display = "none"
-        document.getElementById('3-8-13').style.display = "none"
-        document.getElementById('3-8-14').style.display = "none"
-        document.getElementById('3-8-15').style.display = "none"
 
-        document.getElementById('4-8-1').style.display = ""
-        document.getElementById('4-8-2').style.display = ""
-        document.getElementById('4-8-3').style.display = ""
-        document.getElementById('4-8-4').style.display = ""
-        document.getElementById('4-8-5').style.display = ""
-        document.getElementById('4-8-6').style.display = ""
-        document.getElementById('4-8-7').style.display = ""
+        localStorage.setItem("Tutorial_InterestArea", "Done")
 
-        document.getElementById('Place Obstacle Area1').style.display = "none"
-        document.getElementById('Place Obstacle Area2').style.display = ""
+        if (localStorage.getItem("Tutorial_ObstacleArea") !== "Done") {
+
+            document.getElementById('3-8-8').style.display = "none"
+            document.getElementById('3-8-9').style.display = "none"
+            document.getElementById('3-8-10').style.display = "none"
+            document.getElementById('3-8-11').style.display = "none"
+            document.getElementById('3-8-12').style.display = "none"
+            document.getElementById('3-8-13').style.display = "none"
+            document.getElementById('3-8-14').style.display = "none"
+            document.getElementById('3-8-15').style.display = "none"
+
+            document.getElementById('4-8-1').style.display = ""
+            document.getElementById('4-8-2').style.display = ""
+            document.getElementById('4-8-3').style.display = ""
+            document.getElementById('4-8-4').style.display = ""
+            document.getElementById('4-8-5').style.display = ""
+            document.getElementById('4-8-6').style.display = ""
+            document.getElementById('4-8-7').style.display = ""
+
+            document.getElementById('Place Obstacle Area1').style.display = "none"
+            document.getElementById('Place Obstacle Area2').style.display = ""
+        }
     }
 
     const Next_3 = event => {
-        document.getElementById('4-8-8').style.display = "none"
-        document.getElementById('4-8-9').style.display = "none"
-        document.getElementById('4-8-10').style.display = "none"
-        document.getElementById('4-8-11').style.display = "none"
-        document.getElementById('4-8-12').style.display = "none"
-        document.getElementById('4-8-13').style.display = "none"
-        document.getElementById('4-8-14').style.display = "none"
-        document.getElementById('4-8-15').style.display = "none"
-        document.getElementById('4-8-16').style.display = "none"
 
-        document.getElementById('5-8-1').style.display = ""
-        document.getElementById('5-8-2').style.display = ""
-        document.getElementById('5-8-3').style.display = ""
-        document.getElementById('5-8-4').style.display = ""
-        document.getElementById('5-8-5').style.display = ""
-        document.getElementById('5-8-6').style.display = ""
-        document.getElementById('5-8-7').style.display = ""
+        localStorage.setItem("Tutorial_ObstacleArea", "Done")
+        
+        if (localStorage.getItem("Tutorial_NoCameraArea") !== "Done") {
 
-        document.getElementById('Place no-camera area1').style.display = "none"
-        document.getElementById('Place no-camera area2').style.display = ""
+            document.getElementById('4-8-8').style.display = "none"
+            document.getElementById('4-8-9').style.display = "none"
+            document.getElementById('4-8-10').style.display = "none"
+            document.getElementById('4-8-11').style.display = "none"
+            document.getElementById('4-8-12').style.display = "none"
+            document.getElementById('4-8-13').style.display = "none"
+            document.getElementById('4-8-14').style.display = "none"
+            document.getElementById('4-8-15').style.display = "none"
+            document.getElementById('4-8-16').style.display = "none"
+
+            document.getElementById('5-8-1').style.display = ""
+            document.getElementById('5-8-2').style.display = ""
+            document.getElementById('5-8-3').style.display = ""
+            document.getElementById('5-8-4').style.display = ""
+            document.getElementById('5-8-5').style.display = ""
+            document.getElementById('5-8-6').style.display = ""
+            document.getElementById('5-8-7').style.display = ""
+
+            document.getElementById('Place no-camera area1').style.display = "none"
+            document.getElementById('Place no-camera area2').style.display = ""
+        }
     }
 
     const Next_4 = event => {
+
+        localStorage.setItem("Tutorial_NoCameraArea", "Done")
+        
+        if (localStorage.getItem("Tutorial_MustCoverArea") !== "Done") {
+
         document.getElementById('5-8-8').style.display = "none"
         document.getElementById('5-8-9').style.display = "none"
         document.getElementById('5-8-10').style.display = "none"
@@ -179,71 +224,81 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
         document.getElementById('Place must-cover area1').style.display = "none"
         document.getElementById('Place must-cover area2').style.display = ""
+        }
     }
 
     const Next_5 = event => {
-        document.getElementById('6-8-8').style.display = "none"
-        document.getElementById('6-8-9').style.display = "none"
-        document.getElementById('6-8-10').style.display = "none"
-        document.getElementById('6-8-11').style.display = "none"
-        document.getElementById('6-8-12').style.display = "none"
-        document.getElementById('6-8-13').style.display = "none"
-        document.getElementById('6-8-14').style.display = "none"
-        document.getElementById('6-8-15').style.display = "none"
-        document.getElementById('6-8-16').style.display = "none"
 
-        document.getElementById('7-8-1').style.display = ""
-        document.getElementById('7-8-2').style.display = ""
-        document.getElementById('7-8-3').style.display = ""
-        document.getElementById('7-8-4').style.display = ""
-        document.getElementById('7-8-5').style.display = ""
-        document.getElementById('7-8-6').style.display = ""
+        localStorage.setItem("Tutorial_MustCoverArea", "Done")
 
-        document.getElementById('Camera Tool1').style.display = "none"
-        document.getElementById('Camera Tool2').style.display = ""
+        if (localStorage.getItem("Tutorial_CameraTool_1") !== "Done") {
+
+            document.getElementById('6-8-8').style.display = "none"
+            document.getElementById('6-8-9').style.display = "none"
+            document.getElementById('6-8-10').style.display = "none"
+            document.getElementById('6-8-11').style.display = "none"
+            document.getElementById('6-8-12').style.display = "none"
+            document.getElementById('6-8-13').style.display = "none"
+            document.getElementById('6-8-14').style.display = "none"
+            document.getElementById('6-8-15').style.display = "none"
+            document.getElementById('6-8-16').style.display = "none"
+
+            document.getElementById('7-8-1').style.display = ""
+            document.getElementById('7-8-2').style.display = ""
+            document.getElementById('7-8-3').style.display = ""
+            document.getElementById('7-8-4').style.display = ""
+            document.getElementById('7-8-5').style.display = ""
+            document.getElementById('7-8-6').style.display = ""
+
+            document.getElementById('Camera Tool1').style.display = "none"
+            document.getElementById('Camera Tool2').style.display = ""
+        }
     }
 
     const Next_6 = event => {
-        document.getElementById("7-8-19").style.display = "none"
-        document.getElementById("7-8-20").style.display = "none"
-        document.getElementById("7-8-21").style.display = "none"
-        document.getElementById("7-8-22").style.display = "none"
-        document.getElementById("7-8-23").style.display = "none"
-        document.getElementById("7-8-24").style.display = "none"
-        document.getElementById("7-8-25").style.display = "none"
-        document.getElementById("7-8-26").style.display = "none"
+        if (localStorage.getItem("Tutorial_CameraTool_5") !== "Done"){
 
-        var CameraX = parseInt(localStorage.getItem("CameraX"))
-        var CameraY = parseInt(localStorage.getItem("CameraY"))
+            document.getElementById("7-8-19").style.display = "none"
+            document.getElementById("7-8-20").style.display = "none"
+            document.getElementById("7-8-21").style.display = "none"
+            document.getElementById("7-8-22").style.display = "none"
+            document.getElementById("7-8-23").style.display = "none"
+            document.getElementById("7-8-24").style.display = "none"
+            document.getElementById("7-8-25").style.display = "none"
+            document.getElementById("7-8-26").style.display = "none"
 
-        document.getElementById("7-8-27").style.left = `${CameraX + 40}px`
-        document.getElementById("7-8-27").style.top = `${CameraY - 40}px`
-        document.getElementById("7-8-28").style.left = `${CameraX + 24}px`
-        document.getElementById("7-8-28").style.top = `${CameraY - 33}px`
-        document.getElementById("7-8-29").style.left = `${CameraX + 40}px`
-        document.getElementById("7-8-29").style.top = `${CameraY + 238.1}px`
-        document.getElementById("7-8-30").style.left = `${CameraX + 170}px`
-        document.getElementById("7-8-30").style.top = `${CameraY + 256}px`
-        document.getElementById("7-8-31").style.left = `${CameraX + 65.5}px`
-        document.getElementById("7-8-31").style.top = `${CameraY + 120}px`
-        document.getElementById("7-8-32").style.left = `${CameraX + 65.5}px`
-        document.getElementById("7-8-32").style.top = `${CameraY + 176}px`
-        document.getElementById("7-8-33").style.left = `${CameraX + 202.5}px`
-        document.getElementById("7-8-33").style.top = `${CameraY + 176}px`
-        document.getElementById("7-8-34").style.left = `${CameraX + 65.5}px`
-        document.getElementById("7-8-34").style.top = `${CameraY - 14}px`
+            var CameraX = parseInt(localStorage.getItem("CameraX"))
+            var CameraY = parseInt(localStorage.getItem("CameraY"))
 
-        document.getElementById("7-8-27").style.display = ""
-        document.getElementById("7-8-28").style.display = ""
-        document.getElementById("7-8-29").style.display = ""
-        document.getElementById("7-8-30").style.display = ""
-        document.getElementById("7-8-31").style.display = ""
-        document.getElementById("7-8-32").style.display = ""
-        document.getElementById("7-8-33").style.display = ""
-        document.getElementById("7-8-34").style.display = ""
+            document.getElementById("7-8-27").style.left = `${CameraX + 40}px`
+            document.getElementById("7-8-27").style.top = `${CameraY - 40}px`
+            document.getElementById("7-8-28").style.left = `${CameraX + 24}px`
+            document.getElementById("7-8-28").style.top = `${CameraY - 33}px`
+            document.getElementById("7-8-29").style.left = `${CameraX + 40}px`
+            document.getElementById("7-8-29").style.top = `${CameraY + 238.1}px`
+            document.getElementById("7-8-30").style.left = `${CameraX + 170}px`
+            document.getElementById("7-8-30").style.top = `${CameraY + 256}px`
+            document.getElementById("7-8-31").style.left = `${CameraX + 65.5}px`
+            document.getElementById("7-8-31").style.top = `${CameraY + 120}px`
+            document.getElementById("7-8-32").style.left = `${CameraX + 65.5}px`
+            document.getElementById("7-8-32").style.top = `${CameraY + 176}px`
+            document.getElementById("7-8-33").style.left = `${CameraX + 202.5}px`
+            document.getElementById("7-8-33").style.top = `${CameraY + 176}px`
+            document.getElementById("7-8-34").style.left = `${CameraX + 65.5}px`
+            document.getElementById("7-8-34").style.top = `${CameraY - 14}px`
 
-        localStorage.setItem("RotateCamera","Ing")
+            document.getElementById("7-8-27").style.display = ""
+            document.getElementById("7-8-28").style.display = ""
+            document.getElementById("7-8-29").style.display = ""
+            document.getElementById("7-8-30").style.display = ""
+            document.getElementById("7-8-31").style.display = ""
+            document.getElementById("7-8-32").style.display = ""
+            document.getElementById("7-8-33").style.display = ""
+            document.getElementById("7-8-34").style.display = ""
 
+            localStorage.setItem("Tutorial_CameraTool_4", "Done")
+
+        }
     }
 
     const ClickCatalog = (Catalog) => {
@@ -266,28 +321,31 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         }
 
     const Next_7 = event => {
-        document.getElementById("7-8-27").style.display = "none"
-        document.getElementById("7-8-28").style.display = "none"
-        document.getElementById("7-8-29").style.display = "none"
-        document.getElementById("7-8-30").style.display = "none"
-        document.getElementById("7-8-31").style.display = "none"
-        document.getElementById("7-8-32").style.display = "none"
-        document.getElementById("7-8-33").style.display = "none"
-        document.getElementById("7-8-34").style.display = "none"
 
-        localStorage.setItem("RotateCamera","")
+        if (localStorage.getItem("Tutorial_Generate") !== "Done"){
 
-        document.getElementById('Generate1').style.display = "none"
-        document.getElementById('Generate2').style.display = ""
+            document.getElementById("7-8-27").style.display = "none"
+            document.getElementById("7-8-28").style.display = "none"
+            document.getElementById("7-8-29").style.display = "none"
+            document.getElementById("7-8-30").style.display = "none"
+            document.getElementById("7-8-31").style.display = "none"
+            document.getElementById("7-8-32").style.display = "none"
+            document.getElementById("7-8-33").style.display = "none"
+            document.getElementById("7-8-34").style.display = "none"
 
-        if (localStorage.getItem("Tutorial") !== "Done"){
-            document.getElementById("8-8-1").style.display = ""
-            document.getElementById("8-8-2").style.display = ""
-            document.getElementById("8-8-3").style.display = ""
-            document.getElementById("8-8-4").style.display = ""
-            CloseCatalog()
+            localStorage.setItem("Tutorial_CameraTool_5", "Done")
+
+            document.getElementById('Generate1').style.display = "none"
+            document.getElementById('Generate2').style.display = ""
+
+            if (localStorage.getItem("Tutorial_Generate") !== "Done"){
+                document.getElementById("8-8-1").style.display = ""
+                document.getElementById("8-8-2").style.display = ""
+                document.getElementById("8-8-3").style.display = ""
+                document.getElementById("8-8-4").style.display = ""
+                CloseCatalog()
+            }
         }
-        
     }
 
 
@@ -448,7 +506,8 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             {/* 1of8 - 1 */}
             <div id="1-8-1" class="Rectangle-13" style = {{
                 position: "absolute",
-                right: "18px",
+                // right: "18px",
+                right: "72px",
                 bottom: "115.4px",
                 zIndex: 999999,
                 display: "none"
@@ -457,7 +516,8 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
             <div id="1-8-2" class="Polygon-3" style = {{
                 position: "absolute",
-                right: "118px",
+                // right: "118px",
+                right: "208px",
                 bottom: "100px",
                 zIndex: 999999,
                 display: "none"
@@ -465,7 +525,8 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
             <div id="1-8-3" class="Line-15" style = {{
                 position: "absolute",
-                right: "18px",
+                // right: "18px",
+                right: "72px",
                 bottom: "155px",
                 zIndex: 999999,
                 display: "none"
@@ -473,7 +534,8 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
             <div id="1-8-4" class="Line-14" style = {{
                 position: "absolute",
-                right: "284.1px",
+                // right: "284.1px",
+                right: "338.1px",
                 bottom: "155px",
                 zIndex: 999999,
                 display: "none"
@@ -481,7 +543,8 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
             <span id="1-8-5" class="-of-7" style = {{
                 position: "absolute",
-                right: "155px",
+                // right: "155px",
+                right: "209px",
                 bottom: "129px",
                 zIndex: 999999,
                 display: "none"
@@ -491,7 +554,8 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
             <span id="1-8-6" class="Scale-Tool" style = {{
                 position: "absolute",
-                right: "202.6px",
+                // right: "202.6px",
+                right: "256.6px",
                 bottom: "236.3px",
                 zIndex: 999999,
                 display: "none"
@@ -501,7 +565,8 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
             <span id="1-8-7" class="Use-the-scale-tool-to-select-from-one-point-to-the-other-point-on-your-canvas-to-set-your-scale" style = {{
                 position: "absolute",
-                right: "44px",
+                // right: "44px",
+                right: "98px",
                 bottom: "178.1px",
                 zIndex: 999999,
                 display: "none"
@@ -870,6 +935,17 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             }}>
             Use your cursor to click on the canvas to form any shape you like.
             </span>
+
+            {/* <button id="3-8-14" class = "button-Next-disabled"  onClick={Next_2} style = {{
+                position: "absolute",
+                // left: "199px",
+                left: "169px",
+                top: "349px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+                Next
+            </button> */}
 
             <button id="3-8-14" class = "button-Next"  onClick={Next_2} style = {{
                 position: "absolute",

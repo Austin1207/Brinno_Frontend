@@ -261,13 +261,20 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
     }
 
   async function GernerateOnclick(){
-    if (localStorage.getItem("Tutorial") !== "Done"){
-      document.getElementById("8-8-1").style.display = "none"
-      document.getElementById("8-8-2").style.display = "none"
-      document.getElementById("8-8-3").style.display = "none"
-      document.getElementById("8-8-4").style.display = "none"
-      localStorage.setItem("Tutorial","Done")
-  }
+    if (localStorage.getItem("Mode") == "Upload"){
+      localStorage.setItem("Tutorial_Upload","Done")
+    }
+    else {
+      localStorage.setItem("Tutorial_Outline","Done")
+    }
+
+    localStorage.setItem("Tutorial_Generate","Done");
+
+    document.getElementById("8-8-1").style.display = "none"
+    document.getElementById("8-8-2").style.display = "none"
+    document.getElementById("8-8-3").style.display = "none"
+    document.getElementById("8-8-4").style.display = "none"
+
     document.getElementById("SummaryPage1").style.display = "none";
     document.getElementById("SummaryPage2").style.display = "";
     showOptimizing();

@@ -31,6 +31,12 @@ class Area{
 
     state = state.setIn(['scene', 'layers', layerID], layer);
 
+    // document.getElementById('2-8-14-disabled').style.display = "none"
+    // document.getElementById('2-8-14').style.display = ""
+
+    // document.getElementById('3-8-14').style.display = "none"
+    // document.getElementById('3-8-14-abled').style.display = ""
+
     return { updatedState: state, area };
   }
 

@@ -100,7 +100,9 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
       document.getElementById('Question2').style.display = ""
       document.getElementById('Setting2').style.display = ""
 
-      if (localStorage.getItem("Tutorial") !== "Done") { 
+      // if ((localStorage.getItem("Mode") == "Upload") && localStorage.getItem("Tutorial_Setscale") !== "Done" ) { 
+      if ( localStorage.getItem("Tutorial_Setscale") !== "Done" ) { 
+        
         document.getElementById('1-8-1').style.display = "none"
         document.getElementById('1-8-2').style.display = "none"
         document.getElementById('1-8-3').style.display = "none"

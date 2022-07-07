@@ -159,17 +159,14 @@ export default class Toolbar extends Component {
     })
     this.props.updateCam(!this.state.showCamDrawer)
     this.props.updateSum(false)
-    // sceneActions.selectLayer("layer2");
-    if (localStorage.getItem("Tutorial") !== "Done"){
+
+    if (localStorage.getItem("Tutorial_CameraTool_1") !== "Done"){
       document.getElementById('7-8-1').style.display = "none"
       document.getElementById('7-8-2').style.display = "none"
       document.getElementById('7-8-3').style.display = "none"
       document.getElementById('7-8-4').style.display = "none"
       document.getElementById('7-8-5').style.display = "none"
       document.getElementById('7-8-6').style.display = "none"
-
-      // document.getElementById('Generate1').style.display = "none"
-      // document.getElementById('Generate2').style.display = ""
 
       document.getElementById('7-8-7').style.display = ""
       document.getElementById('7-8-8').style.display = ""
@@ -178,11 +175,8 @@ export default class Toolbar extends Component {
       document.getElementById('7-8-11').style.display = ""
       document.getElementById('7-8-12').style.display = ""
 
-      localStorage.setItem("CreateCamera","Ing")
-
-      // localStorage.setItem("Tutorial", "Done")
+      localStorage.setItem("Tutorial_CameraTool_1", "Done")
     }
-    //console.log(this.state.showCamDrawer)
 
   }
 
@@ -212,9 +206,8 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'construction area'
       });
-      // document.getElementById('Outine Interest Area1').style.display = "none"
-      // document.getElementById('Outine Interest Area2').style.display = ""
-      if (localStorage.getItem("Tutorial") !== "Done"){
+
+      if (localStorage.getItem("Tutorial_ConstructionArea") !== "Done"){
         document.getElementById('2-8-1').style.display = "none"
         document.getElementById('2-8-2').style.display = "none"
         document.getElementById('2-8-3').style.display = "none"
@@ -232,6 +225,7 @@ export default class Toolbar extends Component {
         document.getElementById('2-8-14-disabled').style.display = ""
         document.getElementById('2-8-15').style.display = ""
       }
+
     }
   
     const DrawInterestArea = () => {
@@ -241,9 +235,8 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'interest area'
       });
-      // document.getElementById('Place Obstacle Area1').style.display = "none"
-      // document.getElementById('Place Obstacle Area2').style.display = ""
-      if (localStorage.getItem("Tutorial") !== "Done"){
+
+      if (localStorage.getItem("Tutorial_InterestArea") !== "Done"){
         document.getElementById('3-8-1').style.display = "none"
         document.getElementById('3-8-2').style.display = "none"
         document.getElementById('3-8-3').style.display = "none"
@@ -270,9 +263,8 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'obstacle area'
       })
-      // document.getElementById('Place no-camera area1').style.display = "none"
-      // document.getElementById('Place no-camera area2').style.display = ""
-      if (localStorage.getItem("Tutorial") !== "Done"){
+
+      if (localStorage.getItem("Tutorial_ObstacleArea") !== "Done"){
         document.getElementById('4-8-1').style.display = "none"
         document.getElementById('4-8-2').style.display = "none"
         document.getElementById('4-8-3').style.display = "none"
@@ -300,9 +292,8 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'nocamera area'
       })
-      // document.getElementById('Place must-cover area1').style.display = "none"
-      // document.getElementById('Place must-cover area2').style.display = ""
-      if (localStorage.getItem("Tutorial") !== "Done"){
+
+      if (localStorage.getItem("Tutorial_NoCameraArea") !== "Done"){
         document.getElementById('5-8-1').style.display = "none"
         document.getElementById('5-8-2').style.display = "none"
         document.getElementById('5-8-3').style.display = "none"
@@ -330,9 +321,8 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'mustcover area'
       })
-      // document.getElementById('Camera Tool1').style.display = "none"
-      // document.getElementById('Camera Tool2').style.display = ""
-      if (localStorage.getItem("Tutorial") !== "Done"){
+
+      if (localStorage.getItem("Tutorial_MustCoverArea") !== "Done"){
         document.getElementById('6-8-1').style.display = "none"
         document.getElementById('6-8-2').style.display = "none"
         document.getElementById('6-8-3').style.display = "none"
