@@ -25,7 +25,7 @@ import BAC2000Icon from '../../../demo/src/catalog/items/BAC2000/BAC2000.png';
 import { createTheme } from '@mui/material';
 import jsPDF from 'jspdf';
 //import {PdfReport} from './pdfreport';
-import html2canvas from 'html2canvas';
+// import html2canvas from 'html2canvas';
 import {coverage_base64, camera_base64, battery_base64, BAC2000_base64} from './pdfimages'
 
 const STYLE_TITLE = {
