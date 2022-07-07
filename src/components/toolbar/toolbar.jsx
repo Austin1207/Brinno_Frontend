@@ -704,7 +704,7 @@ export default class Toolbar extends Component {
               id = "SummaryPage1" 
               sx={this.state.showSumDrawer ? buttonsInuseStyle : buttonsStyle}
               onClick={() => this.handleSumDrawChange()}
-              // disabled={true}
+              disabled={true}
               >
               <IconSum sx={{ fontSize: 40 }}/>
             </Button>
