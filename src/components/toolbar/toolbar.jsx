@@ -177,7 +177,6 @@ export default class Toolbar extends Component {
 
       localStorage.setItem("Tutorial_CameraTool_1", "Done")
     }
-
   }
 
   handleSumDrawChange(){
@@ -198,6 +197,129 @@ export default class Toolbar extends Component {
     let mode = state.get('mode');
     let alterate = state.get('alterate');
     let alterateColor = alterate ? SharedStyle.MATERIAL_COLORS[500].orange : '';
+
+    const CloseTutorial_3 = () => {
+      document.getElementById('3-8-1').style.display = "none"
+      document.getElementById('3-8-2').style.display = "none"
+      document.getElementById('3-8-3').style.display = "none"
+      document.getElementById('3-8-4').style.display = "none"
+      document.getElementById('3-8-5').style.display = "none"
+      document.getElementById('3-8-6').style.display = "none"
+      document.getElementById('3-8-7').style.display = "none"
+      document.getElementById('3-8-8').style.display = "none"
+      document.getElementById('3-8-9').style.display = "none"
+      document.getElementById('3-8-10').style.display = "none"
+      document.getElementById('3-8-11').style.display = "none"
+      document.getElementById('3-8-12').style.display = "none"
+      document.getElementById('3-8-13').style.display = "none"
+      document.getElementById('3-8-14').style.display = "none"
+      document.getElementById('3-8-15').style.display = "none"
+      document.getElementById('3-8-16').style.display = "none"
+    }
+
+    const CloseTutorial_4 = () => {
+      document.getElementById('4-8-1').style.display = "none"
+      document.getElementById('4-8-2').style.display = "none"
+      document.getElementById('4-8-3').style.display = "none"
+      document.getElementById('4-8-4').style.display = "none"
+      document.getElementById('4-8-5').style.display = "none"
+      document.getElementById('4-8-6').style.display = "none"
+      document.getElementById('4-8-7').style.display = "none"
+      document.getElementById('4-8-8').style.display = "none"
+      document.getElementById('4-8-9').style.display = "none"
+      document.getElementById('4-8-10').style.display = "none"
+      document.getElementById('4-8-11').style.display = "none"
+      document.getElementById('4-8-12').style.display = "none"
+      document.getElementById('4-8-13').style.display = "none"
+      document.getElementById('4-8-14').style.display = "none"
+      document.getElementById('4-8-15').style.display = "none"
+      document.getElementById('4-8-16').style.display = "none"
+      document.getElementById('4-8-17').style.display = "none"
+    }
+
+    const CloseTutorial_5 = () => {
+      document.getElementById('5-8-1').style.display = "none"
+      document.getElementById('5-8-2').style.display = "none"
+      document.getElementById('5-8-3').style.display = "none"
+      document.getElementById('5-8-4').style.display = "none"
+      document.getElementById('5-8-5').style.display = "none"
+      document.getElementById('5-8-6').style.display = "none"
+      document.getElementById('5-8-7').style.display = "none"
+      document.getElementById('5-8-8').style.display = "none"
+      document.getElementById('5-8-9').style.display = "none"
+      document.getElementById('5-8-10').style.display = "none"
+      document.getElementById('5-8-11').style.display = "none"
+      document.getElementById('5-8-12').style.display = "none"
+      document.getElementById('5-8-13').style.display = "none"
+      document.getElementById('5-8-14').style.display = "none"
+      document.getElementById('5-8-15').style.display = "none"
+      document.getElementById('5-8-16').style.display = "none"
+      document.getElementById('5-8-17').style.display = "none"
+    }
+
+    const CloseTutorial_6 = () => {
+      document.getElementById('6-8-1').style.display = "none"
+      document.getElementById('6-8-2').style.display = "none"
+      document.getElementById('6-8-3').style.display = "none"
+      document.getElementById('6-8-4').style.display = "none"
+      document.getElementById('6-8-5').style.display = "none"
+      document.getElementById('6-8-6').style.display = "none"
+      document.getElementById('6-8-7').style.display = "none"
+      document.getElementById('6-8-8').style.display = "none"
+      document.getElementById('6-8-9').style.display = "none"
+      document.getElementById('6-8-10').style.display = "none"
+      document.getElementById('6-8-11').style.display = "none"
+      document.getElementById('6-8-12').style.display = "none"
+      document.getElementById('6-8-13').style.display = "none"
+      document.getElementById('6-8-14').style.display = "none"
+      document.getElementById('6-8-15').style.display = "none"
+      document.getElementById('6-8-16').style.display = "none"
+      document.getElementById('6-8-17').style.display = "none"
+    }
+
+    const CloseTutorial_7 = () => {
+      document.getElementById('7-8-1').style.display = "none"
+      document.getElementById('7-8-2').style.display = "none"
+      document.getElementById('7-8-3').style.display = "none"
+      document.getElementById('7-8-4').style.display = "none"
+      document.getElementById('7-8-5').style.display = "none"
+      document.getElementById('7-8-6').style.display = "none"
+      document.getElementById('7-8-7').style.display = "none"
+      document.getElementById('7-8-8').style.display = "none"
+      document.getElementById('7-8-9').style.display = "none"
+      document.getElementById('7-8-10').style.display = "none"
+      document.getElementById('7-8-11').style.display = "none"
+      document.getElementById('7-8-12').style.display = "none"
+      document.getElementById('7-8-13').style.display = "none"
+      document.getElementById('7-8-14').style.display = "none"
+      document.getElementById('7-8-15').style.display = "none"
+      document.getElementById('7-8-16').style.display = "none"
+      document.getElementById('7-8-17').style.display = "none"
+      document.getElementById('7-8-18').style.display = "none"
+      document.getElementById('7-8-19').style.display = "none"
+      document.getElementById('7-8-20').style.display = "none"
+      document.getElementById('7-8-21').style.display = "none"
+      document.getElementById('7-8-22').style.display = "none"
+      document.getElementById('7-8-23').style.display = "none"
+      document.getElementById('7-8-24').style.display = "none"
+      document.getElementById('7-8-25').style.display = "none"
+      document.getElementById('7-8-26').style.display = "none"
+      document.getElementById('7-8-27').style.display = "none"
+      document.getElementById('7-8-28').style.display = "none"
+      document.getElementById('7-8-29').style.display = "none"
+      document.getElementById('7-8-30').style.display = "none"
+      document.getElementById('7-8-31').style.display = "none"
+      document.getElementById('7-8-32').style.display = "none"
+      document.getElementById('7-8-33').style.display = "none"
+      document.getElementById('7-8-34').style.display = "none"
+    }
+
+    const CloseTutorial_8 = () => {
+      document.getElementById('8-8-1').style.display = "none"
+      document.getElementById('8-8-2').style.display = "none"
+      document.getElementById('8-8-3').style.display = "none"
+      document.getElementById('8-8-4').style.display = "none"
+    }
 
     const DrawConstructionArea = () => {
       projectActions.unselectAll();
@@ -226,6 +348,13 @@ export default class Toolbar extends Component {
         document.getElementById('2-8-15').style.display = ""
       }
 
+      CloseTutorial_3()
+      CloseTutorial_4()
+      CloseTutorial_5()
+      CloseTutorial_6()
+      CloseTutorial_7()
+      CloseTutorial_8()
+
     }
   
     const DrawInterestArea = () => {
@@ -252,8 +381,14 @@ export default class Toolbar extends Component {
         document.getElementById('3-8-12').style.display = ""
         document.getElementById('3-8-13').style.display = ""
         document.getElementById('3-8-14').style.display = ""
-        document.getElementById('3-8-15').style.display = ""
+        document.getElementById('3-8-16').style.display = ""
       }
+
+      CloseTutorial_4()
+      CloseTutorial_5()
+      CloseTutorial_6()
+      CloseTutorial_7()
+      CloseTutorial_8()
     }
 
     const DrawObstacleArea = () => {
@@ -281,8 +416,13 @@ export default class Toolbar extends Component {
         document.getElementById('4-8-13').style.display = ""
         document.getElementById('4-8-14').style.display = ""
         document.getElementById('4-8-15').style.display = ""
-        document.getElementById('4-8-16').style.display = ""
+        document.getElementById('4-8-17').style.display = ""
       }
+
+      CloseTutorial_5()
+      CloseTutorial_6()
+      CloseTutorial_7()
+      CloseTutorial_8()
     }
 
     const DrawNoCameraArea = () => {
@@ -310,8 +450,12 @@ export default class Toolbar extends Component {
         document.getElementById('5-8-13').style.display = ""
         document.getElementById('5-8-14').style.display = ""
         document.getElementById('5-8-15').style.display = ""
-        document.getElementById('5-8-16').style.display = ""
+        document.getElementById('5-8-17').style.display = ""
       }
+
+      CloseTutorial_6()
+      CloseTutorial_7()
+      CloseTutorial_8()
     }
 
     const DrawMustcoverArea = () => {
@@ -339,8 +483,11 @@ export default class Toolbar extends Component {
         document.getElementById('6-8-13').style.display = ""
         document.getElementById('6-8-14').style.display = ""
         document.getElementById('6-8-15').style.display = ""
-        document.getElementById('6-8-16').style.display = ""
+        document.getElementById('6-8-17').style.display = ""
       }
+
+      CloseTutorial_7()
+      CloseTutorial_8()
     }    
 
     const OpenCameraTool = () => {

@@ -30,12 +30,31 @@ class Area{
     });
 
     state = state.setIn(['scene', 'layers', layerID], layer);
+    
+    let NextCheck_3 = document.getElementById('3-8-14').style.display
+    let NextCheck_4 = document.getElementById('4-8-15').style.display
+    let NextCheck_5 = document.getElementById('5-8-15').style.display
+    let NextCheck_6 = document.getElementById('6-8-15').style.display
 
-    // document.getElementById('2-8-14-disabled').style.display = "none"
-    // document.getElementById('2-8-14').style.display = ""
+    if (NextCheck_3 == "") {
+      document.getElementById('3-8-14').style.display = "none"
+      document.getElementById('3-8-15').style.display = ""
+    }
 
-    // document.getElementById('3-8-14').style.display = "none"
-    // document.getElementById('3-8-14-abled').style.display = ""
+    else if (NextCheck_4 == "") {
+      document.getElementById('4-8-15').style.display = "none"
+      document.getElementById('4-8-16').style.display = ""
+    }
+
+    else if (NextCheck_5 == "") {
+      document.getElementById('5-8-15').style.display = "none"
+      document.getElementById('5-8-16').style.display = ""
+    }
+
+    else if (NextCheck_6 == "") {
+      document.getElementById('6-8-15').style.display = "none"
+      document.getElementById('6-8-16').style.display = ""
+    }
 
     return { updatedState: state, area };
   }

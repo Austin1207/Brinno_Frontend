@@ -155,6 +155,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             document.getElementById('3-8-13').style.display = "none"
             document.getElementById('3-8-14').style.display = "none"
             document.getElementById('3-8-15').style.display = "none"
+            document.getElementById('3-8-16').style.display = "none"
 
             document.getElementById('4-8-1').style.display = ""
             document.getElementById('4-8-2').style.display = ""
@@ -184,6 +185,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             document.getElementById('4-8-14').style.display = "none"
             document.getElementById('4-8-15').style.display = "none"
             document.getElementById('4-8-16').style.display = "none"
+            document.getElementById('4-8-17').style.display = "none"
 
             document.getElementById('5-8-1').style.display = ""
             document.getElementById('5-8-2').style.display = ""
@@ -213,6 +215,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById('5-8-14').style.display = "none"
         document.getElementById('5-8-15').style.display = "none"
         document.getElementById('5-8-16').style.display = "none"
+        document.getElementById('5-8-17').style.display = "none"
 
         document.getElementById('6-8-1').style.display = ""
         document.getElementById('6-8-2').style.display = ""
@@ -242,6 +245,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             document.getElementById('6-8-14').style.display = "none"
             document.getElementById('6-8-15').style.display = "none"
             document.getElementById('6-8-16').style.display = "none"
+            document.getElementById('6-8-17').style.display = "none"
 
             document.getElementById('7-8-1').style.display = ""
             document.getElementById('7-8-2').style.display = ""
@@ -298,6 +302,40 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
             localStorage.setItem("Tutorial_CameraTool_4", "Done")
 
+        }
+    }
+
+    const Skip_6 = event => {
+        if (localStorage.getItem("Tutorial_CameraTool_5") !== "Done"){
+            document.getElementById("7-8-19").style.display = "none"
+            document.getElementById("7-8-20").style.display = "none"
+            document.getElementById("7-8-21").style.display = "none"
+            document.getElementById("7-8-22").style.display = "none"
+            document.getElementById("7-8-23").style.display = "none"
+            document.getElementById("7-8-24").style.display = "none"
+            document.getElementById("7-8-25").style.display = "none"
+            document.getElementById("7-8-26").style.display = "none"
+
+            var CameraX = parseInt(localStorage.getItem("CameraX"))
+            var CameraY = parseInt(localStorage.getItem("CameraY"))
+
+            document.getElementById("7-8-27").style.left = `${CameraX + 40}px`
+            document.getElementById("7-8-27").style.top = `${CameraY - 40}px`
+            document.getElementById("7-8-28").style.left = `${CameraX + 24}px`
+            document.getElementById("7-8-28").style.top = `${CameraY - 33}px`
+            document.getElementById("7-8-29").style.left = `${CameraX + 40}px`
+            document.getElementById("7-8-29").style.top = `${CameraY + 238.1}px`
+            document.getElementById("7-8-30").style.left = `${CameraX + 170}px`
+            document.getElementById("7-8-30").style.top = `${CameraY + 256}px`
+            document.getElementById("7-8-31").style.left = `${CameraX + 65.5}px`
+            document.getElementById("7-8-31").style.top = `${CameraY + 120}px`
+            document.getElementById("7-8-32").style.left = `${CameraX + 65.5}px`
+            document.getElementById("7-8-32").style.top = `${CameraY + 176}px`
+            document.getElementById("7-8-33").style.left = `${CameraX + 202.5}px`
+            document.getElementById("7-8-33").style.top = `${CameraY + 176}px`
+            document.getElementById("7-8-34").style.left = `${CameraX + 65.5}px`
+            document.getElementById("7-8-34").style.top = `${CameraY - 14}px`
+            localStorage.setItem("Tutorial_CameraTool_4", "Done")
         }
     }
 
@@ -936,18 +974,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             Use your cursor to click on the canvas to form any shape you like.
             </span>
 
-            {/* <button id="3-8-14" class = "button-Next-disabled"  onClick={Next_2} style = {{
-                position: "absolute",
-                // left: "199px",
-                left: "169px",
-                top: "349px",
-                zIndex: 10000,
-                display:"none"
-            }}>
-                Next
-            </button> */}
-
-            <button id="3-8-14" class = "button-Next"  onClick={Next_2} style = {{
+            <button id="3-8-14" class = "button-Next-disabled"  onClick={Next_2} style = {{
                 position: "absolute",
                 // left: "199px",
                 left: "169px",
@@ -958,7 +985,18 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Next
             </button>
 
-            <img id="3-8-15" class="Screen-Shot-2022-02-10-at-41152-PM"  src = {interestArea} style = {{
+            <button id="3-8-15" class = "button-Next"  onClick={Next_2} style = {{
+                position: "absolute",
+                // left: "199px",
+                left: "169px",
+                top: "349px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+                Next
+            </button>
+
+            <img id="3-8-16" class="Screen-Shot-2022-02-10-at-41152-PM"  src = {interestArea} style = {{
                 position: "absolute",
                 // left: "130.5px",
                 left: "100.5px",
@@ -1110,7 +1148,18 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Skip
             </button>
 
-            <button id="4-8-15" class = "button-Next" onClick={Next_3} style = {{
+            <button id="4-8-15" class = "button-Next-disabled" onClick={Next_3} style = {{
+                position: "absolute",
+                // left: "267.5px",
+                left: "237.5px",
+                top: "418px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+                Next
+            </button>
+            
+            <button id="4-8-16" class = "button-Next" onClick={Next_3} style = {{
                 position: "absolute",
                 // left: "267.5px",
                 left: "237.5px",
@@ -1121,7 +1170,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Next
             </button>
 
-            <img id="4-8-16" class="Screen-Shot-2022-02-10-at-41152-PM"  src = {obstacleArea} style = {{
+            <img id="4-8-17" class="Screen-Shot-2022-02-10-at-41152-PM"  src = {obstacleArea} style = {{
                 position: "absolute",
                 // left: "130.5px",
                 left: "100.5px",
@@ -1272,7 +1321,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Skip
             </button>
 
-            <button class = "button-Next" id="5-8-15" onClick={Next_4} style = {{
+            <button class = "button-Next-disabled" id="5-8-15" onClick={Next_4} style = {{
                 position: "absolute",
                 // left: "267.5px",
                 left: "237.5px",
@@ -1283,7 +1332,18 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Next
             </button>
 
-            <img class="Screen-Shot-2022-02-10-at-41152-PM"  id="5-8-16" src = {noCameraArea} style = {{
+            <button class = "button-Next" id="5-8-16" onClick={Next_4} style = {{
+                position: "absolute",
+                // left: "267.5px",
+                left: "237.5px",
+                top: "484px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+                Next
+            </button>
+
+            <img class="Screen-Shot-2022-02-10-at-41152-PM"  id="5-8-17" src = {noCameraArea} style = {{
                 position: "absolute",
                 // left: "130.5px",
                 left: "100.5px",
@@ -1435,7 +1495,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Skip
             </button>
 
-            <button class = "button-Next" id="6-8-15" onClick={Next_5} style = {{
+            <button class = "button-Next-disabled" id="6-8-15" onClick={Next_5} style = {{
                 position: "absolute",
                 // left: "267.5px",
                 left: "237.5px",
@@ -1446,7 +1506,18 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Next
             </button>
 
-            <img class="Screen-Shot-2022-02-10-at-41152-PM" id="6-8-16" src = {mustCoverArea} style = {{
+            <button class = "button-Next" id="6-8-16" onClick={Next_5} style = {{
+                position: "absolute",
+                // left: "267.5px",
+                left: "237.5px",
+                top: "551px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+                Next
+            </button>
+
+            <img class="Screen-Shot-2022-02-10-at-41152-PM" id="6-8-17" src = {mustCoverArea} style = {{
                 position: "absolute",
                 // left: "130.5px",
                 left: "100.5px",
@@ -1691,7 +1762,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             When the camera is selected, you may change your camera to another type from this panel
             </span>
 
-            <button id="7-8-25" class = "button-Skip" onClick={Next_6} style = {{
+            <button id="7-8-25" class = "button-Skip" onClick={Skip_6} style = {{
                 position: "absolute",
                 // left: "130.5px",
                 // left: "100.5px",

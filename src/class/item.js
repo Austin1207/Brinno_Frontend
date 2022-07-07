@@ -81,6 +81,17 @@ class Item{
 
       localStorage.setItem("Tutorial_CameraTool_3", "Done")
     }
+
+    else if ((localStorage.getItem("Tutorial_CameraTool_4") == "Done") && (localStorage.getItem("Tutorial_CameraTool_5") !== "Done")){
+      document.getElementById("7-8-27").style.display = ""
+      document.getElementById("7-8-28").style.display = ""
+      document.getElementById("7-8-29").style.display = ""
+      document.getElementById("7-8-30").style.display = ""
+      document.getElementById("7-8-31").style.display = ""
+      document.getElementById("7-8-32").style.display = ""
+      document.getElementById("7-8-33").style.display = ""
+      document.getElementById("7-8-34").style.display = ""
+    }
    
     // clear redoHistort
     state = state.merge({
