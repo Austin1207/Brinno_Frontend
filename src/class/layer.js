@@ -195,10 +195,10 @@ class Layer{
       let Ymax = Math.max(...allY);
       let Ymin = Math.min(...allY);
 
-      state = Item.create( state, layerID, 'camera_BAC2000', Xmax-10, Ymax-10, 200, 100, -45 ).updatedState;
-      state = Item.create( state, layerID, 'camera_BAC2000', Xmax-10, Ymin+10, 200, 100, -135 ).updatedState;
-      state = Item.create( state, layerID, 'camera_BAC2000', Xmin+10, Ymax-10, 200, 100, 45 ).updatedState;
-      state = Item.create( state, layerID, 'camera_BAC2000', Xmin+10, Ymin+10, 200, 100, 135 ).updatedState;
+      state = Item.create( state, layerID, 'camera_BCC2000', Xmax-10, Ymax-10, 200, 100, -45 ).updatedState;
+      state = Item.create( state, layerID, 'camera_BCC2000', Xmax-10, Ymin+10, 200, 100, -135 ).updatedState;
+      state = Item.create( state, layerID, 'camera_BCC2000', Xmin+10, Ymax-10, 200, 100, 45 ).updatedState;
+      state = Item.create( state, layerID, 'camera_BCC2000', Xmin+10, Ymin+10, 200, 100, 135 ).updatedState;
 
       localStorage.setItem("Xmin", Xmin)
       localStorage.setItem("Ymax", Ymax)
