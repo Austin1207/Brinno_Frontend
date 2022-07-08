@@ -322,7 +322,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
             // fontFamily: "SFProDisplay",
             border:"none",
             borderRadius:"5px",
-            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
+            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
             display: ""
             }}
             >
@@ -351,7 +351,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
             color: "#fff",
             border:"none",
             borderRadius:"5px",
-            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
+            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
             display: ""
             }}>
               Outline your own

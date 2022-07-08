@@ -67,7 +67,7 @@ export default class PanelMultiElementsEditor extends Component {
                     }
                   </FormSelect>
                 </td>
-                <td style={{cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer', padding:'0.5em 0', textAlign:'center'}} onClick={ e => {
+                <td style={{cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer', padding:'0.5em 0', textAlign:'center'}} onClick={ e => {
                   if( !this.state.selectedGroupID || this.state.selectedGroupID === '' || !selecteds || !selecteds.size ) return;
 
                   let selectedJs = selecteds.toJS();

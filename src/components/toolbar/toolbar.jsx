@@ -515,7 +515,7 @@ export default class Toolbar extends Component {
             <Button id ="Outline Construction Area2"
               sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawConstructionArea()}
-              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconConstruction sx={{ fontSize: 40 }} />
             </Button>
@@ -545,7 +545,7 @@ export default class Toolbar extends Component {
             <Button id = "Outine Interest Area2"
               sx={this.state.inuseTool == 'interest area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawInterestArea()}
-              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconInterest sx={{ fontSize: 40 }} />
             </Button>
@@ -575,7 +575,7 @@ export default class Toolbar extends Component {
             <Button id = "Place Obstacle Area2"
               sx={this.state.inuseTool == 'obstacle area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawObstacleArea()}
-              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconObstacle sx={{ fontSize: 40 }}/>
             </Button>
@@ -604,7 +604,7 @@ export default class Toolbar extends Component {
             <Button id = "Place no-camera area2"
               sx={this.state.inuseTool == 'nocamera area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawNoCameraArea()}
-              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconNoCam sx={{ fontSize: 40 }}/>
             </Button>
@@ -633,7 +633,7 @@ export default class Toolbar extends Component {
             <Button id ="Place must-cover area2"
               sx={this.state.inuseTool == 'mustcover area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawMustcoverArea()}
-              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconMust sx={{ fontSize: 40 }}/>
             </Button>
@@ -665,7 +665,7 @@ export default class Toolbar extends Component {
               id = "Camera Tool2"
               // onClick={() => this.handleCamDrawChange()}
               onClick={() => OpenCameraTool()}
-              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconAddCam sx={{ fontSize: 40 }}/>
             </Button>
@@ -714,7 +714,7 @@ export default class Toolbar extends Component {
               sx={buttonsStyle}
               onClick={() => this.handleSumDrawChange()}
               // disabled={true}
-              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconSum sx={{ fontSize: 40 }}/>
             </Button>

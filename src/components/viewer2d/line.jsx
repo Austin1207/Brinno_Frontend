@@ -56,7 +56,7 @@ export default function Line({line, layer, scene, catalog}) {
       data-id={line.id}
       data-selected={line.selected}
       data-layer={layer.id}
-      style={line.selected ? {cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'} : {}}
+      style={line.selected ? {cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'} : {}}
     >
       {renderedRuler}
       {renderedLine}

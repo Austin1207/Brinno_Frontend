@@ -251,7 +251,7 @@ export default class ImageFul extends Component {
           // style={this.state.hover1 || this.state.handleMouseMove1 ? hoverCircleStyle : grabCircleStyle}
           style = {{
             // cursor: 'grab',
-            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/cursor_scale1.png"), pointer',
+            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/cursor_scale1.png") 8 12, pointer',
             fill: rulerColor,
             transition: 'r 150ms ease-in',
             display:"none"
@@ -269,7 +269,7 @@ export default class ImageFul extends Component {
           // style={this.state.hover2 || this.state.handleMouseMove2 ? hoverCircleStyle : grabCircleStyle}
           style = {{
             // cursor: 'grab',
-            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/cursor_scale1.png"), pointer',
+            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/cursor_scale1.png") 8 12, pointer',
             fill: rulerColor,
             transition: 'r 150ms ease-in',
             display:"none",

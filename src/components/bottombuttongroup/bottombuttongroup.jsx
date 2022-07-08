@@ -30,7 +30,7 @@ import '@babel/polyfill'; //for async
 
 const buttonsStyle = {
   height: '36px', bottom: '54px',
-  backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',},
+  backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',},
 };
 const IconUndo = createSvgIcon(
   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -426,7 +426,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
             <Fab
               id = "Question2"
-              sx={{...buttonsStyle, width: '36px', right: 96, position: 'absolute', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
+              sx={{...buttonsStyle, width: '36px', right: 96, position: 'absolute', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',}}
               style = {{display:"none"}}
               onClick={() => test1234()}
               aria-label="Help">
@@ -436,17 +436,17 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             <ButtonGroup variant="contained" ref={anchorRef} aria-label="zoom"
             sx={{ position: 'absolute', bottom: 54, right: 348}}>
               <Button sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',}}
                     onClick={handleOut}>
 
                 <RemoveIcon />
               </Button>
               <Button
               sx={{width: '67px', height: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',}}
               onClick={handleToggle}>{/*options[selectedIndex]*/(scale*100).toFixed(0)}%</Button>
               <Button sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',}}
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',}}
                     onClick={handleIn}>
                 <AddIcon />
               </Button>
@@ -475,7 +475,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                             selected={index === selectedIndex}
                             //onClick={(event) => handleMenuItemClick(event, index)}
                             onClick={option.do}
-                            style = {{cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
+                            style = {{cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
                           >
                             {option.name}
                           </MenuItem>

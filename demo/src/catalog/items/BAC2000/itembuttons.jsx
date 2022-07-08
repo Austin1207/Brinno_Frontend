@@ -10,13 +10,13 @@ const hoverColor = '#ff9900';
 let theta = 0;
 
 const buttonStyle = {
-    cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
+    cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
     fill: buttonColor,
     transition: 'r 150ms ease-in'
   };
   
   const hoverStyle = {
-    cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
+    cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
     fill: hoverColor,
     transition: 'r 150ms ease-in'
   };

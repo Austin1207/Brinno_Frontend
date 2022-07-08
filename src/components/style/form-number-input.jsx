@@ -37,7 +37,7 @@ const STYLE_INPUT = {
 
 const confirmStyle = {
   position: 'absolute',
-  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
   width: '2em',
   height: '2em',
   right: '0.35em',

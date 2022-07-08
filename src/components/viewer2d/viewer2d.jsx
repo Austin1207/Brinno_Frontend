@@ -76,12 +76,11 @@ function mode2Cursor(mode) {
 
     case constants.MODE_DRAGGING_ITEM:
       // return { cursor: 'move' };
-      // return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/add+camera.png"),pointer' };
-      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer' }
+      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer' }
 
     case constants.MODE_ROTATING_ITEM:
       // return { cursor: 'ew-resize' };
-      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/rotate_2.png"),pointer' };
+      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/rotate_2.png") 5 10,pointer' };
 
 
     case constants.MODE_WAITING_DRAWING_LINE:
@@ -89,7 +88,7 @@ function mode2Cursor(mode) {
 
     case constants.MODE_DRAWING_LINE:
       // return { cursor: 'crosshair' };
-      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png"),pointer' };
+      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png") 10 10,pointer' };
     default:
       return { cursor: 'default' };
   }
@@ -441,7 +440,7 @@ export default function Viewer2D(
       position: 'relative',
       // cursor: 'context-menu'
       // cursor: 'crosshair'
-      cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/add+camera.png"),pointer'
+      cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/add+camera.png") 17 17,pointer'
     }}
     //onContextMenu={handleContextMenu}
     >
@@ -535,18 +534,18 @@ export default function Viewer2D(
 
       </ReactSVGPanZoom>
       <Button variant="contained" 
-        sx={{...(openCoverage ? buttonsInuseStyle : buttonsStyle), top: 24, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
+        sx={{...(openCoverage ? buttonsInuseStyle : buttonsStyle), top: 24, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
         onClick={handleCoverageButton}>
         {openCoverage ? <VisibilityIcon sx={{paddingRight: '6px'}}/> : <VisibilityOffIcon sx={{paddingRight: '6px'}}/>}
         <Divider orientation="vertical" flexItem={true}/>
-        <Typography sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}>Camera Coverage</Typography>
+        <Typography sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Camera Coverage</Typography>
       </Button>
       <Button variant="contained" 
-        sx={{...(openLegend ? buttonsInuseStyle : buttonsStyle), top: 39+36, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}
+        sx={{...(openLegend ? buttonsInuseStyle : buttonsStyle), top: 39+36, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
         onClick={handleLegendButton}>
         {openLegend ? <ExpandLess sx={{paddingRight: '6px'}}/> : <ExpandMore sx={{paddingRight: '6px'}}/>}
         <Divider orientation="vertical" flexItem={true}/>
-        <Typography sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer'}}>Area Legend</Typography>
+        <Typography sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Area Legend</Typography>
       </Button>
       <Popper open={openLegend} anchorEl={anchorEl} placement='bottom-start' transition>
         {({ TransitionProps }) => (

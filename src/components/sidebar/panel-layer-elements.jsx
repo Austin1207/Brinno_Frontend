@@ -22,7 +22,7 @@ const contentArea = {
   maxHeight: '15em',
   overflowY: 'auto',
   padding: '0.25em 1.15em',
-  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
   marginBottom: '1em',
   userSelect: 'none'
 };

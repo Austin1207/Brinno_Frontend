@@ -43,7 +43,7 @@ const styleEditButtonHover = {...styleEditButton, ...styleHoverColor};
 const styleAddLabel = {fontSize: '10px', marginLeft: '5px'};
 const styleEyeVisible = {fontSize: '1.25em'};
 const styleEyeHidden = {...styleEyeVisible, color: '#a5a1a1'};
-const newLayerLableStyle = {fontSize: '1.3em', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer', textAlign: 'center'};
+const newLayerLableStyle = {fontSize: '1.3em', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer', textAlign: 'center'};
 const newLayerLableHoverStyle = {...newLayerLableStyle, ...styleHoverColor};
 
 export default class PanelGroups extends Component {

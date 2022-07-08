@@ -35,7 +35,7 @@ const styleEditButton = {
 
 const tablegroupStyle = {
   width: '100%',
-  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
   maxHeight: '20em',
   marginLeft: '1px',
   marginTop: '1em'

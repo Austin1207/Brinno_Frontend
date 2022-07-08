@@ -11,11 +11,11 @@ const tabStyle = { margin: '1em' };
 const iconStyle = {
   fontSize: '14px',
   margin: '2px',
-  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
 };
 
 const addGuideStyle = {
-  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png"),pointer',
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
   height: '2em'
 };
 
