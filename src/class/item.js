@@ -354,8 +354,8 @@ class Item{
       document.getElementById("7-8-30").style.display = ""
       document.getElementById("7-8-31").style.display = ""
       document.getElementById("7-8-32").style.display = ""
-      document.getElementById("7-8-33").style.display = ""
       document.getElementById("7-8-34").style.display = ""
+      document.getElementById("7-8-35").style.display = ""
     }
 
     return { updatedState: state };

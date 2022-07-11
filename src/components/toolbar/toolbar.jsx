@@ -312,6 +312,8 @@ export default class Toolbar extends Component {
       document.getElementById('7-8-32').style.display = "none"
       document.getElementById('7-8-33').style.display = "none"
       document.getElementById('7-8-34').style.display = "none"
+      document.getElementById('7-8-26').style.display = "none"
+      document.getElementById('7-8-36').style.display = "none"
     }
 
     const CloseTutorial_8 = () => {

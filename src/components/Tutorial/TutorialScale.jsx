@@ -270,6 +270,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             document.getElementById("7-8-24").style.display = "none"
             document.getElementById("7-8-25").style.display = "none"
             document.getElementById("7-8-26").style.display = "none"
+            document.getElementById("7-8-36").style.display = "none"
 
             var CameraX = parseInt(localStorage.getItem("CameraX"))
             var CameraY = parseInt(localStorage.getItem("CameraY"))
@@ -290,6 +291,8 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             document.getElementById("7-8-33").style.top = `${CameraY + 176}px`
             document.getElementById("7-8-34").style.left = `${CameraX + 65.5}px`
             document.getElementById("7-8-34").style.top = `${CameraY - 14}px`
+            document.getElementById("7-8-35").style.left = `${CameraX + 202.5}px`
+            document.getElementById("7-8-35").style.top = `${CameraY + 176}px`
 
             document.getElementById("7-8-27").style.display = ""
             document.getElementById("7-8-28").style.display = ""
@@ -315,6 +318,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             document.getElementById("7-8-24").style.display = "none"
             document.getElementById("7-8-25").style.display = "none"
             document.getElementById("7-8-26").style.display = "none"
+            document.getElementById("7-8-36").style.display = "none"
 
             var CameraX = parseInt(localStorage.getItem("CameraX"))
             var CameraY = parseInt(localStorage.getItem("CameraY"))
@@ -335,6 +339,8 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             document.getElementById("7-8-33").style.top = `${CameraY + 176}px`
             document.getElementById("7-8-34").style.left = `${CameraX + 65.5}px`
             document.getElementById("7-8-34").style.top = `${CameraY - 14}px`
+            document.getElementById("7-8-35").style.left = `${CameraX + 202.5}px`
+            document.getElementById("7-8-35").style.top = `${CameraY + 176}px`
             localStorage.setItem("Tutorial_CameraTool_4", "Done")
         }
     }
@@ -370,6 +376,8 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             document.getElementById("7-8-32").style.display = "none"
             document.getElementById("7-8-33").style.display = "none"
             document.getElementById("7-8-34").style.display = "none"
+            document.getElementById("7-8-35").style.display = "none"
+
 
             localStorage.setItem("Tutorial_CameraTool_5", "Done")
 
@@ -807,7 +815,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Next
             </button>
 
-            <button id="2-8-14-disabled" class = "button-Next-disabled" style = {{
+            <button id="2-8-14-disabled" class = "button-Next-disabled" disabled style = {{
                 position: "absolute",
                 // left: "198px",
                 left: "169px",
@@ -974,7 +982,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             Use your cursor to click on the canvas to form any shape you like.
             </span>
 
-            <button id="3-8-14" class = "button-Next-disabled"  onClick={Next_2} style = {{
+            <button id="3-8-14" class = "button-Next-disabled" disabled onClick={Next_2} style = {{
                 position: "absolute",
                 // left: "199px",
                 left: "169px",
@@ -1148,7 +1156,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Skip
             </button>
 
-            <button id="4-8-15" class = "button-Next-disabled" onClick={Next_3} style = {{
+            <button id="4-8-15" class = "button-Next-disabled" disabled onClick={Next_3} style = {{
                 position: "absolute",
                 // left: "267.5px",
                 left: "237.5px",
@@ -1321,7 +1329,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Skip
             </button>
 
-            <button class = "button-Next-disabled" id="5-8-15" onClick={Next_4} style = {{
+            <button class = "button-Next-disabled" id="5-8-15" disabled onClick={Next_4} style = {{
                 position: "absolute",
                 // left: "267.5px",
                 left: "237.5px",
@@ -1495,7 +1503,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Skip
             </button>
 
-            <button class = "button-Next-disabled" id="6-8-15" onClick={Next_5} style = {{
+            <button class = "button-Next-disabled" id="6-8-15" disabled onClick={Next_5} style = {{
                 position: "absolute",
                 // left: "267.5px",
                 left: "237.5px",
@@ -1774,7 +1782,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Skip
             </button>
 
-            <button id="7-8-26" class = "button-Next" onClick={Next_6} style = {{
+            <button id="7-8-26" class = "button-Next-disabled" disabled onClick={Next_6} style = {{
                 position: "absolute",
                 // left: "267.5px",
                 left: "582.5px",
@@ -1784,7 +1792,6 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             }}>
                 Next
             </button>
-
 
             <div id="7-8-27" class="Rectangle-16" style = {{
                 position: "absolute",
@@ -1847,7 +1854,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Skip
             </button>
 
-            <button id="7-8-33" class = "button-Next" onClick={Next_7} style = {{
+            <button id="7-8-33" class = "button-Next-disabled" disabled onClick={Next_7} style = {{
                 position: "absolute",
                 // left: "267.5px",
                 left: "237.5px",
@@ -1866,6 +1873,28 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 zIndex: 10000,
                 display:"none"
             }}></img>
+
+            <button id="7-8-35" class = "button-Next" onClick={Next_7} style = {{
+                position: "absolute",
+                // left: "267.5px",
+                left: "237.5px",
+                top: "418px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+                Next
+            </button>
+
+            <button id="7-8-36" class = "button-Next" onClick={Next_6} style = {{
+                position: "absolute",
+                // left: "267.5px",
+                left: "582.5px",
+                top: "215px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+                Next
+            </button>
 
 
             <div id="8-8-1" class="Rectangle-19" style = {{

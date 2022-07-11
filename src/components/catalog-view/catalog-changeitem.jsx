@@ -94,6 +94,14 @@ const STYLE_DESCRIPTION = {
   textOverflow: 'ellipsis',
 };
 
+const ReplaceCameraNext = () => {
+  if (document.getElementById("7-8-26").style.display !== "none"){
+    document.getElementById("7-8-26").style.display = "none"
+    document.getElementById("7-8-36").style.display = ""
+  }
+}
+
+
 export default class CatalogChangeItem extends Component {
 
   constructor(props) {
@@ -113,18 +121,22 @@ export default class CatalogChangeItem extends Component {
       case 'camera_BAC2000':
         this.context.projectActions.remove();
         this.context.itemsActions.directCreatItem('layer2', 'camera_BAC2000', cameraX, cameraY, cameraRotation );
+        ReplaceCameraNext();
         break;
       case 'camera_BCC200':
         this.context.projectActions.remove();
         this.context.itemsActions.directCreatItem('layer2', 'camera_BCC200', cameraX, cameraY, cameraRotation );
+        ReplaceCameraNext();
         break;
       case 'camera_BCC2000':
         this.context.projectActions.remove();
         this.context.itemsActions.directCreatItem('layer2', 'camera_BCC2000', cameraX, cameraY, cameraRotation );
+        ReplaceCameraNext();
         break;
       case 'camera_MAC200DN':
         this.context.projectActions.remove();
         this.context.itemsActions.directCreatItem('layer2', 'camera_MAC200DN', cameraX, cameraY, cameraRotation );
+        ReplaceCameraNext();
         break;
     }
   }
