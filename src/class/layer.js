@@ -207,9 +207,16 @@ class Layer{
 
       if (localStorage.getItem("Tutorial_ConstructionArea") !== "Done"){
       
-        document.getElementById('2-8-14-disabled').style.display = "none"
-        document.getElementById('2-8-14').style.display = ""
+        document.getElementById('2-8-17').style.display = "none"
 
+        document.getElementById('2-8-8').style.display = ""
+        document.getElementById('2-8-9').style.display = ""
+        document.getElementById('2-8-10').style.display = ""
+        document.getElementById('2-8-11').style.display = ""
+        document.getElementById('2-8-12').style.display = ""
+        document.getElementById('2-8-13').style.display = ""
+        document.getElementById('2-8-14').style.display = ""
+        document.getElementById('2-8-15').style.display = ""
         document.getElementById('2-8-16').style.display = ""
         
         setTimeout(function(){

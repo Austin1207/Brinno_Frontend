@@ -744,6 +744,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             }}>
             Outline the general enclosed area of your construction site
             </span>
+            
 
             <div id="2-8-8" class="Rectangle-16" style = {{
                 position: "absolute",
@@ -815,17 +816,6 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 Next
             </button>
 
-            <button id="2-8-14-disabled" class = "button-Next-disabled" disabled style = {{
-                position: "absolute",
-                // left: "198px",
-                left: "169px",
-                top: "274px",
-                zIndex: 10000,
-                display:"none"
-            }}>
-                Next
-            </button>
-
             <img id="2-8-15" class="Screen-Shot-2022-02-10-at-41152-PM"  src = {constructionArea} style = {{
                 position: "absolute",
                 // left: "129.5px",
@@ -843,6 +833,17 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 display:"none"
             }}>
                 Cameras have been added to facilitate this tutorial walkthrough
+            </button>
+
+            <button id="2-8-17" class = "button-Next-disabled" disabled style = {{
+                position: "absolute",
+                // left: "198px",
+                left: "169px",
+                top: "274px",
+                zIndex: 10000,
+                display:"none"
+            }}>
+                Next
             </button>
 
             {/* Outline Interest Area */}

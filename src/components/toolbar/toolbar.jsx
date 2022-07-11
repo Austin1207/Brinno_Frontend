@@ -331,6 +331,8 @@ export default class Toolbar extends Component {
         inuseTool: 'construction area'
       });
 
+      localStorage.setItem("DrawingTool", "ConstructionArea")
+
       if (localStorage.getItem("Tutorial_ConstructionArea") !== "Done"){
         document.getElementById('2-8-1').style.display = "none"
         document.getElementById('2-8-2').style.display = "none"
@@ -346,7 +348,7 @@ export default class Toolbar extends Component {
         document.getElementById('2-8-11').style.display = ""
         document.getElementById('2-8-12').style.display = ""
         document.getElementById('2-8-13').style.display = ""
-        document.getElementById('2-8-14-disabled').style.display = ""
+        document.getElementById('2-8-17').style.display = ""
         document.getElementById('2-8-15').style.display = ""
       }
 
@@ -366,6 +368,8 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'interest area'
       });
+
+      localStorage.setItem("DrawingTool", "InterestArea")
 
       if (localStorage.getItem("Tutorial_InterestArea") !== "Done"){
         document.getElementById('3-8-1').style.display = "none"
@@ -401,6 +405,8 @@ export default class Toolbar extends Component {
         inuseTool: 'obstacle area'
       })
 
+      localStorage.setItem("DrawingTool", "ObstacleArea")
+
       if (localStorage.getItem("Tutorial_ObstacleArea") !== "Done"){
         document.getElementById('4-8-1').style.display = "none"
         document.getElementById('4-8-2').style.display = "none"
@@ -434,6 +440,8 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'nocamera area'
       })
+      
+      localStorage.setItem("DrawingTool", "NoCameraArea")
 
       if (localStorage.getItem("Tutorial_NoCameraArea") !== "Done"){
         document.getElementById('5-8-1').style.display = "none"
@@ -467,6 +475,8 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'mustcover area'
       })
+      
+      localStorage.setItem("DrawingTool", "MustCoverArea")
 
       if (localStorage.getItem("Tutorial_MustCoverArea") !== "Done"){
         document.getElementById('6-8-1').style.display = "none"

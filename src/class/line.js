@@ -21,6 +21,105 @@ import {
 // clear redoHistort
 import { HistoryStructure } from '../models';
 
+const CloseTutorial_2 = (status) => {
+  document.getElementById('2-8-1').style.display = status
+  document.getElementById('2-8-2').style.display = status
+  document.getElementById('2-8-3').style.display = status
+  document.getElementById('2-8-4').style.display = status
+  document.getElementById('2-8-5').style.display = status
+  document.getElementById('2-8-6').style.display = status
+  document.getElementById('2-8-7').style.display = status
+  document.getElementById('2-8-8').style.display = status
+  document.getElementById('2-8-9').style.display = status
+  document.getElementById('2-8-10').style.display = status
+  document.getElementById('2-8-11').style.display = status
+  document.getElementById('2-8-12').style.display = status
+  document.getElementById('2-8-13').style.display = status
+  document.getElementById('2-8-14').style.display = status
+  document.getElementById('2-8-15').style.display = status
+  document.getElementById('2-8-16').style.display = status
+  document.getElementById('2-8-17').style.display = status
+}
+
+const CloseTutorial_3 = (status) => {
+  document.getElementById('3-8-1').style.display = status
+  document.getElementById('3-8-2').style.display = status
+  document.getElementById('3-8-3').style.display = status
+  document.getElementById('3-8-4').style.display = status
+  document.getElementById('3-8-5').style.display = status
+  document.getElementById('3-8-6').style.display = status
+  document.getElementById('3-8-7').style.display = status
+  document.getElementById('3-8-8').style.display = status
+  document.getElementById('3-8-9').style.display = status
+  document.getElementById('3-8-10').style.display = status
+  document.getElementById('3-8-11').style.display = status
+  document.getElementById('3-8-12').style.display = status
+  document.getElementById('3-8-13').style.display = status
+  document.getElementById('3-8-14').style.display = status
+  document.getElementById('3-8-15').style.display = status
+  document.getElementById('3-8-16').style.display = status
+}
+
+const CloseTutorial_4 = (status) => {
+  document.getElementById('4-8-1').style.display = status
+  document.getElementById('4-8-2').style.display = status
+  document.getElementById('4-8-3').style.display = status
+  document.getElementById('4-8-4').style.display = status
+  document.getElementById('4-8-5').style.display = status
+  document.getElementById('4-8-6').style.display = status
+  document.getElementById('4-8-7').style.display = status
+  document.getElementById('4-8-8').style.display = status
+  document.getElementById('4-8-9').style.display = status
+  document.getElementById('4-8-10').style.display = status
+  document.getElementById('4-8-11').style.display = status
+  document.getElementById('4-8-12').style.display = status
+  document.getElementById('4-8-13').style.display = status
+  document.getElementById('4-8-14').style.display = status
+  document.getElementById('4-8-15').style.display = status
+  document.getElementById('4-8-16').style.display = status
+  document.getElementById('4-8-17').style.display = status
+}
+
+const CloseTutorial_5 = (status) => {
+  document.getElementById('5-8-1').style.display = status
+  document.getElementById('5-8-2').style.display = status
+  document.getElementById('5-8-3').style.display = status
+  document.getElementById('5-8-4').style.display = status
+  document.getElementById('5-8-5').style.display = status
+  document.getElementById('5-8-6').style.display = status
+  document.getElementById('5-8-7').style.display = status
+  document.getElementById('5-8-8').style.display = status
+  document.getElementById('5-8-9').style.display = status
+  document.getElementById('5-8-10').style.display = status
+  document.getElementById('5-8-11').style.display = status
+  document.getElementById('5-8-12').style.display = status
+  document.getElementById('5-8-13').style.display = status
+  document.getElementById('5-8-14').style.display = status
+  document.getElementById('5-8-15').style.display = status
+  document.getElementById('5-8-16').style.display = status
+  document.getElementById('5-8-17').style.display = status
+}
+
+const CloseTutorial_6 = (status) => {
+  document.getElementById('6-8-1').style.display = status
+  document.getElementById('6-8-2').style.display = status
+  document.getElementById('6-8-3').style.display = status
+  document.getElementById('6-8-4').style.display = status
+  document.getElementById('6-8-5').style.display = status
+  document.getElementById('6-8-6').style.display = status
+  document.getElementById('6-8-7').style.display = status
+  document.getElementById('6-8-8').style.display = status
+  document.getElementById('6-8-9').style.display = status
+  document.getElementById('6-8-10').style.display = status
+  document.getElementById('6-8-11').style.display = status
+  document.getElementById('6-8-12').style.display = status
+  document.getElementById('6-8-13').style.display = status
+  document.getElementById('6-8-14').style.display = status
+  document.getElementById('6-8-15').style.display = status
+  document.getElementById('6-8-16').style.display = status
+  document.getElementById('6-8-17').style.display = status
+}
+
 class Line{
 
   static create( state, layerID, type, x0, y0, x1, y1, properties ) {
@@ -39,6 +138,12 @@ class Line{
     }, properties);
 
     state = state.setIn(['scene', 'layers', layerID, 'lines', lineID], line);
+
+    CloseTutorial_2("none");
+    CloseTutorial_3("none");
+    CloseTutorial_4("none");
+    CloseTutorial_5("none");
+    CloseTutorial_6("none");
    
     // clear redoHistort
     state = state.merge({
