@@ -94,6 +94,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
     localStorage.setItem("Tutorial_CameraTool_4", Process);
     localStorage.setItem("Tutorial_CameraTool_5", Process);
     localStorage.setItem("Tutorial_Generate", Process);
+    localStorage.setItem("Tutorial_ObstacleArea_LineDetect", Process)
   }
 
   function UploadTest () {

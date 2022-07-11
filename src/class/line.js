@@ -430,6 +430,23 @@ class Line{
       activeSnapElement: snap ? snap.snap : null,
       drawingSupport
     });
+
+    if ((localStorage.getItem("DrawingTool") == "ObstacleArea") && (localStorage.getItem("Tutorial_ObstacleArea") !== "Done") && (localStorage.getItem("Tutorial_ObstacleArea_LineDetect") !== "Done")) {
+      localStorage.setItem("Tutorial_ObstacleArea_LineDetect", "Done")
+    }
+    
+    else if ((localStorage.getItem("DrawingTool") == "ObstacleArea") && (localStorage.getItem("Tutorial_ObstacleArea") !== "Done") && (localStorage.getItem("Tutorial_ObstacleArea_LineDetect") == "Done")) {
+      document.getElementById('4-8-8').style.display = ""
+      document.getElementById('4-8-9').style.display = ""
+      document.getElementById('4-8-10').style.display = ""
+      document.getElementById('4-8-11').style.display = ""
+      document.getElementById('4-8-12').style.display = ""
+      document.getElementById('4-8-13').style.display = ""
+      document.getElementById('4-8-14').style.display = ""
+      document.getElementById('4-8-15').style.display = "none"
+      document.getElementById('4-8-16').style.display = ""
+      document.getElementById('4-8-17').style.display = ""
+    }
    
     // clear redoHistort
     state = state.merge({
@@ -488,7 +505,7 @@ class Line{
       snapElements: new List(),
       activeSnapElement: null
     });
-   
+
     // clear redoHistort
     state = state.merge({
       redoHistory:  new HistoryStructure()
