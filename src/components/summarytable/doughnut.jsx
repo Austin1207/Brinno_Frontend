@@ -107,7 +107,7 @@ export default function Doughnut() {
           {
             data.map((entry, index) => (
                 <Cell
-                  cursor="pointer"
+                  cursor='url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'
                   fill={index === activeIndex ? "#e57500" : "#ffa140"}
                   key={`cell-${index}`}
                 />

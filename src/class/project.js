@@ -86,6 +86,26 @@ class Project{
     state.getIn(['scene', 'layers']).forEach( ({ id: layerID }) => { state = Layer.unselectAll( state, layerID ).updatedState; });
     state.getIn(['scene', 'groups']).forEach( group => { state = Group.unselect( state, group.get('id') ).updatedState; });
 
+    console.log("1")
+
+    if ((document.getElementById("8-8-1").style.display !== "none") && (localStorage.getItem("Tutorial_Generate_Detect_1") == "Undone")) {
+      localStorage.setItem("Tutorial_Generate_Detect_1", "Done")
+    console.log("2")
+    }
+
+    else if ((document.getElementById("8-8-1").style.display !== "none") && (localStorage.getItem("Tutorial_Generate_Detect_2") == "Undone")) {
+      localStorage.setItem("Tutorial_Generate_Detect_2", "Done")
+      console.log("3")
+    }
+
+    else if ((document.getElementById("8-8-1").style.display !== "none") && (localStorage.getItem("Tutorial_Generate_Detect_2") == "Done")) {
+      console.log("4")
+      document.getElementById("8-8-1").style.display = "none"
+      document.getElementById("8-8-2").style.display = "none"
+      document.getElementById("8-8-3").style.display = "none"
+      document.getElementById("8-8-4").style.display = "none"
+    }
+
     return { updatedState: state };
   }
 

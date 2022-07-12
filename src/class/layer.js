@@ -194,24 +194,29 @@ class Layer{
       let Xmin = Math.min(...allX);
       let Ymax = Math.max(...allY);
       let Ymin = Math.min(...allY);
-state = Item.create( state, layerID, 'camera_BAC2000', Xmax-10, Ymax-10, 200, 100, -45 ).updatedState;
-state = Item.create( state, layerID, 'camera_BAC2000', Xmax-10, Ymin+10, 200, 100, -135 ).updatedState;
-state = Item.create( state, layerID, 'camera_BAC2000', Xmin+10, Ymax-10, 200, 100, 45 ).updatedState;
-state = Item.create( state, layerID, 'camera_BAC2000', Xmin+10, Ymin+10, 200, 100, 135 ).updatedState;
+
+      state = Item.create( state, layerID, 'camera_BCC2000', Xmax-10, Ymax-10, 200, 100, -45 ).updatedState;
+      state = Item.create( state, layerID, 'camera_BCC2000', Xmax-10, Ymin+10, 200, 100, -135 ).updatedState;
+      state = Item.create( state, layerID, 'camera_BCC2000', Xmin+10, Ymax-10, 200, 100, 45 ).updatedState;
+      state = Item.create( state, layerID, 'camera_BCC2000', Xmin+10, Ymin+10, 200, 100, 135 ).updatedState;
 
       localStorage.setItem("Xmin", Xmin)
       localStorage.setItem("Ymax", Ymax)
+      localStorage.setItem("Ymin", Ymin)
       localStorage.setItem("ZoomScale", Math.min(1500/(Xmax-Xmin),750/(Ymax-Ymin)))
 
-
-      //Record that user has used before
-      // localStorage.setItem("Tutorial", "Done")
-
-      if (localStorage.getItem("Tutorial") !== "Done"){
+      if (localStorage.getItem("Tutorial_ConstructionArea") !== "Done"){
       
-        document.getElementById('2-8-14-disabled').style.display = "none"
-        document.getElementById('2-8-14').style.display = ""
+        document.getElementById('2-8-17').style.display = "none"
 
+        document.getElementById('2-8-8').style.display = ""
+        document.getElementById('2-8-9').style.display = ""
+        document.getElementById('2-8-10').style.display = ""
+        document.getElementById('2-8-11').style.display = ""
+        document.getElementById('2-8-12').style.display = ""
+        document.getElementById('2-8-13').style.display = ""
+        document.getElementById('2-8-14').style.display = ""
+        document.getElementById('2-8-15').style.display = ""
         document.getElementById('2-8-16').style.display = ""
         
         setTimeout(function(){
@@ -219,8 +224,26 @@ state = Item.create( state, layerID, 'camera_BAC2000', Xmin+10, Ymin+10, 200, 10
         },3000)
       }
 
+      else {
+        document.getElementById('Outine Interest Area1').style.display = "none"
+        document.getElementById('Outine Interest Area2').style.display = ""
+  
+        document.getElementById('Place Obstacle Area1').style.display = "none"
+        document.getElementById('Place Obstacle Area2').style.display = ""
+  
+        document.getElementById('Place no-camera area1').style.display = "none"
+        document.getElementById('Place no-camera area2').style.display = ""
+  
+        document.getElementById('Place must-cover area1').style.display = "none"
+        document.getElementById('Place must-cover area2').style.display = ""
+  
+        document.getElementById('Camera Tool1').style.display = "none"
+        document.getElementById('Camera Tool2').style.display = ""
+  
+        document.getElementById('Generate1').style.display = "none"
+        document.getElementById('Generate2').style.display = ""
+      }
     }
-
     return { updatedState: state };
   }
 

@@ -261,13 +261,20 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
     }
 
   async function GernerateOnclick(){
-    if (localStorage.getItem("Tutorial") !== "Done"){
-      document.getElementById("8-8-1").style.display = "none"
-      document.getElementById("8-8-2").style.display = "none"
-      document.getElementById("8-8-3").style.display = "none"
-      document.getElementById("8-8-4").style.display = "none"
-      localStorage.setItem("Tutorial","Done")
-  }
+    if (localStorage.getItem("Mode") == "Upload"){
+      localStorage.setItem("Tutorial_Upload","Done")
+    }
+    else {
+      localStorage.setItem("Tutorial_Outline","Done")
+    }
+
+    localStorage.setItem("Tutorial_Generate","Done");
+
+    document.getElementById("8-8-1").style.display = "none"
+    document.getElementById("8-8-2").style.display = "none"
+    document.getElementById("8-8-3").style.display = "none"
+    document.getElementById("8-8-4").style.display = "none"
+
     document.getElementById("SummaryPage1").style.display = "none";
     document.getElementById("SummaryPage2").style.display = "";
     showOptimizing();
@@ -406,7 +413,7 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
               id = "Generate2"
               key={'Generat'}
               sx={{ my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontWeight: "normal", fontStretch: "normal", fontStyle:"normal", textTransform:"capitalize"}}
-              style = {{ width: "134px", height: "41px", borderRadius: "10px", backgroundColor: "#ff8200", display: "none"}}
+              style = {{ width: "134px", height: "41px", borderRadius: "10px", backgroundColor: "#ff8200", display: "none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               onClick = {GernerateOnclick}
               >
               {'Generate'}

@@ -159,17 +159,14 @@ export default class Toolbar extends Component {
     })
     this.props.updateCam(!this.state.showCamDrawer)
     this.props.updateSum(false)
-    // sceneActions.selectLayer("layer2");
-    if (localStorage.getItem("Tutorial") !== "Done"){
+
+    if (localStorage.getItem("Tutorial_CameraTool_1") !== "Done"){
       document.getElementById('7-8-1').style.display = "none"
       document.getElementById('7-8-2').style.display = "none"
       document.getElementById('7-8-3').style.display = "none"
       document.getElementById('7-8-4').style.display = "none"
       document.getElementById('7-8-5').style.display = "none"
       document.getElementById('7-8-6').style.display = "none"
-
-      // document.getElementById('Generate1').style.display = "none"
-      // document.getElementById('Generate2').style.display = ""
 
       document.getElementById('7-8-7').style.display = ""
       document.getElementById('7-8-8').style.display = ""
@@ -178,12 +175,8 @@ export default class Toolbar extends Component {
       document.getElementById('7-8-11').style.display = ""
       document.getElementById('7-8-12').style.display = ""
 
-      localStorage.setItem("CreateCamera","Ing")
-
-      // localStorage.setItem("Tutorial", "Done")
+      localStorage.setItem("Tutorial_CameraTool_1", "Done")
     }
-    //console.log(this.state.showCamDrawer)
-
   }
 
   handleSumDrawChange(){
@@ -205,6 +198,131 @@ export default class Toolbar extends Component {
     let alterate = state.get('alterate');
     let alterateColor = alterate ? SharedStyle.MATERIAL_COLORS[500].orange : '';
 
+    const CloseTutorial_3 = () => {
+      document.getElementById('3-8-1').style.display = "none"
+      document.getElementById('3-8-2').style.display = "none"
+      document.getElementById('3-8-3').style.display = "none"
+      document.getElementById('3-8-4').style.display = "none"
+      document.getElementById('3-8-5').style.display = "none"
+      document.getElementById('3-8-6').style.display = "none"
+      document.getElementById('3-8-7').style.display = "none"
+      document.getElementById('3-8-8').style.display = "none"
+      document.getElementById('3-8-9').style.display = "none"
+      document.getElementById('3-8-10').style.display = "none"
+      document.getElementById('3-8-11').style.display = "none"
+      document.getElementById('3-8-12').style.display = "none"
+      document.getElementById('3-8-13').style.display = "none"
+      document.getElementById('3-8-14').style.display = "none"
+      document.getElementById('3-8-15').style.display = "none"
+      document.getElementById('3-8-16').style.display = "none"
+    }
+
+    const CloseTutorial_4 = () => {
+      document.getElementById('4-8-1').style.display = "none"
+      document.getElementById('4-8-2').style.display = "none"
+      document.getElementById('4-8-3').style.display = "none"
+      document.getElementById('4-8-4').style.display = "none"
+      document.getElementById('4-8-5').style.display = "none"
+      document.getElementById('4-8-6').style.display = "none"
+      document.getElementById('4-8-7').style.display = "none"
+      document.getElementById('4-8-8').style.display = "none"
+      document.getElementById('4-8-9').style.display = "none"
+      document.getElementById('4-8-10').style.display = "none"
+      document.getElementById('4-8-11').style.display = "none"
+      document.getElementById('4-8-12').style.display = "none"
+      document.getElementById('4-8-13').style.display = "none"
+      document.getElementById('4-8-14').style.display = "none"
+      document.getElementById('4-8-15').style.display = "none"
+      document.getElementById('4-8-16').style.display = "none"
+      document.getElementById('4-8-17').style.display = "none"
+    }
+
+    const CloseTutorial_5 = () => {
+      document.getElementById('5-8-1').style.display = "none"
+      document.getElementById('5-8-2').style.display = "none"
+      document.getElementById('5-8-3').style.display = "none"
+      document.getElementById('5-8-4').style.display = "none"
+      document.getElementById('5-8-5').style.display = "none"
+      document.getElementById('5-8-6').style.display = "none"
+      document.getElementById('5-8-7').style.display = "none"
+      document.getElementById('5-8-8').style.display = "none"
+      document.getElementById('5-8-9').style.display = "none"
+      document.getElementById('5-8-10').style.display = "none"
+      document.getElementById('5-8-11').style.display = "none"
+      document.getElementById('5-8-12').style.display = "none"
+      document.getElementById('5-8-13').style.display = "none"
+      document.getElementById('5-8-14').style.display = "none"
+      document.getElementById('5-8-15').style.display = "none"
+      document.getElementById('5-8-16').style.display = "none"
+      document.getElementById('5-8-17').style.display = "none"
+    }
+
+    const CloseTutorial_6 = () => {
+      document.getElementById('6-8-1').style.display = "none"
+      document.getElementById('6-8-2').style.display = "none"
+      document.getElementById('6-8-3').style.display = "none"
+      document.getElementById('6-8-4').style.display = "none"
+      document.getElementById('6-8-5').style.display = "none"
+      document.getElementById('6-8-6').style.display = "none"
+      document.getElementById('6-8-7').style.display = "none"
+      document.getElementById('6-8-8').style.display = "none"
+      document.getElementById('6-8-9').style.display = "none"
+      document.getElementById('6-8-10').style.display = "none"
+      document.getElementById('6-8-11').style.display = "none"
+      document.getElementById('6-8-12').style.display = "none"
+      document.getElementById('6-8-13').style.display = "none"
+      document.getElementById('6-8-14').style.display = "none"
+      document.getElementById('6-8-15').style.display = "none"
+      document.getElementById('6-8-16').style.display = "none"
+      document.getElementById('6-8-17').style.display = "none"
+    }
+
+    const CloseTutorial_7 = () => {
+      document.getElementById('7-8-1').style.display = "none"
+      document.getElementById('7-8-2').style.display = "none"
+      document.getElementById('7-8-3').style.display = "none"
+      document.getElementById('7-8-4').style.display = "none"
+      document.getElementById('7-8-5').style.display = "none"
+      document.getElementById('7-8-6').style.display = "none"
+      document.getElementById('7-8-7').style.display = "none"
+      document.getElementById('7-8-8').style.display = "none"
+      document.getElementById('7-8-9').style.display = "none"
+      document.getElementById('7-8-10').style.display = "none"
+      document.getElementById('7-8-11').style.display = "none"
+      document.getElementById('7-8-12').style.display = "none"
+      document.getElementById('7-8-13').style.display = "none"
+      document.getElementById('7-8-14').style.display = "none"
+      document.getElementById('7-8-15').style.display = "none"
+      document.getElementById('7-8-16').style.display = "none"
+      document.getElementById('7-8-17').style.display = "none"
+      document.getElementById('7-8-18').style.display = "none"
+      document.getElementById('7-8-19').style.display = "none"
+      document.getElementById('7-8-20').style.display = "none"
+      document.getElementById('7-8-21').style.display = "none"
+      document.getElementById('7-8-22').style.display = "none"
+      document.getElementById('7-8-23').style.display = "none"
+      document.getElementById('7-8-24').style.display = "none"
+      document.getElementById('7-8-25').style.display = "none"
+      document.getElementById('7-8-26').style.display = "none"
+      document.getElementById('7-8-27').style.display = "none"
+      document.getElementById('7-8-28').style.display = "none"
+      document.getElementById('7-8-29').style.display = "none"
+      document.getElementById('7-8-30').style.display = "none"
+      document.getElementById('7-8-31').style.display = "none"
+      document.getElementById('7-8-32').style.display = "none"
+      document.getElementById('7-8-33').style.display = "none"
+      document.getElementById('7-8-34').style.display = "none"
+      document.getElementById('7-8-26').style.display = "none"
+      document.getElementById('7-8-36').style.display = "none"
+    }
+
+    const CloseTutorial_8 = () => {
+      document.getElementById('8-8-1').style.display = "none"
+      document.getElementById('8-8-2').style.display = "none"
+      document.getElementById('8-8-3').style.display = "none"
+      document.getElementById('8-8-4').style.display = "none"
+    }
+
     const DrawConstructionArea = () => {
       projectActions.unselectAll();
       sceneActions.selectLayer("layer2");
@@ -212,9 +330,10 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'construction area'
       });
-      // document.getElementById('Outine Interest Area1').style.display = "none"
-      // document.getElementById('Outine Interest Area2').style.display = ""
-      if (localStorage.getItem("Tutorial") !== "Done"){
+
+      localStorage.setItem("DrawingTool", "ConstructionArea")
+
+      if (localStorage.getItem("Tutorial_ConstructionArea") !== "Done"){
         document.getElementById('2-8-1').style.display = "none"
         document.getElementById('2-8-2').style.display = "none"
         document.getElementById('2-8-3').style.display = "none"
@@ -229,9 +348,17 @@ export default class Toolbar extends Component {
         document.getElementById('2-8-11').style.display = ""
         document.getElementById('2-8-12').style.display = ""
         document.getElementById('2-8-13').style.display = ""
-        document.getElementById('2-8-14-disabled').style.display = ""
+        document.getElementById('2-8-17').style.display = ""
         document.getElementById('2-8-15').style.display = ""
       }
+
+      CloseTutorial_3()
+      CloseTutorial_4()
+      CloseTutorial_5()
+      CloseTutorial_6()
+      CloseTutorial_7()
+      CloseTutorial_8()
+
     }
   
     const DrawInterestArea = () => {
@@ -241,9 +368,10 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'interest area'
       });
-      // document.getElementById('Place Obstacle Area1').style.display = "none"
-      // document.getElementById('Place Obstacle Area2').style.display = ""
-      if (localStorage.getItem("Tutorial") !== "Done"){
+
+      localStorage.setItem("DrawingTool", "InterestArea")
+
+      if (localStorage.getItem("Tutorial_InterestArea") !== "Done"){
         document.getElementById('3-8-1').style.display = "none"
         document.getElementById('3-8-2').style.display = "none"
         document.getElementById('3-8-3').style.display = "none"
@@ -259,8 +387,14 @@ export default class Toolbar extends Component {
         document.getElementById('3-8-12').style.display = ""
         document.getElementById('3-8-13').style.display = ""
         document.getElementById('3-8-14').style.display = ""
-        document.getElementById('3-8-15').style.display = ""
+        document.getElementById('3-8-16').style.display = ""
       }
+
+      CloseTutorial_4()
+      CloseTutorial_5()
+      CloseTutorial_6()
+      CloseTutorial_7()
+      CloseTutorial_8()
     }
 
     const DrawObstacleArea = () => {
@@ -270,9 +404,10 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'obstacle area'
       })
-      // document.getElementById('Place no-camera area1').style.display = "none"
-      // document.getElementById('Place no-camera area2').style.display = ""
-      if (localStorage.getItem("Tutorial") !== "Done"){
+
+      localStorage.setItem("DrawingTool", "ObstacleArea")
+
+      if (localStorage.getItem("Tutorial_ObstacleArea") !== "Done"){
         document.getElementById('4-8-1').style.display = "none"
         document.getElementById('4-8-2').style.display = "none"
         document.getElementById('4-8-3').style.display = "none"
@@ -289,8 +424,13 @@ export default class Toolbar extends Component {
         document.getElementById('4-8-13').style.display = ""
         document.getElementById('4-8-14').style.display = ""
         document.getElementById('4-8-15').style.display = ""
-        document.getElementById('4-8-16').style.display = ""
+        document.getElementById('4-8-17').style.display = ""
       }
+
+      CloseTutorial_5()
+      CloseTutorial_6()
+      CloseTutorial_7()
+      CloseTutorial_8()
     }
 
     const DrawNoCameraArea = () => {
@@ -300,9 +440,10 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'nocamera area'
       })
-      // document.getElementById('Place must-cover area1').style.display = "none"
-      // document.getElementById('Place must-cover area2').style.display = ""
-      if (localStorage.getItem("Tutorial") !== "Done"){
+      
+      localStorage.setItem("DrawingTool", "NoCameraArea")
+
+      if (localStorage.getItem("Tutorial_NoCameraArea") !== "Done"){
         document.getElementById('5-8-1').style.display = "none"
         document.getElementById('5-8-2').style.display = "none"
         document.getElementById('5-8-3').style.display = "none"
@@ -319,8 +460,12 @@ export default class Toolbar extends Component {
         document.getElementById('5-8-13').style.display = ""
         document.getElementById('5-8-14').style.display = ""
         document.getElementById('5-8-15').style.display = ""
-        document.getElementById('5-8-16').style.display = ""
+        document.getElementById('5-8-17').style.display = ""
       }
+
+      CloseTutorial_6()
+      CloseTutorial_7()
+      CloseTutorial_8()
     }
 
     const DrawMustcoverArea = () => {
@@ -330,9 +475,10 @@ export default class Toolbar extends Component {
       this.setState({
         inuseTool: 'mustcover area'
       })
-      // document.getElementById('Camera Tool1').style.display = "none"
-      // document.getElementById('Camera Tool2').style.display = ""
-      if (localStorage.getItem("Tutorial") !== "Done"){
+      
+      localStorage.setItem("DrawingTool", "MustCoverArea")
+
+      if (localStorage.getItem("Tutorial_MustCoverArea") !== "Done"){
         document.getElementById('6-8-1').style.display = "none"
         document.getElementById('6-8-2').style.display = "none"
         document.getElementById('6-8-3').style.display = "none"
@@ -349,8 +495,11 @@ export default class Toolbar extends Component {
         document.getElementById('6-8-13').style.display = ""
         document.getElementById('6-8-14').style.display = ""
         document.getElementById('6-8-15').style.display = ""
-        document.getElementById('6-8-16').style.display = ""
+        document.getElementById('6-8-17').style.display = ""
       }
+
+      CloseTutorial_7()
+      CloseTutorial_8()
     }    
 
     const OpenCameraTool = () => {
@@ -363,9 +512,9 @@ export default class Toolbar extends Component {
       {
         index: 0, condition: true, dom: 
         <Box pb={5/8} >
-          <Tooltip title="Outline Contruction Area" placement="right" arrow 
+          <Tooltip title="Outline Construction Area" placement="right" arrow 
             componentsProps={tooltipStyle}>
-            <Button id ="Outline Contruction Area1"
+            <Button id ="Outline Construction Area1"
               sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawConstructionArea()}
               disabled
@@ -373,12 +522,12 @@ export default class Toolbar extends Component {
               <IconConstruction sx={{ fontSize: 40 }} />
             </Button>
           </Tooltip>
-          <Tooltip title="Outline Contruction Area" placement="right" arrow 
+          <Tooltip title="Outline Construction Area" placement="right" arrow 
             componentsProps={tooltipStyle}>
-            <Button id ="Outline Contruction Area2"
+            <Button id ="Outline Construction Area2"
               sx={this.state.inuseTool == 'construction area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawConstructionArea()}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconConstruction sx={{ fontSize: 40 }} />
             </Button>
@@ -408,7 +557,7 @@ export default class Toolbar extends Component {
             <Button id = "Outine Interest Area2"
               sx={this.state.inuseTool == 'interest area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawInterestArea()}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconInterest sx={{ fontSize: 40 }} />
             </Button>
@@ -438,7 +587,7 @@ export default class Toolbar extends Component {
             <Button id = "Place Obstacle Area2"
               sx={this.state.inuseTool == 'obstacle area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawObstacleArea()}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconObstacle sx={{ fontSize: 40 }}/>
             </Button>
@@ -467,7 +616,7 @@ export default class Toolbar extends Component {
             <Button id = "Place no-camera area2"
               sx={this.state.inuseTool == 'nocamera area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawNoCameraArea()}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconNoCam sx={{ fontSize: 40 }}/>
             </Button>
@@ -496,7 +645,7 @@ export default class Toolbar extends Component {
             <Button id ="Place must-cover area2"
               sx={this.state.inuseTool == 'mustcover area' && ([MODE_WAITING_DRAWING_LINE].includes(mode) || [MODE_DRAWING_LINE].includes(mode)) ? buttonsInuseStyle : buttonsStyle}
               onClick={event => DrawMustcoverArea()}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconMust sx={{ fontSize: 40 }}/>
             </Button>
@@ -528,7 +677,7 @@ export default class Toolbar extends Component {
               id = "Camera Tool2"
               // onClick={() => this.handleCamDrawChange()}
               onClick={() => OpenCameraTool()}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconAddCam sx={{ fontSize: 40 }}/>
             </Button>
@@ -566,9 +715,8 @@ export default class Toolbar extends Component {
             <Button 
               id = "SummaryPage1" 
               sx={this.state.showSumDrawer ? buttonsInuseStyle : buttonsStyle}
-              //style={{top: height}}
               onClick={() => this.handleSumDrawChange()}
-              //disabled={true}
+              disabled={true}
               >
               <IconSum sx={{ fontSize: 40 }}/>
             </Button>
@@ -576,10 +724,9 @@ export default class Toolbar extends Component {
             <Button
               id = "SummaryPage2" 
               sx={buttonsStyle}
-              //style={{top: height}}OpenCameraTool
               onClick={() => this.handleSumDrawChange()}
               // disabled={true}
-              style = {{display:"none"}}
+              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconSum sx={{ fontSize: 40 }}/>
             </Button>
