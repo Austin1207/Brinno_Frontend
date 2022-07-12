@@ -394,6 +394,8 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         }
     }
 
+    var ScreenWidth = document.body.clientWidth;
+    var ScreenHeight = document.body.clientHeight;
 
     return(
         <div>
@@ -1935,7 +1937,66 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             }}>
             Click generate to see your first summary!
             </span>
+
+
+
+            {/* <button id = "overlay_left" style = {{
+                position: "absolute",
+                left:"0px",
+                top:"0px",
+                width: "1px",
+                height: "100%",
+                zIndex: 9999999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.9)",
+                // display: "none",
+            }}/>     
             
+            <button id = "overlay_right" style = {{
+                position: "absolute",
+                left:"58.5px",
+                top:"0px",
+                width: ScreenWidth-58.5,
+                height: "100%",
+                zIndex: 9999999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.9)",
+                display: "none",
+            }}/>     
+
+            <button id = "overlay_top" style = {{
+                position: "absolute",
+                left:"12px",
+                top:"0px",
+                width: "46.5px",
+                height: "82px",
+                zIndex: 9999999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.9)",
+                // display: "none",
+            }}/>       
+
+            <button id = "overlay_bottom" style = {{
+                position: "absolute",
+                left:"12px",
+                top:"132px",
+                width: "46.5px",
+                height: "100%",
+                zIndex: 9999999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.9)",
+                // display: "none",
+            }}/>      */}
+
+                        {/* <button id = "overlay_bottom" style = {{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                zIndex: 9999999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.9)",
+                // display: "none",
+            }}/>            */}
 
         </div>
     )

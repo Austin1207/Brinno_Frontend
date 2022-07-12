@@ -292,14 +292,10 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
 
   }
 
-  const test111 = (e) => {
-    console.log(state)
-  }
-
   return(
     
     <div>
-        <button id ="UploadRectangular" onClick = {upload} onWheel = {test111}
+        <button id ="UploadRectangular" onClick = {upload}
         style = {{
             position: "absolute",
             width: "379.9px",
