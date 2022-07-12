@@ -220,9 +220,26 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
           var data = JSON.parse(this.responseText);
           console.log(data)
           var Cam_count = Object.values(data)
+          var BCC_200_count = String(Cam_count[0])
+          var BCC_300_count = String(Cam_count[1])
+          var TLC_2020C_count = String(Cam_count[2])
+          var BCC_2000_count = String(Cam_count[3])
+          var BCC_2000PLUS_count = String(Cam_count[4])
+          var BCC_200PLUS_count = String(Cam_count[5])
+          var MAC_200DN_count = String(Cam_count[6])
           var BAC_2000_count = String(Cam_count[7])
-          localStorage.setItem("Camera_Count", BAC_2000_count)
+          var Total_Camera_count = String(Number(Cam_count[0]) + Number(Cam_count[1]) + Number(Cam_count[2]) + Number(Cam_count[3]) + Number(Cam_count[4]) + Number(Cam_count[5]) + Number(Cam_count[6]) + Number(Cam_count[7]))
+          
+          localStorage.setItem("BCC200_Count", BCC_200_count)
+          localStorage.setItem("BCC300_Count", BCC_300_count)
+          localStorage.setItem("TLC2020C_Count", TLC_2020C_count)
+          localStorage.setItem("BCC2000_Count", BCC_2000_count)
+          localStorage.setItem("BCC2000PLUS_Count", BCC_2000PLUS_count)
+          localStorage.setItem("BCC200PLUS_Count", BCC_200PLUS_count)
+          localStorage.setItem("MAC200DN_Count", MAC_200DN_count)
+          localStorage.setItem("BAC2000_Count", BAC_2000_count)
 
+          localStorage.setItem("Camera_Count", Total_Camera_count)
         }
         status = 1;
         return status;
