@@ -25,6 +25,7 @@ const STYLE = {
   width:"431px",
   height:"269px",
   backgroundColor: "#222222",
+  zIndex: 10001,
   display:"none"
   // left: '460px',
 };

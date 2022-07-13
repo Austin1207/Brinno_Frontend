@@ -87,6 +87,7 @@ export default class ImageFul extends Component {
 
           setTimeout( function () {
             document.getElementById("sidebar").style.display = "";
+            document.getElementById('overlay').style.display = ""
 
             var scaleinput = document.getElementById("scaleinput")
             scaleinput.focus();

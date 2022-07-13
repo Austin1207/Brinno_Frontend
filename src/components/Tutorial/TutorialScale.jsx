@@ -20,6 +20,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("TutorialScaleMeasureLine").style.display = "none";
         document.getElementById("TutorialScaleMeasureBackButton").style.display = "none";
         document.getElementById("TutorialScaleMeasureOkButton").style.display = "none";
+        document.getElementById('overlay').style.display = "none"
 
         document.getElementById("Circle2").style.display = "none"
         document.getElementById("Line").style.display = "none"
@@ -40,6 +41,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("TutorialScaleMeasureLine").style.display = "none";
         document.getElementById("TutorialScaleMeasureBackButton").style.display = "none";
         document.getElementById("TutorialScaleMeasureOkButton").style.display = "none";
+        document.getElementById('overlay').style.display = "none"
 
         document.getElementById("Circle1").style.display = "none";
         document.getElementById("Circle2").style.display = "none";
@@ -63,6 +65,11 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 document.getElementById('2-8-5').style.display = ""
                 document.getElementById('2-8-6').style.display = ""
                 document.getElementById('2-8-7').style.display = ""
+                document.getElementById('overlay_left').style.display = ""
+                document.getElementById('overlay_right').style.display = ""
+                document.getElementById('overlay_top_1').style.display = ""
+                document.getElementById('overlay_bottom_1').style.display = ""
+
             }
 
 
@@ -76,6 +83,10 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 document.getElementById('3-8-5').style.display = ""
                 document.getElementById('3-8-6').style.display = ""
                 document.getElementById('3-8-7').style.display = ""
+                document.getElementById('overlay_left').style.display = ""
+                document.getElementById('overlay_right').style.display = ""
+                document.getElementById('overlay_top_2').style.display = ""
+                document.getElementById('overlay_bottom_2').style.display = ""
 
                 var PlanJs = state.scene.toJS()
                 var ScaleProperty = PlanJs.layers.layer1.items.xFAw434Nm.properties
@@ -122,6 +133,10 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             document.getElementById('3-8-5').style.display = ""
             document.getElementById('3-8-6').style.display = ""
             document.getElementById('3-8-7').style.display = ""
+            document.getElementById('overlay_left').style.display = ""
+            document.getElementById('overlay_right').style.display = ""
+            document.getElementById('overlay_top_2').style.display = ""
+            document.getElementById('overlay_bottom_2').style.display = ""
     
             document.getElementById('Outine Interest Area1').style.display = "none"
             document.getElementById('Outine Interest Area2').style.display = ""
@@ -136,7 +151,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             document.getElementById('1-8-6').style.display = ""
             document.getElementById('1-8-7').style.display = ""
       
-            document.getElementById('Scale2').style.zIndex = "999999"
+            document.getElementById('Scale2').style.zIndex = "10001"
             document.getElementById('overlay').style.display = ""
         }
     }
@@ -164,6 +179,10 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             document.getElementById('4-8-5').style.display = ""
             document.getElementById('4-8-6').style.display = ""
             document.getElementById('4-8-7').style.display = ""
+            document.getElementById('overlay_left').style.display = ""
+            document.getElementById('overlay_right').style.display = ""
+            document.getElementById('overlay_top_3').style.display = ""
+            document.getElementById('overlay_bottom_3').style.display = ""
 
             document.getElementById('Place Obstacle Area1').style.display = "none"
             document.getElementById('Place Obstacle Area2').style.display = ""
@@ -194,6 +213,10 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             document.getElementById('5-8-5').style.display = ""
             document.getElementById('5-8-6').style.display = ""
             document.getElementById('5-8-7').style.display = ""
+            document.getElementById('overlay_left').style.display = ""
+            document.getElementById('overlay_right').style.display = ""
+            document.getElementById('overlay_top_4').style.display = ""
+            document.getElementById('overlay_bottom_4').style.display = ""
 
             document.getElementById('Place no-camera area1').style.display = "none"
             document.getElementById('Place no-camera area2').style.display = ""
@@ -224,6 +247,10 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById('6-8-5').style.display = ""
         document.getElementById('6-8-6').style.display = ""
         document.getElementById('6-8-7').style.display = ""
+        document.getElementById('overlay_left').style.display = ""
+        document.getElementById('overlay_right').style.display = ""
+        document.getElementById('overlay_top_5').style.display = ""
+        document.getElementById('overlay_bottom_5').style.display = ""
 
         document.getElementById('Place must-cover area1').style.display = "none"
         document.getElementById('Place must-cover area2').style.display = ""
@@ -253,6 +280,10 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             document.getElementById('7-8-4').style.display = ""
             document.getElementById('7-8-5').style.display = ""
             document.getElementById('7-8-6').style.display = ""
+            document.getElementById('overlay_left').style.display = ""
+            document.getElementById('overlay_right').style.display = ""
+            document.getElementById('overlay_top_6').style.display = ""
+            document.getElementById('overlay_bottom_6').style.display = ""
 
             document.getElementById('Camera Tool1').style.display = "none"
             document.getElementById('Camera Tool2').style.display = ""
@@ -405,7 +436,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 left: ((left-431)/2) + 36,
                 width: "359px",
                 height: "19px",
-                zIndex: 10000,
+                zIndex: 10002,
                 // fontFamily: "HelveticaNeue",
                 fontSize: "20px",
                 fontWeight: "normal",
@@ -426,7 +457,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 left: ((left-431)/2) + 36,
                 width: "45px",
                 height: "17px",
-                zIndex: 10000,
+                zIndex: 10002,
                 // fontFamily: "HelveticaNeue",
                 fontSize: "14px",
                 fontWeight: "bold",
@@ -447,7 +478,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 left: ((left-431)/2) + 234,
                 width: "79px",
                 height: "31px",
-                zIndex: 10000,
+                zIndex: 10002,
                 // fontFamily: "HelveticaNeue",
                 fontSize: "26px",
                 fontWeight: 500,
@@ -466,7 +497,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 position: "absolute",
                 width: "325px",
                 height: "2px",
-                zIndex: 10000,
+                zIndex: 10002,
                 backgroundColor: "#c7c7c7",
                 borderRadius: "2px",
                 left: (left-431)/2 + 36,
@@ -480,7 +511,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 position: "absolute",
                 width: "162px",
                 height: "49px",
-                zIndex: 10000,
+                zIndex: 10002,
                 // left: "525px",
                 left: (left-431)/2 + 36,
                 top: "408px",
@@ -506,7 +537,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 position: "absolute",
                 width: "162px",
                 height: "49px",
-                zIndex: 10000,
+                zIndex: 10002,
                 backgroundColor: "#ffa140",
                 // left: "755px",
                 left: (left -431)/2 + 233,
@@ -1940,16 +1971,16 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
 
 
-            {/* <button id = "overlay_left" style = {{
+            <button id = "overlay_left" style = {{
                 position: "absolute",
                 left:"0px",
                 top:"0px",
                 width: "1px",
                 height: "100%",
-                zIndex: 9999999,
+                zIndex: 9999,
                 border:"none",
-                backgroundColor: "rgba(152, 154, 156, 0.9)",
-                // display: "none",
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
+                display: "none",
             }}/>     
             
             <button id = "overlay_right" style = {{
@@ -1958,45 +1989,155 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 top:"0px",
                 width: ScreenWidth-58.5,
                 height: "100%",
-                zIndex: 9999999,
+                zIndex: 9999,
                 border:"none",
-                backgroundColor: "rgba(152, 154, 156, 0.9)",
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
                 display: "none",
             }}/>     
 
-            <button id = "overlay_top" style = {{
+            <button id = "overlay_top_1" style = {{
                 position: "absolute",
                 left:"12px",
                 top:"0px",
                 width: "46.5px",
                 height: "82px",
-                zIndex: 9999999,
+                zIndex: 9999,
                 border:"none",
-                backgroundColor: "rgba(152, 154, 156, 0.9)",
-                // display: "none",
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
+                display: "none",
             }}/>       
 
-            <button id = "overlay_bottom" style = {{
+            <button id = "overlay_bottom_1" style = {{
                 position: "absolute",
                 left:"12px",
-                top:"132px",
+                top:"127px",
                 width: "46.5px",
-                height: "100%",
-                zIndex: 9999999,
+                height: ScreenHeight-127,
+                zIndex: 9999,
                 border:"none",
-                backgroundColor: "rgba(152, 154, 156, 0.9)",
-                // display: "none",
-            }}/>      */}
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
+                display: "none",
+            }}/>     
 
-                        {/* <button id = "overlay_bottom" style = {{
+            <button id = "overlay_top_2" style = {{
                 position: "absolute",
-                width: "100%",
-                height: "100%",
-                zIndex: 9999999,
+                left:"12px",
+                top:"0px",
+                width: "46.5px",
+                height: "152px",
+                zIndex: 9999,
                 border:"none",
-                backgroundColor: "rgba(152, 154, 156, 0.9)",
-                // display: "none",
-            }}/>            */}
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
+                display: "none",
+            }}/>       
+
+            <button id = "overlay_bottom_2" style = {{
+                position: "absolute",
+                left:"12px",
+                top:"197px",
+                width: "46.5px",
+                height: ScreenHeight - 197,
+                zIndex: 9999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
+                display: "none",
+            }}/>   
+
+            <button id = "overlay_top_3" style = {{
+                position: "absolute",
+                left:"12px",
+                top:"0px",
+                width: "46.5px",
+                height: "222px",
+                zIndex: 9999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
+                display: "none",
+            }}/>       
+
+            <button id = "overlay_bottom_3" style = {{
+                position: "absolute",
+                left:"12px",
+                top:"267px",
+                width: "46.5px",
+                height: ScreenHeight - 267,
+                zIndex: 9999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
+                display: "none",
+            }}/>   
+
+            <button id = "overlay_top_4" style = {{
+                position: "absolute",
+                left:"12px",
+                top:"0px",
+                width: "46.5px",
+                height: "292px",
+                zIndex: 9999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
+                display: "none",
+            }}/>       
+
+            <button id = "overlay_bottom_4" style = {{
+                position: "absolute",
+                left:"12px",
+                top:"337px",
+                width: "46.5px",
+                height: ScreenHeight - 337,
+                zIndex: 9999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
+                display: "none",
+            }}/>   
+
+            <button id = "overlay_top_5" style = {{
+                position: "absolute",
+                left:"12px",
+                top:"0px",
+                width: "46.5px",
+                height: "362px",
+                zIndex: 9999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
+                display: "none",
+            }}/>       
+
+            <button id = "overlay_bottom_5" style = {{
+                position: "absolute",
+                left:"12px",
+                top:"407px",
+                width: "46.5px",
+                height: ScreenHeight - 407,
+                zIndex: 9999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
+                display: "none",
+            }}/>   
+
+            <button id = "overlay_top_6" style = {{
+                position: "absolute",
+                left:"12px",
+                top:"0px",
+                width: "46.5px",
+                height: "432px",
+                zIndex: 9999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
+                display: "none",
+            }}/>       
+
+            <button id = "overlay_bottom_6" style = {{
+                position: "absolute",
+                left:"12px",
+                top:"477px",
+                width: "46.5px",
+                height: ScreenHeight - 477,
+                zIndex: 9999,
+                border:"none",
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
+                display: "none",
+            }}/>   
 
         </div>
     )

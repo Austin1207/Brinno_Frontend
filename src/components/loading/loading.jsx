@@ -28,8 +28,8 @@ const Loading = ({left}) =>{
                 position: "absolute",
                 width: "100%",
                 height: "100%",
-                zIndex: 99998,
-                backgroundColor: "rgba(152, 154, 156, 0.9)",
+                zIndex: 10000,
+                backgroundColor: "rgba(152, 154, 156, 0.7)",
                 display: "none",
             }}/>
         </div>

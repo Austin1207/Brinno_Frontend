@@ -133,7 +133,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
       document.getElementById('1-8-6').style.display = ""
       document.getElementById('1-8-7').style.display = ""
 
-      document.getElementById('Scale2').style.zIndex = "999999"
+      document.getElementById('Scale2').style.zIndex = "10001"
       document.getElementById('overlay').style.display = ""
 
       FinishTutorial("Undone")
@@ -281,6 +281,10 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
     document.getElementById('2-8-5').style.display = ""
     document.getElementById('2-8-6').style.display = ""
     document.getElementById('2-8-7').style.display = ""
+    document.getElementById('overlay_left').style.display = ""
+    document.getElementById('overlay_right').style.display = ""
+    document.getElementById('overlay_top_1').style.display = ""
+    document.getElementById('overlay_bottom_1').style.display = ""
 
     document.getElementById('2-8-5').innerHTML = "1 of 7"
     document.getElementById('2-8-12').innerHTML = "1 of 7"

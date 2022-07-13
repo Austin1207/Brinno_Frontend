@@ -111,7 +111,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
         document.getElementById('1-8-6').style.display = "none"
         document.getElementById('1-8-7').style.display = "none"
 
-        document.getElementById('Scale2').style.zIndex = "9999"
+        document.getElementById('Scale2').style.zIndex = "9990"
         document.getElementById('overlay').style.display = "none"
 
         document.getElementById('1-8-8').style.display = ""
