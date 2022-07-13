@@ -28,6 +28,8 @@ export default function Area(_ref) {
 
   var renderedAreaSize = null;
 
+  var Scale = localStorage.getItem("Scale");
+
   if (area.selected) {
     var polygon = area.vertices.toArray().map(function (vertexID) {
       var _layer$vertices$get = layer.vertices.get(vertexID),
@@ -71,7 +73,7 @@ export default function Area(_ref) {
     renderedAreaSize = React.createElement(
       'text',
       { x: '0', y: '0', transform: 'translate(' + center[0] + ' ' + center[1] + ') scale(1, -1)', style: STYLE_TEXT },
-      (areaSize / 10000).toFixed(2),
+      (areaSize * Math.pow(Scale, 2) / 100).toFixed(2),
       ' m',
       String.fromCharCode(0xb2)
     );

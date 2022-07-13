@@ -27,7 +27,9 @@ export default function Ruler(_ref) {
       transform = _ref.transform;
 
 
-  var distanceText = length.toFixed(2) + ' ' + unit;
+  //修正線段顯示長度
+  var Scale = localStorage.getItem("Scale");
+  var distanceText = (length * Scale / 10).toFixed(2) + ' ' + "m";
 
   return React.createElement(
     'g',

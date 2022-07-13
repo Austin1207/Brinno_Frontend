@@ -41,7 +41,7 @@ export default function Item(_ref) {
       'data-id': item.id,
       'data-selected': item.selected,
       'data-layer': layer.id,
-      style: item.selected ? { cursor: "move" } : {},
+      style: item.selected ? { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer' } : {},
       transform: 'translate(' + x + ',' + y + ') rotate(' + rotation + ')' },
     renderedItem,
     React.createElement(
@@ -56,18 +56,22 @@ export default function Item(_ref) {
           'data-layer': layer.id,
           'data-part': 'rotation-anchor'
         },
-        React.createElement('circle', { id: 'RotateCircle1', cx: '0', cy: '150', r: '10', style: {
-            fill: "#0096fd",
-            stroke: "#0096fd",
-            cursor: "ew-resize",
-            display: ""
-          } }),
-        React.createElement('circle', { id: 'RotateCircle2', cx: '0', cy: '0', r: '150', style: {
+        React.createElement('rect', { id: 'RotateCircle2', x: '-13', y: '-13', width: '40', height: '40', transform: 'rotate(45)',
+          style: {
             fill: "none",
             stroke: "#0096fd",
             cursor: "ew-resize",
+            // cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/rotate_2.png"),pointer',
             display: ""
-          } })
+          } }),
+        React.createElement('circle', { id: 'RotateCircle1', cx: '0', cy: '38', r: '2', style: {
+            fill: "#ffffff",
+            stroke: "#0096fd",
+            // cursor: "ew-resize",
+            cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/rotate_2.png") 5 10,pointer',
+            display: ""
+          }
+        })
       )
     )
   );

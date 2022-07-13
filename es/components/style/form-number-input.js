@@ -18,21 +18,36 @@ import { KEYBOARD_BUTTON_CODE } from '../../constants';
 
 var STYLE_INPUT = {
   display: 'block',
+  // width: '100px',
+  // height: '53px',
+  // padding: '0 2px',
+  // fontSize: '44px',
+  // lineHeight: '1.25',
+  // color: "#ff8200",
+  // backgroundColor: '#271807',
+  // backgroundImage: 'none',
+  // border: '1px solid rgba(0,0,0,.15)',
+  // width: '71px',
+  position: 'absolute',
+  right: '-27px',
   width: '100px',
-  height: '53px',
-  padding: '0 2px',
-  fontSize: '44px',
-  lineHeight: '1.25',
-  color: "#ff8200",
-  backgroundColor: '#271807',
-  backgroundImage: 'none',
-  border: '1px solid rgba(0,0,0,.15)',
+  height: '45px',
+  // padding: '0 2px',
+  fontSize: '38px',
+  fontStretch: "normal",
+  fontStyle: "normal",
+  lineHeight: 'normal',
+  letterSpacing: "normal",
+  color: "#c7c7c7",
+  backgroundColor: '#222222',
+  // backgroundImage: 'none',
+  // border: '1px solid rgba(0,0,0,.15)',
   outline: 'none'
 };
 
 var confirmStyle = {
   position: 'absolute',
-  cursor: 'pointer',
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
   width: '2em',
   height: '2em',
   right: '0.35em',
@@ -70,11 +85,11 @@ var FormNumberInput = function (_Component) {
     value: function render() {
       var _this2 = this;
 
+      // let { value, min, max, precision, onChange, onValid, onInvalid, style, placeholder } = this.props;
       var _props = this.props,
           value = _props.value,
           min = _props.min,
           max = _props.max,
-          precision = _props.precision,
           onChange = _props.onChange,
           onValid = _props.onValid,
           onInvalid = _props.onInvalid,
@@ -82,6 +97,7 @@ var FormNumberInput = function (_Component) {
           placeholder = _props.placeholder;
 
       var numericInputStyle = _extends({}, STYLE_INPUT, style);
+      var precision = 2;
 
       if (this.state.focus) numericInputStyle.border = '1px solid ' + SharedStyle.SECONDARY_COLOR.main;
 
@@ -99,6 +115,7 @@ var FormNumberInput = function (_Component) {
 
         if (_this2.state.valid) {
           var savedValue = _this2.state.showedValue !== '' && _this2.state.showedValue !== '-' ? parseFloat(_this2.state.showedValue) : 0;
+          localStorage.setItem("ScaleValue", savedValue);
 
           _this2.setState({ showedValue: savedValue });
           onChange({ target: { value: savedValue } });
@@ -109,6 +126,7 @@ var FormNumberInput = function (_Component) {
         'div',
         { style: { position: 'relative' } },
         React.createElement('input', {
+          id: 'scaleinput',
           type: 'text',
           value: currValue,
           style: numericInputStyle,
@@ -123,6 +141,9 @@ var FormNumberInput = function (_Component) {
             }
 
             _this2.setState({ valid: valid });
+          },
+          onClick: function onClick(e) {
+            return saveFn(e);
           },
           onFocus: function onFocus(e) {
             return _this2.setState({ focus: true });

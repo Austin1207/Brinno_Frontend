@@ -34,8 +34,8 @@ export function loadimgjson(loadImageUrl) {
                             "height": 630
                         },
                         "visible": true,
-                        "x": 479.709994739929,
-                        "y": 1629.5759345522179,
+                        "x": 479.709994739929 + 15000,
+                        "y": 1629.5759345522179 + 10000,
                         "rotation": 0
                     }
                 },
@@ -68,8 +68,8 @@ export function loadimgjson(loadImageUrl) {
         },
         "selectedLayer": "layer1",
         "groups": {},
-        "width": 3000,
-        "height": 2000,
+        "width": 30000,
+        "height": 20000,
         "meta": {},
         "guides": {
             "horizontal": {},

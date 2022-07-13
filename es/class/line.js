@@ -8,6 +8,107 @@ import { Map, List, fromJS } from 'immutable';
 import { Group, Layer, Hole, Vertex } from './export';
 import { IDBroker, NameGenerator, GeometryUtils, SnapUtils, SnapSceneUtils } from '../utils/export';
 import { MODE_IDLE, MODE_WAITING_DRAWING_LINE, MODE_DRAWING_LINE, MODE_DRAGGING_LINE } from '../constants';
+// clear redoHistort
+import { HistoryStructure } from '../models';
+
+var CloseTutorial_2 = function CloseTutorial_2(status) {
+  document.getElementById('2-8-1').style.display = status;
+  document.getElementById('2-8-2').style.display = status;
+  document.getElementById('2-8-3').style.display = status;
+  document.getElementById('2-8-4').style.display = status;
+  document.getElementById('2-8-5').style.display = status;
+  document.getElementById('2-8-6').style.display = status;
+  document.getElementById('2-8-7').style.display = status;
+  document.getElementById('2-8-8').style.display = status;
+  document.getElementById('2-8-9').style.display = status;
+  document.getElementById('2-8-10').style.display = status;
+  document.getElementById('2-8-11').style.display = status;
+  document.getElementById('2-8-12').style.display = status;
+  document.getElementById('2-8-13').style.display = status;
+  document.getElementById('2-8-14').style.display = status;
+  document.getElementById('2-8-15').style.display = status;
+  document.getElementById('2-8-16').style.display = status;
+  document.getElementById('2-8-17').style.display = status;
+};
+
+var CloseTutorial_3 = function CloseTutorial_3(status) {
+  document.getElementById('3-8-1').style.display = status;
+  document.getElementById('3-8-2').style.display = status;
+  document.getElementById('3-8-3').style.display = status;
+  document.getElementById('3-8-4').style.display = status;
+  document.getElementById('3-8-5').style.display = status;
+  document.getElementById('3-8-6').style.display = status;
+  document.getElementById('3-8-7').style.display = status;
+  document.getElementById('3-8-8').style.display = status;
+  document.getElementById('3-8-9').style.display = status;
+  document.getElementById('3-8-10').style.display = status;
+  document.getElementById('3-8-11').style.display = status;
+  document.getElementById('3-8-12').style.display = status;
+  document.getElementById('3-8-13').style.display = status;
+  document.getElementById('3-8-14').style.display = status;
+  document.getElementById('3-8-15').style.display = status;
+  document.getElementById('3-8-16').style.display = status;
+};
+
+var CloseTutorial_4 = function CloseTutorial_4(status) {
+  document.getElementById('4-8-1').style.display = status;
+  document.getElementById('4-8-2').style.display = status;
+  document.getElementById('4-8-3').style.display = status;
+  document.getElementById('4-8-4').style.display = status;
+  document.getElementById('4-8-5').style.display = status;
+  document.getElementById('4-8-6').style.display = status;
+  document.getElementById('4-8-7').style.display = status;
+  document.getElementById('4-8-8').style.display = status;
+  document.getElementById('4-8-9').style.display = status;
+  document.getElementById('4-8-10').style.display = status;
+  document.getElementById('4-8-11').style.display = status;
+  document.getElementById('4-8-12').style.display = status;
+  document.getElementById('4-8-13').style.display = status;
+  document.getElementById('4-8-14').style.display = status;
+  document.getElementById('4-8-15').style.display = status;
+  document.getElementById('4-8-16').style.display = status;
+  document.getElementById('4-8-17').style.display = status;
+};
+
+var CloseTutorial_5 = function CloseTutorial_5(status) {
+  document.getElementById('5-8-1').style.display = status;
+  document.getElementById('5-8-2').style.display = status;
+  document.getElementById('5-8-3').style.display = status;
+  document.getElementById('5-8-4').style.display = status;
+  document.getElementById('5-8-5').style.display = status;
+  document.getElementById('5-8-6').style.display = status;
+  document.getElementById('5-8-7').style.display = status;
+  document.getElementById('5-8-8').style.display = status;
+  document.getElementById('5-8-9').style.display = status;
+  document.getElementById('5-8-10').style.display = status;
+  document.getElementById('5-8-11').style.display = status;
+  document.getElementById('5-8-12').style.display = status;
+  document.getElementById('5-8-13').style.display = status;
+  document.getElementById('5-8-14').style.display = status;
+  document.getElementById('5-8-15').style.display = status;
+  document.getElementById('5-8-16').style.display = status;
+  document.getElementById('5-8-17').style.display = status;
+};
+
+var CloseTutorial_6 = function CloseTutorial_6(status) {
+  document.getElementById('6-8-1').style.display = status;
+  document.getElementById('6-8-2').style.display = status;
+  document.getElementById('6-8-3').style.display = status;
+  document.getElementById('6-8-4').style.display = status;
+  document.getElementById('6-8-5').style.display = status;
+  document.getElementById('6-8-6').style.display = status;
+  document.getElementById('6-8-7').style.display = status;
+  document.getElementById('6-8-8').style.display = status;
+  document.getElementById('6-8-9').style.display = status;
+  document.getElementById('6-8-10').style.display = status;
+  document.getElementById('6-8-11').style.display = status;
+  document.getElementById('6-8-12').style.display = status;
+  document.getElementById('6-8-13').style.display = status;
+  document.getElementById('6-8-14').style.display = status;
+  document.getElementById('6-8-15').style.display = status;
+  document.getElementById('6-8-16').style.display = status;
+  document.getElementById('6-8-17').style.display = status;
+};
 
 var Line = function () {
   function Line() {
@@ -39,6 +140,17 @@ var Line = function () {
 
       state = state.setIn(['scene', 'layers', layerID, 'lines', lineID], line);
 
+      CloseTutorial_2("none");
+      CloseTutorial_3("none");
+      CloseTutorial_4("none");
+      CloseTutorial_5("none");
+      CloseTutorial_6("none");
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state, line: line };
     }
   }, {
@@ -51,6 +163,11 @@ var Line = function () {
       state = Layer.selectElement(state, layerID, 'lines', lineID).updatedState;
       state = Layer.selectElement(state, layerID, 'vertices', line.vertices.get(0)).updatedState;
       state = Layer.selectElement(state, layerID, 'vertices', line.vertices.get(1)).updatedState;
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
 
       return { updatedState: state };
     }
@@ -75,6 +192,11 @@ var Line = function () {
         });
       }
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
@@ -87,6 +209,11 @@ var Line = function () {
         state = Layer.unselect(state, layerID, 'vertices', line.vertices.get(1)).updatedState;
         state = Layer.unselect(state, layerID, 'lines', lineID).updatedState;
       }
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
 
       return { updatedState: state };
     }
@@ -150,6 +277,11 @@ var Line = function () {
       });
 
       state = Line.remove(state, layerID, lineID).updatedState;
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
 
       return { updatedState: state, lines: new List([line0, line1]) };
     }
@@ -216,6 +348,11 @@ var Line = function () {
         lines.push(line);
       });
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state, lines: new List(lines) };
     }
   }, {
@@ -263,12 +400,24 @@ var Line = function () {
           points.push(intersection.point);
         }
 
+        // clear redoHistort
+        state = state.merge({
+          redoHistory: new HistoryStructure()
+        });
+
         return reducedState;
       }, state);
 
       var _Line$addFromPoints = Line.addFromPoints(state, layerID, type, points, oldProperties, oldHoles),
           updatedState = _Line$addFromPoints.updatedState,
           lines = _Line$addFromPoints.lines;
+
+      // clear redoHistort
+
+
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
 
       return { updatedState: updatedState, lines: lines };
     }
@@ -288,6 +437,11 @@ var Line = function () {
       state = state.setIn(['scene', 'layers', layerID, 'lines', lineID, 'vertices', vertexIndex], vertex.id);
       state = state.setIn(['scene', 'layers', layerID, 'lines', lineID], state.getIn(['scene', 'layers', layerID, 'lines', lineID]));
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state, line: state.getIn(['scene', 'layers', layerID, 'lines', lineID]), vertex: vertex };
     }
   }, {
@@ -298,6 +452,11 @@ var Line = function () {
         drawingSupport: new Map({
           type: sceneComponentType
         })
+      });
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
       });
 
       return { updatedState: state };
@@ -356,6 +515,26 @@ var Line = function () {
         drawingSupport: drawingSupport
       });
 
+      if (localStorage.getItem("DrawingTool") == "ObstacleArea" && localStorage.getItem("Tutorial_ObstacleArea") !== "Done" && localStorage.getItem("Tutorial_ObstacleArea_LineDetect") !== "Done") {
+        localStorage.setItem("Tutorial_ObstacleArea_LineDetect", "Done");
+      } else if (localStorage.getItem("DrawingTool") == "ObstacleArea" && localStorage.getItem("Tutorial_ObstacleArea") !== "Done" && localStorage.getItem("Tutorial_ObstacleArea_LineDetect") == "Done") {
+        document.getElementById('4-8-8').style.display = "";
+        document.getElementById('4-8-9').style.display = "";
+        document.getElementById('4-8-10').style.display = "";
+        document.getElementById('4-8-11').style.display = "";
+        document.getElementById('4-8-12').style.display = "";
+        document.getElementById('4-8-13').style.display = "";
+        document.getElementById('4-8-14').style.display = "";
+        document.getElementById('4-8-15').style.display = "none";
+        document.getElementById('4-8-16').style.display = "";
+        document.getElementById('4-8-17').style.display = "";
+      }
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
@@ -384,16 +563,19 @@ var Line = function () {
       state = this.select(state, layerID, lineID).updatedState;
       state = state.merge({ activeSnapElement: snap ? snap.snap : null });
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
     key: 'endDrawingLine',
     value: function endDrawingLine(state, x, y) {
-
       if (state.snapMask && !state.snapMask.isEmpty()) {
         var snap = SnapUtils.nearestSnap(state.snapElements, x, y, state.snapMask);
         if (snap) {
-          ;
           var _snap$point3 = snap.point;
           x = _snap$point3.x;
           y = _snap$point3.y;
@@ -413,9 +595,14 @@ var Line = function () {
       state = Layer.detectAndUpdateAreas(state, layerID).updatedState;
 
       state = state.merge({
-        mode: MODE_WAITING_DRAWING_LINE,
+        mode: MODE_IDLE,
         snapElements: new List(),
         activeSnapElement: null
+      });
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
       });
 
       return { updatedState: state };
@@ -444,6 +631,11 @@ var Line = function () {
           startVertex1X: vertex1.x,
           startVertex1Y: vertex1.y
         })
+      });
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
       });
 
       return { updatedState: state };
@@ -517,7 +709,9 @@ var Line = function () {
           });
         })
       });
-
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
       return { updatedState: state };
     }
   }, {
@@ -625,6 +819,11 @@ var Line = function () {
         snapElements: new List()
       });
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
@@ -632,11 +831,22 @@ var Line = function () {
     value: function setProperties(state, layerID, lineID, properties) {
       state = state.mergeIn(['scene', 'layers', layerID, 'lines', lineID, 'properties'], properties);
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
     key: 'setJsProperties',
     value: function setJsProperties(state, layerID, lineID, properties) {
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return this.setProperties(state, layerID, lineID, fromJS(properties));
     }
   }, {
@@ -646,11 +856,22 @@ var Line = function () {
         if (state.hasIn(['scene', 'layers', layerID, 'lines', lineID, 'properties', k])) state = state.mergeIn(['scene', 'layers', layerID, 'lines', lineID, 'properties', k], v);
       });
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
     key: 'updateJsProperties',
     value: function updateJsProperties(state, layerID, lineID, properties) {
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return this.updateProperties(state, layerID, lineID, fromJS(properties));
     }
   }, {
@@ -677,6 +898,11 @@ var Line = function () {
 
       state = Layer.detectAndUpdateAreas(state, layerID).updatedState;
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
@@ -685,6 +911,11 @@ var Line = function () {
       var line = state.getIn(['scene', 'layers', layerID, 'lines', lineID]);
       state = Vertex.setAttributes(state, layerID, line.vertices.get(0), new Map({ x: x1, y: y1 })).updatedState;
       state = Vertex.setAttributes(state, layerID, line.vertices.get(1), new Map({ x: x2, y: y2 })).updatedState;
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
 
       return { updatedState: state };
     }

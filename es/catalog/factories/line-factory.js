@@ -25,10 +25,20 @@ export default function LineFactory(name, info) {
           y2 = _layer$vertices$get2.y;
 
       var epsilon = 20;
-      var STYLE_LINE = { stroke: SharedStyle.LINE_MESH_COLOR.selected };
-      var STYLE_RECT = { strokeWidth: 1, stroke: SharedStyle.LINE_MESH_COLOR.unselected, fill: 'blue' };
-      var STYLE_RECT_SELECTED = _extends({}, STYLE_RECT, { stroke: SharedStyle.LINE_MESH_COLOR.selected });
-
+      var STYLE_LINE = {};
+      var STYLE_LINE_SELECTED = {};
+      switch (name) {
+        /*
+        case 'construction area':
+          STYLE_LINE = { strokeWidth: 5, stroke: '#222222'};
+          STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
+          break;
+          */
+        case 'obstacle area':
+          STYLE_LINE = { strokeWidth: 5, stroke: '#75787b' };
+          STYLE_LINE_SELECTED = _extends({}, STYLE_LINE, { stroke: SharedStyle.LINE_MESH_COLOR.selected });
+          break;
+      }
       var length = Geometry.pointsDistance(x1, y1, x2, y2);
       var length_5 = length / 5;
 
@@ -39,12 +49,7 @@ export default function LineFactory(name, info) {
       var extra_epsilon = 5;
       var textDistance = half_thickness + epsilon + extra_epsilon;
 
-      return element.selected ? React.createElement(
-        'g',
-        null,
-        React.createElement('rect', { x: '0', y: -half_thickness, width: length, height: thickness, style: STYLE_RECT_SELECTED }),
-        React.createElement('line', { x1: length_5, y1: -half_thickness_eps, x2: length_5, y2: half_thickness_eps, style: STYLE_LINE })
-      ) : React.createElement('rect', { x: '0', y: -half_thickness, width: length, height: thickness, style: STYLE_RECT });
+      return element.selected ? React.createElement('line', { x1: '0', y1: '0', x2: length, y2: '0', style: STYLE_LINE_SELECTED }) : React.createElement('line', { x1: '0', y1: '0', x2: length, y2: '0', style: STYLE_LINE });
     },
 
     render3D: function render3D(element, layer, scene) {

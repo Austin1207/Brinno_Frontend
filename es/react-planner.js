@@ -24,18 +24,19 @@ import { VERSION } from './version';
 import './styles/export';
 
 import preview from './preview.png';
+import Optimizing from './components/loading/optimizing';
 
 var Toolbar = ToolbarComponents.Toolbar;
 var Sidebar = SidebarComponents.Sidebar;
 var FooterBar = FooterBarComponents.FooterBar;
 
 
-var toolbarW = 50;
+var toolbarW = 69;
 var sidebarW = 300;
 var footerBarH = 20;
 
 var wrapperStyle = {
-  // display: 'flex',
+  display: 'flex',
   flexFlow: 'row nowrap'
 };
 
@@ -91,12 +92,28 @@ var ReactPlanner = function (_Component) {
     var _this = _possibleConstructorReturn(this, (ReactPlanner.__proto__ || Object.getPrototypeOf(ReactPlanner)).call(this));
 
     _this.state = {
-      showHideSidepanel: true
+      showHideSidepanel: true,
+      showCamDrawer: false,
+      showSumDrawer: false
     };
+    _this.getShowCamDrawer = _this.getShowCamDrawer.bind(_this);
+    _this.getShowSumDrawer = _this.getShowSumDrawer.bind(_this);
     return _this;
   }
 
   _createClass(ReactPlanner, [{
+    key: 'getShowCamDrawer',
+    value: function getShowCamDrawer(bool) {
+      this.setState({ showCamDrawer: bool });
+      //console.log(this.state.showCamDrawer);
+    }
+  }, {
+    key: 'getShowSumDrawer',
+    value: function getShowSumDrawer(bool) {
+      this.setState({ showSumDrawer: bool });
+      //console.log(this.state.showSumDrawer);
+    }
+  }, {
     key: 'hideSidepanel',
     value: function hideSidepanel() {
       this.setState({ showHideSidepanel: !this.state.showHideSidepanel });
@@ -111,31 +128,39 @@ var ReactPlanner = function (_Component) {
           stateExtractor = _props2.stateExtractor,
           props = _objectWithoutProperties(_props2, ['width', 'height', 'state', 'stateExtractor']);
 
-      var contentW = width; //- sidebarW;
+      var contentW = width; // - toolbarW;
       var toolbarH = height - footerBarH;
       var contentH = height + 60; // - footerBarH;
       var sidebarH = height; // - footerBarH;
 
       var extractedState = stateExtractor(state);
       var showHideSidepanel = this.state.showHideSidepanel;
+      var showCamDrawer = this.state.showCamDrawer;
+      var showSumDrawer = this.state.showSumDrawer;
 
       return React.createElement(
         'div',
-        { style: _extends({}, wrapperStyle, { height: height }) },
+        { style: { height: height } },
         React.createElement(Loading, { left: (contentW - 100) / 2 }),
+        React.createElement(Optimizing, { left: (contentW - 100) / 2 }),
         React.createElement('div', { style: {
             width: contentW,
             height: 64,
             zIndex: 9999
           } }),
-        React.createElement(InitialScreen, _extends({ state: extractedState, left: (contentW - 320) / 2 }, props)),
+        React.createElement(InitialScreen, _extends({ state: extractedState, left: (contentW - 320) / 2, jsonleft: width / 2, top: height / 2 }, props)),
         React.createElement(TutorialScale, _extends({ state: extractedState, left: contentW }, props)),
-        React.createElement(Content, _extends({ width: contentW, height: contentH - 56, state: extractedState }, props, { onWheel: function onWheel(event) {
-            return event.preventDefault();
-          } })),
-        React.createElement(TopBar, _extends({ state: extractedState }, props)),
+        React.createElement(
+          'div',
+          { style: _extends({}, wrapperStyle) },
+          React.createElement(Toolbar, _extends({ width: toolbarW, height: contentH - 56, state: extractedState }, props, { showCamDrawer: showCamDrawer, showSumDrawer: showSumDrawer, updateCam: this.getShowCamDrawer, updateSum: this.getShowSumDrawer })),
+          React.createElement(Content, _extends({ width: contentW, height: contentH - 56, state: extractedState }, props, { onWheel: function onWheel(event) {
+              return event.preventDefault();
+            } }))
+        ),
+        React.createElement(TopBar, _extends({ state: extractedState }, props, { showCamDrawer: showCamDrawer, showSumDrawer: showSumDrawer })),
         React.createElement(BottomButtonGroup, _extends({ state: extractedState }, props)),
-        React.createElement(Sidebar, _extends({ display: 'none', width: sidebarW, height: 75, left: (contentW - 520) / 2, state: extractedState }, props))
+        React.createElement(Sidebar, _extends({ width: sidebarW, height: 75, left: (contentW - 431) / 2, state: extractedState, display: "none" }, props))
         //<FooterBar width={width} height={footerBarH} state={extractedState} {...props} />
 
       );

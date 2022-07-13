@@ -13,15 +13,15 @@ import * as SharedStyle from '../../shared-style';
 //http://www.cssportal.com/css-tooltip-generator/
 
 var STYLE = {
-  width: '30px',
-  height: '30px',
+  width: '50px',
+  height: '50px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   marginBottom: '5px',
-  fontSize: '25px',
+  fontSize: '50px',
   position: 'relative',
-  cursor: 'pointer'
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'
 };
 
 var STYLE_TOOLTIP = {

@@ -30,7 +30,7 @@ var VISIBILITY_MODE = {
 };
 
 var styleEditButton = {
-  cursor: 'pointer',
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
   marginLeft: '5px',
   border: '0px',
   background: 'none',
@@ -41,7 +41,7 @@ var styleEditButton = {
 
 var tableLayerStyle = {
   width: '100%',
-  cursor: 'pointer',
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
   overflowY: 'auto',
   maxHeight: '20em',
   display: 'block',

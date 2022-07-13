@@ -2,6 +2,8 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -17,6 +19,7 @@ import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { styled, useTheme } from '@mui/material/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
 import Paper from '@mui/material/Paper';
@@ -24,13 +27,21 @@ import Popper from '@mui/material/Popper';
 import MenuList from '@mui/material/MenuList';
 import TextField from '@mui/material/TextField';
 import CatalogItem from '../catalog-view/catalog-item';
+import CatalogChangeItem from '../catalog-view/catalog-changeitem';
 import Tooltip from '@mui/material/Tooltip';
 import Avatar from '@mui/material/Avatar';
 import PropTypes from 'prop-types';
 import { elementsToDisplay } from './elementstodisplay';
+import { fontSize } from '@mui/system';
+import SummaryTable from '../summarytable/summarytable';
 
 var settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-var drawerWidth = 260;
+var drawerWidth = 360;
+var useStyles = makeStyles({
+  drawerPaper: {
+    marginLeft: "69px"
+  }
+});
 
 var AppBar = styled(MuiAppBar, {
   shouldForwardProp: function shouldForwardProp(prop) {
@@ -85,9 +96,126 @@ var handleCloseUserMenu = function handleCloseUserMenu() {
 };
 
 export default function TopBar(_ref3) {
-  var linesActions = _ref3.linesActions;
+  var GernerateOnclick = function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      var json_data, _ref5, url, InputUrl, objName, JsonUrl, CamUrl, ScoreUrl, Check403_2, Check403_3, Check403;
+
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (localStorage.getItem("Mode") == "Upload") {
+                localStorage.setItem("Tutorial_Upload", "Done");
+              } else {
+                localStorage.setItem("Tutorial_Outline", "Done");
+              }
+
+              localStorage.setItem("Tutorial_Generate", "Done");
+
+              document.getElementById("8-8-1").style.display = "none";
+              document.getElementById("8-8-2").style.display = "none";
+              document.getElementById("8-8-3").style.display = "none";
+              document.getElementById("8-8-4").style.display = "none";
+
+              document.getElementById("SummaryPage1").style.display = "none";
+              document.getElementById("SummaryPage2").style.display = "";
+              showOptimizing();
+              json_data = state.get('scene').toJS();
+              _context.next = 12;
+              return fetch(s3jsoninputurl).then(function (res) {
+                return res.json();
+              });
+
+            case 12:
+              _ref5 = _context.sent;
+              url = _ref5.url;
+              _context.next = 16;
+              return fetch(url, {
+                method: "PUT",
+                headers: {
+                  "Content-Type": 'application/json'
+                },
+                body: JSON.stringify(json_data)
+              });
+
+            case 16:
+
+              // console.log(url)
+
+              InputUrl = url.split('?')[0];
+              objName = InputUrl.split('/')[3];
+              JsonUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + objName;
+              CamUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "cam_" + objName;
+              ScoreUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "score_" + objName;
+
+              // console.log(JsonUrl);
+
+              Check403_2 = setInterval(function () {
+                var status = 0;
+                status = checkForbidden_cam(CamUrl, status);
+                if (status == 1) {
+                  clearInterval(Check403_2);
+                }
+              }, 1000);
+              Check403_3 = setInterval(function () {
+                var status = 0;
+                status = checkForbidden_score(ScoreUrl, status);
+                if (status == 1) {
+                  clearInterval(Check403_3);
+                }
+              }, 1000);
+              Check403 = setInterval(function () {
+                var status = 0;
+                status = checkForbidden(JsonUrl, status);
+                if (status == 1) {
+                  clearInterval(Check403);
+                  OpenSummary();
+                }
+              }, 1000);
+
+              // }
+
+              // const mongodburl = "http://localhost:3000/datas/";
+
+              // const testmongodb = (e) => {
+              //   e.preventDefault();
+              //   state = Project.unselectAll( state ).updatedState;
+              //   const jsondata = state.get('scene').toJS();
+
+              //   const data2 = JSON.stringify(jsondata)
+
+              //   console.log(data2)
+
+              //   fetch(mongodburl, {
+              //     method: "POST",
+              //     body: data2,
+              //     headers: {
+              //       "Content-Type": "application/json"
+              //     },
+              //   })
+
+            case 24:
+            case 'end':
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    return function GernerateOnclick() {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+
+  var state = _ref3.state,
+      linesActions = _ref3.linesActions,
+      projectActions = _ref3.projectActions,
+      sceneActions = _ref3.sceneActions,
+      showCamDrawer = _ref3.showCamDrawer,
+      showSumDrawer = _ref3.showSumDrawer;
 
   var theme = useTheme();
+  var classes = useStyles();
 
   var _React$useState = React.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -154,219 +282,185 @@ export default function TopBar(_ref3) {
     setAnchorElUser(null);
   };
 
+  //Outline onlick with layer select
+  var DrawConstructionArea = function DrawConstructionArea() {
+    projectActions.unselectAll();
+    sceneActions.selectLayer("layer2");
+    linesActions.selectToolDrawingLine('wall');
+  };
+
+  var DrawInterestArea = function DrawInterestArea() {
+    projectActions.unselectAll();
+    sceneActions.selectLayer("layer2");
+    linesActions.selectToolDrawingLine('install area');
+  };
+  //change camera
+  var camearaSelected = state.getIn(['scene', 'layers', 'layer2', 'selected']).items.size == 1;
+
+  //Gernerate(checkforbidden及check403待輸出json出來後修改)
+  var s3jsoninputurl = "http://localhost:3000/s3jsoninputUrl";
+
+  function showOptimizing() {
+    document.getElementById("overlay").style.display = "";
+    document.getElementById("optimizing").style.display = "";
+    for (var i = 1; i < 400; i++) {
+      setTimeout(function () {
+        document.getElementById("optimizing").innerHTML = "Optimizing.";
+      }, 1500 * i - 1000);
+      setTimeout(function () {
+        document.getElementById("optimizing").innerHTML = "Optimizing..";
+      }, 1500 * i - 500);
+      setTimeout(function () {
+        document.getElementById("optimizing").innerHTML = "Optimizing...";
+      }, 1500 * i);
+    }
+  }
+
+  function closeOptimizing() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("optimizing").style.display = "none";
+  }
+
+  // function checkForbidden (url, resultJson, status) {
+  //   var req = new XMLHttpRequest();
+  //   req.open('GET', url, false);
+  //   req.send();
+  //   if (req.status == 200) {
+  //     closeLoading();
+
+  //     projectActions.loadProject(resultJson);
+  //     status = 1;
+  //     return status;
+  //   }
+  // };
+
+
+  function checkForbidden(url, status) {
+    var req = new XMLHttpRequest();
+    req.open('GET', url, false);
+    req.send();
+    if (req.status == 200) {
+      closeOptimizing();
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.send();
+      xhr.onload = function () {
+        var data = JSON.parse(this.responseText);
+        console.log(data);
+
+        projectActions.loadProject(data);
+
+        sceneActions.selectLayer("layer2");
+      };
+      status = 1;
+      return status;
+    }
+  }
+
+  function checkForbidden_cam(url, status) {
+    var req = new XMLHttpRequest();
+    req.open('GET', url, false);
+    req.send();
+    if (req.status == 200) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.send();
+      xhr.onload = function () {
+        var data = JSON.parse(this.responseText);
+        console.log(data);
+        var Cam_count = Object.values(data);
+        var BCC_200_count = String(Cam_count[0]);
+        var BCC_300_count = String(Cam_count[1]);
+        var TLC_2020C_count = String(Cam_count[2]);
+        var BCC_2000_count = String(Cam_count[3]);
+        var BCC_2000PLUS_count = String(Cam_count[4]);
+        var BCC_200PLUS_count = String(Cam_count[5]);
+        var MAC_200DN_count = String(Cam_count[6]);
+        var BAC_2000_count = String(Cam_count[7]);
+        var Total_Camera_count = String(Number(Cam_count[0]) + Number(Cam_count[1]) + Number(Cam_count[2]) + Number(Cam_count[3]) + Number(Cam_count[4]) + Number(Cam_count[5]) + Number(Cam_count[6]) + Number(Cam_count[7]));
+
+        localStorage.setItem("BCC200_Count", BCC_200_count);
+        localStorage.setItem("BCC300_Count", BCC_300_count);
+        localStorage.setItem("TLC2020C_Count", TLC_2020C_count);
+        localStorage.setItem("BCC2000_Count", BCC_2000_count);
+        localStorage.setItem("BCC2000PLUS_Count", BCC_2000PLUS_count);
+        localStorage.setItem("BCC200PLUS_Count", BCC_200PLUS_count);
+        localStorage.setItem("MAC200DN_Count", MAC_200DN_count);
+        localStorage.setItem("BAC2000_Count", BAC_2000_count);
+
+        localStorage.setItem("Camera_Count", Total_Camera_count);
+      };
+      status = 1;
+      return status;
+    }
+  }
+
+  function checkForbidden_score(url, status) {
+    var req = new XMLHttpRequest();
+    req.open('GET', url, false);
+    req.send();
+    if (req.status == 200) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.send();
+      xhr.onload = function () {
+        var data = JSON.parse(this.responseText);
+        console.log(data);
+        var score = data["score"];
+        document.getElementById("totalCoverage").innerHTML = String(score) + "%";
+        localStorage.setItem("Coverage", score);
+      };
+      status = 1;
+      return status;
+    }
+  }
+
+  var ClickSummary = function ClickSummary(summary) {
+    var e = document.createEvent("MouseEvents");
+    e.initEvent("click", true, true);
+    summary.dispatchEvent(e);
+  };
+
+  var OpenSummary = function OpenSummary(event) {
+    var SummaryClick = document.getElementById("SummaryPage2");
+    ClickSummary(SummaryClick);
+  };
+
   return React.createElement(
     Box,
     { sx: { flexGrow: 1 } },
     React.createElement(
       AppBar,
-      { position: 'fixed', sx: { bgcolor: "#222" }, openDrawer: openDrawer, openPoper: openPoper },
+      { position: 'fixed', sx: { bgcolor: "#15110d" }, style: { height: "70px" }, elevation: 0, openDrawer: openDrawer, openPoper: openPoper },
       React.createElement(
         Toolbar,
         null,
-        React.createElement(
-          Box,
-          { sx: { flexGrow: 1, display: { xs: 'none', md: 'flex' } } },
-          React.createElement(
-            IconButton,
-            {
-              color: 'inherit',
-              'aria-label': 'open drawer',
-              onClick: handleDrawerOpen,
-              edge: 'start',
-              sx: _extends({ mr: 2 }, openDrawer && { display: 'none' })
-            },
-            React.createElement(MenuIcon, null)
-          ),
-          React.createElement(TextField, {
-            sx: { input: { color: 'white' } },
-            hiddenLabel: true,
-            id: 'project-name',
-            defaultValue: 'Untitled Project',
-            variant: 'filled',
-            color: 'warning' }),
-          React.createElement(
-            Button,
-            {
-              sx: { my: 2, color: 'white', display: 'block' },
-              ref: anchorRef,
-              id: 'composition-button',
-              'aria-controls': openPoper ? 'composition-menu' : undefined,
-              'aria-expanded': openPoper ? 'true' : undefined,
-              'aria-haspopup': 'true',
-              onClick: handleToggle
-            },
-            'Outline'
-          ),
-          React.createElement(
-            Popper,
-            {
-              open: openPoper,
-              anchorEl: anchorRef.current,
-              role: undefined,
-              placement: 'bottom-start',
-              transition: true,
-              disablePortal: true
-            },
-            function (_ref4) {
-              var TransitionProps = _ref4.TransitionProps,
-                  placement = _ref4.placement;
-              return React.createElement(
-                Grow,
-                _extends({}, TransitionProps, {
-                  style: {
-                    transformOrigin: placement === 'bottom-start' ? 'left top' : 'left bottom'
-                  }
-                }),
-                React.createElement(
-                  Paper,
-                  null,
-                  React.createElement(
-                    ClickAwayListener,
-                    { onClickAway: handlePoperClose },
-                    React.createElement(
-                      MenuList,
-                      {
-                        autoFocusItem: openPoper,
-                        id: 'composition-menu',
-                        'aria-labelledby': 'composition-button'
-                        //onKeyDown={handleListKeyDown}
-                      },
-                      React.createElement(
-                        MenuItem,
-                        { onClick: function onClick() {
-                            return linesActions.selectToolDrawingLine('wall');
-                          } },
-                        'Construction Area'
-                      ),
-                      React.createElement(
-                        MenuItem,
-                        { onClick: function onClick() {
-                            return linesActions.selectToolDrawingLine('install area');
-                          } },
-                        'Interest Area'
-                      )
-                    )
-                  )
-                )
-              );
-            }
-          ),
-          React.createElement(
-            Button,
-            {
-              key: 'Place',
-              sx: { my: 2, color: 'white', display: 'block' }
-            },
-            'Place'
-          ),
-          React.createElement(
-            Popper,
-            {
-              open: openPoper,
-              anchorEl: anchorRef.current,
-              role: undefined,
-              placement: 'bottom-start',
-              transition: true,
-              disablePortal: true
-            },
-            function (_ref5) {
-              var TransitionProps = _ref5.TransitionProps,
-                  placement = _ref5.placement;
-              return React.createElement(
-                Grow,
-                _extends({}, TransitionProps, {
-                  style: {
-                    transformOrigin: placement === 'bottom-start' ? 'left top' : 'left bottom'
-                  }
-                }),
-                React.createElement(
-                  Paper,
-                  null,
-                  React.createElement(
-                    ClickAwayListener,
-                    { onClickAway: handlePoperClose },
-                    React.createElement(
-                      MenuList,
-                      {
-                        autoFocusItem: openPoper,
-                        id: 'composition-menu',
-                        'aria-labelledby': 'composition-button'
-                        //onKeyDown={handleListKeyDown}
-                      },
-                      React.createElement(
-                        MenuItem,
-                        { onClick: function onClick() {
-                            return linesActions.selectToolDrawingLine('wall');
-                          } },
-                        'Construction Area'
-                      ),
-                      React.createElement(
-                        MenuItem,
-                        { onClick: function onClick() {
-                            return linesActions.selectToolDrawingLine('install area');
-                          } },
-                        'Interest Area'
-                      )
-                    )
-                  )
-                )
-              );
-            }
-          )
-        ),
-        React.createElement(
-          Box,
-          { sx: { flexGrow: 0 } },
-          React.createElement(
-            Tooltip,
-            { title: 'Open settings' },
-            React.createElement(
-              IconButton,
-              { onClick: handleOpenUserMenu, sx: { p: 0 } },
-              React.createElement(Avatar, { alt: 'Remy Sharp', src: '/static/images/avatar/2.jpg' })
-            )
-          ),
-          React.createElement(
-            Menu,
-            {
-              sx: { mt: '45px' },
-              id: 'menu-appbar',
-              anchorEl: anchorElUser,
-              anchorOrigin: {
-                vertical: 'top',
-                horizontal: 'right'
-              },
-              keepMounted: true,
-              transformOrigin: {
-                vertical: 'top',
-                horizontal: 'right'
-              },
-              open: Boolean(anchorElUser),
-              onClose: handleCloseUserMenu
-            },
-            settings.map(function (setting) {
-              return React.createElement(
-                MenuItem,
-                { key: setting, onClick: handleCloseNavMenu },
-                React.createElement(
-                  Typography,
-                  { textAlign: 'center' },
-                  setting
-                )
-              );
-            })
-          )
-        ),
+        React.createElement(Box, { sx: { flexGrow: 1, display: { xs: 'none', md: 'flex' } } }),
         React.createElement(
           Box,
           { sx: { flexGrow: 0 } },
           React.createElement(
             Button,
             {
-              key: 'Gernerate',
-              sx: { my: 2, color: 'white', display: 'block' }
+              id: 'Generate1',
+              key: 'Generat1',
+              sx: { my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontWeight: "normal", fontStretch: "normal", fontStyle: "normal", textTransform: "capitalize" },
+              style: { width: "134px", height: "41px", borderRadius: "10px", backgroundColor: "#ffdfbf" }
+              // onClick = {GernerateOnclick}
             },
-            'Gernerate'
+            'Generate'
+          ),
+          React.createElement(
+            Button,
+            {
+              id: 'Generate2',
+              key: 'Generat',
+              sx: { my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontWeight: "normal", fontStretch: "normal", fontStyle: "normal", textTransform: "capitalize" },
+              style: { width: "134px", height: "41px", borderRadius: "10px", backgroundColor: "#ff8200", display: "none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer' },
+              onClick: GernerateOnclick
+            },
+            'Generate'
           )
         )
       )
@@ -382,22 +476,17 @@ export default function TopBar(_ref3) {
             boxSizing: 'border-box'
           }
         },
+        PaperProps: { style: { height: "95vh", top: 70 } },
         variant: 'persistent',
         anchor: 'left',
-        open: openDrawer
+        open: showCamDrawer || showSumDrawer,
+        classes: {
+          paper: classes.drawerPaper
+        }
       },
-      React.createElement(
-        DrawerHeader,
-        null,
-        React.createElement(
-          IconButton,
-          { onClick: handleDrawerClose },
-          theme.direction === 'ltr' ? React.createElement(ChevronLeftIcon, null) : React.createElement(ChevronRightIcon, null)
-        )
-      ),
-      React.createElement(Divider, null),
-      elementsToDisplay.map(function (elem) {
-        return React.createElement(CatalogItem, { key: elem.name, element: elem });
+      !showCamDrawer && showSumDrawer && React.createElement(SummaryTable, null),
+      showCamDrawer && !showSumDrawer && elementsToDisplay.map(function (elem) {
+        return camearaSelected ? React.createElement(CatalogChangeItem, { key: elem.name, element: elem, state: state }) : React.createElement(CatalogItem, { key: elem.name, element: elem });
       })
     )
   );

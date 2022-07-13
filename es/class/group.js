@@ -9,6 +9,9 @@ import { Map, List } from 'immutable';
 import { Group as GroupModel } from '../models';
 import { IDBroker, MathUtils, GeometryUtils } from '../utils/export';
 
+// clear redoHistort
+import { HistoryStructure } from '../models';
+
 var Group = function () {
   function Group() {
     _classCallCheck(this, Group);
@@ -55,6 +58,11 @@ var Group = function () {
 
       state = state.setIn(['scene', 'groups'], groups).setIn(['scene', 'groups', groupID, 'selected'], true);
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
@@ -66,6 +74,11 @@ var Group = function () {
       }, state);
       state = reduced.setIn(['scene', 'groups', groupID, 'selected'], false);
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
@@ -74,6 +87,11 @@ var Group = function () {
       var groupID = IDBroker.acquireID();
 
       state = state.setIn(['scene', 'groups', groupID], new GroupModel({ id: groupID, name: groupID }));
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
 
       return { updatedState: state };
     }
@@ -115,6 +133,11 @@ var Group = function () {
         }
       });
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
@@ -128,6 +151,11 @@ var Group = function () {
         state = this.reloadBaricenter(state, groupID).updatedState;
       }
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
@@ -135,6 +163,11 @@ var Group = function () {
     value: function setBarycenter(state, groupID, x, y) {
       if (typeof x !== 'undefined') state = state.setIn(['scene', 'groups', groupID, 'x'], x);
       if (typeof y !== 'undefined') state = state.setIn(['scene', 'groups', groupID, 'y'], y);
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
 
       return { updatedState: state };
     }
@@ -244,6 +277,11 @@ var Group = function () {
         state = this.setBarycenter(state, groupID, xBar / elementCount, yBar / elementCount).updatedState;
       }
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
@@ -252,12 +290,23 @@ var Group = function () {
       var actualList = state.getIn(['scene', 'groups', groupID, 'elements', layerID, elementPrototype]);
 
       if (!actualList || !actualList.contains(elementID)) {
+
+        // clear redoHistort
+        state = state.merge({
+          redoHistory: new HistoryStructure()
+        });
+
         return { updatedState: state };
       }
 
       state = state.setIn(['scene', 'groups', groupID, 'elements', layerID, elementPrototype], actualList.filterNot(function (el) {
         return el === elementID;
       }));
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
 
       return { updatedState: state };
     }
@@ -266,6 +315,11 @@ var Group = function () {
     value: function setAttributes(state, groupID, attributes) {
       state = state.mergeIn(['scene', 'groups', groupID], attributes);
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
@@ -273,12 +327,22 @@ var Group = function () {
     value: function setProperties(state, groupID, properties) {
       state = state.mergeIn(['scene', 'groups', groupID, 'properties'], properties);
 
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
+
       return { updatedState: state };
     }
   }, {
     key: 'remove',
     value: function remove(state, groupID) {
       state = state.removeIn(['scene', 'groups', groupID]);
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
 
       return { updatedState: state };
     }
@@ -319,6 +383,11 @@ var Group = function () {
       });
 
       state = state.deleteIn(['scene', 'groups', groupID]);
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
 
       return { updatedState: state };
     }
@@ -383,6 +452,11 @@ var Group = function () {
       state = this.setBarycenter(state, groupID, x, y).updatedState;
 
       state = Group.select(state, groupID).updatedState;
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
 
       return { updatedState: state };
     }
@@ -459,6 +533,11 @@ var Group = function () {
       });
 
       state = Group.select(state, groupID).updatedState;
+
+      // clear redoHistort
+      state = state.merge({
+        redoHistory: new HistoryStructure()
+      });
 
       return { updatedState: state };
     }

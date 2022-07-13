@@ -107,6 +107,22 @@ var Project = function () {
         state = Group.unselect(state, group.get('id')).updatedState;
       });
 
+      console.log("1");
+
+      if (document.getElementById("8-8-1").style.display !== "none" && localStorage.getItem("Tutorial_Generate_Detect_1") == "Undone") {
+        localStorage.setItem("Tutorial_Generate_Detect_1", "Done");
+        console.log("2");
+      } else if (document.getElementById("8-8-1").style.display !== "none" && localStorage.getItem("Tutorial_Generate_Detect_2") == "Undone") {
+        localStorage.setItem("Tutorial_Generate_Detect_2", "Done");
+        console.log("3");
+      } else if (document.getElementById("8-8-1").style.display !== "none" && localStorage.getItem("Tutorial_Generate_Detect_2") == "Done") {
+        console.log("4");
+        document.getElementById("8-8-1").style.display = "none";
+        document.getElementById("8-8-2").style.display = "none";
+        document.getElementById("8-8-3").style.display = "none";
+        document.getElementById("8-8-4").style.display = "none";
+      }
+
       return { updatedState: state };
     }
   }, {
@@ -135,10 +151,15 @@ var Project = function () {
 
       return { updatedState: state };
     }
+
+    //TESTING REDO
+
   }, {
     key: 'undo',
     value: function undo(state) {
       var sceneHistory = state.sceneHistory;
+      var redoHistory = state.redoHistory;
+      redoHistory = history.historyPush(redoHistory, sceneHistory.last);
       if (state.scene === sceneHistory.last && sceneHistory.list.size > 1) {
         sceneHistory = history.historyPop(sceneHistory);
       }
@@ -146,7 +167,41 @@ var Project = function () {
       state = state.merge({
         mode: MODE_IDLE,
         scene: sceneHistory.last,
+        redoHistory: redoHistory,
         sceneHistory: history.historyPop(sceneHistory)
+      });
+
+      return { updatedState: state };
+    }
+
+    //TESTING REDO
+
+  }, {
+    key: 'redo',
+    value: function redo(state) {
+      var sceneHistory = state.sceneHistory;
+      var redoHistory = state.redoHistory;
+
+      if (redoHistory.list.size === 0) {
+        state = state.merge({
+          mode: MODE_IDLE,
+          scene: sceneHistory.last,
+          sceneHistory: sceneHistory,
+          redoHistory: redoHistory
+        });
+        return { updatedState: state };
+      }
+
+      sceneHistory = history.historyPush(sceneHistory, redoHistory.last);
+      if (state.scene === redoHistory.last && redoHistory.list.size > 1) {
+        redoHistory = history.historyPop(redoHistory);
+      }
+
+      state = state.merge({
+        mode: MODE_IDLE,
+        scene: redoHistory.last,
+        sceneHistory: sceneHistory,
+        redoHistory: history.historyPop(redoHistory)
       });
 
       return { updatedState: state };
@@ -157,6 +212,10 @@ var Project = function () {
       var sceneHistory = state.sceneHistory;
 
       if (!sceneHistory.last && sceneHistory.list.isEmpty()) {
+        return { updatedState: state };
+      }
+      //prevent MODE_IDLE rollback
+      if (state.mode === 'MODE_IDLE') {
         return { updatedState: state };
       }
 
@@ -172,6 +231,8 @@ var Project = function () {
         draggingSupport: new Map(),
         rotatingSupport: new Map()
       });
+
+      state = this.unselectAll(state).updatedState;
 
       return { updatedState: state };
     }

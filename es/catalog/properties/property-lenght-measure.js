@@ -4,7 +4,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UNITS_LENGTH, UNIT_CENTIMETER } from './../../constants';
+import { UNITS_LENGTH, UNIT_CENTIMETER, UNIT_METER } from './../../constants';
 import convert from 'convert-units';
 import { FormLabel, FormNumberInput, FormSelect } from '../../components/style/export';
 import { Map } from 'immutable';
@@ -29,7 +29,8 @@ export default function PropertyLengthMeasure(_ref, _ref2) {
 
   var length = value.get('length') || 0;
   var _length = value.get('_length') || length;
-  var _unit = value.get('_unit') || UNIT_CENTIMETER;
+  // let _unit = value.get('_unit') || UNIT_CENTIMETER;
+  var _unit = value.get('_unit') || UNIT_METER;
 
   var hook = configs.hook,
       label = configs.label,
@@ -39,7 +40,8 @@ export default function PropertyLengthMeasure(_ref, _ref2) {
 
     var newLength = toFixedFloat(lengthInput);
     var merged = value.merge({
-      length: unitInput !== UNIT_CENTIMETER ? convert(newLength).from(unitInput).to(UNIT_CENTIMETER) : newLength,
+      // length: unitInput !== UNIT_CENTIMETER ? convert(newLength).from(unitInput).to(UNIT_CENTIMETER) : newLength,
+      length: unitInput !== UNIT_METER ? convert(newLength).from(unitInput).to(UNIT_METER) : newLength,
       _length: lengthInput,
       _unit: unitInput
     });
@@ -83,29 +85,12 @@ export default function PropertyLengthMeasure(_ref, _ref2) {
                   'td',
                   null,
                   React.createElement(FormNumberInput, _extends({
-                    value: _length,
+                    value: _length / 100,
                     onChange: function onChange(event) {
-                      return update(event.target.value, _unit);
+                      return update(event.target.value * 100, _unit);
                     },
                     onValid: onValid
                   }, configRest))
-                ),
-                React.createElement(
-                  'td',
-                  { style: unitContainerStyle },
-                  React.createElement(
-                    FormSelect,
-                    { value: _unit, onChange: function onChange(event) {
-                        return update(_length, event.target.value);
-                      } },
-                    UNITS_LENGTH.map(function (el) {
-                      return React.createElement(
-                        'option',
-                        { key: el, value: el },
-                        el
-                      );
-                    })
-                  )
                 )
               )
             )

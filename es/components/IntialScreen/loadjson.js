@@ -1,6 +1,6 @@
-export function loadimgjson(loadImageUrl) {
+export function loadimgjson(loadImageUrl, jsonleft, top) {
     var loadjson = {
-        "unit": "cm",
+        "unit": "m",
         "layers": {
             "layer1": {
                 "id": "layer1",
@@ -37,9 +37,13 @@ export function loadimgjson(loadImageUrl) {
                             "height": 540
                         },
                         "visible": true,
-                        "x": 479.709994739929,
-                        "y": 1629.5759345522179,
-                        "rotation": 90
+                        // "x": 479.709994739929,
+                        // "y": 1629.5759345522179,
+                        // "x": jsonleft+750,
+                        // "y": 1350-top,
+                        "x": jsonleft + 15000,
+                        "y": 10350 - top,
+                        "rotation": 0
                     }
                 },
                 "lines": {},
@@ -96,8 +100,8 @@ export function loadimgjson(loadImageUrl) {
         },
         "selectedLayer": "layer1",
         "groups": {},
-        "width": 3000,
-        "height": 2000,
+        "width": 30000,
+        "height": 20000,
         "meta": {},
         "guides": {
             "horizontal": {},

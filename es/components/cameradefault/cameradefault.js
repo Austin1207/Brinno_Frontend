@@ -33,24 +33,6 @@ var CameraDefault = function (_Component) {
       this.setState({ showHideSidepanel: !this.state.showHideSidepanel });
     }
   }, {
-    key: 'getLS',
-    value: function getLS() {
-      var data = JSON.parse(localStorage.getItem('react-planner_v0'));
-      var lines = Object.entries(data.layers.layer1.lines);
-      var linesarr = Object.keys(lines);
-      var wantArea = [];
-      //const wantAreanum = lines.filter(i => i.type === "install area").length
-      /*
-      for(let i=0;i<linesarr.length;i++){
-        if(lines.linesarr[i].type=="install area"){
-          wantArea.append(lines.linesarr[i].vertices)
-        }
-      }
-      */
-      console.log(lines);
-      console.log(months);
-    }
-  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -61,6 +43,74 @@ var CameraDefault = function (_Component) {
           linesActions = _context.linesActions;
 
       var showHideSidepanel = this.state.showHideSidepanel;
+
+      var getLS = function getLS(e) {
+        var data = JSON.parse(localStorage.getItem('react-planner_v0'));
+        var lines = Object.entries(data.layers.layer1.lines);
+        var wantVertices = new Array();
+        for (var i = 0; i < lines.length; i++) {
+          if (lines[i][1].type == "install area") {
+            wantVertices.push(lines[i][1].vertices);
+          }
+        }
+        wantVertices = wantVertices.flat();
+        wantVertices = wantVertices.filter(function onlyUnique(value, index, self) {
+          return self.indexOf(value) === index;
+        });
+        console.log(wantVertices);
+        var vertices = Object.entries(data.layers.layer1.vertices);
+        var allX = new Array();
+        var allY = new Array();
+        for (var _i = 0; _i < vertices.length; _i++) {
+          for (var j = 0; j < wantVertices.length; j++) {
+            if (vertices[_i][1].id == wantVertices[j]) {
+              allX.push(vertices[_i][1].x);
+              allY.push(vertices[_i][1].y);
+            }
+          }
+        }
+        console.log(allX);
+        console.log(allY);
+        var Xmax = Math.max.apply(Math, allX);
+        var Xmin = Math.min.apply(Math, allX);
+        var Ymax = Math.max.apply(Math, allY);
+        var Ymin = Math.min.apply(Math, allY);
+        console.log(Xmax, Xmin, Ymax, Ymin);
+        var itemsActions = _this2.context.itemsActions;
+
+        itemsActions.selectToolDrawingItem('camera_BAC2000');
+        itemsActions.endDrawingItem('layer1', Xmax, Ymax);
+        itemsActions.endDrawingItem('layer1', Xmax, Ymin);
+        itemsActions.endDrawingItem('layer1', Xmin, Ymax);
+        itemsActions.endDrawingItem('layer1', Xmin, Ymin);
+        var data_new = JSON.parse(localStorage.getItem('react-planner_v0'));
+        var items = Object.entries(data_new.layers.layer1.items);
+        console.log(items);
+        //let defaultCameras = new Array();
+        //for(let i=0;i<items.length;i++){
+        /*
+        if(items[i][1].x==Xmax&items[i][1].y==Ymax||
+          items[i][1].x==Xmax&items[i][1].y==Ymin||
+          items[i][1].x==Xmin&items[i][1].y==Ymax||
+          items[i][1].x==Xmin&items[i][1].y==Ymin){
+            */
+        //defaultCameras.push(items[i][1].x)
+        //}
+        //}
+        /*
+        let defaultCameras = items.map(function(element,index){
+          if(element[1].x==Xmax&element[1].y==Ymax||
+            element[1].x==Xmax&element[1].y==Ymin||
+            element[1].x==Xmin&element[1].y==Ymax||
+            element[1].x==Xmin&element[1].y==Ymin){
+              return element[1].id
+            }
+        });
+        */
+        //console.log(defaultCameras)
+        //itemsActions.beginRotatingItem('layer1', "RwwTliA30", Xmax, Ymax);
+        //itemsActions.endRotatingItem(0, 0);
+      };
 
       return React.createElement(
         'div',

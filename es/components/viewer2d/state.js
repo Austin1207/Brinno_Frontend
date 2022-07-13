@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Scene from './scene';
 import Snap from './snap';
 import * as SharedStyle from '../../shared-style';
+import Visibility_Polygon from './visibility-polygon';
 
 var guideStyle = {
   stroke: SharedStyle.SECONDARY_COLOR.main,
@@ -13,7 +14,8 @@ var guideStyle = {
 
 export default function State(_ref) {
   var state = _ref.state,
-      catalog = _ref.catalog;
+      catalog = _ref.catalog,
+      openCoverage = _ref.openCoverage;
   var activeSnapElement = state.activeSnapElement,
       snapElements = state.snapElements,
       scene = state.scene;
@@ -49,7 +51,15 @@ export default function State(_ref) {
       }),
       activeSnapElement,
       snapElements
-    )
+    ),
+    openCoverage && React.createElement(Visibility_Polygon, {
+      state: state
+      // sceneWidth={3000}
+      // sceneHeight={2000}
+      // 修改畫布大小
+      , sceneWidth: 30000,
+      sceneHeight: 20000
+    })
   );
 }
 

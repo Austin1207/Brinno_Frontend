@@ -1,6 +1,6 @@
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _STYLE_DESCRIPTION;
+var _STYLE_IMAGE_CONTAINE, _STYLE_DESCRIPTION;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -17,16 +17,19 @@ import PropTypes from 'prop-types';
 import { FaPlusCircle as IconAdd } from 'react-icons/fa';
 import * as SharedStyle from '../../shared-style';
 import { Item } from '../../class/export';
+import batteryIcon from './battery.png';
+import fullHDIcon from './fullHD.png';
+import HDRIcon from './HDR.png';
 
 var STYLE_BOX = {
-  width: '14em',
-  height: '14em',
-  padding: '0.625em',
-  background: '#f7f7f9',
+  width: '300px',
+  height: '300px',
+  padding: '30px',
+  background: '#ffffff',
   border: '1px solid #e1e1e8',
-  cursor: 'pointer',
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
   position: 'relative',
-  boxShadow: '0 1px 6px 0 rgba(0, 0, 0, 0.11), 0 1px 4px 0 rgba(0, 0, 0, 0.11)',
+  //boxShadow: '0 1px 6px 0 rgba(0, 0, 0, 0.11), 0 1px 4px 0 rgba(0, 0, 0, 0.11)',
   borderRadius: '2px',
   transition: 'all .15s ease-in-out',
   WebkitTransition: 'all .15s ease-in-out',
@@ -40,7 +43,8 @@ var STYLE_BOX_HOVER = _extends({}, STYLE_BOX, {
 
 var STYLE_TITLE = {
   width: '100%',
-  textAlign: 'center',
+  fontSize: '20px',
+  textAlign: 'left',
   display: 'block',
   marginBottom: '.5em',
   textTransform: 'capitalize'
@@ -50,16 +54,15 @@ var STYLE_TITLE_HOVER = _extends({}, STYLE_TITLE, {
   color: SharedStyle.COLORS.white
 });
 
-var STYLE_IMAGE_CONTAINER = {
+var STYLE_IMAGE_CONTAINER = (_STYLE_IMAGE_CONTAINE = {
   width: '100%',
-  height: '8em',
+  height: '200px',
   position: 'relative',
   overflow: 'hidden',
   border: 'solid 1px #e6e6e6',
   padding: 0,
-  margin: 0,
-  marginBottom: '5px'
-};
+  margin: 0
+}, _defineProperty(_STYLE_IMAGE_CONTAINE, 'border', 0), _defineProperty(_STYLE_IMAGE_CONTAINE, 'marginBottom', '5px'), _STYLE_IMAGE_CONTAINE);
 
 var STYLE_IMAGE = {
   position: 'absolute',
@@ -87,23 +90,13 @@ var STYLE_PLUS_HOVER = {
 
 var STYLE_DESCRIPTION = (_STYLE_DESCRIPTION = {
   display: 'block'
-}, _defineProperty(_STYLE_DESCRIPTION, 'display', '-webkit-box'), _defineProperty(_STYLE_DESCRIPTION, 'height', '2em'), _defineProperty(_STYLE_DESCRIPTION, 'margin', '0 auto'), _defineProperty(_STYLE_DESCRIPTION, 'fontSize', '0.75em'), _defineProperty(_STYLE_DESCRIPTION, 'fontStyle', 'italic'), _defineProperty(_STYLE_DESCRIPTION, 'lineHeight', '1em'), _defineProperty(_STYLE_DESCRIPTION, 'WebkitLineClamp', '2'), _defineProperty(_STYLE_DESCRIPTION, 'WebkitBoxOrient', 'vertical'), _defineProperty(_STYLE_DESCRIPTION, 'overflow', 'hidden'), _defineProperty(_STYLE_DESCRIPTION, 'textOverflow', 'ellipsis'), _STYLE_DESCRIPTION);
+}, _defineProperty(_STYLE_DESCRIPTION, 'display', '-webkit-box'), _defineProperty(_STYLE_DESCRIPTION, 'height', '2em'), _defineProperty(_STYLE_DESCRIPTION, 'margin', '0 auto'), _defineProperty(_STYLE_DESCRIPTION, 'fontSize', '14px'), _defineProperty(_STYLE_DESCRIPTION, 'color', '#838689'), _defineProperty(_STYLE_DESCRIPTION, 'lineHeight', '1em'), _defineProperty(_STYLE_DESCRIPTION, 'WebkitLineClamp', '2'), _defineProperty(_STYLE_DESCRIPTION, 'WebkitBoxOrient', 'vertical'), _defineProperty(_STYLE_DESCRIPTION, 'overflow', 'hidden'), _defineProperty(_STYLE_DESCRIPTION, 'textOverflow', 'ellipsis'), _STYLE_DESCRIPTION);
 
-var STYLE_TAGS = {
-  listStyle: 'none',
-  margin: '0px',
-  padding: '0px',
-  fontSize: '11px',
-  marginBottom: '3px'
-};
-
-var STYLE_TAG = {
-  display: 'inline-block',
-  background: '#337ab7',
-  color: SharedStyle.COLORS.white,
-  padding: '1px 4px',
-  marginRight: '3px',
-  borderRadius: '3px'
+var ReplaceCameraNext = function ReplaceCameraNext() {
+  if (document.getElementById("7-8-26").style.display !== "none") {
+    document.getElementById("7-8-26").style.display = "none";
+    document.getElementById("7-8-36").style.display = "";
+  }
 };
 
 var CatalogChangeItem = function (_Component) {
@@ -132,18 +125,22 @@ var CatalogChangeItem = function (_Component) {
         case 'camera_BAC2000':
           this.context.projectActions.remove();
           this.context.itemsActions.directCreatItem('layer2', 'camera_BAC2000', cameraX, cameraY, cameraRotation);
+          ReplaceCameraNext();
           break;
         case 'camera_BCC200':
           this.context.projectActions.remove();
           this.context.itemsActions.directCreatItem('layer2', 'camera_BCC200', cameraX, cameraY, cameraRotation);
+          ReplaceCameraNext();
           break;
         case 'camera_BCC2000':
           this.context.projectActions.remove();
           this.context.itemsActions.directCreatItem('layer2', 'camera_BCC2000', cameraX, cameraY, cameraRotation);
+          ReplaceCameraNext();
           break;
         case 'camera_MAC200DN':
           this.context.projectActions.remove();
           this.context.itemsActions.directCreatItem('layer2', 'camera_MAC200DN', cameraX, cameraY, cameraRotation);
+          ReplaceCameraNext();
           break;
       }
     }
@@ -170,34 +167,26 @@ var CatalogChangeItem = function (_Component) {
           }
         },
         React.createElement(
+          'div',
+          { style: STYLE_IMAGE_CONTAINER },
+          React.createElement('div', { style: _extends({}, !hover ? STYLE_IMAGE : STYLE_IMAGE_HOVER, { backgroundImage: 'url(' + element.info.image + ')' }) })
+        ),
+        React.createElement(
           'b',
           { style: !hover ? STYLE_TITLE : STYLE_TITLE_HOVER },
           element.info.title
         ),
         React.createElement(
-          'div',
-          { style: STYLE_IMAGE_CONTAINER },
-          React.createElement(
-            'div',
-            { style: _extends({}, !hover ? STYLE_IMAGE : STYLE_IMAGE_HOVER, { backgroundImage: 'url(' + element.info.image + ')' }) },
-            hover ? React.createElement(IconAdd, { style: STYLE_PLUS_HOVER }) : null
-          )
-        ),
-        React.createElement(
-          'ul',
-          { style: STYLE_TAGS },
-          element.info.tag.map(function (tag, index) {
-            return React.createElement(
-              'li',
-              { style: STYLE_TAG, key: index },
-              tag
-            );
-          })
-        ),
-        React.createElement(
-          'div',
+          'p',
           { style: STYLE_DESCRIPTION },
           element.info.description
+        ),
+        React.createElement(
+          'div',
+          null,
+          React.createElement('img', { src: batteryIcon, alt: "batteryIcon", style: { margin: 'auto 12px auto 12px' } }),
+          React.createElement('img', { src: fullHDIcon, alt: "fullHDIcon", style: { margin: 'auto 12px auto 12px' } }),
+          React.createElement('img', { src: HDRIcon, alt: "HDRIcon", style: { margin: 'auto 12px auto 12px' } })
         )
       );
     }

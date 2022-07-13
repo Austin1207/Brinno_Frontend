@@ -195,6 +195,11 @@ export var Item = function (_Record7) {
 
   return Item;
 }(Record(_extends({}, sharedAttributes, {
+  fov: '',
+  battery: '',
+  distance: '',
+  price: '',
+  coverage: '',
   prototype: 'items',
   x: 0,
   y: 0,
@@ -258,7 +263,10 @@ export var Group = function (_Record9) {
   elements: new Map()
 }), 'Group'));
 
-export var DefaultLayers = new Map({ 'layer1': new Layer({ id: 'layer1', name: 'default' }) }, { 'layer2': new Layer({ id: 'layer2', name: 'default2' }) });
+export var DefaultLayers = new Map({
+  'layer1': new Layer({ id: 'layer1', name: 'default' }),
+  'layer2': new Layer({ id: 'layer2', name: 'default2' })
+});
 
 export var Scene = function (_Record10) {
   _inherits(Scene, _Record10);
@@ -281,13 +289,16 @@ export var Scene = function (_Record10) {
 
   return Scene;
 }(Record({
-  unit: 'cm',
+  unit: 'm',
   layers: new Map(),
   grids: new Map(),
   selectedLayer: null,
   groups: new Map(),
-  width: 3000,
-  height: 2000,
+  // width: 3000,
+  // height: 2000,
+  // 修改畫布大小
+  width: 30000,
+  height: 20000,
   meta: new Map(), //additional info
   guides: new Map()
 }, 'Scene'));
@@ -404,6 +415,8 @@ export var State = function (_Record14) {
     return _possibleConstructorReturn(this, (State.__proto__ || Object.getPrototypeOf(State)).call(this, _extends({}, json, {
       scene: new Scene(json.scene),
       sceneHistory: new HistoryStructure(json),
+      //Testing Redo
+      redoHistory: new HistoryStructure(json),
       catalog: new Catalog(json.catalog || {}),
       viewer2D: new Map(json.viewer2D || {}),
       drawingSupport: new Map(json.drawingSupport || {}),
@@ -418,6 +431,8 @@ export var State = function (_Record14) {
   mode: MODE_IDLE,
   scene: new Scene(),
   sceneHistory: new HistoryStructure(),
+  //Testing redo
+  redoHistory: new HistoryStructure(),
   catalog: new Catalog(),
   viewer2D: new Map(),
   mouse: new Map({ x: 0, y: 0 }),

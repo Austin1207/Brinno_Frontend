@@ -22,7 +22,9 @@ export default function PanelElementEditor(_ref, _ref2) {
       React.createElement(
         'div',
         { style: {
-            padding: '66px 0px'
+            // padding: '66px 0px',
+            paddingTop: '107px',
+            paddingRight: '315px'
             // color: "#ff8200"
           } },
         React.createElement(ElementEditor, { element: element, layer: layer, state: state })

@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GridHorizontalStreak from './grid-horizontal-streak';
 import GridVerticalStreak from './grid-vertical-streak';
+import Visibility_Polygon from '../visibility-polygon';
 
 export default function Grids(_ref) {
   var scene = _ref.scene;
@@ -34,6 +35,7 @@ export default function Grids(_ref) {
     null,
     renderedGrids
   );
+  //return (<Visibility_Polygon sceneWidth={3000} sceneHeight={2000}/>);
 }
 
 Grids.propTypes = {
