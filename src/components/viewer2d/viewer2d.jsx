@@ -502,9 +502,9 @@ export default function Viewer2D(
       </div>
       {/* change bottom/right & width/height to let screen to canvas middle */}
       <ReactSVGPanZoom
-        style={{ gridColumn: 2, gridRow: 2 , bottom:650, right:750}}
-        width={width - rulerSize + 750}
-        height={height - rulerSize + 650}
+        style={{ gridColumn: 2, gridRow: 2 , bottom:0, right:0}}
+        width={width - rulerSize + 0}
+        height={height - rulerSize + 0}
         value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
         onChangeValue={onChangeValue}
         tool={mode2Tool(mode)}
