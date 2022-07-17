@@ -21,7 +21,7 @@ export default function Group({ layer, group, scene, catalog }, {translator}) {
       data-id={group.id}
       data-selected={group.selected}
       data-layer={layer.id}
-      style={group.selected ? { cursor: 'move' } : {}}
+      style={group.selected ? { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer' } : {}}
       transform={`translate(${group.x},${group.y}) rotate(${group.rotation})`}
     >
       <If condition={group.selected}>

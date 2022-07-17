@@ -39,8 +39,10 @@ export function loadimgjson2 (loadImageUrl, jsonleft, top) {
                         "visible": true,
                         // "x": 479.709994739929,
                         // "y": 1629.5759345522179,
-                        "x": jsonleft+750,
-                        "y": 1350-top,
+                        // "x": jsonleft+750,
+                        // "y": 1350-top,
+                        "x": jsonleft+15000,
+                        "y": 10350-top,
                         "rotation": 90
                     }
                 },
@@ -98,8 +100,8 @@ export function loadimgjson2 (loadImageUrl, jsonleft, top) {
         },
         "selectedLayer": "layer1",
         "groups": {},
-        "width": 3000,
-        "height": 2000,
+        "width": 30000,
+        "height": 20000,
         "meta": {},
         "guides": {
             "horizontal": {},

@@ -25,7 +25,7 @@ import BAC2000Icon from '../../../demo/src/catalog/items/BAC2000/BAC2000.png';
 import { createTheme } from '@mui/material';
 import jsPDF from 'jspdf';
 //import {PdfReport} from './pdfreport';
-import html2canvas from 'html2canvas';
+// import html2canvas from 'html2canvas';
 import {coverage_base64, camera_base64, battery_base64, BAC2000_base64} from './pdfimages'
 
 const STYLE_TITLE = {
@@ -250,13 +250,13 @@ export default function SummaryTable() {
         <div style={{width: '359px', textAlign: 'center'}}>
             <div style={{height: 54-20, marginTop: '10px'}}>
                 <p style={STYLE_NEEDUPDATE}>Summary is not the most updated version.</p>
-                <a id="updatesum" href="#" style={STYLE_NEEDUPDATE}>Update now</a>
+                <a id="updatesum" href="#" style={{...STYLE_NEEDUPDATE, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Update now</a>
             </div>
             <Button
               id = "Export"
               variant="contained"
               sx={{ position: 'absolute', top: 14, right: 14, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}}}
+              backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               onClick = {saveSVGScreenshotToFile}
               >
                 <LaunchIcon />
@@ -284,7 +284,7 @@ export default function SummaryTable() {
                     </ListItem>
                     </Box>
                     <Divider/>
-                    <ListItemButton onClick={handleClick}>
+                    <ListItemButton onClick={handleClick} style={{cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>
                         <ListItemAvatar>
                         <img src={CostIcon} alt={"CostIcon"} style={{margin: 'auto 20px auto 4px'}}/>
                         </ListItemAvatar>

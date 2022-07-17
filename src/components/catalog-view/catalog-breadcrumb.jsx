@@ -10,7 +10,7 @@ const breadcrumbStyle = {
 
 const breadcrumbTextStyle = {
   fontSize: '20px',
-  cursor: 'pointer'
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
 };
 
 const breadcrumbLastTextStyle = {

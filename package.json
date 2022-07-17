@@ -73,6 +73,7 @@
     "@mui/icons-material": "^5.2.5",
     "@mui/material": "^5.2.8",
     "area-polygon": "1.0.1",
+    "canvg": "^4.0.0",
     "convert-units": "2.3.4",
     "html-webpack-plugin": "3.2.0",
     "html2canvas": "^1.4.1",

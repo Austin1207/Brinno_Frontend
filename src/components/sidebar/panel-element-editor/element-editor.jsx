@@ -27,7 +27,7 @@ const iconHeadStyle = {
   float:'right',
   margin:'-3px 4px 0px 0px',
   padding:0,
-  cursor:'pointer',
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
   fontSize:'1.4em'
 };
 

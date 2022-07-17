@@ -75,12 +75,12 @@ function mode2Cursor(mode) {
       // return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png"),pointer' };
 
     case constants.MODE_DRAGGING_ITEM:
-      return { cursor: 'move' };
-      // return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/add+camera.png"),pointer' };
+      // return { cursor: 'move' };
+      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer' }
 
     case constants.MODE_ROTATING_ITEM:
       // return { cursor: 'ew-resize' };
-      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/rotate_2.png"),pointer' };
+      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/rotate_2.png") 5 10,pointer' };
 
 
     case constants.MODE_WAITING_DRAWING_LINE:
@@ -88,7 +88,7 @@ function mode2Cursor(mode) {
 
     case constants.MODE_DRAWING_LINE:
       // return { cursor: 'crosshair' };
-      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png"),pointer' };
+      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png") 10 10,pointer' };
     default:
       return { cursor: 'default' };
   }
@@ -440,7 +440,7 @@ export default function Viewer2D(
       position: 'relative',
       // cursor: 'context-menu'
       // cursor: 'crosshair'
-      // cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png"),pointer'
+      cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/add+camera.png") 17 17,pointer'
     }}
     //onContextMenu={handleContextMenu}
     >
@@ -502,9 +502,12 @@ export default function Viewer2D(
       </div>
       {/* change bottom/right & width/height to let screen to canvas middle */}
       <ReactSVGPanZoom
-        style={{ gridColumn: 2, gridRow: 2 , bottom:0, right:0}}
-        width={width - rulerSize + 0}
-        height={height - rulerSize + 0}
+        // style={{ gridColumn: 2, gridRow: 2 , bottom:650, right:750}}
+        // width={width - rulerSize + 750}
+        // height={height - rulerSize + 650}
+        style={{ gridColumn: 2, gridRow: 2 , bottom:9650, right:15000}}
+        width={width - rulerSize + 15000}
+        height={height - rulerSize + 9650}
         value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
         onChangeValue={onChangeValue}
         tool={mode2Tool(mode)}
@@ -531,18 +534,18 @@ export default function Viewer2D(
 
       </ReactSVGPanZoom>
       <Button variant="contained" 
-        sx={{...(openCoverage ? buttonsInuseStyle : buttonsStyle), top: 24, right: 41, }}
+        sx={{...(openCoverage ? buttonsInuseStyle : buttonsStyle), top: 24, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
         onClick={handleCoverageButton}>
         {openCoverage ? <VisibilityIcon sx={{paddingRight: '6px'}}/> : <VisibilityOffIcon sx={{paddingRight: '6px'}}/>}
         <Divider orientation="vertical" flexItem={true}/>
-        <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Camera Coverage</Typography>
+        <Typography sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Camera Coverage</Typography>
       </Button>
       <Button variant="contained" 
-        sx={{...(openLegend ? buttonsInuseStyle : buttonsStyle), top: 39+36, right: 41,}}
+        sx={{...(openLegend ? buttonsInuseStyle : buttonsStyle), top: 39+36, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
         onClick={handleLegendButton}>
         {openLegend ? <ExpandLess sx={{paddingRight: '6px'}}/> : <ExpandMore sx={{paddingRight: '6px'}}/>}
         <Divider orientation="vertical" flexItem={true}/>
-        <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Area Legend</Typography>
+        <Typography sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Area Legend</Typography>
       </Button>
       <Popper open={openLegend} anchorEl={anchorEl} placement='bottom-start' transition>
         {({ TransitionProps }) => (
@@ -551,7 +554,7 @@ export default function Viewer2D(
               <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
                 <IconConstructionLine sx={{paddingRight: '6px'}}/>
                 <Divider orientation="vertical" flexItem={true}/>
-                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Contruction Area</Typography>
+                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Construction Area</Typography>
               </Box>
               <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
                 <IconInterestLine sx={{paddingRight: '6px'}}/>
@@ -583,7 +586,7 @@ export default function Viewer2D(
             <ListItem>
               <ListItemIcon>
               </ListItemIcon>
-              <ListItemText primary='Contruction Area' primaryTypographyProps={{fontSize: '10px'}} />
+              <ListItemText primary='Construction Area' primaryTypographyProps={{fontSize: '10px'}} />
             </ListItem>
           </List>
         </Paper>

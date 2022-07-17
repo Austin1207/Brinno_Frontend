@@ -13,7 +13,7 @@ const STYLE_BOX = {
   padding: '30px',
   background: '#ffffff',
   border: '1px solid #e1e1e8',
-  cursor: 'pointer',
+  cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
   position: 'relative',
   //boxShadow: '0 1px 6px 0 rgba(0, 0, 0, 0.11), 0 1px 4px 0 rgba(0, 0, 0, 0.11)',
   borderRadius: '2px',
@@ -94,6 +94,14 @@ const STYLE_DESCRIPTION = {
   textOverflow: 'ellipsis',
 };
 
+const ReplaceCameraNext = () => {
+  if (document.getElementById("7-8-26").style.display !== "none"){
+    document.getElementById("7-8-26").style.display = "none"
+    document.getElementById("7-8-36").style.display = ""
+  }
+}
+
+
 export default class CatalogChangeItem extends Component {
 
   constructor(props) {
@@ -113,18 +121,22 @@ export default class CatalogChangeItem extends Component {
       case 'camera_BAC2000':
         this.context.projectActions.remove();
         this.context.itemsActions.directCreatItem('layer2', 'camera_BAC2000', cameraX, cameraY, cameraRotation );
+        ReplaceCameraNext();
         break;
       case 'camera_BCC200':
         this.context.projectActions.remove();
         this.context.itemsActions.directCreatItem('layer2', 'camera_BCC200', cameraX, cameraY, cameraRotation );
+        ReplaceCameraNext();
         break;
       case 'camera_BCC2000':
         this.context.projectActions.remove();
         this.context.itemsActions.directCreatItem('layer2', 'camera_BCC2000', cameraX, cameraY, cameraRotation );
+        ReplaceCameraNext();
         break;
       case 'camera_MAC200DN':
         this.context.projectActions.remove();
         this.context.itemsActions.directCreatItem('layer2', 'camera_MAC200DN', cameraX, cameraY, cameraRotation );
+        ReplaceCameraNext();
         break;
     }
   }
