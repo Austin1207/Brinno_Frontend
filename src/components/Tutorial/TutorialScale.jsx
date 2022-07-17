@@ -428,6 +428,235 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
     var ScreenWidth = document.body.clientWidth;
     var ScreenHeight = document.body.clientHeight;
 
+    const s3jsoninputurl = "http://localhost:3000/s3jsoninputUrl"
+
+    function showOptimizing() {
+      document.getElementById("overlay").style.display = "";
+      document.getElementById("optimizing").style.display = "";
+      for (var i = 1; i < 400; i++) {
+        setTimeout(function(){
+          document.getElementById("optimizing").innerHTML = "Optimizing.";
+        },1500*i - 1000)
+        setTimeout(function(){
+          document.getElementById("optimizing").innerHTML = "Optimizing..";
+        },1500*i -500)
+        setTimeout(function(){
+          document.getElementById("optimizing").innerHTML = "Optimizing...";
+        },1500*i)
+      }
+    }
+  
+    function closeOptimizing() {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("optimizing").style.display = "none";
+    }
+  
+    // function checkForbidden (url, resultJson, status) {
+    //   var req = new XMLHttpRequest();
+    //   req.open('GET', url, false);
+    //   req.send();
+    //   if (req.status == 200) {
+    //     closeLoading();
+  
+    //     projectActions.loadProject(resultJson);
+    //     status = 1;
+    //     return status;
+    //   }
+    // };
+  
+    
+    function checkForbidden (url, status) {
+      var req = new XMLHttpRequest();
+      req.open('GET', url, false);
+      req.send();
+      if (req.status == 200) {
+        closeOptimizing();
+  
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', url, true)
+        xhr.send()
+        xhr.onload = function(){
+          var data = JSON.parse(this.responseText);
+          console.log(data)
+  
+          projectActions.loadProject(data)
+  
+          sceneActions.selectLayer("layer2")
+        }
+        status = 1;
+        return status;
+        }
+      }
+  
+      function checkForbidden_cam (url, status) {
+        var req = new XMLHttpRequest();
+        req.open('GET', url, false);
+        req.send();
+        if (req.status == 200) {  
+          var xhr = new XMLHttpRequest()
+          xhr.open('GET', url, true)
+          xhr.send()
+          xhr.onload = function(){
+            var data = JSON.parse(this.responseText);
+            console.log(data)
+            var Cam_count = Object.values(data)
+            var BCC_200_count = String(Cam_count[0])
+            var BCC_300_count = String(Cam_count[1])
+            var TLC_2020C_count = String(Cam_count[2])
+            var BCC_2000_count = String(Cam_count[3])
+            var BCC_2000PLUS_count = String(Cam_count[4])
+            var BCC_200PLUS_count = String(Cam_count[5])
+            var MAC_200DN_count = String(Cam_count[6])
+            var BAC_2000_count = String(Cam_count[7])
+            var Total_Camera_count = String(Number(Cam_count[0]) + Number(Cam_count[1]) + Number(Cam_count[2]) + Number(Cam_count[3]) + Number(Cam_count[4]) + Number(Cam_count[5]) + Number(Cam_count[6]) + Number(Cam_count[7]))
+            
+            localStorage.setItem("BCC200_Count", BCC_200_count)
+            localStorage.setItem("BCC300_Count", BCC_300_count)
+            localStorage.setItem("TLC2020C_Count", TLC_2020C_count)
+            localStorage.setItem("BCC2000_Count", BCC_2000_count)
+            localStorage.setItem("BCC2000PLUS_Count", BCC_2000PLUS_count)
+            localStorage.setItem("BCC200PLUS_Count", BCC_200PLUS_count)
+            localStorage.setItem("MAC200DN_Count", MAC_200DN_count)
+            localStorage.setItem("BAC2000_Count", BAC_2000_count)
+  
+            localStorage.setItem("Camera_Count", Total_Camera_count)
+          }
+          status = 1;
+          return status;
+          }
+        }
+  
+        function checkForbidden_score (url, status) {
+          var req = new XMLHttpRequest();
+          req.open('GET', url, false);
+          req.send();
+          if (req.status == 200) {  
+            var xhr = new XMLHttpRequest()
+            xhr.open('GET', url, true)
+            xhr.send()
+            xhr.onload = function(){
+              var data = JSON.parse(this.responseText);
+              console.log(data)
+              var score = data["score"]
+              document.getElementById("totalCoverage").innerHTML = String(score) + "%";
+              localStorage.setItem("Coverage",score);
+            }
+            status = 1;
+            return status;
+            }
+          }
+  
+    const ClickSummary = (summary) => {
+      var e = document.createEvent("MouseEvents");
+      e.initEvent("click", true, true);
+      summary.dispatchEvent(e);
+      }
+  
+    const OpenSummary = event => {
+      var SummaryClick = document.getElementById("SummaryPage2")
+      ClickSummary(SummaryClick);
+      }
+  
+    async function GernerateOnclick(){
+      if (localStorage.getItem("Mode") == "Upload"){
+        localStorage.setItem("Tutorial_Upload","Done")
+      }
+      else {
+        localStorage.setItem("Tutorial_Outline","Done")
+      }
+  
+      localStorage.setItem("Tutorial_Generate","Done");
+  
+      document.getElementById("8-8-1").style.display = "none"
+      document.getElementById("8-8-2").style.display = "none"
+      document.getElementById("8-8-3").style.display = "none"
+      document.getElementById("8-8-4").style.display = "none"
+      document.getElementById("Generate_Check_Rectangular").style.display = "none";
+      document.getElementById("Generate_Check_Word").style.display = "none";
+      document.getElementById("Generate_GoBack").style.display = "none";
+      document.getElementById("Generate_Yes").style.display = "none";
+      document.getElementById("overlay").style.display = "none"
+
+  
+      document.getElementById("SummaryPage1").style.display = "none";
+      document.getElementById("SummaryPage2").style.display = "";
+      showOptimizing();
+      const json_data = state.get('scene').toJS();
+      const {url} = await fetch(s3jsoninputurl).then(res => res.json());
+  
+      await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": 'application/json'
+        },
+        body: JSON.stringify(json_data)
+      })
+  
+      // console.log(url)
+  
+      const InputUrl = url.split('?')[0]
+      const objName = InputUrl.split('/')[3]
+      const JsonUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + objName
+      const CamUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "cam_" + objName
+      const ScoreUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "score_" + objName
+  
+      // console.log(JsonUrl);
+  
+      var Check403_2 = setInterval(function(){ 
+        var status = 0;
+        status = checkForbidden_cam(CamUrl, status);
+        if (status == 1) {
+          clearInterval(Check403_2);
+        }
+      },1000)
+  
+      var Check403_3 = setInterval(function(){ 
+        var status = 0;
+        status = checkForbidden_score(ScoreUrl, status);
+        if (status == 1) {
+          clearInterval(Check403_3);
+        }
+      },1000)
+  
+      var Check403 = setInterval(function(){ 
+        var status = 0;
+        status = checkForbidden(JsonUrl, status);
+        if (status == 1) {
+          clearInterval(Check403);
+          OpenSummary();
+        }
+      },1000)
+  
+    // }
+  
+    // const mongodburl = "http://localhost:3000/datas/";
+  
+    // const testmongodb = (e) => {
+    //   e.preventDefault();
+    //   state = Project.unselectAll( state ).updatedState;
+    //   const jsondata = state.get('scene').toJS();
+  
+    //   const data2 = JSON.stringify(jsondata)
+  
+    //   console.log(data2)
+  
+    //   fetch(mongodburl, {
+    //     method: "POST",
+    //     body: data2,
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //   })
+    }
+
+    const Generate_GoBack = () => {
+        document.getElementById("Generate_Check_Rectangular").style.display = "none";
+        document.getElementById("Generate_Check_Word").style.display = "none";
+        document.getElementById("Generate_GoBack").style.display = "none";
+        document.getElementById("Generate_Yes").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+      }
+
     return(
         <div>
             <span id = "TutorialScaleMeasureWord" style = {{
@@ -2138,6 +2367,55 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 backgroundColor: "rgba(152, 154, 156, 0.7)",
                 display: "none",
             }}/>   
+
+
+
+            <div id="Generate_Check_Rectangular" class="Dialog-Boxbuttons" style = {{
+                position: "absolute",
+                // right: "18px",
+                left: (left-531)/2,
+                top: (ScreenHeight-221)/2,
+                zIndex: 10001,
+                display: "none"
+            }}>
+            </div>
+
+            <span id="Generate_Check_Word" class="Do-you-want-to-generate-based-on-your-changes-or-regenerate-another-optimized-version" style = {{
+                position: "absolute",
+                left: ((left-531)/2) + 40,
+                top: (ScreenHeight-221)/2 + 40,
+                zIndex: 10001,
+                display:"none"
+            }}>
+            Do you want to generate the report now?
+            <br></br>
+            It might take a few seconds.
+            </span>
+
+
+            <button id="Generate_GoBack" class = "Generate_GoBack_Button" onClick={Generate_GoBack} style = {{
+                position: "absolute",
+                left: ((left-531)/2) + 40,
+                top: (ScreenHeight-221)/2 + 132,
+                zIndex: 10001,
+                display:"none"
+            }}>
+                Go back
+            </button>
+
+            <button id="Generate_Yes" class = "Generate_Yes_Button" onClick={GernerateOnclick} style = {{
+                position: "absolute",
+                left: ((left-531)/2) + 289,
+                top: (ScreenHeight-221)/2 + 132,
+                zIndex: 10001,
+                display:"none"
+            }}>
+                Yes
+            </button>
+
+
+
+
 
         </div>
     )

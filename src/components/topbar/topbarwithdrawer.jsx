@@ -364,6 +364,14 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
   //   })
   }
 
+  const Generate_Click = () => {
+    document.getElementById("Generate_Check_Rectangular").style.display = "";
+    document.getElementById("Generate_Check_Word").style.display = "";
+    document.getElementById("Generate_GoBack").style.display = "";
+    document.getElementById("Generate_Yes").style.display = "";
+    document.getElementById("overlay").style.display = "";
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" sx={{bgcolor:"#15110d"}} style = {{height:"70px"}} elevation={0} openDrawer={openDrawer} openPoper={openPoper}>
@@ -423,7 +431,7 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
               key={'Generat1'}
               sx={{ my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontWeight: "normal", fontStretch: "normal", fontStyle:"normal", textTransform:"capitalize"}}
               style = {{ width: "134px", height: "41px", borderRadius: "10px", backgroundColor: "#ffdfbf"}}
-              // onClick = {GernerateOnclick}
+              // onClick = {Generate_Click}
               >
               {'Generate'}
           </Button>
@@ -432,7 +440,7 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
               key={'Generat'}
               sx={{ my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontWeight: "normal", fontStretch: "normal", fontStyle:"normal", textTransform:"capitalize"}}
               style  = {{display:"none"}}
-              onClick = {GernerateOnclick}
+              onClick = {Generate_Click}
               >
               {'Generate'}
           </button>
