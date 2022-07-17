@@ -167,6 +167,26 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     console.log("Setting")
   }
 
+  function ColorTest1() {
+    localStorage.setItem("ColorMode","Light")
+    sceneActions.selectLayer("layer1")
+    itemsActions.selectItem("layer1", "xFAw434Nm");
+    setTimeout(() => {
+      projectActions.unselectAll();
+      sceneActions.selectLayer("layer2");
+    }, 10)
+  }
+
+  function ColorTest2() {
+    localStorage.setItem("ColorMode","Dark")
+    sceneActions.selectLayer("layer1")
+    itemsActions.selectItem("layer1", "xFAw434Nm");
+    setTimeout(() => {
+      projectActions.unselectAll();
+      sceneActions.selectLayer("layer2");
+    }, 10)
+  }
+
   const ZoomScale = (scale)=>{
     let ZoomScaleJson = state.viewer2D.toJS();
     const OriginalScale = ZoomScaleJson.a
@@ -420,6 +440,24 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               sx={{...buttonsStyle, width: '36px', right: 150, position: 'absolute',}}
               style = {{display:"none"}}
               onClick={Setting}
+              aria-label="Help">
+                <IconSetting/>
+            </Fab>
+
+            <Fab
+              id = "colorTest1"
+              sx={{...buttonsStyle, width: '36px', right: 600, position: 'absolute',}}
+              // style = {{display:"none"}}
+              onClick={ColorTest1}
+              aria-label="Help">
+                <IconSetting/>
+            </Fab>
+
+            <Fab
+              id = "colorTest2"
+              sx={{...buttonsStyle, width: '36px', right: 700, position: 'absolute',}}
+              // style = {{display:"none"}}
+              onClick={ColorTest2}
               aria-label="Help">
                 <IconSetting/>
             </Fab>

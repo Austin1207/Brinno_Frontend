@@ -23,21 +23,42 @@ export default function TargetFactory(name, info) {
       let STYLE_LINE_SELECTED = {};
       switch(name){
         case 'construction area':
+          if (localStorage.getItem("ColorMode") == "Light") {
           STYLE_LINE = { strokeWidth: 5, stroke: '#222222'};
           STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
           break;
+          }
+          else {
+            STYLE_LINE = { strokeWidth: 5, stroke: '#ffffff'};
+            STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
+            break;
+          }
         case 'interest area':
           STYLE_LINE = { strokeWidth: 5, stroke: '#ff8200'};
           STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
           break;
         case 'nocamera area':
-          STYLE_LINE = { strokeWidth: 5, stroke: '#e45d65'};
-          STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
-          break;
+          if (localStorage.getItem("ColorMode") == "Light") {
+            STYLE_LINE = { strokeWidth: 5, stroke: '#e45d65'};
+            STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
+            break;
+            }
+            else {
+              STYLE_LINE = { strokeWidth: 5, stroke: '#e6757d'};
+              STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
+              break;
+            }
         case 'mustcover area':
-          STYLE_LINE = { strokeWidth: 5, stroke: '#8f4900'};
-          STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
-          break;
+          if (localStorage.getItem("ColorMode") == "Light") {
+            STYLE_LINE = { strokeWidth: 5, stroke: '#8f4900'};
+            STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
+            break;
+            }
+            else {
+              STYLE_LINE = { strokeWidth: 5, stroke: '#ffd7bf'};
+              STYLE_LINE_SELECTED = { ...STYLE_LINE, stroke: SharedStyle.LINE_MESH_COLOR.selected };
+              break;
+            }
       }
 
       let length = Geometry.pointsDistance(x1, y1, x2, y2);
