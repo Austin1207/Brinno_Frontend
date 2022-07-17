@@ -255,7 +255,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     console.log("f" + ZoomScaleJson.f)
     viewer2DActions.updateCameraView(ZoomScaleJson)
     setSelectedIndex(0);
-    setScale(1);
+    setScale(ZoomContentScale);
     setOpen(false);
   }
   const options = [
