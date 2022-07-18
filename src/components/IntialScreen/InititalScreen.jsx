@@ -108,6 +108,9 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
     localStorage.setItem("AreaLegend_Word","#222222")
 
     localStorage.setItem("AreaLegend_Button", "Close")
+
+    localStorage.setItem("Unit", "m")
+    localStorage.setItem("Scale", 1)
   }
 
   function UploadTest () {
@@ -166,7 +169,6 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
       if ( file.type.indexOf("image") == 0 ){
 
         localStorage.setItem("Mode", "Upload")
-        localStorage.setItem("Scale", 1)
 
         const {url} = await fetch(s3imgurl).then(res => res.json());
 
@@ -200,7 +202,6 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
       else if ( file.type.indexOf("pdf") == 12 ){
 
         localStorage.setItem("Mode", "Upload")
-        localStorage.setItem("Scale", 1)
 
         const {url} = await fetch(s3pdfurl).then(res => res.json());
 
@@ -259,7 +260,6 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
     document.getElementById('Outline Construction Area2').style.display = ""
 
     localStorage.setItem("Mode", "Outline")
-    localStorage.setItem("Scale", 1)
 
     projectActions.loadProject(loadimgjson3("https://example-img.s3.ap-northeast-1.amazonaws.com/small.png", jsonleft, top));
 

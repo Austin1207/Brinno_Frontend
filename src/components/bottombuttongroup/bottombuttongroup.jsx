@@ -250,14 +250,24 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
   const OpenAreaLegend = event => {
     var AreaLegendClick = document.getElementById("AreaLegend_Button")
-    // var AreaLegend_Button = localStorage.getItem("AreaLegend_Button")
     if (localStorage.getItem("AreaLegend_Button") == "Close"){
       ClickAreaLegend(AreaLegendClick);
       }
     }
 
-  function ColorTest3() {
-    console.log(document.getElementById("AreaLegend_Button"))
+  function ScaleSet1() {
+    localStorage.setItem("Unit", "m")
+  }
+
+  function ScaleSet2() {
+    localStorage.setItem("Unit", "ft")
+  }
+
+  function ScaleSet3() {
+    var rawjson = state.get('scene').toJS()
+    rawjson.unit = localStorage.getItem("Unit")
+    rawjson["Scale"] = localStorage.getItem("Scale")
+    console.log(rawjson)
   }
 
   const ZoomScale = (scale)=>{
@@ -536,10 +546,28 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             </Fab>
 
             <Fab
-              id = "colorTest3"
+              id = "ScaleTest1"
               sx={{...buttonsStyle, width: '36px', right: 800, position: 'absolute',}}
               // style = {{display:"none"}}
-              onClick={OpenAreaLegend}
+              onClick={ScaleSet1}
+              aria-label="Help">
+                <IconSetting/>
+            </Fab>
+
+            <Fab
+              id = "ScaleTest2"
+              sx={{...buttonsStyle, width: '36px', right: 900, position: 'absolute',}}
+              // style = {{display:"none"}}
+              onClick={ScaleSet2}
+              aria-label="Help">
+                <IconSetting/>
+            </Fab>
+
+            <Fab
+              id = "ScaleTest3"
+              sx={{...buttonsStyle, width: '36px', right: 1000, position: 'absolute',}}
+              // style = {{display:"none"}}
+              onClick={ScaleSet3}
               aria-label="Help">
                 <IconSetting/>
             </Fab>

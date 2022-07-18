@@ -87,7 +87,9 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 document.getElementById('overlay_right').style.display = ""
                 document.getElementById('overlay_top_2').style.display = ""
                 document.getElementById('overlay_bottom_2').style.display = ""
+            }
 
+            if (localStorage.getItem("Mode") == "Outline"){
                 var PlanJs = state.scene.toJS()
                 var ScaleProperty = PlanJs.layers.layer1.items.xFAw434Nm.properties
                 var PointDistance = ((ScaleProperty.x1 - ScaleProperty.x2)**2 + (ScaleProperty.y1 - ScaleProperty.y2)**2)**0.5
