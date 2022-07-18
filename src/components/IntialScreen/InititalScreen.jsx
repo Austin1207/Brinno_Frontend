@@ -101,6 +101,13 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
     localStorage.setItem("Tutorial_Generate_Detect_2", Process)
 
     localStorage.setItem("ColorMode","Light")
+
+    localStorage.setItem("AreaLegend_Backgorund1","#ffffff")
+    localStorage.setItem("AreaLegend_Icon_Open","#222222")
+    localStorage.setItem("AreaLegend_Icon_Close","#222222")
+    localStorage.setItem("AreaLegend_Word","#222222")
+
+    localStorage.setItem("AreaLegend_Button", "Close")
   }
 
   function UploadTest () {

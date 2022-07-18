@@ -168,9 +168,36 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
   }
 
   function ColorTest1() {
-    localStorage.setItem("ColorMode","Light")
-    sceneActions.selectLayer("layer1")
-    itemsActions.selectItem("layer1", "xFAw434Nm");
+    OpenAreaLegend()
+
+    setTimeout(() => {
+      document.getElementById("IconConstructionLine_Dark").style.display = "none"
+      document.getElementById("IconObstacleLine_Dark").style.display = "none"
+      document.getElementById("IconNoCamLine_Dark").style.display = "none"
+      document.getElementById("IconMustLine_Dark").style.display = "none"
+      document.getElementById("IconConstructionLine_Light").style.display = ""
+      document.getElementById("IconObstacleLine_Light").style.display = ""
+      document.getElementById("IconNoCamLine_Light").style.display = ""
+      document.getElementById("IconMustLine_Light").style.display = ""
+  
+      document.getElementById("AreaLegend_Background2").style.backgroundColor = "#ffffff"
+  
+      document.getElementById("IconConstructionLine_Word").style.color = "#222222"
+      document.getElementById("IconInterestLine_Word").style.color = "#222222"
+      document.getElementById("IconObstacleLine_Word").style.color = "#222222"
+      document.getElementById("IconNoCamLine_Word").style.color = "#222222"
+      document.getElementById("IconMustLine_Word").style.color = "#222222"
+  
+      localStorage.setItem("AreaLegend_Backgorund1","#ffffff")
+      localStorage.setItem("AreaLegend_Icon_Open","#222222")
+      localStorage.setItem("AreaLegend_Icon_Close","#222222")
+      localStorage.setItem("AreaLegend_Word","#222222")
+  
+      localStorage.setItem("ColorMode","Light")
+      sceneActions.selectLayer("layer1")
+      itemsActions.selectItem("layer1", "xFAw434Nm");
+    }, 5)
+
     setTimeout(() => {
       projectActions.unselectAll();
       sceneActions.selectLayer("layer2");
@@ -178,13 +205,58 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
   }
 
   function ColorTest2() {
-    localStorage.setItem("ColorMode","Dark")
-    sceneActions.selectLayer("layer1")
-    itemsActions.selectItem("layer1", "xFAw434Nm");
+    OpenAreaLegend()
+
+    setTimeout(() => {
+      document.getElementById("IconConstructionLine_Light").style.display = "none"
+      document.getElementById("IconObstacleLine_Light").style.display = "none"
+      document.getElementById("IconNoCamLine_Light").style.display = "none"
+      document.getElementById("IconMustLine_Light").style.display = "none"
+      document.getElementById("IconConstructionLine_Dark").style.display = ""
+      document.getElementById("IconObstacleLine_Dark").style.display = ""
+      document.getElementById("IconNoCamLine_Dark").style.display = ""
+      document.getElementById("IconMustLine_Dark").style.display = ""
+  
+      document.getElementById("AreaLegend_Background2").style.backgroundColor = "#222222"
+  
+      document.getElementById("IconConstructionLine_Word").style.color = "#ffffff"
+      document.getElementById("IconInterestLine_Word").style.color = "#ffffff"
+      document.getElementById("IconObstacleLine_Word").style.color = "#ffffff"
+      document.getElementById("IconNoCamLine_Word").style.color = "#ffffff"
+      document.getElementById("IconMustLine_Word").style.color = "#ffffff"
+  
+      localStorage.setItem("AreaLegend_Backgorund1","#222222")
+      localStorage.setItem("AreaLegend_Icon_Open","#ffffff")
+      localStorage.setItem("AreaLegend_Icon_Close","#ffffff")
+      localStorage.setItem("AreaLegend_Word","#ffffff")
+  
+      localStorage.setItem("ColorMode","Dark")
+      sceneActions.selectLayer("layer1")
+      itemsActions.selectItem("layer1", "xFAw434Nm");
+    }, 5)
+
     setTimeout(() => {
       projectActions.unselectAll();
       sceneActions.selectLayer("layer2");
     }, 10)
+  }
+
+  const ClickAreaLegend = (AreaLegend) => {
+    var e = document.createEvent("MouseEvents");
+    e.initEvent("click", true, true);
+    AreaLegend.dispatchEvent(e);
+    }
+
+  const OpenAreaLegend = event => {
+    var AreaLegendClick = document.getElementById("AreaLegend_Button")
+    // var AreaLegend_Button = localStorage.getItem("AreaLegend_Button")
+    if (localStorage.getItem("AreaLegend_Button") == "Close"){
+      ClickAreaLegend(AreaLegendClick);
+      }
+    }
+
+  function ColorTest3() {
+    console.log(document.getElementById("AreaLegend_Button"))
   }
 
   const ZoomScale = (scale)=>{
@@ -458,6 +530,15 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               sx={{...buttonsStyle, width: '36px', right: 700, position: 'absolute',}}
               // style = {{display:"none"}}
               onClick={ColorTest2}
+              aria-label="Help">
+                <IconSetting/>
+            </Fab>
+
+            <Fab
+              id = "colorTest3"
+              sx={{...buttonsStyle, width: '36px', right: 800, position: 'absolute',}}
+              // style = {{display:"none"}}
+              onClick={OpenAreaLegend}
               aria-label="Help">
                 <IconSetting/>
             </Fab>
