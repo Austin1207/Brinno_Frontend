@@ -98,6 +98,11 @@ export default class ImageFul extends Component {
             document.getElementById("TutorialScaleMeasureLine").style.display = "";
             document.getElementById("TutorialScaleMeasureBackButton").style.display = "";
             document.getElementById("TutorialScaleMeasureOkButton").style.display = "";
+
+            document.getElementById("TutorialScaleMeasureUnit").style.display = "";
+            document.getElementById("TutorialScaleMeasureUnit_Black1").style.display = "";
+            document.getElementById("TutorialScaleMeasureUnit_Black2").style.display = "";
+            
             // itemsActions.selectItem("layer1", "xFAw434Nm");
           },250);
 

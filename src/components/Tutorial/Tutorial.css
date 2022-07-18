@@ -553,7 +553,7 @@ flex-grow: 0;
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  cursor: pointer;
+  cursor: url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer;
 }
 
 .button-Next-disabled {
@@ -574,7 +574,7 @@ flex-grow: 0;
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  cursor: pointer;
+  cursor: url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer;
 }
 
 .button-Skip {
@@ -594,11 +594,42 @@ flex-grow: 0;
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  cursor: pointer;
+  cursor: url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer;
 }
 
+.button-Meters {
+  width:181px;
+  height:55px;
+  background-color:#222222;
+  z-index: 10002;
+  font-size:26px;
+  color:#dcddde;
+  border:solid 1px #ffffff;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+}
 
+.button-Meters:hover {
+  background-color:#989a9c;
+  cursor: url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer;
+}
 
+.button-Feets {
+  width:181px;
+  height:55px;
+  background-color:#222222;
+  z-index: 10003;
+  font-size:26px;
+  color:#dcddde;
+  border:solid 1px #ffffff;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+}
+
+.button-Feets:hover {
+  background-color:#989a9c;
+  cursor: url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer;
+}
 
 .Dialog-Boxbuttons {
   width: 531px;

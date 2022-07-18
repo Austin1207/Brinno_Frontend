@@ -257,10 +257,12 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
   function ScaleSet1() {
     localStorage.setItem("Unit", "m")
+    localStorage.setItem("UnitName", "Meters")
   }
 
   function ScaleSet2() {
     localStorage.setItem("Unit", "ft")
+    localStorage.setItem("UnitName", "Feets")
   }
 
   function ScaleSet3() {

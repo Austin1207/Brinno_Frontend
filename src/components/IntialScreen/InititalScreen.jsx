@@ -110,6 +110,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
     localStorage.setItem("AreaLegend_Button", "Close")
 
     localStorage.setItem("Unit", "m")
+    localStorage.setItem("UnitName", "Meters")
     localStorage.setItem("Scale", 1)
   }
 
