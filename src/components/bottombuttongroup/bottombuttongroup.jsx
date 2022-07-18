@@ -168,6 +168,11 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
   }
 
   function ColorTest1() {
+    localStorage.setItem("AreaLegend_Backgorund1","#ffffff")
+    localStorage.setItem("AreaLegend_Icon_Open","#222222")
+    localStorage.setItem("AreaLegend_Icon_Close","#222222")
+    localStorage.setItem("AreaLegend_Word","#222222")
+
     OpenAreaLegend()
 
     setTimeout(() => {
@@ -187,24 +192,25 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
       document.getElementById("IconObstacleLine_Word").style.color = "#222222"
       document.getElementById("IconNoCamLine_Word").style.color = "#222222"
       document.getElementById("IconMustLine_Word").style.color = "#222222"
-  
-      localStorage.setItem("AreaLegend_Backgorund1","#ffffff")
-      localStorage.setItem("AreaLegend_Icon_Open","#222222")
-      localStorage.setItem("AreaLegend_Icon_Close","#222222")
-      localStorage.setItem("AreaLegend_Word","#222222")
+
   
       localStorage.setItem("ColorMode","Light")
       sceneActions.selectLayer("layer1")
       itemsActions.selectItem("layer1", "xFAw434Nm");
-    }, 5)
+    }, 200)
 
     setTimeout(() => {
       projectActions.unselectAll();
       sceneActions.selectLayer("layer2");
-    }, 10)
+    }, 250)
   }
 
   function ColorTest2() {
+    localStorage.setItem("AreaLegend_Backgorund1","#222222")
+    localStorage.setItem("AreaLegend_Icon_Open","#ffffff")
+    localStorage.setItem("AreaLegend_Icon_Close","#ffffff")
+    localStorage.setItem("AreaLegend_Word","#ffffff")
+
     OpenAreaLegend()
 
     setTimeout(() => {
@@ -225,20 +231,15 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
       document.getElementById("IconNoCamLine_Word").style.color = "#ffffff"
       document.getElementById("IconMustLine_Word").style.color = "#ffffff"
   
-      localStorage.setItem("AreaLegend_Backgorund1","#222222")
-      localStorage.setItem("AreaLegend_Icon_Open","#ffffff")
-      localStorage.setItem("AreaLegend_Icon_Close","#ffffff")
-      localStorage.setItem("AreaLegend_Word","#ffffff")
-  
       localStorage.setItem("ColorMode","Dark")
       sceneActions.selectLayer("layer1")
       itemsActions.selectItem("layer1", "xFAw434Nm");
-    }, 5)
+    }, 200)
 
     setTimeout(() => {
       projectActions.unselectAll();
       sceneActions.selectLayer("layer2");
-    }, 10)
+    }, 250)
   }
 
   const ClickAreaLegend = (AreaLegend) => {

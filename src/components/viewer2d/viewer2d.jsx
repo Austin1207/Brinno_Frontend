@@ -433,6 +433,11 @@ export default function Viewer2D(
   let rulerXElements = Math.ceil( sceneWidth / rulerUnitPixelSize ) + 1;
   let rulerYElements = Math.ceil( sceneHeight / rulerUnitPixelSize ) + 1;
 
+  let AreaLegendbackgroundColor = localStorage.getItem("AreaLegend_Backgorund1")
+  let AreaLegendIconOpenColor = localStorage.getItem("AreaLegend_Icon_Open")
+  let AreaLegendIconCloseColor = localStorage.getItem("AreaLegend_Icon_Close")
+  let AreaLegendWordColor = localStorage.getItem("AreaLegend_Word")
+
   return (
     // Control Dragging line and put camera cursor
     <div style={{
@@ -547,12 +552,12 @@ export default function Viewer2D(
         <Typography sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Camera Coverage</Typography>
       </Button>
       <Button variant="contained" id="AreaLegend_Button"
-        style={{backgroundColor:localStorage.getItem("AreaLegend_Backgorund1")}}
+        style={{backgroundColor:AreaLegendbackgroundColor}}
         sx={{...(openLegend ? buttonsInuseStyle : buttonsStyle), top: 39+36, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
         onClick={handleLegendButton}>
-        {openLegend ? <ExpandLess style={{color:localStorage.getItem("AreaLegend_Icon_Open")}} sx={{paddingRight: '6px'}}/> : <ExpandMore style={{color:localStorage.getItem("AreaLegend_Icon_Close")}} sx={{paddingRight: '6px'}}/>}
+        {openLegend ? <ExpandLess style={{color:AreaLegendIconOpenColor}} sx={{paddingRight: '6px'}}/> : <ExpandMore style={{color:AreaLegendIconCloseColor}} sx={{paddingRight: '6px'}}/>}
         <Divider orientation="vertical" flexItem={true}/>
-        <Typography style = {{color:localStorage.getItem("AreaLegend_Word")}} sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Area Legend</Typography>
+        <Typography style = {{color:AreaLegendWordColor}} sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Area Legend</Typography>
       </Button>
       <Popper open={openLegend} anchorEl={anchorEl} placement='bottom-start' transition>
         {({ TransitionProps }) => (
