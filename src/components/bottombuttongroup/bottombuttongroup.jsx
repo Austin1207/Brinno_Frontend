@@ -268,13 +268,6 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     localStorage.setItem("UnitName", "Feets")
   }
 
-  function ScaleSet3() {
-    var rawjson = state.get('scene').toJS()
-    rawjson.unit = localStorage.getItem("Unit")
-    rawjson["Scale"] = localStorage.getItem("Scale")
-    console.log(rawjson)
-  }
-
   const ZoomScale = (scale)=>{
     let ZoomScaleJson = state.viewer2D.toJS();
     const OriginalScale = ZoomScaleJson.a
@@ -534,7 +527,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
             <SettingButton/>
 
-            <Fab
+            {/* <Fab
               id = "colorTest1"
               sx={{...buttonsStyle, width: '36px', right: 600, position: 'absolute',}}
               // style = {{display:"none"}}
@@ -568,16 +561,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               onClick={ScaleSet2}
               aria-label="Help">
                 <IconSetting/>
-            </Fab>
-
-            <Fab
-              id = "ScaleTest3"
-              sx={{...buttonsStyle, width: '36px', right: 1000, position: 'absolute',}}
-              // style = {{display:"none"}}
-              onClick={ScaleSet3}
-              aria-label="Help">
-                <IconSetting/>
-            </Fab>
+            </Fab> */}
 
             <Fab
               id = "Question2"

@@ -55,20 +55,20 @@ export default function SummaryTable() {
       setOpen(!open);
     };
 
-    let imageBrowserDownload = imageUri => {
-        let fileOutputLink = document.createElement('a');
+    // let imageBrowserDownload = imageUri => {
+    //     let fileOutputLink = document.createElement('a');
     
-        let filename = 'output' + Date.now() + '.png';
-        filename = window.prompt('Insert output filename', filename);
-        if (!filename) return;
+    //     let filename = 'output' + Date.now() + '.png';
+    //     filename = window.prompt('Insert output filename', filename);
+    //     if (!filename) return;
     
-        fileOutputLink.setAttribute('download', filename);
-        fileOutputLink.href = imageUri;
-        fileOutputLink.style.display = 'none';
-        document.body.appendChild(fileOutputLink);
-        fileOutputLink.click();
-        document.body.removeChild(fileOutputLink);
-      };
+    //     fileOutputLink.setAttribute('download', filename);
+    //     fileOutputLink.href = imageUri;
+    //     fileOutputLink.style.display = 'none';
+    //     document.body.appendChild(fileOutputLink);
+    //     fileOutputLink.click();
+    //     document.body.removeChild(fileOutputLink);
+    //   };
 
     let saveSVGScreenshotToFile = event => {
         event.preventDefault();
@@ -94,11 +94,11 @@ export default function SummaryTable() {
     
         // Set width and height for the new canvas
         let heightAtt = document.createAttribute('height');
-        heightAtt.value = maxWidthSVGElement.height.baseVal.value;
+        heightAtt.value = maxWidthSVGElement.height.baseVal.value - 9650;
         canvas.setAttributeNode(heightAtt);
     
         let widthAtt = document.createAttribute('width');
-        widthAtt.value = maxWidthSVGElement.width.baseVal.value;
+        widthAtt.value = maxWidthSVGElement.width.baseVal.value - 15000;
         canvas.setAttributeNode(widthAtt);
     
         ctx.fillStyle = 'white';
@@ -108,7 +108,7 @@ export default function SummaryTable() {
         img.src = `data:image/svg+xml;base64,${window.btoa(serializer.serializeToString(maxWidthSVGElement))}`;
     
         img.onload = () => {
-            ctx.drawImage(img, 0, 0, maxWidthSVGElement.width.baseVal.value, maxWidthSVGElement.height.baseVal.value);
+            ctx.drawImage(img, -15000, -9650, maxWidthSVGElement.width.baseVal.value, maxWidthSVGElement.height.baseVal.value);
             //imageBrowserDownload(canvas.toDataURL());
             let pdfimg = canvas.toDataURL();
             let doc = new jsPDF('p', 'pt', [ 595.28,  841.89]);
@@ -120,7 +120,8 @@ export default function SummaryTable() {
             doc.setTextColor('#989a9c');
             doc.text("Most Cost-Effective Plan", 210, 26.5+16);
             doc.line(32, 65, 32+532, 65);
-            doc.addImage(pdfimg, "PNG", 60.7, 76.7, 480, 320);
+            doc.addImage(pdfimg, "PNG", 60.7, 76.7, 480, canvas.height*480/canvas.width);
+
             //Summary Box
             doc.setDrawColor(0);
             doc.setFillColor('#ffdfbf');
@@ -169,16 +170,10 @@ export default function SummaryTable() {
             doc.setFontSize(15.9);
             doc.setTextColor('#222222');
             doc.text("Total Cost", 372, 572+6+15.9);
-            doc.save('Summary Report.pdf');
-            console.log(canvas.toDataURL());
-            };
-    
-      };
 
-    // const exportTest = () => {
-    //     var url = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/export.pdf";
-    //     window.open(url)
-    // }
+            doc.save('Summary Report.pdf');
+                };
+      };
 
     // const exportjsPDF = () => {
     //     let doc = new jsPDF('p', 'pt', [ 595.28,  841.89]);

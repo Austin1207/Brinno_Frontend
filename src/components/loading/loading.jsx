@@ -14,6 +14,7 @@ const Loading = ({left}) =>{
             display: "none",
             borderRadius: "8px",
             backgroundColor:"#222222",
+            fontFamily: "SF Pro Display",
             fontSize: "20px",
             fontWeight: "bold",
             fontStretch: "normal",

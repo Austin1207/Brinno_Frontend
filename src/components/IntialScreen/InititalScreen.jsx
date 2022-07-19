@@ -4,6 +4,9 @@ import { loadimgjson2 } from './loadjson2';
 import { loadimgjson3 } from './loadjson3';
 import '@babel/polyfill'; //for async
 
+// import 'typeface-roboto'
+// import 'typeface-alegreya-sans'
+
 //import 'typeface-roboto'
 
 const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
@@ -334,12 +337,11 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
             fontStyle: "normal",
             lineHeight: "normal",
             letterSpacing: "normal",
-            // fontFamily: "Roboto",
-            // fontFamily: "SF Pro Display",
+            fontFamily: "SF Pro Display",
             border:"none",
             borderRadius:"5px",
             cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
-            display: ""
+            display: "",
             }}
             >
               Upload new file
@@ -357,7 +359,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
             left: left,
             // top: "463px",
             top: "40.6%",
-            // fontFamily: "HelveticaNeue",
+            fontFamily: "SF Pro Display",
             fontSize: "18px",
             fontWeight: "normal",
             fontStretch: "normal",
