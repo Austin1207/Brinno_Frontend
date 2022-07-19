@@ -17,6 +17,7 @@ import MenuList from '@mui/material/MenuList';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import SettingButton from './settingbutton';
 
 import '@babel/polyfill'; //for async
 // const options = [
@@ -488,7 +489,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
             <Fab
               id = "Setting1"
-              sx={{...buttonsStyle, width: '36px', right: 150, position: 'absolute',}}
+              sx={{...buttonsStyle, width: '36px', right: 950, position: 'absolute',}}
               onClick={Setting}
               disabled
               aria-label="Help">
@@ -517,12 +518,14 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
             <Fab
               id = "Setting2"
-              sx={{...buttonsStyle, width: '36px', right: 150, position: 'absolute',}}
+              sx={{...buttonsStyle, width: '36px', right: 950, position: 'absolute',}}
               style = {{display:"none"}}
               onClick={Setting}
               aria-label="Help">
                 <MoreVertIcon/>
             </Fab>
+
+            <SettingButton/>
 
             {/* <Fab
               id = "colorTest1"

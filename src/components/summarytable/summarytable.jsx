@@ -121,6 +121,7 @@ export default function SummaryTable() {
             doc.text("Most Cost-Effective Plan", 210, 26.5+16);
             doc.line(32, 65, 32+532, 65);
             doc.addImage(pdfimg, "PNG", 60.7, 76.7, 480, canvas.height*480/canvas.width);
+
             //Summary Box
             doc.setDrawColor(0);
             doc.setFillColor('#ffdfbf');
@@ -172,7 +173,6 @@ export default function SummaryTable() {
 
             doc.save('Summary Report.pdf');
                 };
-    
       };
 
     // const exportjsPDF = () => {
