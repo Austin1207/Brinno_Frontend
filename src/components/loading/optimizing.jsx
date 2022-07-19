@@ -13,6 +13,7 @@ const Optimizing = ({left}) =>{
             top: "12.4%",
             display: "none",
             borderRadius: "8px",
+            fontFamily: "SF Pro Display",
             backgroundColor:"#222222",
             fontSize: "20px",
             fontWeight: "bold",

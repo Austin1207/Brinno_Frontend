@@ -727,7 +727,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 width: "359px",
                 height: "19px",
                 zIndex: 10002,
-                // fontFamily: "HelveticaNeue",
+                fontFamily: "SF Pro Display",
                 fontSize: "20px",
                 fontWeight: "normal",
                 fontStretch: "normal",
@@ -748,7 +748,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 width: "45px",
                 height: "17px",
                 zIndex: 10002,
-                // fontFamily: "HelveticaNeue",
+                fontFamily: "SF Pro Display",
                 fontSize: "14px",
                 fontWeight: "bold",
                 fontStretch: "normal",
@@ -769,7 +769,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 width: "79px",
                 height: "31px",
                 zIndex: 10002,
-                // fontFamily: "HelveticaNeue",
+                fontFamily: "SF Pro Display",
                 fontSize: "26px",
                 fontWeight: 500,
                 fontStretch: "normal",
@@ -844,7 +844,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 }}>
             </div>
             
-            <button id = "TutorialScaleMeasureUnit_Feets" onClick = {UnitSet_Feets} class = "button-Feets" onClick = {UnitSet_Feets} style = {{            
+            <button id = "TutorialScaleMeasureUnit_Feets" onClick = {UnitSet_Feets} class = "button-Feets" style = {{            
                 position: "absolute",
                 top: "402px",
                 left: ((left-431)/2) + 414,
@@ -875,7 +875,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 // left: "525px",
                 left: (left-431)/2 + 36,
                 top: "408px",
-                // fontFamily: "HelveticaNeue",
+                fontFamily: "SF Pro Display",
                 fontSize: "18px",
                 fontWeight: "normal",
                 fontStretch: "normal",
@@ -902,7 +902,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 // left: "755px",
                 left: (left -431)/2 + 233,
                 top: "408px",
-                // fontFamily: "HelveticaNeue",
+                fontFamily: "SF Pro Display",
                 fontSize: "18px",
                 fontWeight: "normal",
                 fontStretch: "normal",
@@ -927,6 +927,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 backgroundColor: "#222222",
                 // left: "340px",
                 left: (left-304)/2,
+                fontFamily: "SF Pro Display",
                 // top: "937px",
                 top: "97px",
                 border:"none",

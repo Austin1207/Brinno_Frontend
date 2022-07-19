@@ -86,6 +86,7 @@
   /* gap: 10px; */
   /* margin: 57px 122px 158px 353px;
   padding: 30px 36px; */
+  font-family: "SF Pro Display";
   border-radius: 8px;
   background-color: #222222;
   font-size: 20px;
@@ -211,7 +212,7 @@ border-color: #222222 transparent transparent transparent;
     /* height: 14px; */
     flex-grow: 0;
     /* margin: 12px 137px 0 135px; */
-    /* font-family: SFProDisplay; */
+    font-family: "SF Pro Display";
     font-size: 12px;
     font-weight: bold;
     font-stretch: normal;
@@ -226,7 +227,7 @@ border-color: #222222 transparent transparent transparent;
 width: 91.4px;
 height: 15.7px;
 flex-grow: 0;
-/* font-family: SFProDisplay; */
+font-family: "SF Pro Display";
 font-size: 16px;
 font-weight: bold;
 font-stretch: normal;
@@ -241,7 +242,7 @@ color: #ffa140;
     width: 250px;
     height: 50.3px;
     flex-grow: 0;
-    /* font-family: SFProDisplay; */
+    font-family: "SF Pro Display";
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
@@ -257,7 +258,7 @@ color: #ffa140;
     height: 50px;
     flex-grow: 0;
     margin: 16px 0 0;
-    /* font-family: SFProDisplay; */
+    font-family: "SF Pro Display";
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
@@ -272,7 +273,7 @@ color: #ffa140;
   width: 200px;
   height: 19px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
@@ -287,7 +288,7 @@ color: #ffa140;
   width: 250px;
   height: 34px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -303,7 +304,7 @@ color: #ffa140;
   height: 34px;
   flex-grow: 0;
   margin: 12px 0 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -318,7 +319,7 @@ color: #ffa140;
   width: 190px;
   height: 19px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
@@ -333,7 +334,7 @@ color: #ffa140;
   width: 250px;
   height: 34px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -348,7 +349,7 @@ color: #ffa140;
   width: 190px;
   height: 19px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
@@ -363,7 +364,7 @@ color: #ffa140;
   width: 250px;
   height: 34px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -378,7 +379,7 @@ color: #ffa140;
   width: 190px;
   height: 19px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
@@ -393,7 +394,7 @@ color: #ffa140;
   width: 250px;
   height: 34px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -408,7 +409,7 @@ color: #ffa140;
   width: 190px;
   height: 19px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
@@ -423,7 +424,7 @@ color: #ffa140;
   width: 250px;
   height: 34px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -438,7 +439,7 @@ color: #ffa140;
   width: 111px;
   height: 19px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
@@ -453,7 +454,7 @@ color: #ffa140;
   width: 250px;
   height: 17px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -468,7 +469,7 @@ color: #ffa140;
   width: 255px;
   height: 34px;
   margin: 6px 0 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -483,7 +484,7 @@ color: #ffa140;
   width: 250px;
   height: 19px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
@@ -498,7 +499,7 @@ color: #ffa140;
   width: 200px;
   height: 19px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
@@ -513,7 +514,7 @@ color: #ffa140;
   width: 270px;
   height: 17px;
   flex-grow: 0;
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -548,6 +549,7 @@ flex-grow: 0;
   border-radius: 10px;
   background-color: #ffa140;
   color: #ffffff;
+  font-family: "SF Pro Display";
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -569,6 +571,7 @@ flex-grow: 0;
   border-radius: 10px;
   background-color: #ffdfbf;
   color: #ffffff;
+  font-family: "SF Pro Display";
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -588,6 +591,7 @@ flex-grow: 0;
   padding: 11px 36px;
   border-radius: 10px;
   background-color: #b9bbbc;
+  font-family: "SF Pro Display";
   color: #ffffff;
   font-weight: normal;
   font-stretch: normal;
@@ -602,6 +606,7 @@ flex-grow: 0;
   height:55px;
   background-color:#222222;
   z-index: 10002;
+  font-family: "SF Pro Display";
   font-size:26px;
   color:#dcddde;
   border:solid 1px #ffffff;
@@ -619,6 +624,7 @@ flex-grow: 0;
   height:55px;
   background-color:#222222;
   z-index: 10003;
+  font-family: "SF Pro Display";
   font-size:26px;
   color:#dcddde;
   border:solid 1px #ffffff;
@@ -645,7 +651,7 @@ flex-grow: 0;
   height: 48px;
   flex-grow: 0;
   /* margin: 0 0 44px; */
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 20px;
   font-weight: normal;
   font-stretch: normal;
@@ -669,7 +675,7 @@ flex-grow: 0;
   border-radius: 10px;
   background-color: #b9bbbc;
 
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 18px;
   font-weight: normal;
   font-stretch: normal;
@@ -694,7 +700,7 @@ flex-grow: 0;
   border-radius: 10px;
   background-color: #ffa140;
 
-  /* font-family: SFProDisplay; */
+  font-family: "SF Pro Display";
   font-size: 18px;
   font-weight: normal;
   font-stretch: normal;

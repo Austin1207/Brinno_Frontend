@@ -55,27 +55,20 @@ export default function SummaryTable() {
       setOpen(!open);
     };
 
-    let imageBrowserDownload = imageUri => {
-        let fileOutputLink = document.createElement('a');
+    // let imageBrowserDownload = imageUri => {
+    //     let fileOutputLink = document.createElement('a');
     
-        let filename = 'output' + Date.now() + '.png';
-        filename = window.prompt('Insert output filename', filename);
-        if (!filename) return;
+    //     let filename = 'output' + Date.now() + '.png';
+    //     filename = window.prompt('Insert output filename', filename);
+    //     if (!filename) return;
     
-        fileOutputLink.setAttribute('download', filename);
-        fileOutputLink.href = imageUri;
-        fileOutputLink.style.display = 'none';
-        document.body.appendChild(fileOutputLink);
-        fileOutputLink.click();
-        document.body.removeChild(fileOutputLink);
-      };
-
-    // let saveScreenshotToFile = event => {
-    //     event.preventDefault();
-    //     let canvas = document.getElementsByTagName('svg')[0];
-    //     // imageBrowserDownload(canvas.toDataURL());
-    //     console.log(canvas)
-    // };
+    //     fileOutputLink.setAttribute('download', filename);
+    //     fileOutputLink.href = imageUri;
+    //     fileOutputLink.style.display = 'none';
+    //     document.body.appendChild(fileOutputLink);
+    //     fileOutputLink.click();
+    //     document.body.removeChild(fileOutputLink);
+    //   };
 
     let saveSVGScreenshotToFile = event => {
         event.preventDefault();
@@ -116,15 +109,71 @@ export default function SummaryTable() {
     
         img.onload = () => {
             ctx.drawImage(img, -15000, -9650, maxWidthSVGElement.width.baseVal.value, maxWidthSVGElement.height.baseVal.value);
-            imageBrowserDownload(canvas.toDataURL());
-            };
+            //imageBrowserDownload(canvas.toDataURL());
+            let pdfimg = canvas.toDataURL();
+            let doc = new jsPDF('p', 'pt', [ 595.28,  841.89]);
+            let coverage = localStorage.getItem("Coverage");
+            let camera_count = localStorage.getItem("Camera_Count");
+            doc.setFontSize(20);
+            doc.text("Summary Report", 32, 24+20);
+            doc.setFontSize(16);
+            doc.setTextColor('#989a9c');
+            doc.text("Most Cost-Effective Plan", 210, 26.5+16);
+            doc.line(32, 65, 32+532, 65);
+            doc.addImage(pdfimg, "PNG", 60.7, 76.7, 480, canvas.height*480/canvas.width);
+            //Summary Box
+            doc.setDrawColor(0);
+            doc.setFillColor('#ffdfbf');
+            doc.roundedRect(24, 449, 190, 33, 8, 8, "F");
+            doc.setFontSize(16);
+            doc.setTextColor('#e57500');
+            doc.text("Summary", 44, 456+16);
+            doc.addImage(coverage_base64, "PNG", 36, 502);
+            doc.setFontSize(13.6);
+            doc.setTextColor('#989a9c');
+            doc.text("Camera Coverage", 108, 501.5+13.6);
+            doc.setFontSize(15.9);
+            doc.setTextColor('#222222');
+            doc.text(String(coverage)+"%", 108, 529.5+15.9);        
+            doc.addImage(camera_base64, "PNG", 36, 583);
+            doc.setFontSize(13.6);
+            doc.setTextColor('#989a9c');
+            doc.text("Cameras Needed", 108, 585.5+13.6);
+            doc.setFontSize(15.9);
+            doc.setTextColor('#222222');
+            doc.text(String(camera_count), 108, 613.5+15.9);
+            doc.addImage(battery_base64, "PNG", 36, 659);
+            doc.setFontSize(13.6);
+            doc.setTextColor('#989a9c');
+            doc.text("Battery Life", 108, 661.5+13.6);
+            doc.setFontSize(15.9);
+            doc.setTextColor('#222222');
+            doc.text("7 Days", 108, 689.5+15.9);
+
+            //Camera Details Box
+            doc.setDrawColor(0);
+            doc.setFillColor('#ffdfbf');
+            doc.roundedRect(263, 449, 308, 33, 8, 8, "F");
+            doc.setFontSize(16);
+            doc.setTextColor('#e57500');
+            doc.text("Camera Details", 283, 456+16);
+            doc.addImage(BAC2000_base64, "PNG", 263, 486, 81, 81);
+            doc.setFontSize(12);
+            doc.setTextColor('#222222');
+            doc.text("BAC2000", 372, 496+12);
+            doc.setFontSize(12);
+            doc.setTextColor('#989a9c');
+            doc.text("Qty.", 372, 526+12);
+
+            doc.line(263, 572, 263+308, 572);
+            doc.setFontSize(15.9);
+            doc.setTextColor('#222222');
+            doc.text("Total Cost", 372, 572+6+15.9);
+
+            doc.save('Summary Report.pdf');
+                };
     
       };
-
-    // const exportTest = () => {
-    //     var url = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/export.pdf";
-    //     window.open(url)
-    // }
 
     // const exportjsPDF = () => {
     //     let doc = new jsPDF('p', 'pt', [ 595.28,  841.89]);
