@@ -169,6 +169,111 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     console.log("Setting")
   }
 
+  function ColorTest1() {
+    localStorage.setItem("AreaLegend_Backgorund1","#ffffff")
+    localStorage.setItem("AreaLegend_Icon_Open","#222222")
+    localStorage.setItem("AreaLegend_Icon_Close","#222222")
+    localStorage.setItem("AreaLegend_Word","#222222")
+
+    OpenAreaLegend()
+
+    setTimeout(() => {
+      document.getElementById("IconConstructionLine_Dark").style.display = "none"
+      document.getElementById("IconObstacleLine_Dark").style.display = "none"
+      document.getElementById("IconNoCamLine_Dark").style.display = "none"
+      document.getElementById("IconMustLine_Dark").style.display = "none"
+      document.getElementById("IconConstructionLine_Light").style.display = ""
+      document.getElementById("IconObstacleLine_Light").style.display = ""
+      document.getElementById("IconNoCamLine_Light").style.display = ""
+      document.getElementById("IconMustLine_Light").style.display = ""
+  
+      document.getElementById("AreaLegend_Background2").style.backgroundColor = "#ffffff"
+  
+      document.getElementById("IconConstructionLine_Word").style.color = "#222222"
+      document.getElementById("IconInterestLine_Word").style.color = "#222222"
+      document.getElementById("IconObstacleLine_Word").style.color = "#222222"
+      document.getElementById("IconNoCamLine_Word").style.color = "#222222"
+      document.getElementById("IconMustLine_Word").style.color = "#222222"
+
+  
+      localStorage.setItem("ColorMode","Light")
+      sceneActions.selectLayer("layer1")
+      itemsActions.selectItem("layer1", "xFAw434Nm");
+    }, 200)
+
+    setTimeout(() => {
+      projectActions.unselectAll();
+      sceneActions.selectLayer("layer2");
+    }, 250)
+  }
+
+  function ColorTest2() {
+    localStorage.setItem("AreaLegend_Backgorund1","#222222")
+    localStorage.setItem("AreaLegend_Icon_Open","#ffffff")
+    localStorage.setItem("AreaLegend_Icon_Close","#ffffff")
+    localStorage.setItem("AreaLegend_Word","#ffffff")
+
+    OpenAreaLegend()
+
+    setTimeout(() => {
+      document.getElementById("IconConstructionLine_Light").style.display = "none"
+      document.getElementById("IconObstacleLine_Light").style.display = "none"
+      document.getElementById("IconNoCamLine_Light").style.display = "none"
+      document.getElementById("IconMustLine_Light").style.display = "none"
+      document.getElementById("IconConstructionLine_Dark").style.display = ""
+      document.getElementById("IconObstacleLine_Dark").style.display = ""
+      document.getElementById("IconNoCamLine_Dark").style.display = ""
+      document.getElementById("IconMustLine_Dark").style.display = ""
+  
+      document.getElementById("AreaLegend_Background2").style.backgroundColor = "#222222"
+  
+      document.getElementById("IconConstructionLine_Word").style.color = "#ffffff"
+      document.getElementById("IconInterestLine_Word").style.color = "#ffffff"
+      document.getElementById("IconObstacleLine_Word").style.color = "#ffffff"
+      document.getElementById("IconNoCamLine_Word").style.color = "#ffffff"
+      document.getElementById("IconMustLine_Word").style.color = "#ffffff"
+  
+      localStorage.setItem("ColorMode","Dark")
+      sceneActions.selectLayer("layer1")
+      itemsActions.selectItem("layer1", "xFAw434Nm");
+    }, 200)
+
+    setTimeout(() => {
+      projectActions.unselectAll();
+      sceneActions.selectLayer("layer2");
+    }, 250)
+  }
+
+  const ClickAreaLegend = (AreaLegend) => {
+    var e = document.createEvent("MouseEvents");
+    e.initEvent("click", true, true);
+    AreaLegend.dispatchEvent(e);
+    }
+
+  const OpenAreaLegend = event => {
+    var AreaLegendClick = document.getElementById("AreaLegend_Button")
+    if (localStorage.getItem("AreaLegend_Button") == "Close"){
+      ClickAreaLegend(AreaLegendClick);
+      }
+    }
+
+  function ScaleSet1() {
+    localStorage.setItem("Unit", "m")
+    localStorage.setItem("UnitName", "Meters")
+  }
+
+  function ScaleSet2() {
+    localStorage.setItem("Unit", "ft")
+    localStorage.setItem("UnitName", "Feets")
+  }
+
+  function ScaleSet3() {
+    var rawjson = state.get('scene').toJS()
+    rawjson.unit = localStorage.getItem("Unit")
+    rawjson["Scale"] = localStorage.getItem("Scale")
+    console.log(rawjson)
+  }
+
   const ZoomScale = (scale)=>{
     let ZoomScaleJson = state.viewer2D.toJS();
     const OriginalScale = ZoomScaleJson.a
@@ -424,6 +529,51 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               onClick={Setting}
               aria-label="Help">
                 <MoreVertIcon/>
+            </Fab>
+
+            <Fab
+              id = "colorTest1"
+              sx={{...buttonsStyle, width: '36px', right: 600, position: 'absolute',}}
+              // style = {{display:"none"}}
+              onClick={ColorTest1}
+              aria-label="Help">
+                <IconSetting/>
+            </Fab>
+
+            <Fab
+              id = "colorTest2"
+              sx={{...buttonsStyle, width: '36px', right: 700, position: 'absolute',}}
+              // style = {{display:"none"}}
+              onClick={ColorTest2}
+              aria-label="Help">
+                <IconSetting/>
+            </Fab>
+
+            <Fab
+              id = "ScaleTest1"
+              sx={{...buttonsStyle, width: '36px', right: 800, position: 'absolute',}}
+              // style = {{display:"none"}}
+              onClick={ScaleSet1}
+              aria-label="Help">
+                <IconSetting/>
+            </Fab>
+
+            <Fab
+              id = "ScaleTest2"
+              sx={{...buttonsStyle, width: '36px', right: 900, position: 'absolute',}}
+              // style = {{display:"none"}}
+              onClick={ScaleSet2}
+              aria-label="Help">
+                <IconSetting/>
+            </Fab>
+
+            <Fab
+              id = "ScaleTest3"
+              sx={{...buttonsStyle, width: '36px', right: 1000, position: 'absolute',}}
+              // style = {{display:"none"}}
+              onClick={ScaleSet3}
+              aria-label="Help">
+                <IconSetting/>
             </Fab>
 
             <Fab

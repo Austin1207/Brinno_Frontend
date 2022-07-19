@@ -6,6 +6,7 @@ import interestArea from './interestArea.png';
 import obstacleArea from './obstacleArea.png';
 import noCameraArea from './noCameraArea.png';
 import mustCoverArea from './mustCoverArea.png';
+import area_legend from './area_legend.png';
 import rotate from './rotate.png';
 import { Layers } from 'three';
 
@@ -21,6 +22,13 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("TutorialScaleMeasureBackButton").style.display = "none";
         document.getElementById("TutorialScaleMeasureOkButton").style.display = "none";
         document.getElementById('overlay').style.display = "none"
+
+        document.getElementById("TutorialScaleMeasureUnit").style.display = "none";
+        document.getElementById("TutorialScaleMeasureUnit_Black1").style.display = "none";
+        document.getElementById("TutorialScaleMeasureUnit_Black2").style.display = "none";
+        document.getElementById("TutorialScaleMeasureUnit_Meters").style.display = "none"
+        document.getElementById("TutorialScaleMeasureUnit_Black3").style.display = "none"
+        document.getElementById("TutorialScaleMeasureUnit_Feets").style.display = "none"
 
         document.getElementById("Circle2").style.display = "none"
         document.getElementById("Line").style.display = "none"
@@ -42,6 +50,13 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("TutorialScaleMeasureBackButton").style.display = "none";
         document.getElementById("TutorialScaleMeasureOkButton").style.display = "none";
         document.getElementById('overlay').style.display = "none"
+
+        document.getElementById("TutorialScaleMeasureUnit").style.display = "none";
+        document.getElementById("TutorialScaleMeasureUnit_Black1").style.display = "none";
+        document.getElementById("TutorialScaleMeasureUnit_Black2").style.display = "none";
+        document.getElementById("TutorialScaleMeasureUnit_Meters").style.display = "none"
+        document.getElementById("TutorialScaleMeasureUnit_Black3").style.display = "none"
+        document.getElementById("TutorialScaleMeasureUnit_Feets").style.display = "none"
 
         document.getElementById("Circle1").style.display = "none";
         document.getElementById("Circle2").style.display = "none";
@@ -87,7 +102,9 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 document.getElementById('overlay_right').style.display = ""
                 document.getElementById('overlay_top_2').style.display = ""
                 document.getElementById('overlay_bottom_2').style.display = ""
+            }
 
+            if (localStorage.getItem("Mode") == "Outline"){
                 var PlanJs = state.scene.toJS()
                 var ScaleProperty = PlanJs.layers.layer1.items.xFAw434Nm.properties
                 var PointDistance = ((ScaleProperty.x1 - ScaleProperty.x2)**2 + (ScaleProperty.y1 - ScaleProperty.y2)**2)**0.5
@@ -657,6 +674,50 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("overlay").style.display = "none";
       }
 
+    // const test12 = () => {
+    //     if (localStorage.getItem("Unit") == "m"){
+    //         return "Meters"
+    //     }
+        
+    //     else if (localStorage.getItem("Unit") == "ft"){
+    //         return "Feets"
+    //     }
+    // }
+
+
+    var Unit_Name= localStorage.getItem("UnitName")
+
+    const Unit_Show = () => {
+        if (document.getElementById("TutorialScaleMeasureUnit_Meters").style.display !== ""){
+            document.getElementById("TutorialScaleMeasureUnit_Meters").style.display = ""
+            document.getElementById("TutorialScaleMeasureUnit_Black3").style.display = ""
+            document.getElementById("TutorialScaleMeasureUnit_Feets").style.display = ""
+        }
+        else {
+            document.getElementById("TutorialScaleMeasureUnit_Meters").style.display = "none"
+            document.getElementById("TutorialScaleMeasureUnit_Black3").style.display = "none"
+            document.getElementById("TutorialScaleMeasureUnit_Feets").style.display = "none"
+        }
+    }
+
+    const UnitSet_Meters = () => {
+        localStorage.setItem("UnitName", "Meters")
+        localStorage.setItem("Unit", "m")
+        document.getElementById("TutorialScaleMeasureWord3").innerHTML = localStorage.getItem("UnitName")
+        document.getElementById("TutorialScaleMeasureUnit_Meters").style.display = "none"
+        document.getElementById("TutorialScaleMeasureUnit_Black3").style.display = "none"
+        document.getElementById("TutorialScaleMeasureUnit_Feets").style.display = "none"
+    }
+
+    const UnitSet_Feets = () => {
+        localStorage.setItem("UnitName", "Feets")
+        localStorage.setItem("Unit", "ft")
+        document.getElementById("TutorialScaleMeasureWord3").innerHTML = localStorage.getItem("UnitName")
+        document.getElementById("TutorialScaleMeasureUnit_Meters").style.display = "none"
+        document.getElementById("TutorialScaleMeasureUnit_Black3").style.display = "none"
+        document.getElementById("TutorialScaleMeasureUnit_Feets").style.display = "none"
+    }
+
     return(
         <div>
             <span id = "TutorialScaleMeasureWord" style = {{
@@ -704,7 +765,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             <span id = "TutorialScaleMeasureWord3" style = {{
                 position: "absolute",
                 top: "347px",
-                left: ((left-431)/2) + 234,
+                left: ((left-431)/2) + 274,
                 width: "79px",
                 height: "31px",
                 zIndex: 10002,
@@ -719,12 +780,82 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 color: "#dcddde",
                 display: "none"
             }}>
-                Meters
+                {Unit_Name}
             </span>
+
+            <button id = "TutorialScaleMeasureUnit" onClick = {Unit_Show} style = {{            
+                position: "absolute",
+                backgroundImage: "url('https://example-img.s3.ap-northeast-1.amazonaws.com/area_legend.png')",
+                top: "347px",
+                left: ((left-431)/2) + 361,
+                border:"none",
+                width:"36px",
+                height:"36px",
+                zIndex: 10002,
+                display: "none"
+                }}>
+            </button>
+
+            <div id = "TutorialScaleMeasureUnit_Black1" style = {{            
+                position: "absolute",
+                top: "347px",
+                left: ((left-431)/2) + 361,
+                backgroundColor:"#222222",
+                border:"none",
+                width:"36px",
+                height:"3px",
+                zIndex: 10003,
+                display: "none"
+                }}>
+            </div>
+
+            <div id = "TutorialScaleMeasureUnit_Black2" style = {{            
+                position: "absolute",
+                top: "380px",
+                left: ((left-431)/2) + 361,
+                backgroundColor:"#222222",
+                border:"none",
+                width:"36px",
+                height:"3px",
+                zIndex: 10003,
+                display: "none"
+                }}>
+            </div>
+
+            <button id = "TutorialScaleMeasureUnit_Meters" class = "button-Meters" onClick = {UnitSet_Meters} style = {{            
+                position: "absolute",
+                top: "347px",
+                left: ((left-431)/2) + 414,
+                display: "none"
+                }}>
+                Meters
+            </button>
+
+            <div id = "TutorialScaleMeasureUnit_Black3" style = {{            
+                position: "absolute",
+                top: "401px",
+                left: ((left-431)/2) + 415,
+                backgroundColor:"#222222",
+                border:"none",
+                width:"179px",
+                height:"2px",
+                zIndex: 10004,
+                display: "none"
+                }}>
+            </div>
+            
+            <button id = "TutorialScaleMeasureUnit_Feets" onClick = {UnitSet_Feets} class = "button-Feets" onClick = {UnitSet_Feets} style = {{            
+                position: "absolute",
+                top: "402px",
+                left: ((left-431)/2) + 414,
+                display: "none"
+                }}>
+                Feets
+            </button>
 
             <div id ="TutorialScaleMeasureLine" style = {{
                 position: "absolute",
-                width: "325px",
+                width: "359px",
                 height: "2px",
                 zIndex: 10002,
                 backgroundColor: "#c7c7c7",

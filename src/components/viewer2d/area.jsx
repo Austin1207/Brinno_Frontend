@@ -62,7 +62,7 @@ export default function Area({layer, area, catalog}) {
       <text x="0" y="0" transform={`translate(${center[0]} ${center[1]}) scale(1, -1)`} style={STYLE_TEXT}>
         {/* {(areaSize / 10000).toFixed(2)} m{String.fromCharCode(0xb2)} */}
         {/* fix area display */}
-        {(areaSize * (Scale**2) / 100).toFixed(2)} m{String.fromCharCode(0xb2)}
+        {(areaSize * (Scale**2) / 100).toFixed(2)} {localStorage.getItem("Unit")}{String.fromCharCode(0xb2)}
       </text>
     )
   }

@@ -30,7 +30,7 @@ import Paper from '@mui/material/Paper';
 import Fade from '@mui/material/Fade';
 import Popper from '@mui/material/Popper';
 import Box from '@material-ui/core/Box';
-import {IconConstructionLine, IconInterestLine, IconObstacleLine, IconNoCamLine, IconMustLine} from './lineicon'
+import {IconConstructionLine, IconInterestLine, IconObstacleLine, IconNoCamLine, IconMustLine, IconConstructionLine2, IconObstacleLine2, IconNoCamLine2, IconMustLine2} from './lineicon'
 
 const drawerWidth = 260;
 
@@ -195,6 +195,12 @@ export default function Viewer2D(
   const handleLegendButton = (event) => {
     setAnchorEl(event.currentTarget);
     setOpenLegend(!openLegend);
+    if (localStorage.getItem("AreaLegend_Button") == "Close") {
+      localStorage.setItem("AreaLegend_Button", "Open")
+    }
+    else {
+      localStorage.setItem("AreaLegend_Button", "Close")
+    }
   };
 
   let { viewer2D, mode, scene } = state;
@@ -427,6 +433,11 @@ export default function Viewer2D(
   let rulerXElements = Math.ceil( sceneWidth / rulerUnitPixelSize ) + 1;
   let rulerYElements = Math.ceil( sceneHeight / rulerUnitPixelSize ) + 1;
 
+  let AreaLegendbackgroundColor = localStorage.getItem("AreaLegend_Backgorund1")
+  let AreaLegendIconOpenColor = localStorage.getItem("AreaLegend_Icon_Open")
+  let AreaLegendIconCloseColor = localStorage.getItem("AreaLegend_Icon_Close")
+  let AreaLegendWordColor = localStorage.getItem("AreaLegend_Word")
+
   return (
     // Control Dragging line and put camera cursor
     <div style={{
@@ -540,41 +551,46 @@ export default function Viewer2D(
         <Divider orientation="vertical" flexItem={true}/>
         <Typography sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Camera Coverage</Typography>
       </Button>
-      <Button variant="contained" 
+      <Button variant="contained" id="AreaLegend_Button"
+        style={{backgroundColor:AreaLegendbackgroundColor}}
         sx={{...(buttonsStyle), top: 39+36, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
         onClick={handleLegendButton}>
-        {openLegend ? <ExpandLess sx={{paddingRight: '6px'}}/> : <ExpandMore sx={{paddingRight: '6px'}}/>}
+        {openLegend ? <ExpandLess style={{color:AreaLegendIconOpenColor}} sx={{paddingRight: '6px'}}/> : <ExpandMore style={{color:AreaLegendIconCloseColor}} sx={{paddingRight: '6px'}}/>}
         <Divider orientation="vertical" flexItem={true}/>
-        <Typography sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Area Legend</Typography>
+        <Typography style = {{color:AreaLegendWordColor}} sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Area Legend</Typography>
       </Button>
       <Popper open={openLegend} anchorEl={anchorEl} placement='bottom-start' transition>
         {({ TransitionProps }) => (
-          <Fade {...TransitionProps} timeout={350}>
+          <Fade id="AreaLegend_Background2" {...TransitionProps} timeout={350}>
             <Paper sx={{width: 210-12, height: 'auto', justifyContent: 'flex-start', padding: '6px',}}>
               <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
-                <IconConstructionLine sx={{paddingRight: '6px'}}/>
+                <IconConstructionLine id="IconConstructionLine_Light" style={{display:""}} sx={{paddingRight: '6px'}}/>
+                <IconConstructionLine2 id="IconConstructionLine_Dark" style={{display:"none"}} sx={{paddingRight: '6px'}}/>
                 <Divider orientation="vertical" flexItem={true}/>
-                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Construction Area</Typography>
+                <Typography id="IconConstructionLine_Word" sx={{fontSize: '14px', paddingLeft: '6px'}}>Construction Area</Typography>
               </Box>
               <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
                 <IconInterestLine sx={{paddingRight: '6px'}}/>
                 <Divider orientation="vertical" flexItem={true}/>
-                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Interest Area</Typography>
+                <Typography id="IconInterestLine_Word" sx={{fontSize: '14px', paddingLeft: '6px'}}>Interest Area</Typography>
               </Box>
               <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
-                <IconObstacleLine sx={{paddingRight: '6px'}}/>
+                <IconObstacleLine id="IconObstacleLine_Light" style={{display:""}} sx={{paddingRight: '6px'}}/>
+                <IconObstacleLine2 id="IconObstacleLine_Dark" style={{display:"none"}} sx={{paddingRight: '6px'}}/>
                 <Divider orientation="vertical" flexItem={true}/>
-                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Obstacle Area</Typography>
+                <Typography id="IconObstacleLine_Word" sx={{fontSize: '14px', paddingLeft: '6px'}}>Obstacle Area</Typography>
               </Box>
               <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
-                <IconNoCamLine sx={{paddingRight: '6px'}}/>
+                <IconNoCamLine id="IconNoCamLine_Light" style={{display:""}} sx={{paddingRight: '6px'}}/>
+                <IconNoCamLine2 id="IconNoCamLine_Dark" style={{display:"none"}}  sx={{paddingRight: '6px'}}/>
                 <Divider orientation="vertical" flexItem={true}/>
-                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>No Camera Area</Typography>
+                <Typography id="IconNoCamLine_Word" sx={{fontSize: '14px', paddingLeft: '6px'}}>No Camera Area</Typography>
               </Box>
               <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
-                <IconMustLine sx={{paddingRight: '6px'}}/>
+                <IconMustLine id="IconMustLine_Light" style={{display:""}} sx={{paddingRight: '6px'}}/>
+                <IconMustLine2 id="IconMustLine_Dark" style={{display:"none"}}  sx={{paddingRight: '6px'}}/>
                 <Divider orientation="vertical" flexItem={true}/>
-                <Typography sx={{fontSize: '14px', paddingLeft: '6px'}}>Must Cover Area</Typography>
+                <Typography id="IconMustLine_Word" sx={{fontSize: '14px', paddingLeft: '6px'}}>Must Cover Area</Typography>
               </Box>
             </Paper>
           </Fade>

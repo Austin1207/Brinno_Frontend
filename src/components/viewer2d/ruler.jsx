@@ -26,7 +26,7 @@ export default function Ruler({length, unit, transform}) {
 
   //修正線段顯示長度
   var Scale = localStorage.getItem("Scale")
-  let distanceText = `${(length*Scale/10).toFixed(2)} ${"m"}`;
+  let distanceText = `${(length*Scale/10).toFixed(2)} ${localStorage.getItem("Unit")}`;
 
   return (
     <g transform={transform}>
