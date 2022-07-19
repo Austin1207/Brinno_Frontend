@@ -16,6 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import '@babel/polyfill'; //for async
 // const options = [
@@ -31,6 +32,7 @@ import '@babel/polyfill'; //for async
 const buttonsStyle = {
   height: '36px', bottom: '54px',
   backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',},
+  "&:disabled": {backgroundColor: '#ffffff', color: '#b9bbbc'}
 };
 const IconUndo = createSvgIcon(
   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -250,7 +252,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     ZoomScaleJson.e = 15070 - (ZoomX - 100) * ZoomContentScale
     ZoomScaleJson.f = 9660 - (20000 - ZoomY - 100* ((6.5/ZoomContentScale) - (ZoomY - ZoomYmin)/100)/2) * ZoomContentScale
     console.log(ZoomContentScale)
-    console.log("y1" + ZoomY + ",y2" +　ZoomYmin)
+    console.log("y1" + ZoomY + ",y2" + ZoomYmin)
     console.log("e" + ZoomScaleJson.e)
     console.log("f" + ZoomScaleJson.f)
     viewer2DActions.updateCameraView(ZoomScaleJson)
@@ -392,7 +394,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               onClick={Setting}
               disabled
               aria-label="Help">
-                <IconSetting/>
+                <MoreVertIcon/>
             </Fab>
 
             <Fab
@@ -421,7 +423,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               style = {{display:"none"}}
               onClick={Setting}
               aria-label="Help">
-                <IconSetting/>
+                <MoreVertIcon/>
             </Fab>
 
             <Fab
@@ -436,9 +438,11 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
             <ButtonGroup variant="contained" ref={anchorRef} aria-label="zoom"
             sx={{ position: 'absolute', bottom: 54, right: 348}}>
               <Button sx={{maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
-                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',}}
-                    onClick={handleOut}>
-
+                    backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'},
+                    "&:disabled": {backgroundColor: '#ffffff', color: '#b9bbbc'},
+                    cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',}}
+                    onClick={handleOut}
+                    disabled={scale==0.1}>
                 <RemoveIcon />
               </Button>
               <Button

@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {FaPlusCircle as IconAdd} from 'react-icons/fa';
 import * as SharedStyle from '../../shared-style';
-import batteryIcon from './battery.png'
-import fullHDIcon from './fullHD.png'
-import HDRIcon from './HDR.png'
+import batteryIcon from './battery.png';
+import fullHDIcon from './fullHD.png';
+import HDRIcon from './HDR.png';
+import './catalog-item.css';
 
 const STYLE_BOX = {
   width: '300px',
