@@ -524,7 +524,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                 <MoreVertIcon/>
             </Fab>
 
-            <Fab
+            {/* <Fab
               id = "colorTest1"
               sx={{...buttonsStyle, width: '36px', right: 600, position: 'absolute',}}
               // style = {{display:"none"}}
@@ -558,7 +558,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               onClick={ScaleSet2}
               aria-label="Help">
                 <IconSetting/>
-            </Fab>
+            </Fab> */}
 
             <Fab
               id = "Question2"
