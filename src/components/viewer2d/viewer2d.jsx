@@ -516,9 +516,15 @@ export default function Viewer2D(
         // style={{ gridColumn: 2, gridRow: 2 , bottom:650, right:750}}
         // width={width - rulerSize + 750}
         // height={height - rulerSize + 650}
+
         style={{ gridColumn: 2, gridRow: 2 , bottom:9650, right:15000}}
         width={width - rulerSize + 15000}
         height={height - rulerSize + 9650}
+
+        // style={{ gridColumn: 2, gridRow: 2 }}
+        // width={width - rulerSize }
+        // height={height - rulerSize }
+
         value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
         onChangeValue={onChangeValue}
         tool={mode2Tool(mode)}

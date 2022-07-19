@@ -750,7 +750,7 @@ export default class Toolbar extends Component {
               sx={buttonsStyle}
               onClick={() => this.handleSumDrawChange()}
               // disabled={true}
-              style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
+              // style = {{display:"none", cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               >
               <IconSum sx={{ fontSize: 40 }}/>
             </Button>
