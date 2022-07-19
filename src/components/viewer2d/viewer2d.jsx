@@ -544,8 +544,8 @@ export default function Viewer2D(
         </svg>
 
       </ReactSVGPanZoom>
-      <Button variant="contained"
-        sx={{...(openCoverage ? buttonsInuseStyle : buttonsStyle), top: 24, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
+      <Button variant="contained" 
+        sx={{...(buttonsStyle), top: 24, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
         onClick={handleCoverageButton}>
         {openCoverage ? <VisibilityIcon sx={{paddingRight: '6px'}}/> : <VisibilityOffIcon sx={{paddingRight: '6px'}}/>}
         <Divider orientation="vertical" flexItem={true}/>
@@ -553,7 +553,7 @@ export default function Viewer2D(
       </Button>
       <Button variant="contained" id="AreaLegend_Button"
         style={{backgroundColor:AreaLegendbackgroundColor}}
-        sx={{...(openLegend ? buttonsInuseStyle : buttonsStyle), top: 39+36, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
+        sx={{...(buttonsStyle), top: 39+36, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
         onClick={handleLegendButton}>
         {openLegend ? <ExpandLess style={{color:AreaLegendIconOpenColor}} sx={{paddingRight: '6px'}}/> : <ExpandMore style={{color:AreaLegendIconCloseColor}} sx={{paddingRight: '6px'}}/>}
         <Divider orientation="vertical" flexItem={true}/>

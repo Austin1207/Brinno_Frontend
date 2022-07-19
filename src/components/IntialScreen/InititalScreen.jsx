@@ -4,7 +4,7 @@ import { loadimgjson2 } from './loadjson2';
 import { loadimgjson3 } from './loadjson3';
 import '@babel/polyfill'; //for async
 
-import 'typeface-roboto'
+//import 'typeface-roboto'
 
 const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
   //+Upload onclick
