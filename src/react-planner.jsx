@@ -138,7 +138,7 @@ class ReactPlanner extends Component {
 
         <BottomButtonGroup state={extractedState} {...props} />
 
-        <SettingButton state={extractedState} {...props}/>
+        {/* <SettingButton state={extractedState} {...props}/> */}
 
         
         {/*<LineSpeedDial state={extractedState} {...props} />

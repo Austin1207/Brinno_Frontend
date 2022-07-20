@@ -17,7 +17,7 @@ import MenuList from '@mui/material/MenuList';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-// import SettingButton from './settingbutton';
+import SettingButton from './settingbutton';
 
 import '@babel/polyfill'; //for async
 // const options = [
@@ -525,7 +525,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                 <MoreVertIcon/>
             </Fab> */}
 
-            {/* <SettingButton/> */}
+            <SettingButton state = {state} projectActions={projectActions} sceneActions={sceneActions} itemsActions={itemsActions}/>
 
             {/* <Fab
               id = "colorTest1"

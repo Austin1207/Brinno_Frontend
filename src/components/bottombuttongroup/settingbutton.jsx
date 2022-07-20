@@ -14,7 +14,7 @@ const buttonsStyle = {
     "&:disabled": {backgroundColor: '#ffffff', color: '#b9bbbc'}
   };
 
-export default function SettingButton({state, sceneActions, itemsActions, projectActions}){
+export default function SettingButton({state, projectActions, sceneActions, itemsActions}){
     const options = [
         {name: 'Edit color mode', do: handleColorToggle},
         {name: 'Edit units', do: handleUnitToggle},
