@@ -494,7 +494,6 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         xhr.send()
         xhr.onload = function(){
           var data = JSON.parse(this.responseText);
-          console.log(data)
   
           projectActions.loadProject(data)
   
@@ -519,23 +518,18 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             var data = JSON.parse(this.responseText);
             var Warning = ""
             if (JSON.stringify(data.bound) !== "{}"){
-                // console.log(JSON.stringify(data.bound))
                 Warning = Warning + JSON.stringify(data.bound)
             }
             if (JSON.stringify(data.camera) !== "{}"){
-                // console.log(JSON.stringify(data.camera))
                 Warning = Warning + JSON.stringify(data.camera)
             }
             if (JSON.stringify(data.must_cover) !== "{}"){
-                // console.log(JSON.stringify(data.must_cover))
                 Warning = Warning + JSON.stringify(data.must_cover)
             }
             if (JSON.stringify(data.nocam) !== "{}"){
-                // console.log(JSON.stringify(data.nocam))
                 Warning = Warning + JSON.stringify(data.nocam)
             }
             if (JSON.stringify(data.target) !== "{}"){
-                // console.log(JSON.stringify(data.target))
                 Warning = Warning + JSON.stringify(data.target)
             }
 
@@ -556,7 +550,6 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
           xhr.send()
           xhr.onload = function(){
             var data = JSON.parse(this.responseText);
-            console.log(data)
             var Cam_count = Object.values(data)
             var BCC_200_count = String(Cam_count[0])
             var BCC_300_count = String(Cam_count[1])
@@ -594,7 +587,6 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             xhr.send()
             xhr.onload = function(){
               var data = JSON.parse(this.responseText);
-              console.log(data)
               var score = data["score"]
               document.getElementById("totalCoverage").innerHTML = String(score) + "%";
               localStorage.setItem("Coverage",score);
@@ -650,7 +642,6 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         body: JSON.stringify(json_data)
       })
   
-      // console.log(url)
   
       const InputUrl = url.split('?')[0]
       const objName = InputUrl.split('/')[3]
@@ -659,7 +650,6 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
       const ScoreUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "score_" + objName
       const WarnUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "warn_" + objName
   
-      // console.log(JsonUrl);
   
       var Check403_2 = setInterval(function(){ 
         var status = 0;
