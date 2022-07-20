@@ -489,7 +489,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
             <Fab
               id = "Setting1"
-              sx={{...buttonsStyle, width: '36px', right: 950, position: 'absolute',}}
+              sx={{...buttonsStyle, width: '36px', right: 150, position: 'absolute',}}
               onClick={Setting}
               disabled
               aria-label="Help">
@@ -516,14 +516,14 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
                 <IconScale sx={{ fontSize: 36 }}/>
             </Button>
 
-            <Fab
+            {/* <Fab
               id = "Setting2"
               sx={{...buttonsStyle, width: '36px', right: 950, position: 'absolute',}}
               style = {{display:"none"}}
               onClick={Setting}
               aria-label="Help">
                 <MoreVertIcon/>
-            </Fab>
+            </Fab> */}
 
             {/* <SettingButton/> */}
 

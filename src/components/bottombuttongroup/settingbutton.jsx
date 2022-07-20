@@ -159,11 +159,12 @@ export default function SettingButton({state, sceneActions, itemsActions, projec
 
     return (
         <div>
-            <Fab
+            <Fab id = "Setting2"
             ref={anchorRef}
-            sx={{...buttonsStyle, width: '36px', right: 150, position: 'absolute',}}
+            style = {{display:"none"}}
+            sx={{...buttonsStyle, width: '36px', right: 150, position: 'absolute'}}
             onClick={handleToggle}
-            //disabled
+            // disabled
             >
             <MoreVertIcon/>
             </Fab>
