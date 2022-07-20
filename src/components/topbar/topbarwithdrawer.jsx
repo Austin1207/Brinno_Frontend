@@ -30,6 +30,8 @@ import { fontSize } from '@mui/system';
 import SummaryTable from '../summarytable/summarytable';
 import './topbar.css';
 
+import {browserDownload}  from '../../utils/browser';
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const drawerWidth = 360;
 const useStyles = makeStyles({
@@ -293,62 +295,67 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
     document.getElementById("8-8-3").style.display = "none"
     document.getElementById("8-8-4").style.display = "none"
 
-    document.getElementById("SummaryPage1").style.display = "none";
-    document.getElementById("SummaryPage2").style.display = "";
-    showOptimizing();
+    // document.getElementById("SummaryPage1").style.display = "none";
+    // document.getElementById("SummaryPage2").style.display = "";
+    // showOptimizing();
 
-    const json_data = state.get('scene').toJS();
+    // const json_data = state.get('scene').toJS();
 
     //有送單位和比例尺的版本
-    // var rawjson = state.get('scene').toJS()
-    // rawjson.unit = localStorage.getItem("Unit")
-    // rawjson["Scale"] = localStorage.getItem("Scale")
-    // const json_data = rawjson
+    var rawjson = state.get('scene').toJS()
+    rawjson.unit = localStorage.getItem("Unit")
+    rawjson["Scale"] = localStorage.getItem("Scale")
+    const json_data = rawjson
 
-    const {url} = await fetch(s3jsoninputurl).then(res => res.json());
+    browserDownload(json_data);
 
-    await fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": 'application/json'
-      },
-      body: JSON.stringify(json_data)
-    })
 
-    // console.log(url)
+    // console.log(json_data)
 
-    const InputUrl = url.split('?')[0]
-    const objName = InputUrl.split('/')[3]
-    const JsonUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + objName
-    const CamUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "cam_" + objName
-    const ScoreUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "score_" + objName
+    // const {url} = await fetch(s3jsoninputurl).then(res => res.json());
 
-    // console.log(JsonUrl);
+    // await fetch(url, {
+    //   method: "PUT",
+    //   headers: {
+    //     "Content-Type": 'application/json'
+    //   },
+    //   body: JSON.stringify(json_data)
+    // })
 
-    var Check403_2 = setInterval(function(){ 
-      var status = 0;
-      status = checkForbidden_cam(CamUrl, status);
-      if (status == 1) {
-        clearInterval(Check403_2);
-      }
-    },1000)
+    // // console.log(url)
 
-    var Check403_3 = setInterval(function(){ 
-      var status = 0;
-      status = checkForbidden_score(ScoreUrl, status);
-      if (status == 1) {
-        clearInterval(Check403_3);
-      }
-    },1000)
+    // const InputUrl = url.split('?')[0]
+    // const objName = InputUrl.split('/')[3]
+    // const JsonUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + objName
+    // const CamUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "cam_" + objName
+    // const ScoreUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "score_" + objName
 
-    var Check403 = setInterval(function(){ 
-      var status = 0;
-      status = checkForbidden(JsonUrl, status);
-      if (status == 1) {
-        clearInterval(Check403);
-        OpenSummary();
-      }
-    },1000)
+    // // console.log(JsonUrl);
+
+    // var Check403_2 = setInterval(function(){ 
+    //   var status = 0;
+    //   status = checkForbidden_cam(CamUrl, status);
+    //   if (status == 1) {
+    //     clearInterval(Check403_2);
+    //   }
+    // },1000)
+
+    // var Check403_3 = setInterval(function(){ 
+    //   var status = 0;
+    //   status = checkForbidden_score(ScoreUrl, status);
+    //   if (status == 1) {
+    //     clearInterval(Check403_3);
+    //   }
+    // },1000)
+
+    // var Check403 = setInterval(function(){ 
+    //   var status = 0;
+    //   status = checkForbidden(JsonUrl, status);
+    //   if (status == 1) {
+    //     clearInterval(Check403);
+    //     OpenSummary();
+    //   }
+    // },1000)
 
   // }
 
@@ -448,7 +455,7 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
               key={'Generat'}
               sx={{ my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontFamily: "SF Pro Display", fontWeight: "normal", fontStretch: "normal", fontStyle:"normal", textTransform:"capitalize"}}
               style  = {{display:"none"}}
-              onClick = {Generate_Click}
+              onClick = {GernerateOnclick}
               >
               {'Generate'}
           </button>
