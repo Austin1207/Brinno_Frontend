@@ -504,6 +504,47 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         return status;
         }
       }
+
+      function checkForbidden_warn (url, status) {
+        var req = new XMLHttpRequest();
+        req.open('GET', url, false);
+        req.send();
+        if (req.status == 200) {
+          closeOptimizing();
+    
+          var xhr = new XMLHttpRequest()
+          xhr.open('GET', url, true)
+          xhr.send()
+          xhr.onload = function(){
+            var data = JSON.parse(this.responseText);
+            var Warning = ""
+            if (JSON.stringify(data.bound) !== "{}"){
+                // console.log(JSON.stringify(data.bound))
+                Warning = Warning + JSON.stringify(data.bound)
+            }
+            if (JSON.stringify(data.camera) !== "{}"){
+                // console.log(JSON.stringify(data.camera))
+                Warning = Warning + JSON.stringify(data.camera)
+            }
+            if (JSON.stringify(data.must_cover) !== "{}"){
+                // console.log(JSON.stringify(data.must_cover))
+                Warning = Warning + JSON.stringify(data.must_cover)
+            }
+            if (JSON.stringify(data.nocam) !== "{}"){
+                // console.log(JSON.stringify(data.nocam))
+                Warning = Warning + JSON.stringify(data.nocam)
+            }
+            if (JSON.stringify(data.target) !== "{}"){
+                // console.log(JSON.stringify(data.target))
+                Warning = Warning + JSON.stringify(data.target)
+            }
+
+            alert(Warning)
+          }
+          status = 1;
+          return status;
+          }
+        }
   
       function checkForbidden_cam (url, status) {
         var req = new XMLHttpRequest();
@@ -616,6 +657,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
       const JsonUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + objName
       const CamUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "cam_" + objName
       const ScoreUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "score_" + objName
+      const WarnUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "warn_" + objName
   
       // console.log(JsonUrl);
   
@@ -641,6 +683,17 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         if (status == 1) {
           clearInterval(Check403);
           OpenSummary();
+        }
+      },1000)
+
+      var Check403_4 = setInterval(function(){ 
+        var status = 0;
+        status = checkForbidden_warn(WarnUrl, status);
+        if (status == 1) {
+          clearInterval(Check403_4);
+          clearInterval(Check403);
+          clearInterval(Check403_2);
+          clearInterval(Check403_3);
         }
       },1000)
   
