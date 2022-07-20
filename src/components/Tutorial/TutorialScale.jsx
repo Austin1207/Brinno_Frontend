@@ -682,6 +682,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         status = checkForbidden(JsonUrl, status);
         if (status == 1) {
           clearInterval(Check403);
+          clearInterval(Check403_4);
           OpenSummary();
         }
       },1000)
