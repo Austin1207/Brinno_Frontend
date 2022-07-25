@@ -4,13 +4,10 @@ import { loadimgjson2 } from './loadjson2';
 import { loadimgjson3 } from './loadjson3';
 import '@babel/polyfill'; //for async
 
-// import 'typeface-roboto'
-// import 'typeface-alegreya-sans'
-
-//import 'typeface-roboto'
-
 const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
   //+Upload onclick
+  const ScaleUrl = "https://example-img.s3.ap-northeast-1.amazonaws.com/small.png"
+
   function UploadFile() {
     return new Promise(function (resolve, reject) {
   
@@ -29,7 +26,6 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
   const s3pdfurl = "http://localhost:3000/s3PdfUrl"
 
   //偵測403
-  // async function checkForbidden (url, status, jsonleft, top) {
   function checkForbidden (url, status) {
     var req = new XMLHttpRequest();
     req.open('GET', url, false);
@@ -41,23 +37,22 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
       img.src = url;
       if (img.complete) {
         if (img.width >= img.height){
-          projectActions.loadProject(loadimgjson(url, jsonleft, top));
+          projectActions.loadProject(loadimgjson(ScaleUrl, url, jsonleft, top));
         }
         else {
-          projectActions.loadProject(loadimgjson2(url, jsonleft, top));
+          projectActions.loadProject(loadimgjson2(ScaleUrl, url, jsonleft, top));
         }
       }
       else {
         img.onload = function(){
           if (img.width >= img.height){
-            projectActions.loadProject(loadimgjson(url, jsonleft, top));
+            projectActions.loadProject(loadimgjson(ScaleUrl, url, jsonleft, top));
           }
           else {
-            projectActions.loadProject(loadimgjson2(url, jsonleft, top));
+            projectActions.loadProject(loadimgjson2(ScaleUrl, url, jsonleft, top));
           }
         }
       }
-      // document.getElementById("Undo").disabled = false;
       status = 1;
       return status;
       }
@@ -87,8 +82,10 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
   }
 
   function FinishTutorial(Process) {
-    localStorage.setItem("Tutorial_Setscale", Process);
-    localStorage.setItem("Tutorial_ConstructionArea", Process);
+    localStorage.setItem("Tutorial_Setscale", "Undone");
+    localStorage.setItem("Tutorial_ConstructionArea", "Undone");
+    // localStorage.setItem("Tutorial_Setscale", Process);
+    // localStorage.setItem("Tutorial_ConstructionArea", Process);
     localStorage.setItem("Tutorial_InterestArea", Process);
     localStorage.setItem("Tutorial_ObstacleArea", Process);
     localStorage.setItem("Tutorial_NoCameraArea", Process);
@@ -121,25 +118,6 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
     if (localStorage.getItem("Tutorial_Upload") == "Done") {
       document.getElementById('Outline Construction Area1').style.display = "none"
       document.getElementById('Outline Construction Area2').style.display = ""
-
-      // document.getElementById('Outine Interest Area1').style.display = "none"
-      // document.getElementById('Outine Interest Area2').style.display = ""
-
-      // document.getElementById('Place Obstacle Area1').style.display = "none"
-      // document.getElementById('Place Obstacle Area2').style.display = ""
-
-      // document.getElementById('Place no-camera area1').style.display = "none"
-      // document.getElementById('Place no-camera area2').style.display = ""
-
-      // document.getElementById('Place must-cover area1').style.display = "none"
-      // document.getElementById('Place must-cover area2').style.display = ""
-
-      // document.getElementById('Camera Tool1').style.display = "none"
-      // document.getElementById('Camera Tool2').style.display = ""
-
-      // document.getElementById('Generate1').style.display = "none"
-      // document.getElementById('Generate2').style.display = ""
-
       FinishTutorial("Done")
     }
     else {
@@ -186,8 +164,6 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
 
         const imageUrl = url.split('?')[0]
         console.log(imageUrl)
-
-        // const imageJson = loadimgjson(imageUrl, jsonleft, top)
 
         var Check403 = setInterval(function(){ 
           var status = 0;
@@ -243,7 +219,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
         alert("Please upload PDF or IMG");
         document.getElementById("UploadRectangular").style.display = "";
         document.getElementById("OutlineRectangular").style.display = "";
-        document.getElementById("Initialoverlay").style.display = "";
+        document.getElementById("Initialoverlay").style.display = "";w
         closeLoading();
         }
     });
@@ -265,27 +241,9 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
 
     localStorage.setItem("Mode", "Outline")
 
-    projectActions.loadProject(loadimgjson3("https://example-img.s3.ap-northeast-1.amazonaws.com/small.png", jsonleft, top));
+    projectActions.loadProject(loadimgjson3(ScaleUrl, jsonleft, top));
 
     if (localStorage.getItem("Tutorial_Outline") == "Done") {
-      // document.getElementById('Outine Interest Area1').style.display = "none"
-      // document.getElementById('Outine Interest Area2').style.display = ""
-
-      // document.getElementById('Place Obstacle Area1').style.display = "none"
-      // document.getElementById('Place Obstacle Area2').style.display = ""
-
-      // document.getElementById('Place no-camera area1').style.display = "none"
-      // document.getElementById('Place no-camera area2').style.display = ""
-
-      // document.getElementById('Place must-cover area1').style.display = "none"
-      // document.getElementById('Place must-cover area2').style.display = ""
-
-      // document.getElementById('Camera Tool1').style.display = "none"
-      // document.getElementById('Camera Tool2').style.display = ""
-
-      // document.getElementById('Generate1').style.display = "none"
-      // document.getElementById('Generate2').style.display = ""
-
       FinishTutorial("Done")
     }
     else {    

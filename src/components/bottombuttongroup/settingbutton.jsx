@@ -110,8 +110,8 @@ export default function SettingButton({state, projectActions, sceneActions, item
     
         
             localStorage.setItem("ColorMode","Light")
-            sceneActions.selectLayer("layer1")
-            itemsActions.selectItem("layer1", "xFAw434Nm");
+            sceneActions.selectLayer("layer3")
+            itemsActions.selectItem("layer3", "xFAw434Nm");
         }, 200)
     
         setTimeout(() => {

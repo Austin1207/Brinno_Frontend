@@ -205,8 +205,9 @@ class Layer{
       localStorage.setItem("Ymin", Ymin)
       localStorage.setItem("ZoomScale", Math.min(1500/(Xmax-Xmin),750/(Ymax-Ymin)))
 
-      if (localStorage.getItem("Tutorial_ConstructionArea") !== "Done"){
-      
+      if ((localStorage.getItem("Tutorial_ConstructionArea") !== "Done") && (((localStorage.getItem("Mode") == "Upload") && (localStorage.getItem("Tutorial_Upload") !== "Done")) || (((localStorage.getItem("Mode") == "Outline") && (localStorage.getItem("Tutorial_Outline") !== "Done"))))){
+      // if (localStorage.getItem("Tutorial_ConstructionArea") !== "Done"){
+
         document.getElementById('2-8-17').style.display = "none"
 
         document.getElementById('2-8-8').style.display = ""
@@ -224,7 +225,7 @@ class Layer{
         },3000)
       }
 
-      else {
+      else if (localStorage.getItem("Tutorial_Setscale") == "Done") {
         document.getElementById('Outine Interest Area1').style.display = "none"
         document.getElementById('Outine Interest Area2').style.display = ""
   
@@ -242,6 +243,10 @@ class Layer{
   
         document.getElementById('Generate1').style.display = "none"
         document.getElementById('Generate2').style.display = ""
+      }
+
+      else if (((localStorage.getItem("Mode") == "Upload") && (localStorage.getItem("Tutorial_Upload") == "Done")) || (((localStorage.getItem("Mode") == "Outline") && (localStorage.getItem("Tutorial_Outline") == "Done")))){
+        localStorage.setItem("Tutorial_ConstructionArea", "Done")
       }
     }
     return { updatedState: state };

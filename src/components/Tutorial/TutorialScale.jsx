@@ -33,7 +33,6 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("Circle2").style.display = "none"
         document.getElementById("Line").style.display = "none"
         DrawingScale()
-
     }
 
     const MeasureOk = event => {
@@ -67,10 +66,32 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
         document.getElementById("SetScaleSuccessRectangular").style.display = "";
 
+
+        if ((localStorage.getItem("Tutorial_ConstructionArea") == "Done") && (((localStorage.getItem("Mode") == "Upload") && (localStorage.getItem("Tutorial_Upload") == "Done")) || (((localStorage.getItem("Mode") == "Outline") && (localStorage.getItem("Tutorial_Outline") == "Done"))))){
+        // if ((localStorage.getItem("Tutorial_ConstructionArea") == "Done")) {
+            document.getElementById('Outine Interest Area1').style.display = "none"
+            document.getElementById('Outine Interest Area2').style.display = ""
+      
+            document.getElementById('Place Obstacle Area1').style.display = "none"
+            document.getElementById('Place Obstacle Area2').style.display = ""
+      
+            document.getElementById('Place no-camera area1').style.display = "none"
+            document.getElementById('Place no-camera area2').style.display = ""
+      
+            document.getElementById('Place must-cover area1').style.display = "none"
+            document.getElementById('Place must-cover area2').style.display = ""
+      
+            document.getElementById('Camera Tool1').style.display = "none"
+            document.getElementById('Camera Tool2').style.display = ""
+      
+            document.getElementById('Generate1').style.display = "none"
+            document.getElementById('Generate2').style.display = ""
+        }
+
         setTimeout( function () {
             document.getElementById("SetScaleSuccessRectangular").style.display = "none";
             localStorage.setItem("Tutorial_Setscale", "Done")
-            if ((localStorage.getItem("Tutorial_ConstructionArea") !== "Done") && (localStorage.getItem("Mode") == "Upload")){
+            if ((localStorage.getItem("Tutorial_ConstructionArea") !== "Done") && (localStorage.getItem("Mode") == "Upload") && (localStorage.getItem("Tutorial_Upload") !== "Done")){
                 document.getElementById('Outline Construction Area1').style.display = "none"
                 document.getElementById('Outline Construction Area2').style.display = ""
                 document.getElementById('2-8-1').style.display = ""
@@ -88,7 +109,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             }
 
 
-            else if ((localStorage.getItem("Tutorial_InterestArea") !== "Done") && (localStorage.getItem("Mode") == "Outline")){
+            else if ((localStorage.getItem("Tutorial_InterestArea") !== "Done") && (localStorage.getItem("Mode") == "Outline") && (localStorage.getItem("Tutorial_Outline") !== "Done")){
                 document.getElementById('Outine Interest Area1').style.display = "none"
                 document.getElementById('Outine Interest Area2').style.display = ""
                 document.getElementById('3-8-1').style.display = ""
@@ -104,14 +125,22 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 document.getElementById('overlay_bottom_2').style.display = ""
             }
 
-            if (localStorage.getItem("Mode") == "Outline"){
-                var PlanJs = state.scene.toJS()
-                var ScaleProperty = PlanJs.layers.layer1.items.xFAw434Nm.properties
-                var PointDistance = ((ScaleProperty.x1 - ScaleProperty.x2)**2 + (ScaleProperty.y1 - ScaleProperty.y2)**2)**0.5
-                var DistanceValue = localStorage.getItem("ScaleValue")
-                var OutlineScale = (DistanceValue*10)/PointDistance
-                localStorage.setItem("Scale", OutlineScale)
-            }
+            // if (localStorage.getItem("Mode") == "Outline"){
+            //     var PlanJs = state.scene.toJS()
+            //     var ScaleProperty = PlanJs.layers.layer1.items.xFAw434Nm.properties
+            //     var PointDistance = ((ScaleProperty.x1 - ScaleProperty.x2)**2 + (ScaleProperty.y1 - ScaleProperty.y2)**2)**0.5
+            //     var DistanceValue = localStorage.getItem("ScaleValue")
+            //     var OutlineScale = (DistanceValue*10)/PointDistance
+            //     localStorage.setItem("Scale", OutlineScale)
+            // }
+
+            var PlanJs = state.scene.toJS()
+            var ScaleProperty = PlanJs.layers.layer3.items.xFAw434Nm.properties
+            var PointDistance = ((ScaleProperty.x1 - ScaleProperty.x2)**2 + (ScaleProperty.y1 - ScaleProperty.y2)**2)**0.5
+            var DistanceValue = localStorage.getItem("ScaleValue")
+            var OutlineScale = (DistanceValue*10)/PointDistance
+            localStorage.setItem("Scale", OutlineScale)
+
         },3000);
 
     }

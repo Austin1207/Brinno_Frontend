@@ -1,4 +1,4 @@
-export function loadimgjson2 (loadImageUrl, jsonleft, top) {
+export function loadimgjson2 (loadImageUrl, loadImageUrl2, jsonleft, top) {
     var loadjson = {
         "unit": "m",
         "layers": {
@@ -8,6 +8,83 @@ export function loadimgjson2 (loadImageUrl, jsonleft, top) {
                 "order": 0,
                 "opacity": 1,
                 "name": "default",
+                "visible": true,
+                "vertices": {},
+                "lines": {},
+                "holes": {},
+                "areas": {},
+                "items": {
+                    "xFAw434Ns": {
+                        "id": "xFAw434Ns",
+                        "type": "image",
+                        "prototype": "items",
+                        "name": "Image",
+                        "misc": {},
+                        "selected": false,
+                        "properties": {
+                            "imageUri": loadImageUrl2,
+                            // "x1": 400,
+                            // "y1": 315,
+                            // "x2": 500,
+                            // "y2": 315,
+                            "x1": 837.4240654477823,
+                            "y1": 1018.290005260071,
+                            "x2": 500,
+                            "y2": 315,
+                            "distance": {
+                                "length": 7800.460444371345
+                            },
+                            // "width": 891,
+                            // "height": 630
+                            "width": 960,
+                            "height": 540,
+                        },
+                        "visible": true,
+                        // "x": 479.709994739929,
+                        // "y": 1629.5759345522179,
+                        // "x": jsonleft+750,
+                        // "y": 1350-top,
+                        "x": jsonleft+15000,
+                        "y": 10350-top,
+                        "rotation": 90
+                    },
+                },
+                "selected": {
+                    "vertices": [],
+                    "lines": [],
+                    "holes": [],
+                    "areas": [],
+                    "items": []
+                }
+            },
+
+            "layer2": {
+                "id": "layer2",
+                "altitude": 0,
+                "order": 0,
+                "opacity": 1,
+                "name": "default2",
+                "visible": true,
+                "vertices": {},
+                "lines": {},
+                "holes": {},
+                "areas": {},
+                "items": {},
+                "selected": {
+                    "vertices": [],
+                    "lines": [],
+                    "holes": [],
+                    "areas": [],
+                    "items": []
+                }
+            },
+
+            "layer3": {
+                "id": "layer3",
+                "altitude": 0,
+                "order": 0,
+                "opacity": 1,
+                "name": "default3",
                 "visible": true,
                 "vertices": {},
                 "items": {
@@ -33,8 +110,8 @@ export function loadimgjson2 (loadImageUrl, jsonleft, top) {
                             },
                             // "width": 891,
                             // "height": 630
-                            "width": 960,
-                            "height": 540
+                            "width": 0.0000096,
+                            "height": 0.0000054,
                         },
                         "visible": true,
                         // "x": 479.709994739929,
@@ -43,8 +120,9 @@ export function loadimgjson2 (loadImageUrl, jsonleft, top) {
                         // "y": 1350-top,
                         "x": jsonleft+15000,
                         "y": 10350-top,
-                        "rotation": 90
+                        "rotation": 0
                     }
+
                 },
                 "lines": {},
                 "holes": {},
@@ -57,27 +135,6 @@ export function loadimgjson2 (loadImageUrl, jsonleft, top) {
                     "items": []
                 }
             },
-
-            "layer2": {
-                "id": "layer2",
-                "altitude": 0,
-                "order": 0,
-                "opacity": 1,
-                "name": "default",
-                "visible": true,
-                "vertices": {},
-                "lines": {},
-                "holes": {},
-                "areas": {},
-                "items": {},
-                "selected": {
-                    "vertices": [],
-                    "lines": [],
-                    "holes": [],
-                    "areas": [],
-                    "items": []
-                }
-            }
 
         },
         "grids": {

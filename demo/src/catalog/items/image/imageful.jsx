@@ -80,7 +80,6 @@ export default class ImageFul extends Component {
           document.getElementById('1-8-12').style.display = "none"
           document.getElementById('1-8-13').style.display = "none"
           document.getElementById('1-8-14').style.display = "none"
-
         }
         else if (target.attributes.name.nodeValue === 'snd-anchor') {
           this.setState({handleMouseMove2: !this.state.handleMouseMove2});

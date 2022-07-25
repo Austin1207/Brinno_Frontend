@@ -19,6 +19,10 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SettingButton from './settingbutton';
 
+// import { ReactSVGPanZoom, TOOL_NONE, TOOL_PAN, TOOL_ZOOM_IN, TOOL_ZOOM_OUT, TOOL_AUTO } from 'react-svg-pan-zoom';
+import { fitToViewer } from 'react-svg-pan-zoom';
+
+
 import '@babel/polyfill'; //for async
 // const options = [
 //   {name: 'Zoom to Content', do: ZoomScale5},
@@ -71,8 +75,8 @@ const IconSetting = createSvgIcon(
 export default function BottomButtonGroup({projectActions, sceneActions, itemsActions, state, viewer2DActions}){
 
   const ImageLayerMode = event => {
-    sceneActions.selectLayer("layer1")
-    itemsActions.selectItem("layer1", "xFAw434Nm");
+    sceneActions.selectLayer("layer3")
+    itemsActions.selectItem("layer3", "xFAw434Nm");
     }
 
   //畫Scale
@@ -85,12 +89,13 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
   const DrawingScale = event => {
     var Circle1 = document.getElementById("Circle1")
     CircleMove(Circle1);
+    console.log(Circle1)
     }
 
   async function SetScale() {
 
     const json = state.get('scene').toJS();
-    const PicInJson = json["layers"]["layer1"]["items"]["xFAw434Nm"];
+    const PicInJson = json["layers"]["layer3"]["items"]["xFAw434Nm"];
 
     if ( PicInJson != undefined ) {
       projectActions.unselectAll();
@@ -104,7 +109,8 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
       document.getElementById('Setting2').style.display = ""
 
       // if ((localStorage.getItem("Mode") == "Upload") && localStorage.getItem("Tutorial_Setscale") !== "Done" ) { 
-      if ( localStorage.getItem("Tutorial_Setscale") !== "Done" ) { 
+
+      if (( localStorage.getItem("Tutorial_Setscale") !== "Done" ) && ( localStorage.getItem("Tutorial_ObstacleArea") !== "Done" )) { 
         
         document.getElementById('1-8-1').style.display = "none"
         document.getElementById('1-8-2').style.display = "none"
@@ -133,21 +139,8 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
   }
 
   function test1234() {
-    // console.log("123")
-    // console.log(document.getElementById("Cameras_count"))
-    // document.getElementById("totalCoverage").innerHTML = String(50);
-    // console.log("123")
-    // console.log(state.zoom)
-    // viewer2DActions.selectToolZoomIn()
-    // projectActions.updateZoomScale(0.5)
-    // console.log(state.zoom)
-    // console.log(viewer2DActions.updateCameraView)
-    var ZoomScaleJson = state.viewer2D.toJS()
-    // ZoomScaleJson.a = 0.5
-    // ZoomScaleJson.d = 0.5
-    // viewer2DActions.updateCameraView(ZoomScaleJson)
-    // console.log(state.scene.toJS().layers.layer1.items.xFAw434Nm.properties)
-    console.log(ZoomScaleJson)
+    // fitToViewer(400,400)
+    console.log("test")
   }
 
   function undotest() {
@@ -170,81 +163,6 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
     console.log("Setting")
   }
 
-  function ColorTest1() {
-    localStorage.setItem("AreaLegend_Backgorund1","#ffffff")
-    localStorage.setItem("AreaLegend_Icon_Open","#222222")
-    localStorage.setItem("AreaLegend_Icon_Close","#222222")
-    localStorage.setItem("AreaLegend_Word","#222222")
-
-    OpenAreaLegend()
-
-    setTimeout(() => {
-      document.getElementById("IconConstructionLine_Dark").style.display = "none"
-      document.getElementById("IconObstacleLine_Dark").style.display = "none"
-      document.getElementById("IconNoCamLine_Dark").style.display = "none"
-      document.getElementById("IconMustLine_Dark").style.display = "none"
-      document.getElementById("IconConstructionLine_Light").style.display = ""
-      document.getElementById("IconObstacleLine_Light").style.display = ""
-      document.getElementById("IconNoCamLine_Light").style.display = ""
-      document.getElementById("IconMustLine_Light").style.display = ""
-  
-      document.getElementById("AreaLegend_Background2").style.backgroundColor = "#ffffff"
-  
-      document.getElementById("IconConstructionLine_Word").style.color = "#222222"
-      document.getElementById("IconInterestLine_Word").style.color = "#222222"
-      document.getElementById("IconObstacleLine_Word").style.color = "#222222"
-      document.getElementById("IconNoCamLine_Word").style.color = "#222222"
-      document.getElementById("IconMustLine_Word").style.color = "#222222"
-
-  
-      localStorage.setItem("ColorMode","Light")
-      sceneActions.selectLayer("layer1")
-      itemsActions.selectItem("layer1", "xFAw434Nm");
-    }, 200)
-
-    setTimeout(() => {
-      projectActions.unselectAll();
-      sceneActions.selectLayer("layer2");
-    }, 250)
-  }
-
-  function ColorTest2() {
-    localStorage.setItem("AreaLegend_Backgorund1","#222222")
-    localStorage.setItem("AreaLegend_Icon_Open","#ffffff")
-    localStorage.setItem("AreaLegend_Icon_Close","#ffffff")
-    localStorage.setItem("AreaLegend_Word","#ffffff")
-
-    OpenAreaLegend()
-
-    setTimeout(() => {
-      document.getElementById("IconConstructionLine_Light").style.display = "none"
-      document.getElementById("IconObstacleLine_Light").style.display = "none"
-      document.getElementById("IconNoCamLine_Light").style.display = "none"
-      document.getElementById("IconMustLine_Light").style.display = "none"
-      document.getElementById("IconConstructionLine_Dark").style.display = ""
-      document.getElementById("IconObstacleLine_Dark").style.display = ""
-      document.getElementById("IconNoCamLine_Dark").style.display = ""
-      document.getElementById("IconMustLine_Dark").style.display = ""
-  
-      document.getElementById("AreaLegend_Background2").style.backgroundColor = "#222222"
-  
-      document.getElementById("IconConstructionLine_Word").style.color = "#ffffff"
-      document.getElementById("IconInterestLine_Word").style.color = "#ffffff"
-      document.getElementById("IconObstacleLine_Word").style.color = "#ffffff"
-      document.getElementById("IconNoCamLine_Word").style.color = "#ffffff"
-      document.getElementById("IconMustLine_Word").style.color = "#ffffff"
-  
-      localStorage.setItem("ColorMode","Dark")
-      sceneActions.selectLayer("layer1")
-      itemsActions.selectItem("layer1", "xFAw434Nm");
-    }, 200)
-
-    setTimeout(() => {
-      projectActions.unselectAll();
-      sceneActions.selectLayer("layer2");
-    }, 250)
-  }
-
   const ClickAreaLegend = (AreaLegend) => {
     var e = document.createEvent("MouseEvents");
     e.initEvent("click", true, true);
@@ -257,16 +175,6 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
       ClickAreaLegend(AreaLegendClick);
       }
     }
-
-  function ScaleSet1() {
-    localStorage.setItem("Unit", "m")
-    localStorage.setItem("UnitName", "Meters")
-  }
-
-  function ScaleSet2() {
-    localStorage.setItem("Unit", "ft")
-    localStorage.setItem("UnitName", "Feets")
-  }
 
   const ZoomScale = (scale)=>{
     let ZoomScaleJson = state.viewer2D.toJS();

@@ -10,6 +10,48 @@ export function loadimgjson3 (loadImageUrl, jsonleft, top) {
                 "name": "default",
                 "visible": true,
                 "vertices": {},
+                "lines": {},
+                "holes": {},
+                "areas": {},
+                "items": {},
+                "selected": {
+                    "vertices": [],
+                    "lines": [],
+                    "holes": [],
+                    "areas": [],
+                    "items": []
+                }
+            },
+
+            "layer2": {
+                "id": "layer2",
+                "altitude": 0,
+                "order": 0,
+                "opacity": 1,
+                "name": "default2",
+                "visible": true,
+                "vertices": {},
+                "lines": {},
+                "holes": {},
+                "areas": {},
+                "items": {},
+                "selected": {
+                    "vertices": [],
+                    "lines": [],
+                    "holes": [],
+                    "areas": [],
+                    "items": []
+                }
+            },
+
+            "layer3": {
+                "id": "layer3",
+                "altitude": 0,
+                "order": 0,
+                "opacity": 1,
+                "name": "default3",
+                "visible": true,
+                "vertices": {},
                 "items": {
                     "xFAw434Nm": {
                         "id": "xFAw434Nm",
@@ -43,7 +85,7 @@ export function loadimgjson3 (loadImageUrl, jsonleft, top) {
                         // "y": 1350-top,
                         "x": jsonleft+15000,
                         "y": 10350-top,
-                        "rotation": 90
+                        "rotation": 0
                     }
                 },
                 "lines": {},
@@ -57,27 +99,6 @@ export function loadimgjson3 (loadImageUrl, jsonleft, top) {
                     "items": []
                 }
             },
-
-            "layer2": {
-                "id": "layer2",
-                "altitude": 0,
-                "order": 0,
-                "opacity": 1,
-                "name": "default",
-                "visible": true,
-                "vertices": {},
-                "lines": {},
-                "holes": {},
-                "areas": {},
-                "items": {},
-                "selected": {
-                    "vertices": [],
-                    "lines": [],
-                    "holes": [],
-                    "areas": [],
-                    "items": []
-                }
-            }
 
         },
         "grids": {
@@ -98,7 +119,7 @@ export function loadimgjson3 (loadImageUrl, jsonleft, top) {
                 }
             }
         },
-        "selectedLayer": "layer1",
+        "selectedLayer": "layer3",
         "groups": {},
         "width": 30000,
         "height": 20000,
