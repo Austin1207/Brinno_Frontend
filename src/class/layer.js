@@ -205,6 +205,11 @@ class Layer{
       localStorage.setItem("Ymin", Ymin)
       localStorage.setItem("ZoomScale", Math.min(1500/(Xmax-Xmin),750/(Ymax-Ymin)))
 
+      const ShowSecTurtorial = () => {
+        document.getElementById('2nd_Tutorial_Rectangular').style.display = ""
+        document.getElementById('2nd_Tutorial_Word').style.display = ""
+      } 
+
       if ((localStorage.getItem("Tutorial_ConstructionArea") !== "Done") && (((localStorage.getItem("Mode") == "Upload") && (localStorage.getItem("Tutorial_Upload") !== "Done")) || (((localStorage.getItem("Mode") == "Outline") && (localStorage.getItem("Tutorial_Outline") !== "Done"))))){
       // if (localStorage.getItem("Tutorial_ConstructionArea") !== "Done"){
 
@@ -243,6 +248,8 @@ class Layer{
   
         document.getElementById('Generate1').style.display = "none"
         document.getElementById('Generate2').style.display = ""
+
+        ShowSecTurtorial();
       }
 
       else if (((localStorage.getItem("Mode") == "Upload") && (localStorage.getItem("Tutorial_Upload") == "Done")) || (((localStorage.getItem("Mode") == "Outline") && (localStorage.getItem("Tutorial_Outline") == "Done")))){

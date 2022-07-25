@@ -98,6 +98,19 @@
   color:#ffffff
 }
 
+.info {
+  width: 282px;
+  height: 35px;
+  /* display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start; */
+  /* gap: 14px; */
+  /* padding: 9px 35px; */
+  border-radius: 8px;
+  background-color: #222222;
+}
+
 /* polygon */
 .Polygon-3 {
 width: 0;
@@ -523,6 +536,31 @@ color: #ffa140;
   letter-spacing: normal;
   text-align: left;
   color: #ffffff;
+}
+
+.Scale-successfully-adjusted {
+  width: 260px;
+  height: 17px;
+  flex-grow: 0;
+  font-family: "SF Pro Display";
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  /* text-align: left; */
+  color: #ffffff;
+}
+
+.Scale-successfully-adjusted .text-style-1 {
+  color: #ff8200;
+  text-decoration: underline;
+  cursor: url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer;
+}
+
+.Scale-successfully-adjusted .text-style-2 {
+  cursor: url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer;
 }
 
 /* picture */

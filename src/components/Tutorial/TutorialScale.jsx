@@ -12,6 +12,11 @@ import { Layers } from 'three';
 
 const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}) => {
 
+    const ShowSecTurtorial = () => {
+        document.getElementById('2nd_Tutorial_Rectangular').style.display = ""
+        document.getElementById('2nd_Tutorial_Word').style.display = ""
+      } 
+
     const MeasureBack = event => {
         document.getElementById("sidebar").style.display = "none";
 
@@ -86,6 +91,10 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
       
             document.getElementById('Generate1').style.display = "none"
             document.getElementById('Generate2').style.display = ""
+
+            document.getElementById("SetScaleSuccessRectangular").style.display = "none";
+
+            ShowSecTurtorial();
         }
 
         setTimeout( function () {
@@ -789,6 +798,45 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("TutorialScaleMeasureUnit_Meters").style.display = "none"
         document.getElementById("TutorialScaleMeasureUnit_Black3").style.display = "none"
         document.getElementById("TutorialScaleMeasureUnit_Feets").style.display = "none"
+    }
+
+    const SecTutorial = () => {
+        localStorage.setItem("Tutorial_InterestArea", "Undone");
+        localStorage.setItem("Tutorial_ObstacleArea", "Undone");
+        localStorage.setItem("Tutorial_NoCameraArea", "Undone");
+        localStorage.setItem("Tutorial_MustCoverArea", "Undone");
+        localStorage.setItem("Tutorial_CameraTool_1", "Undone");
+        localStorage.setItem("Tutorial_CameraTool_2", "Undone");
+        localStorage.setItem("Tutorial_CameraTool_3", "Undone");
+        localStorage.setItem("Tutorial_CameraTool_4", "Undone");
+        localStorage.setItem("Tutorial_CameraTool_5", "Undone");
+        localStorage.setItem("Tutorial_Generate", "Undone");
+        localStorage.setItem("Tutorial_ObstacleArea_LineDetect", "Undone")
+        localStorage.setItem("Tutorial_Generate_Detect_1", "Undone")
+        localStorage.setItem("Tutorial_Generate_Detect_2", "Undone")
+
+        document.getElementById('3-8-1').style.display = ""
+        document.getElementById('3-8-2').style.display = ""
+        document.getElementById('3-8-3').style.display = ""
+        document.getElementById('3-8-4').style.display = ""
+        document.getElementById('3-8-5').style.display = ""
+        document.getElementById('3-8-6').style.display = ""
+        document.getElementById('3-8-7').style.display = ""
+        document.getElementById('overlay_left').style.display = ""
+        document.getElementById('overlay_right').style.display = ""
+        document.getElementById('overlay_top_2').style.display = ""
+        document.getElementById('overlay_bottom_2').style.display = ""
+
+        document.getElementById('Outine Interest Area1').style.display = "none"
+        document.getElementById('Outine Interest Area2').style.display = ""
+
+        document.getElementById('2nd_Tutorial_Rectangular').style.display = "none"
+        document.getElementById('2nd_Tutorial_Word').style.display = "none"
+    }
+
+    const CloseSecTurtorial = () => {
+        document.getElementById('2nd_Tutorial_Rectangular').style.display = "none"
+        document.getElementById('2nd_Tutorial_Word').style.display = "none"
     }
 
     return(
@@ -2617,6 +2665,36 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             }}>
                 Yes
             </button>
+
+
+            <div id="2nd_Tutorial_Rectangular" class="info" style = {{
+                position: "absolute",
+                left: (left-282)/2,
+                top: "89.5px",
+                zIndex: 10002,
+                display: "none"
+            }}>
+            </div>
+
+            <span id = "2nd_Tutorial_Word" class="Scale-successfully-adjusted" style = {{
+                position: "absolute",
+                top: "98.5px",
+                left: ((left-282)/2) + 35,
+                zIndex: 10002,
+                display: "none"
+            }}>
+                Tutorial mode can be turned on&nbsp;
+                <span class="text-style-1" onClick = {SecTutorial}>
+                here
+                </span>.&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <span class="text-style-2" onClick = {CloseSecTurtorial}>
+                ✖
+                </span>
+
+            </span>
+
+
 
 
 
