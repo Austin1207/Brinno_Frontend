@@ -73,7 +73,7 @@ export default class FormNumberInput extends Component {
 
     if (this.state.focus) numericInputStyle.border = `1px solid ${SharedStyle.SECONDARY_COLOR.main}`;
 
-    let regexp = new RegExp(`^-?([0-9]+)?\\.?([0-9]{0,${precision}})?$`);
+    let regexp = new RegExp(`^-?([0-9]{1,3})?\\.?([0-9]{0,${precision}})?$`);
 
     if (!isNaN(min) && isFinite(min) && this.state.showedValue < min) this.setState({ showedValue: min }); // value = min;
     if (!isNaN(max) && isFinite(max) && this.state.showedValue > max) this.setState({ showedValue: max }); // value = max;
@@ -118,10 +118,10 @@ export default class FormNumberInput extends Component {
           onFocus={e => this.setState({ focus: true })}
           onBlur={e => this.setState({ focus: false })}
           onKeyDown={e => {
-            var keyCode = e.keyCode || e.which;
-            if ((keyCode == KEYBOARD_BUTTON_CODE.ENTER || keyCode == KEYBOARD_BUTTON_CODE.TAB) && different) {
-              saveFn(e);
-            }
+            // var keyCode = e.keyCode || e.which;
+            // if ((keyCode == KEYBOARD_BUTTON_CODE.ENTER || keyCode == KEYBOARD_BUTTON_CODE.TAB) && different) {
+            //   saveFn(e);
+            // }
           }}
           placeholder={placeholder}
         />
