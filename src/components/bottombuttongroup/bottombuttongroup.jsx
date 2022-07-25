@@ -89,7 +89,6 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
   const DrawingScale = event => {
     var Circle1 = document.getElementById("Circle1")
     CircleMove(Circle1);
-    console.log(Circle1)
     }
 
   async function SetScale() {
