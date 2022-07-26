@@ -10,6 +10,7 @@ import { elementsToDisplay } from '../topbar/elementstodisplay';
 import CatalogChangeItem from '../catalog-view/catalog-changeitem';
 import Visibility_Polygon from './visibility-polygon';
 import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import Menu from '@mui/material/Menu';
@@ -179,7 +180,7 @@ export default function Viewer2D(
   };
    item button */
   /* camera coverage button*/
-  const buttonsStyle = { position: 'absolute', textTransform: 'none', width: '210px', height: '36px', justifyContent: 'flex-start', padding: '6px',
+  const buttonsStyle = { /*position: 'absolute', */textTransform: 'none', width: '210px', height: '36px', justifyContent: 'flex-start', padding: '6px',
         backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}};
   const buttonsInuseStyle = { position: 'absolute', textTransform: 'none', width: '210px', height: '36px', justifyContent: 'flex-start', padding: '6px',
         backgroundColor: '#FFFFFF', color: '#ff8200', "&:hover": {backgroundColor: '#ff8200', color: '#ffffff'}};
@@ -440,7 +441,10 @@ export default function Viewer2D(
 
   return (
     // Control Dragging line and put camera cursor
-    <div style={{
+    <div>
+    <div 
+      id="view"
+      style={{
       margin: 0,
       padding: 0,
       display: 'grid',
@@ -455,33 +459,6 @@ export default function Viewer2D(
     }}
     //onContextMenu={handleContextMenu}
     >
-{/*      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-        PaperProps={{ style: { height: "90vh", top: 68.5 } }}
-        variant="persistent"
-        anchor="left"
-        open={open}>            
-        <IconButton onClick={handleDrawerClose}>
-          <ChevronLeftIcon />
-        </IconButton>        
-        <Divider />
-        {
-          info && !type &&
-          <Typography>
-            Info
-          </Typography>
-        }
-        {
-          type && elementsToDisplay.map(elem => <CatalogChangeItem key={elem.name} element={elem} state={state}/>)
-        }
-      </Drawer>*/}
       <div style={{ gridColumn: 1, gridRow: 1, backgroundColor: rulerBgColor }}></div>
       <div style={{ gridRow: 1, gridColumn: 2, position: 'relative', overflow: 'hidden' }} id="rulerX">
       { sceneWidth ? <RulerX
@@ -544,21 +521,76 @@ export default function Viewer2D(
         </svg>
 
       </ReactSVGPanZoom>
-      <Button variant="contained" 
-        sx={{...(buttonsStyle), top: 24, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
+{/*      <Collapse in={openLegend} timeout="auto" unmountOnExit>
+        <Paper sx={{ top: 39+36+36, right: 41, zIndex: '999'}}>
+          <List component="div" disablePadding >
+            <ListItem>
+              <ListItemIcon>
+              </ListItemIcon>
+              <ListItemText primary='Construction Area' primaryTypographyProps={{fontSize: '10px'}} />
+            </ListItem>
+          </List>
+        </Paper>
+        </Collapse>*/}
+{/*      <Menu
+        open={contextMenu}
+        onClose={handleContextMenuClose}
+        anchorReference="anchorPosition"
+        anchorPosition={
+          { top: cursorPositionY, left: cursorPositionX }
+        }
+      >
+        <MenuItem onClick={handleInfo}>Info</MenuItem>
+        <MenuItem onClick={handleClickDelete}>Delete</MenuItem>
+        <MenuItem onClick={handleType}>Change</MenuItem>
+      </Menu>*/}
+    </div>
+    <div>
+      {/* <Button variant="contained" 
+        sx={{...(buttonsStyle), top: 24+70, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
         onClick={handleCoverageButton}>
         {openCoverage ? <VisibilityIcon sx={{paddingRight: '6px'}}/> : <VisibilityOffIcon sx={{paddingRight: '6px'}}/>}
         <Divider orientation="vertical" flexItem={true}/>
         <Typography sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Camera Coverage</Typography>
-      </Button>
-      <Button variant="contained" id="AreaLegend_Button"
+      </Button> */}
+      <ButtonGroup variant="contained" aria-label="camera coverage"
+            sx={{ position: 'absolute', top: 24+70, right: 41}}
+            >
+          <Button
+            sx={{...(buttonsStyle), width: '36px', height: '36px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
+            onClick={handleCoverageButton}
+            >
+              {openCoverage ? <VisibilityIcon /> : <VisibilityOffIcon />}
+            </Button>
+          <Button 
+            sx={{...(buttonsStyle), width: '174px', height: '36px', "&:disabled": {backgroundColor: '#FFFFFF', color: '#222222'}}}
+            disabled>
+            Camera Coverage
+          </Button>
+      </ButtonGroup>
+      {/* <Button variant="contained" id="AreaLegend_Button"
         style={{backgroundColor:AreaLegendbackgroundColor}}
-        sx={{...(buttonsStyle), top: 39+36, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
+        sx={{...(buttonsStyle), top: 39+36+70, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
         onClick={handleLegendButton}>
         {openLegend ? <ExpandLess style={{color:AreaLegendIconOpenColor}} sx={{paddingRight: '6px'}}/> : <ExpandMore style={{color:AreaLegendIconCloseColor}} sx={{paddingRight: '6px'}}/>}
         <Divider orientation="vertical" flexItem={true}/>
         <Typography style = {{color:AreaLegendWordColor}} sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Area Legend</Typography>
-      </Button>
+      </Button> */}
+      <ButtonGroup variant="contained" aria-label="camera coverage"
+            sx={{ position: 'absolute', top: 39+36+70, right: 41}}
+            >
+          <Button
+            sx={{...(buttonsStyle), width: '36px', height: '36px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
+            onClick={handleLegendButton}
+            >
+              {openLegend ? <ExpandLess style={{color:AreaLegendIconOpenColor}} /> : <ExpandMore style={{color:AreaLegendIconCloseColor}} />}
+            </Button>
+          <Button 
+            sx={{...(buttonsStyle), width: '174px', height: '36px', "&:disabled": {backgroundColor: '#FFFFFF', color: '#222222'}}}
+            disabled>
+            Area Legend
+          </Button>
+      </ButtonGroup>
       <Popper open={openLegend} anchorEl={anchorEl} placement='bottom-start' transition>
         {({ TransitionProps }) => (
           <Fade id="AreaLegend_Background2" {...TransitionProps} timeout={350}>
@@ -596,29 +628,7 @@ export default function Viewer2D(
           </Fade>
         )}
       </Popper>
-{/*      <Collapse in={openLegend} timeout="auto" unmountOnExit>
-        <Paper sx={{ top: 39+36+36, right: 41, zIndex: '999'}}>
-          <List component="div" disablePadding >
-            <ListItem>
-              <ListItemIcon>
-              </ListItemIcon>
-              <ListItemText primary='Construction Area' primaryTypographyProps={{fontSize: '10px'}} />
-            </ListItem>
-          </List>
-        </Paper>
-        </Collapse>*/}
-{/*      <Menu
-        open={contextMenu}
-        onClose={handleContextMenuClose}
-        anchorReference="anchorPosition"
-        anchorPosition={
-          { top: cursorPositionY, left: cursorPositionX }
-        }
-      >
-        <MenuItem onClick={handleInfo}>Info</MenuItem>
-        <MenuItem onClick={handleClickDelete}>Delete</MenuItem>
-        <MenuItem onClick={handleType}>Change</MenuItem>
-      </Menu>*/}
+    </div>
     </div>
   );
 }

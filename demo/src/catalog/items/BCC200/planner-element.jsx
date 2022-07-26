@@ -356,7 +356,8 @@ export default {
     title: 'BCC200',
     description: '1080P 112°',
     fov: '112',
-    image: require('./BCC200.png')
+    image: require('./BCC200.png'),
+    distance: '1000',
   },
   properties: {
     color: {

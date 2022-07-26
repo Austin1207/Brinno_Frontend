@@ -26,7 +26,7 @@ class Item{
       type,
       fov:  NameGenerator.generateName('items', state.catalog.getIn(['elements', type, 'info', 'fov'])),
       battery: '',
-      distance: '',
+      distance: NameGenerator.generateName('items', state.catalog.getIn(['elements', type, 'info', 'distance'])),
       price: '',
       coverage: '',
       height,
