@@ -110,16 +110,16 @@ export function loadimgjson2 (loadImageUrl, loadImageUrl2, jsonleft, top) {
                             },
                             // "width": 891,
                             // "height": 630
-                            "width": 0.0000096,
-                            "height": 0.0000054,
+                            "width": 0.00000000000000000000096,
+                            "height": 0.00000000000000000000054
                         },
                         "visible": true,
                         // "x": 479.709994739929,
                         // "y": 1629.5759345522179,
                         // "x": jsonleft+750,
                         // "y": 1350-top,
-                        "x": jsonleft+15000,
-                        "y": 10350-top,
+                        "x": jsonleft+15000+10000,
+                        "y": 10350-top+10000,
                         "rotation": 0
                     }
 

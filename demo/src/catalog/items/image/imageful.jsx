@@ -68,8 +68,10 @@ export default class ImageFul extends Component {
     if (target.nodeName === 'circle') {
       if (target.attributes.name) {
         if (target.attributes.name.nodeValue === 'fst-anchor') {
-          this.setState({handleMouseMove1: !this.state.handleMouseMove1});
-          this.setState({handleMouseMove2: !this.state.handleMouseMove2})
+          // this.setState({handleMouseMove1: !this.state.handleMouseMove1});
+          // this.setState({handleMouseMove2: !this.state.handleMouseMove2})
+          this.setState({handleMouseMove1: false});
+          this.setState({handleMouseMove2: true})
 
           let dist = pointsDistance(0,0,1,1);
           this.context.projectActions.setProperties(new Map({x2: this.props.x1+1, y2: this.props.y1+1, distance: new Map({length: dist})}));

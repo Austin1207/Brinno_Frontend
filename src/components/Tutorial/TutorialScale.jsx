@@ -907,6 +907,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             <button id = "TutorialScaleMeasureUnit" onClick = {Unit_Show} style = {{            
                 position: "absolute",
                 backgroundImage: "url('https://example-img.s3.ap-northeast-1.amazonaws.com/area_legend.png')",
+                cursor:'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
                 top: "347px",
                 left: ((left-431)/2) + 361,
                 border:"none",
