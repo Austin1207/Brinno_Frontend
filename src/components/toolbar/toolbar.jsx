@@ -337,7 +337,8 @@ export default class Toolbar extends Component {
 
       localStorage.setItem("DrawingTool", "ConstructionArea")
 
-      if (localStorage.getItem("Tutorial_ConstructionArea") !== "Done"){
+      if ((localStorage.getItem("Tutorial_ConstructionArea") !== "Done") && (((localStorage.getItem("Mode") == "Upload") && (localStorage.getItem("Tutorial_Upload") !== "Done")) || (((localStorage.getItem("Mode") == "Outline") && (localStorage.getItem("Tutorial_Outline") !== "Done"))))){
+      // if (localStorage.getItem("Tutorial_ConstructionArea") !== "Done"){
         document.getElementById('2-8-1').style.display = "none"
         document.getElementById('2-8-2').style.display = "none"
         document.getElementById('2-8-3').style.display = "none"

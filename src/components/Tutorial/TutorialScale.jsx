@@ -12,6 +12,11 @@ import { Layers } from 'three';
 
 const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}) => {
 
+    const ShowSecTurtorial = () => {
+        document.getElementById('2nd_Tutorial_Rectangular').style.display = ""
+        document.getElementById('2nd_Tutorial_Word').style.display = ""
+      } 
+
     const MeasureBack = event => {
         document.getElementById("sidebar").style.display = "none";
 
@@ -33,7 +38,6 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("Circle2").style.display = "none"
         document.getElementById("Line").style.display = "none"
         DrawingScale()
-
     }
 
     const MeasureOk = event => {
@@ -67,10 +71,36 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
         document.getElementById("SetScaleSuccessRectangular").style.display = "";
 
+
+        if ((localStorage.getItem("Tutorial_ConstructionArea") == "Done") && (((localStorage.getItem("Mode") == "Upload") && (localStorage.getItem("Tutorial_Upload") == "Done")) || (((localStorage.getItem("Mode") == "Outline") && (localStorage.getItem("Tutorial_Outline") == "Done"))))){
+        // if ((localStorage.getItem("Tutorial_ConstructionArea") == "Done")) {
+            document.getElementById('Outine Interest Area1').style.display = "none"
+            document.getElementById('Outine Interest Area2').style.display = ""
+      
+            document.getElementById('Place Obstacle Area1').style.display = "none"
+            document.getElementById('Place Obstacle Area2').style.display = ""
+      
+            document.getElementById('Place no-camera area1').style.display = "none"
+            document.getElementById('Place no-camera area2').style.display = ""
+      
+            document.getElementById('Place must-cover area1').style.display = "none"
+            document.getElementById('Place must-cover area2').style.display = ""
+      
+            document.getElementById('Camera Tool1').style.display = "none"
+            document.getElementById('Camera Tool2').style.display = ""
+      
+            document.getElementById('Generate1').style.display = "none"
+            document.getElementById('Generate2').style.display = ""
+
+            document.getElementById("SetScaleSuccessRectangular").style.display = "none";
+
+            ShowSecTurtorial();
+        }
+
         setTimeout( function () {
             document.getElementById("SetScaleSuccessRectangular").style.display = "none";
             localStorage.setItem("Tutorial_Setscale", "Done")
-            if ((localStorage.getItem("Tutorial_ConstructionArea") !== "Done") && (localStorage.getItem("Mode") == "Upload")){
+            if ((localStorage.getItem("Tutorial_ConstructionArea") !== "Done") && (localStorage.getItem("Mode") == "Upload") && (localStorage.getItem("Tutorial_Upload") !== "Done")){
                 document.getElementById('Outline Construction Area1').style.display = "none"
                 document.getElementById('Outline Construction Area2').style.display = ""
                 document.getElementById('2-8-1').style.display = ""
@@ -88,7 +118,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             }
 
 
-            else if ((localStorage.getItem("Tutorial_InterestArea") !== "Done") && (localStorage.getItem("Mode") == "Outline")){
+            else if ((localStorage.getItem("Tutorial_InterestArea") !== "Done") && (localStorage.getItem("Mode") == "Outline") && (localStorage.getItem("Tutorial_Outline") !== "Done")){
                 document.getElementById('Outine Interest Area1').style.display = "none"
                 document.getElementById('Outine Interest Area2').style.display = ""
                 document.getElementById('3-8-1').style.display = ""
@@ -104,14 +134,22 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 document.getElementById('overlay_bottom_2').style.display = ""
             }
 
-            if (localStorage.getItem("Mode") == "Outline"){
-                var PlanJs = state.scene.toJS()
-                var ScaleProperty = PlanJs.layers.layer1.items.xFAw434Nm.properties
-                var PointDistance = ((ScaleProperty.x1 - ScaleProperty.x2)**2 + (ScaleProperty.y1 - ScaleProperty.y2)**2)**0.5
-                var DistanceValue = localStorage.getItem("ScaleValue")
-                var OutlineScale = (DistanceValue*10)/PointDistance
-                localStorage.setItem("Scale", OutlineScale)
-            }
+            // if (localStorage.getItem("Mode") == "Outline"){
+            //     var PlanJs = state.scene.toJS()
+            //     var ScaleProperty = PlanJs.layers.layer1.items.xFAw434Nm.properties
+            //     var PointDistance = ((ScaleProperty.x1 - ScaleProperty.x2)**2 + (ScaleProperty.y1 - ScaleProperty.y2)**2)**0.5
+            //     var DistanceValue = localStorage.getItem("ScaleValue")
+            //     var OutlineScale = (DistanceValue*10)/PointDistance
+            //     localStorage.setItem("Scale", OutlineScale)
+            // }
+
+            var PlanJs = state.scene.toJS()
+            var ScaleProperty = PlanJs.layers.layer3.items.xFAw434Nm.properties
+            var PointDistance = ((ScaleProperty.x1 - ScaleProperty.x2)**2 + (ScaleProperty.y1 - ScaleProperty.y2)**2)**0.5
+            var DistanceValue = localStorage.getItem("ScaleValue")
+            var OutlineScale = (DistanceValue*10)/PointDistance
+            localStorage.setItem("Scale", OutlineScale)
+
         },3000);
 
     }
@@ -494,7 +532,6 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         xhr.send()
         xhr.onload = function(){
           var data = JSON.parse(this.responseText);
-          console.log(data)
   
           projectActions.loadProject(data)
   
@@ -504,6 +541,42 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         return status;
         }
       }
+
+      function checkForbidden_warn (url, status) {
+        var req = new XMLHttpRequest();
+        req.open('GET', url, false);
+        req.send();
+        if (req.status == 200) {
+          closeOptimizing();
+    
+          var xhr = new XMLHttpRequest()
+          xhr.open('GET', url, true)
+          xhr.send()
+          xhr.onload = function(){
+            var data = JSON.parse(this.responseText);
+            var Warning = ""
+            if (JSON.stringify(data.bound) !== "{}"){
+                Warning = Warning + JSON.stringify(data.bound)
+            }
+            if (JSON.stringify(data.camera) !== "{}"){
+                Warning = Warning + JSON.stringify(data.camera)
+            }
+            if (JSON.stringify(data.must_cover) !== "{}"){
+                Warning = Warning + JSON.stringify(data.must_cover)
+            }
+            if (JSON.stringify(data.nocam) !== "{}"){
+                Warning = Warning + JSON.stringify(data.nocam)
+            }
+            if (JSON.stringify(data.target) !== "{}"){
+                Warning = Warning + JSON.stringify(data.target)
+            }
+
+            alert(Warning)
+          }
+          status = 1;
+          return status;
+          }
+        }
   
       function checkForbidden_cam (url, status) {
         var req = new XMLHttpRequest();
@@ -515,7 +588,6 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
           xhr.send()
           xhr.onload = function(){
             var data = JSON.parse(this.responseText);
-            console.log(data)
             var Cam_count = Object.values(data)
             var BCC_200_count = String(Cam_count[0])
             var BCC_300_count = String(Cam_count[1])
@@ -553,7 +625,6 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             xhr.send()
             xhr.onload = function(){
               var data = JSON.parse(this.responseText);
-              console.log(data)
               var score = data["score"]
               document.getElementById("totalCoverage").innerHTML = String(score) + "%";
               localStorage.setItem("Coverage",score);
@@ -609,15 +680,14 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         body: JSON.stringify(json_data)
       })
   
-      // console.log(url)
   
       const InputUrl = url.split('?')[0]
       const objName = InputUrl.split('/')[3]
       const JsonUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + objName
       const CamUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "cam_" + objName
       const ScoreUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "score_" + objName
+      const WarnUrl = "https://tooljsonoutput.s3.ap-northeast-1.amazonaws.com/" + "warn_" + objName
   
-      // console.log(JsonUrl);
   
       var Check403_2 = setInterval(function(){ 
         var status = 0;
@@ -640,7 +710,19 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         status = checkForbidden(JsonUrl, status);
         if (status == 1) {
           clearInterval(Check403);
+          clearInterval(Check403_4);
           OpenSummary();
+        }
+      },1000)
+
+      var Check403_4 = setInterval(function(){ 
+        var status = 0;
+        status = checkForbidden_warn(WarnUrl, status);
+        if (status == 1) {
+          clearInterval(Check403_4);
+          clearInterval(Check403);
+          clearInterval(Check403_2);
+          clearInterval(Check403_3);
         }
       },1000)
   
@@ -718,6 +800,45 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("TutorialScaleMeasureUnit_Feets").style.display = "none"
     }
 
+    const SecTutorial = () => {
+        localStorage.setItem("Tutorial_InterestArea", "Undone");
+        localStorage.setItem("Tutorial_ObstacleArea", "Undone");
+        localStorage.setItem("Tutorial_NoCameraArea", "Undone");
+        localStorage.setItem("Tutorial_MustCoverArea", "Undone");
+        localStorage.setItem("Tutorial_CameraTool_1", "Undone");
+        localStorage.setItem("Tutorial_CameraTool_2", "Undone");
+        localStorage.setItem("Tutorial_CameraTool_3", "Undone");
+        localStorage.setItem("Tutorial_CameraTool_4", "Undone");
+        localStorage.setItem("Tutorial_CameraTool_5", "Undone");
+        localStorage.setItem("Tutorial_Generate", "Undone");
+        localStorage.setItem("Tutorial_ObstacleArea_LineDetect", "Undone")
+        localStorage.setItem("Tutorial_Generate_Detect_1", "Undone")
+        localStorage.setItem("Tutorial_Generate_Detect_2", "Undone")
+
+        document.getElementById('3-8-1').style.display = ""
+        document.getElementById('3-8-2').style.display = ""
+        document.getElementById('3-8-3').style.display = ""
+        document.getElementById('3-8-4').style.display = ""
+        document.getElementById('3-8-5').style.display = ""
+        document.getElementById('3-8-6').style.display = ""
+        document.getElementById('3-8-7').style.display = ""
+        document.getElementById('overlay_left').style.display = ""
+        document.getElementById('overlay_right').style.display = ""
+        document.getElementById('overlay_top_2').style.display = ""
+        document.getElementById('overlay_bottom_2').style.display = ""
+
+        document.getElementById('Outine Interest Area1').style.display = "none"
+        document.getElementById('Outine Interest Area2').style.display = ""
+
+        document.getElementById('2nd_Tutorial_Rectangular').style.display = "none"
+        document.getElementById('2nd_Tutorial_Word').style.display = "none"
+    }
+
+    const CloseSecTurtorial = () => {
+        document.getElementById('2nd_Tutorial_Rectangular').style.display = "none"
+        document.getElementById('2nd_Tutorial_Word').style.display = "none"
+    }
+
     return(
         <div>
             <span id = "TutorialScaleMeasureWord" style = {{
@@ -727,7 +848,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 width: "359px",
                 height: "19px",
                 zIndex: 10002,
-                // fontFamily: "HelveticaNeue",
+                fontFamily: "SF Pro Display",
                 fontSize: "20px",
                 fontWeight: "normal",
                 fontStretch: "normal",
@@ -748,7 +869,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 width: "45px",
                 height: "17px",
                 zIndex: 10002,
-                // fontFamily: "HelveticaNeue",
+                fontFamily: "SF Pro Display",
                 fontSize: "14px",
                 fontWeight: "bold",
                 fontStretch: "normal",
@@ -769,7 +890,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 width: "79px",
                 height: "31px",
                 zIndex: 10002,
-                // fontFamily: "HelveticaNeue",
+                fontFamily: "SF Pro Display",
                 fontSize: "26px",
                 fontWeight: 500,
                 fontStretch: "normal",
@@ -786,6 +907,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             <button id = "TutorialScaleMeasureUnit" onClick = {Unit_Show} style = {{            
                 position: "absolute",
                 backgroundImage: "url('https://example-img.s3.ap-northeast-1.amazonaws.com/area_legend.png')",
+                cursor:'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',
                 top: "347px",
                 left: ((left-431)/2) + 361,
                 border:"none",
@@ -844,7 +966,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 }}>
             </div>
             
-            <button id = "TutorialScaleMeasureUnit_Feets" onClick = {UnitSet_Feets} class = "button-Feets" onClick = {UnitSet_Feets} style = {{            
+            <button id = "TutorialScaleMeasureUnit_Feets" onClick = {UnitSet_Feets} class = "button-Feets" style = {{            
                 position: "absolute",
                 top: "402px",
                 left: ((left-431)/2) + 414,
@@ -875,7 +997,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 // left: "525px",
                 left: (left-431)/2 + 36,
                 top: "408px",
-                // fontFamily: "HelveticaNeue",
+                fontFamily: "SF Pro Display",
                 fontSize: "18px",
                 fontWeight: "normal",
                 fontStretch: "normal",
@@ -902,7 +1024,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 // left: "755px",
                 left: (left -431)/2 + 233,
                 top: "408px",
-                // fontFamily: "HelveticaNeue",
+                fontFamily: "SF Pro Display",
                 fontSize: "18px",
                 fontWeight: "normal",
                 fontStretch: "normal",
@@ -927,6 +1049,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 backgroundColor: "#222222",
                 // left: "340px",
                 left: (left-304)/2,
+                fontFamily: "SF Pro Display",
                 // top: "937px",
                 top: "97px",
                 border:"none",
@@ -2543,6 +2666,36 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
             }}>
                 Yes
             </button>
+
+
+            <div id="2nd_Tutorial_Rectangular" class="info" style = {{
+                position: "absolute",
+                left: (left-282)/2,
+                top: "89.5px",
+                zIndex: 10002,
+                display: "none"
+            }}>
+            </div>
+
+            <span id = "2nd_Tutorial_Word" class="Scale-successfully-adjusted" style = {{
+                position: "absolute",
+                top: "98.5px",
+                left: ((left-282)/2) + 35,
+                zIndex: 10002,
+                display: "none"
+            }}>
+                Tutorial mode can be turned on&nbsp;
+                <span class="text-style-1" onClick = {SecTutorial}>
+                here
+                </span>.&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <span class="text-style-2" onClick = {CloseSecTurtorial}>
+                ✖
+                </span>
+
+            </span>
+
+
 
 
 

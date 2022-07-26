@@ -10,6 +10,48 @@ export function loadimgjson3 (loadImageUrl, jsonleft, top) {
                 "name": "default",
                 "visible": true,
                 "vertices": {},
+                "lines": {},
+                "holes": {},
+                "areas": {},
+                "items": {},
+                "selected": {
+                    "vertices": [],
+                    "lines": [],
+                    "holes": [],
+                    "areas": [],
+                    "items": []
+                }
+            },
+
+            "layer2": {
+                "id": "layer2",
+                "altitude": 0,
+                "order": 0,
+                "opacity": 1,
+                "name": "default2",
+                "visible": true,
+                "vertices": {},
+                "lines": {},
+                "holes": {},
+                "areas": {},
+                "items": {},
+                "selected": {
+                    "vertices": [],
+                    "lines": [],
+                    "holes": [],
+                    "areas": [],
+                    "items": []
+                }
+            },
+
+            "layer3": {
+                "id": "layer3",
+                "altitude": 0,
+                "order": 0,
+                "opacity": 1,
+                "name": "default3",
+                "visible": true,
+                "vertices": {},
                 "items": {
                     "xFAw434Nm": {
                         "id": "xFAw434Nm",
@@ -33,17 +75,17 @@ export function loadimgjson3 (loadImageUrl, jsonleft, top) {
                             },
                             // "width": 891,
                             // "height": 630
-                            "width": 0.0000096,
-                            "height": 0.0000054
+                            "width": 0.00000000000000000000096,
+                            "height": 0.00000000000000000000054
                         },
                         "visible": true,
                         // "x": 479.709994739929,
                         // "y": 1629.5759345522179,
                         // "x": jsonleft+750,
                         // "y": 1350-top,
-                        "x": jsonleft+15000,
-                        "y": 10350-top,
-                        "rotation": 90
+                        "x": jsonleft+15000+10000,
+                        "y": 10350-top+10000,
+                        "rotation": 0
                     }
                 },
                 "lines": {},
@@ -57,27 +99,6 @@ export function loadimgjson3 (loadImageUrl, jsonleft, top) {
                     "items": []
                 }
             },
-
-            "layer2": {
-                "id": "layer2",
-                "altitude": 0,
-                "order": 0,
-                "opacity": 1,
-                "name": "default",
-                "visible": true,
-                "vertices": {},
-                "lines": {},
-                "holes": {},
-                "areas": {},
-                "items": {},
-                "selected": {
-                    "vertices": [],
-                    "lines": [],
-                    "holes": [],
-                    "areas": [],
-                    "items": []
-                }
-            }
 
         },
         "grids": {
@@ -98,7 +119,7 @@ export function loadimgjson3 (loadImageUrl, jsonleft, top) {
                 }
             }
         },
-        "selectedLayer": "layer1",
+        "selectedLayer": "layer3",
         "groups": {},
         "width": 30000,
         "height": 20000,

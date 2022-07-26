@@ -437,7 +437,7 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
           <Button
               id = "Generate1"
               key={'Generat1'}
-              sx={{ my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontWeight: "normal", fontStretch: "normal", fontStyle:"normal", textTransform:"capitalize"}}
+              sx={{ my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontFamily: "SF Pro Display", fontWeight: "normal", fontStretch: "normal", fontStyle:"normal", textTransform:"capitalize"}}
               style = {{ width: "134px", height: "41px", borderRadius: "10px", backgroundColor: "#ffdfbf"}}
               // onClick = {Generate_Click}
               >
@@ -446,7 +446,7 @@ export default function TopBar({ state, linesActions, projectActions, sceneActio
           <button class = "Generate_Button"
               id = "Generate2"
               key={'Generat'}
-              sx={{ my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontWeight: "normal", fontStretch: "normal", fontStyle:"normal", textTransform:"capitalize"}}
+              sx={{ my: 2, color: '#ffffff', display: 'block', fontSize: "16px", fontFamily: "SF Pro Display", fontWeight: "normal", fontStretch: "normal", fontStyle:"normal", textTransform:"capitalize"}}
               style  = {{display:"none"}}
               onClick = {Generate_Click}
               >

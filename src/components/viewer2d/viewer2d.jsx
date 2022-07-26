@@ -33,8 +33,6 @@ import Popper from '@mui/material/Popper';
 import Box from '@material-ui/core/Box';
 import {IconConstructionLine, IconInterestLine, IconObstacleLine, IconNoCamLine, IconMustLine, IconConstructionLine2, IconObstacleLine2, IconNoCamLine2, IconMustLine2} from './lineicon'
 
-const drawerWidth = 260;
-
 function mode2Tool(mode) {
   switch (mode) {
     case constants.MODE_2D_PAN:
@@ -182,8 +180,8 @@ export default function Viewer2D(
   /* camera coverage button*/
   const buttonsStyle = { /*position: 'absolute', */textTransform: 'none', width: '210px', height: '36px', justifyContent: 'flex-start', padding: '6px',
         backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}};
-  const buttonsInuseStyle = { position: 'absolute', textTransform: 'none', width: '210px', height: '36px', justifyContent: 'flex-start', padding: '6px',
-        backgroundColor: '#FFFFFF', color: '#ff8200', "&:hover": {backgroundColor: '#ff8200', color: '#ffffff'}};
+  const buttonsBlackStyle = { position: 'absolute', textTransform: 'none', width: '210px', height: '36px', justifyContent: 'flex-start', padding: '6px',
+        backgroundColor: '#222222', color: '#FFFFFF', "&:hover": {backgroundColor: '#ff8200', color: '#ffffff'}};
 
   const [openCoverage, setCoverage] = React.useState(false);
   const handleCoverageButton = () => {
@@ -203,6 +201,11 @@ export default function Viewer2D(
       localStorage.setItem("AreaLegend_Button", "Close")
     }
   };
+  // let btnBlack = document.getElementById('colorTest1');
+  // btnBlack.addEventListener('click', function(e){
+  //   console.log(e);
+  // }, false);
+  
 
   let { viewer2D, mode, scene } = state;
 
@@ -493,9 +496,15 @@ export default function Viewer2D(
         // style={{ gridColumn: 2, gridRow: 2 , bottom:650, right:750}}
         // width={width - rulerSize + 750}
         // height={height - rulerSize + 650}
+
         style={{ gridColumn: 2, gridRow: 2 , bottom:9650, right:15000}}
         width={width - rulerSize + 15000}
         height={height - rulerSize + 9650}
+
+        // style={{ gridColumn: 2, gridRow: 2 }}
+        // width={width - rulerSize }
+        // height={height - rulerSize }
+
         value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
         onChangeValue={onChangeValue}
         tool={mode2Tool(mode)}

@@ -29,6 +29,9 @@ import './styles/export';
 import preview from './preview.png'
 import Optimizing from './components/loading/optimizing';
 
+import SettingButton from './components/bottombuttongroup/settingbutton';
+
+
 const {Toolbar} = ToolbarComponents;
 const {Sidebar} = SidebarComponents;
 const {FooterBar} = FooterBarComponents;
@@ -134,6 +137,9 @@ class ReactPlanner extends Component {
         <TopBar state={extractedState} {...props} showCamDrawer={showCamDrawer} showSumDrawer={showSumDrawer}/>
 
         <BottomButtonGroup state={extractedState} {...props} />
+
+        {/* <SettingButton state={extractedState} {...props}/> */}
+
         
         {/*<LineSpeedDial state={extractedState} {...props} />
 
@@ -145,6 +151,8 @@ class ReactPlanner extends Component {
         <Sidebar width={sidebarW} height={75} left = {(contentW-431)/2} state={extractedState} display={"none"} {...props} />           
         //<FooterBar width={width} height={footerBarH} state={extractedState} {...props} />
   }
+
+  
 
         
       </div>

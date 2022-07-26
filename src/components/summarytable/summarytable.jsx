@@ -84,20 +84,19 @@ export default function SummaryTable() {
         return dataURL;
     }
 
-    let imageBrowserDownload = imageUri => {
-        let fileOutputLink = document.createElement('a');
+    // let imageBrowserDownload = imageUri => {
+    //     let fileOutputLink = document.createElement('a');
+    //     let filename = 'output' + Date.now() + '.png';
+    //     filename = window.prompt('Insert output filename', filename);
+    //     if (!filename) return;
     
-        let filename = 'output' + Date.now() + '.png';
-        filename = window.prompt('Insert output filename', filename);
-        if (!filename) return;
-    
-        fileOutputLink.setAttribute('download', filename);
-        fileOutputLink.href = imageUri;
-        fileOutputLink.style.display = 'none';
-        document.body.appendChild(fileOutputLink);
-        fileOutputLink.click();
-        document.body.removeChild(fileOutputLink);
-      };
+    //     fileOutputLink.setAttribute('download', filename);
+    //     fileOutputLink.href = imageUri;
+    //     fileOutputLink.style.display = 'none';
+    //     document.body.appendChild(fileOutputLink);
+    //     fileOutputLink.click();
+    //     document.body.removeChild(fileOutputLink);
+    //   };
 
     let saveSVGScreenshotToFile = event => {
         event.preventDefault();

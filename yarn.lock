@@ -6743,6 +6743,11 @@
   "resolved" "https://registry.npmjs.org/setprototypeof/-/setprototypeof-1.1.1.tgz"
   "version" "1.1.1"
 
+"sf-font@^1.0.0":
+  "integrity" "sha512-lEHKv0nO76MOg30JebEo6iIUn7VoD5nH+Jrgy34I1wV2pHXenpe3Uotck6f2nsR0+MUKHjjEM/zRJVOMRUnKhw=="
+  "resolved" "https://registry.npmjs.org/sf-font/-/sf-font-1.0.0.tgz"
+  "version" "1.0.0"
+
 "sha.js@^2.4.0", "sha.js@^2.4.8":
   "integrity" "sha512-QMEp5B7cftE7APOjk5Y6xgrbWu+WkLVQwk8JNjZ8nKRciZaByEW6MubieAiToS7+dwvrjGhH8jRXz3MVd0AYqQ=="
   "resolved" "https://registry.npmjs.org/sha.js/-/sha.js-2.4.11.tgz"
@@ -7353,11 +7358,6 @@
   "integrity" "sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c="
   "resolved" "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
   "version" "0.0.6"
-
-"typeface-roboto@^1.1.13":
-  "integrity" "sha512-YXvbd3a1QTREoD+FJoEkl0VQNJoEjewR2H11IjVv4bp6ahuIcw0yyw/3udC4vJkHw3T3cUh85FTg8eWef3pSaw=="
-  "resolved" "https://registry.npmjs.org/typeface-roboto/-/typeface-roboto-1.1.13.tgz"
-  "version" "1.1.13"
 
 "ua-parser-js@^0.7.30", "ua-parser-js@^0.7.9":
   "integrity" "sha512-qLK/Xe9E2uzmYI3qLeOmI0tEOt+TBBQyUIAh4aAgU05FVYzeZrKUdkAZfBNVGRaHVgV0TDkdEngJSw/SyQchkQ=="
