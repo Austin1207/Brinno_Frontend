@@ -54,10 +54,32 @@ export default function SettingButton({state, projectActions, sceneActions, item
     function handleBlackMode(event) {
         setblackMode(true);
         setColorOpen((prevOpen) => !prevOpen);
+
+        localStorage.setItem("ColorMode","Dark")
+
+        setTimeout(() => {
+            sceneActions.selectLayer("layer3")
+            itemsActions.selectItem("layer3", "xFAw434Nm");
+        }, 200)    
+        setTimeout(() => {
+            projectActions.unselectAll();
+            sceneActions.selectLayer("layer2");
+        }, 250)
     };
     function handleLightMode(event) {
         setblackMode(false);
         setColorOpen((prevOpen) => !prevOpen);
+
+        localStorage.setItem("ColorMode","Light")
+
+        setTimeout(() => {
+            sceneActions.selectLayer("layer3")
+            itemsActions.selectItem("layer3", "xFAw434Nm");
+        }, 200)    
+        setTimeout(() => {
+            projectActions.unselectAll();
+            sceneActions.selectLayer("layer2");
+        }, 250)
     };
     
     const handleClose = (event) => {

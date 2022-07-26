@@ -46,7 +46,7 @@ const data = [
     { name: "BCC2000", value: 1 },
     { name: "MAC200DN", value: 1 }
   ];
-console.log(data[0].value);
+// console.log(data[0].value);
 
 export default function SummaryTable() {
     const [open, setOpen] = React.useState(true);
@@ -111,7 +111,7 @@ export default function SummaryTable() {
             maxWidthSVGElement = svgElements[i];
           }
         }
-        console.log(maxWidthSVGElement);
+        // console.log(maxWidthSVGElement);
     
         let serializer = new XMLSerializer();
     
@@ -132,6 +132,7 @@ export default function SummaryTable() {
     
         ctx.fillStyle = 'white';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+        console.log("test")
     
         img.crossOrigin = 'anonymous';
         //img.src = `data:image/svg+xml;base64,${window.btoa(serializer.serializeToString(maxWidthSVGElement))}`;

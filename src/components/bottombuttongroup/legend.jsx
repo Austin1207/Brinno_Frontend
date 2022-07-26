@@ -16,17 +16,21 @@ export default function Legend({blackMode}){
     backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, "&:disabled": {backgroundColor: '#FFFFFF', color: '#222222'}};
     const buttonsBlackStyle = { textTransform: 'none', width: '210px', height: '36px', justifyContent: 'flex-start', padding: '6px',
     backgroundColor: '#222222', color: '#FFFFFF', "&:hover": {backgroundColor: '#ff8200', color: '#ffffff'}, "&:disabled": {backgroundColor: '#222222', color: '#FFFFFF'}};
+    const IconNoDisplayStyle = {display:"none"}
+    const IconDisplayStyle = {display:""}
+    const ShowPageLight = {backgroundColor:"#FFFFFF", color:"#222222" }
+    const ShowPageDark = {backgroundColor:"#222222", color:"#FFFFFF" }
     const [openLegend, setOpenLegend] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleLegendButton = (event) => {
         setAnchorEl(event.currentTarget);
         setOpenLegend(!openLegend);
-        if (localStorage.getItem("AreaLegend_Button") == "Close") {
-          localStorage.setItem("AreaLegend_Button", "Open")
-        }
-        else {
-          localStorage.setItem("AreaLegend_Button", "Close")
-        }
+        // if (localStorage.getItem("AreaLegend_Button") == "Close") {
+        //   localStorage.setItem("AreaLegend_Button", "Open")
+        // }
+        // else {
+        //   localStorage.setItem("AreaLegend_Button", "Close")
+        // }
       };
       return (
         <div>
@@ -47,11 +51,11 @@ export default function Legend({blackMode}){
       </ButtonGroup>
       <Popper open={openLegend} anchorEl={anchorEl} placement='bottom-start' transition>
         {({ TransitionProps }) => (
-          <Fade id="AreaLegend_Background2" {...TransitionProps} timeout={350}>
+          <Fade id="AreaLegend_Background2" {...TransitionProps} style = {{...(blackMode ? ShowPageDark : ShowPageLight)}} timeout={350}>
             <Paper sx={{width: 210-12, height: 'auto', justifyContent: 'flex-start', padding: '6px',}}>
               <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
-                <IconConstructionLine id="IconConstructionLine_Light" style={{display:""}} sx={{paddingRight: '6px'}}/>
-                <IconConstructionLine2 id="IconConstructionLine_Dark" style={{display:"none"}} sx={{paddingRight: '6px'}}/>
+                <IconConstructionLine id="IconConstructionLine_Light" style={{...(blackMode ? IconNoDisplayStyle : IconDisplayStyle)}} sx={{paddingRight: '6px'}}/>
+                <IconConstructionLine2 id="IconConstructionLine_Dark" style={{...(blackMode ? IconDisplayStyle : IconNoDisplayStyle)}} sx={{paddingRight: '6px'}}/>
                 <Divider orientation="vertical" flexItem={true}/>
                 <Typography id="IconConstructionLine_Word" sx={{fontSize: '14px', paddingLeft: '6px'}}>Construction Area</Typography>
               </Box>
@@ -61,20 +65,20 @@ export default function Legend({blackMode}){
                 <Typography id="IconInterestLine_Word" sx={{fontSize: '14px', paddingLeft: '6px'}}>Interest Area</Typography>
               </Box>
               <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
-                <IconObstacleLine id="IconObstacleLine_Light" style={{display:""}} sx={{paddingRight: '6px'}}/>
-                <IconObstacleLine2 id="IconObstacleLine_Dark" style={{display:"none"}} sx={{paddingRight: '6px'}}/>
+                <IconObstacleLine id="IconObstacleLine_Light" style={{...(blackMode ? IconNoDisplayStyle : IconDisplayStyle)}} sx={{paddingRight: '6px'}}/>
+                <IconObstacleLine2 id="IconObstacleLine_Dark" style={{...(blackMode ? IconDisplayStyle : IconNoDisplayStyle)}} sx={{paddingRight: '6px'}}/>
                 <Divider orientation="vertical" flexItem={true}/>
                 <Typography id="IconObstacleLine_Word" sx={{fontSize: '14px', paddingLeft: '6px'}}>Obstacle Area</Typography>
               </Box>
               <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
-                <IconNoCamLine id="IconNoCamLine_Light" style={{display:""}} sx={{paddingRight: '6px'}}/>
-                <IconNoCamLine2 id="IconNoCamLine_Dark" style={{display:"none"}}  sx={{paddingRight: '6px'}}/>
+                <IconNoCamLine id="IconNoCamLine_Light" style={{...(blackMode ? IconNoDisplayStyle : IconDisplayStyle)}} sx={{paddingRight: '6px'}}/>
+                <IconNoCamLine2 id="IconNoCamLine_Dark" style={{...(blackMode ? IconDisplayStyle : IconNoDisplayStyle)}}  sx={{paddingRight: '6px'}}/>
                 <Divider orientation="vertical" flexItem={true}/>
                 <Typography id="IconNoCamLine_Word" sx={{fontSize: '14px', paddingLeft: '6px'}}>No Camera Area</Typography>
               </Box>
               <Box sx={{display: 'flex', flexFlow: 'row nowrap'}}>
-                <IconMustLine id="IconMustLine_Light" style={{display:""}} sx={{paddingRight: '6px'}}/>
-                <IconMustLine2 id="IconMustLine_Dark" style={{display:"none"}}  sx={{paddingRight: '6px'}}/>
+                <IconMustLine id="IconMustLine_Light" style={{...(blackMode ? IconNoDisplayStyle : IconDisplayStyle)}} sx={{paddingRight: '6px'}}/>
+                <IconMustLine2 id="IconMustLine_Dark" style={{...(blackMode ? IconDisplayStyle : IconNoDisplayStyle)}}  sx={{paddingRight: '6px'}}/>
                 <Divider orientation="vertical" flexItem={true}/>
                 <Typography id="IconMustLine_Word" sx={{fontSize: '14px', paddingLeft: '6px'}}>Must Cover Area</Typography>
               </Box>
