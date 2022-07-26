@@ -76,6 +76,15 @@
   background-color: #222222;
 }
 
+.Rectangle-20 {
+  width: 302px;
+  height: 105px;
+  flex-grow: 0;
+  /* margin: 58px 166px 347px 13px; */
+  border-radius: 8px;
+  background-color: #222222;
+}
+
 .Successful {
   width: 594px;
   height: 84px;

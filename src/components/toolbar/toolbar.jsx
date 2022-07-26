@@ -531,6 +531,22 @@ export default class Toolbar extends Component {
       projectActions.unselectAll();
       sceneActions.selectLayer("layer2");
       this.handleCamDrawChange()
+      if ((document.getElementById("7-8-7").style.display !== "none") && (this.state.showCamDrawer == true)){
+        document.getElementById("7-8-7").style.display = "none";
+        document.getElementById("7-8-8").style.display = "none";
+        document.getElementById("7-8-9").style.display = "none";
+        document.getElementById("7-8-10").style.display = "none";
+        document.getElementById("7-8-11").style.display = "none";
+        document.getElementById("7-8-12").style.display = "none";
+
+        document.getElementById("8-8-1").style.display = "";
+        document.getElementById("8-8-2").style.display = "";
+        document.getElementById("8-8-3").style.display = "";
+        document.getElementById("8-8-4").style.display = "";
+
+        document.getElementById('Generate1').style.display = "none"
+        document.getElementById('Generate2').style.display = ""
+      }
     }
 
     let sorter = [

@@ -438,7 +438,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         }
     
     const CloseCatalog = event => {
-        var CatalogClick = document.getElementById("Camera Tool2")
+        var CatalogClick = document.getElementById("Camera Tool1")
         ClickCatalog(CatalogClick);
         setTimeout(() => {
             document.getElementById('7-8-7').style.display = "none"
@@ -466,6 +466,9 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
 
 
             localStorage.setItem("Tutorial_CameraTool_5", "Done")
+
+            // document.getElementById("Camera_Coverage").style.zIndex = 10001
+            // document.getElementById("overlay").style.display = ""
 
             document.getElementById('Generate1').style.display = "none"
             document.getElementById('Generate2').style.display = ""
@@ -2693,6 +2696,45 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 ✖
                 </span>
 
+            </span>
+
+
+            <div id="Coverage_1" class="Rectangle-20" style = {{
+                position: "absolute",
+                right: "276px",
+                top: "81px",
+                zIndex: 10001,
+                display:"none"
+            }}></div>
+
+            <div id="Coverage_2" class="Polygon-3-3" style = {{
+                position: "absolute",
+                right: "71px",
+                top: "81px",
+                zIndex: 10001,
+                display:"none"
+            }}></div>
+
+            <span id="Coverage_3" class="Generate-your-first-report" style = {{
+                position: "absolute",
+                // left: "130.5px",
+                right: "128px",
+                top: "123px",
+                zIndex: 10001,
+                display:"none"
+            }}>
+            Toggle Camera Coverage
+            </span>
+
+            <span id="Coverage_4" class="Click-generate-to-see-your-first-summary" style = {{
+                position: "absolute",
+                // left: "130.5px",
+                right: "58px",
+                top: "148px",
+                zIndex: 10001,
+                display:"none"
+            }}>
+            Click the eye icon to show or hide the camera coverage of your cameras.
             </span>
 
 

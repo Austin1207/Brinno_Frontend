@@ -553,7 +553,7 @@ export default function Viewer2D(
         </svg>
 
       </ReactSVGPanZoom>
-      <Button variant="contained" 
+      <Button id = "Camera_Coverage" variant="contained" 
         sx={{...(buttonsStyle), top: 24, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
         onClick={handleCoverageButton}>
         {openCoverage ? <VisibilityIcon sx={{paddingRight: '6px'}}/> : <VisibilityOffIcon sx={{paddingRight: '6px'}}/>}
