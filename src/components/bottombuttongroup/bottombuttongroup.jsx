@@ -37,7 +37,7 @@ import '@babel/polyfill'; //for async
 const buttonsStyle = {
   height: '36px', bottom: '54px',
   backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',},
-  "&:disabled": {backgroundColor: '#ffffff', color: '#b9bbbc', boxShadow: '0px 1px 1px rgba(0, 40, 56, 0.4)'}
+  "&:disabled": {backgroundColor: '#ffffff', color: '#b9bbbc'}
 };
 const IconUndo = createSvgIcon(
   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -396,7 +396,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
 
             <Fab
               id = "Setting1"
-              sx={{...buttonsStyle, width: '36px', right: 150, position: 'absolute', }}
+              sx={{...buttonsStyle, width: '36px', right: 150, position: 'absolute',}}
               onClick={Setting}
               disabled
               aria-label="Help">
