@@ -32,12 +32,6 @@ import '@babel/polyfill'; //for async
 // ];
 //const scaleOptions = [1,1.5,1,0.7,0.5];
 
-const loadProjectFromFile = () => {
-  browserUpload().then((data) => {
-    projectActions.loadProject(JSON.parse(data));
-  });
-};
-
 const buttonsStyle = {
   height: '36px', bottom: '54px',
   backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',},
@@ -77,6 +71,12 @@ const IconSetting = createSvgIcon(
 )
 
 export default function BottomButtonGroup({projectActions, sceneActions, itemsActions, state, viewer2DActions}){
+
+  const loadProjectFromFile = () => {
+    browserUpload().then((data) => {
+      projectActions.loadProject(JSON.parse(data));
+    });
+  };
 
   const ImageLayerMode = event => {
     sceneActions.selectLayer("layer1")
