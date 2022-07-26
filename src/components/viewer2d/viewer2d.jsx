@@ -530,6 +530,7 @@ export default function Viewer2D(
         </svg>
 
       </ReactSVGPanZoom>
+{/* <<<<<<< HEAD */}
 {/*      <Collapse in={openLegend} timeout="auto" unmountOnExit>
         <Paper sx={{ top: 39+36+36, right: 41, zIndex: '999'}}>
           <List component="div" disablePadding >
@@ -557,6 +558,10 @@ export default function Viewer2D(
     <div>
       {/* <Button variant="contained" 
         sx={{...(buttonsStyle), top: 24+70, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
+// =======
+//       <Button id = "Camera_Coverage" variant="contained" 
+//         sx={{...(buttonsStyle), top: 24, right: 41, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
+// >>>>>>> 0726
         onClick={handleCoverageButton}>
         {openCoverage ? <VisibilityIcon sx={{paddingRight: '6px'}}/> : <VisibilityOffIcon sx={{paddingRight: '6px'}}/>}
         <Divider orientation="vertical" flexItem={true}/>
