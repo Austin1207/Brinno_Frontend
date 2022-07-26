@@ -25,8 +25,8 @@ import BAC2000Icon from '../../../demo/src/catalog/items/BAC2000/BAC2000.png';
 import { createTheme } from '@mui/material';
 import jsPDF from 'jspdf';
 //import {PdfReport} from './pdfreport';
-// import html2canvas from 'html2canvas';
-import {coverage_base64, camera_base64, battery_base64, BAC2000_base64} from './pdfimages'
+import html2canvas from 'html2canvas';
+import {coverage_base64, camera_base64, battery_base64, BAC2000_base64} from './pdfimages';
 
 const STYLE_TITLE = {
     height: '24px',
@@ -55,9 +55,37 @@ export default function SummaryTable() {
       setOpen(!open);
     };
 
+    /* html2canvas way */
+    function takeScreenshot() {
+        //使用html2canvas进行截图(需要加定时器延迟操作)
+            html2canvas(document.getElementById('view'), {
+                backgroundColor: null,//画出来的图片有白色的边框,不要可设置背景为透明色（null）
+                useCORS: true, //支持图片跨域
+                allowTaint: false,
+                logging: true, //Enable log (use Web Console for get Errors and Warnings)
+            }).then(canvas=>{
+                imageBrowserDownload(canvas.toDataURL("image/jpg"));
+            });
+            // onrendered: function (canvas) {
+            //     console.log('onrendered');
+            //     imageBrowserDownload(canvas.toDataURL("image/jpg"));
+            //    }
+            //    });
+    }
+    //图片地址转为base64编码
+    function getBase64Image(img) {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, img.width, img.height);
+        var ext = img.src.substring(img.src.lastIndexOf(".")+1).toLowerCase();
+        var dataURL = canvas.toDataURL("image/"+ext);
+        return dataURL;
+    }
+
     // let imageBrowserDownload = imageUri => {
     //     let fileOutputLink = document.createElement('a');
-    
     //     let filename = 'output' + Date.now() + '.png';
     //     filename = window.prompt('Insert output filename', filename);
     //     if (!filename) return;
@@ -83,6 +111,7 @@ export default function SummaryTable() {
             maxWidthSVGElement = svgElements[i];
           }
         }
+        console.log(maxWidthSVGElement);
     
         let serializer = new XMLSerializer();
     
@@ -105,7 +134,8 @@ export default function SummaryTable() {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     
         img.crossOrigin = 'anonymous';
-        img.src = `data:image/svg+xml;base64,${window.btoa(serializer.serializeToString(maxWidthSVGElement))}`;
+        //img.src = `data:image/svg+xml;base64,${window.btoa(serializer.serializeToString(maxWidthSVGElement))}`;
+        img.src = `data:image/svg+xmlns http://www.we.org/1999/xlink;base64,${window.btoa(serializer.serializeToString(maxWidthSVGElement))}`;
     
         img.onload = () => {
             ctx.drawImage(img, -15000, -9650, maxWidthSVGElement.width.baseVal.value, maxWidthSVGElement.height.baseVal.value);
@@ -253,6 +283,7 @@ export default function SummaryTable() {
               sx={{ position: 'absolute', top: 14, right: 14, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
               backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               onClick = {saveSVGScreenshotToFile}
+              //onClick = {takeScreenshot}
               >
                 <LaunchIcon />
             </Button>

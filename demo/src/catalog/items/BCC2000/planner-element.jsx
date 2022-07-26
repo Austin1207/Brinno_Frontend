@@ -356,7 +356,8 @@ export default {
     title: 'BCC2000',
     description: '1080P 118°',
     fov: '118',
-    image: require('./BCC2000.png')
+    image: require('./BCC2000.png'),
+    distance: '1000',
   },
   properties: {
     color: {

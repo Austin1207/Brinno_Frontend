@@ -356,7 +356,8 @@ export default {
     title: 'MAC200DN',
     description: '720P 70°',
     fov: '70',
-    image: require('./MAC200DN.jpg')
+    image: require('./MAC200DN.jpg'),
+    distance: '1000',
   },
   properties: {
     color: {

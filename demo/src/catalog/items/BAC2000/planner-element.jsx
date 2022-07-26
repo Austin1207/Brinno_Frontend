@@ -358,6 +358,7 @@ export default {
     description: '1080P 69°',
     fov: '69',
     image: require('./BAC2000.png'),
+    distance: '1000',
   },
   properties: {
     color: {
