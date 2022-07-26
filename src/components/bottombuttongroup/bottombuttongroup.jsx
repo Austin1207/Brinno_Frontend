@@ -19,6 +19,8 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SettingButton from './settingbutton';
 
+import {browserUpload}  from '../../utils/browser';
+
 import '@babel/polyfill'; //for async
 // const options = [
 //   {name: 'Zoom to Content', do: ZoomScale5},
@@ -29,6 +31,12 @@ import '@babel/polyfill'; //for async
 //   //'Zoom to Content', '150%', '100%', '70%', '50%'
 // ];
 //const scaleOptions = [1,1.5,1,0.7,0.5];
+
+const loadProjectFromFile = () => {
+  browserUpload().then((data) => {
+    projectActions.loadProject(JSON.parse(data));
+  });
+};
 
 const buttonsStyle = {
   height: '36px', bottom: '54px',
@@ -568,6 +576,15 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
               sx={{...buttonsStyle, width: '36px', right: 96, position: 'absolute', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',}}
               style = {{display:"none"}}
               onClick={() => test1234()}
+              aria-label="Help">
+                <QuestionMarkIcon/>
+            </Fab>
+
+            <Fab
+              id = "Question3"
+              sx={{...buttonsStyle, width: '36px', right: 1000, position: 'absolute', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer',}}
+              style = {{display:""}}
+              onClick={() => loadProjectFromFile()}
               aria-label="Help">
                 <QuestionMarkIcon/>
             </Fab>
