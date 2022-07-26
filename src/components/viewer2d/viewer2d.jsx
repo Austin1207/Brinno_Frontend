@@ -585,7 +585,7 @@ export default function Viewer2D(
         <Divider orientation="vertical" flexItem={true}/>
         <Typography style = {{color:AreaLegendWordColor}} sx={{fontSize: '14px', paddingLeft: '6px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Area Legend</Typography>
       </Button> */}
-      <ButtonGroup variant="contained" aria-label="camera coverage"
+      {/* <ButtonGroup variant="contained" aria-label="AreaLegend"
             sx={{ position: 'absolute', top: 39+36+70, right: 41}}
             >
           <Button
@@ -636,7 +636,7 @@ export default function Viewer2D(
             </Paper>
           </Fade>
         )}
-      </Popper>
+      </Popper> */}
     </div>
     </div>
   );

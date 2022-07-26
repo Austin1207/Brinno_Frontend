@@ -7,6 +7,7 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Legend from './legend';
 
 const buttonsStyle = {
     height: '36px', bottom: '54px',
@@ -24,14 +25,15 @@ export default function SettingButton({state, projectActions, sceneActions, item
         {name: 'Feet', do: () => ScaleSet2()},
     ];
     const colorOptions = [
-        {name: 'Light Mode', do: () => ColorTest1()},
-        {name: 'Dark Mode', do: () => ColorTest2()},
+        {name: 'Light Mode', do: handleLightMode},
+        {name: 'Dark Mode', do: handleBlackMode},
     ];
 
 
     const [open, setOpen] = React.useState(false);
     const [unitOpen, setUnitOpen] = React.useState(false);
     const [colorOpen, setColorOpen] = React.useState(false);
+    const [blackMode, setblackMode] = React.useState(false);
     const anchorRef = React.useRef(null);
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -46,6 +48,15 @@ export default function SettingButton({state, projectActions, sceneActions, item
 
     function handleColorToggle(event) {
         setAnchorEl(event.currentTarget);
+        setColorOpen((prevOpen) => !prevOpen);
+    };
+
+    function handleBlackMode(event) {
+        setblackMode(true);
+        setColorOpen((prevOpen) => !prevOpen);
+    };
+    function handleLightMode(event) {
+        setblackMode(false);
         setColorOpen((prevOpen) => !prevOpen);
     };
     
@@ -159,6 +170,7 @@ export default function SettingButton({state, projectActions, sceneActions, item
 
     return (
         <div>
+            <Legend blackMode={blackMode}/>
             <Fab id = "Setting2"
             ref={anchorRef}
             style = {{display:"none"}}
