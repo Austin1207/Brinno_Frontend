@@ -675,7 +675,14 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
       document.getElementById("SummaryPage1").style.display = "none";
       document.getElementById("SummaryPage2").style.display = "";
       showOptimizing();
-      const json_data = state.get('scene').toJS();
+    //   const json_data = state.get('scene').toJS();
+
+      //有送單位和比例尺的版本
+      var rawjson = state.get('scene').toJS()
+      rawjson.unit = localStorage.getItem("Unit")
+      rawjson["Scale"] = localStorage.getItem("Scale")
+      const json_data = rawjson
+      
       const {url} = await fetch(s3jsoninputurl).then(res => res.json());
   
       await fetch(url, {

@@ -132,7 +132,6 @@ export default function SummaryTable() {
     
         ctx.fillStyle = 'white';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        console.log("test")
     
         img.crossOrigin = 'anonymous';
         img.src = `data:image/svg+xml;base64,${window.btoa(serializer.serializeToString(maxWidthSVGElement))}`;
