@@ -273,7 +273,7 @@ export default function SummaryTable() {
     const Camera_Cost_USD = String(parseInt(Camera_Count)*1400) + " USD"
 
     return(
-        <div style={{width: '359px', textAlign: 'center'}}>
+        <div id="SummaryTable" style={{width: '359px', textAlign: 'center'}}>
             <div style={{height: 54-20, marginTop: '10px'}}>
                 <p style={STYLE_NEEDUPDATE}>Summary is not the most updated version.</p>
                 <a id="updatesum" href="#" style={{...STYLE_NEEDUPDATE, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}>Update now</a>

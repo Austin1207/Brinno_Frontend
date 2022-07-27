@@ -645,7 +645,10 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
   
     const OpenSummary = event => {
       var SummaryClick = document.getElementById("SummaryPage2")
-      ClickSummary(SummaryClick);
+    //   if (document.getElementById("Export"))
+      if (document.getElementById("SummaryTable") == null){
+        ClickSummary(SummaryClick);
+      }
       }
   
     async function GernerateOnclick(){
@@ -758,17 +761,6 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById("Generate_Yes").style.display = "none";
         document.getElementById("overlay").style.display = "none";
       }
-
-    // const test12 = () => {
-    //     if (localStorage.getItem("Unit") == "m"){
-    //         return "Meters"
-    //     }
-        
-    //     else if (localStorage.getItem("Unit") == "ft"){
-    //         return "Feets"
-    //     }
-    // }
-
 
     var Unit_Name= localStorage.getItem("UnitName")
 

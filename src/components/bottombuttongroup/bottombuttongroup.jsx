@@ -140,6 +140,7 @@ export default function BottomButtonGroup({projectActions, sceneActions, itemsAc
   function test1234() {
     // fitToViewer(400,400)
     console.log("test")
+    // console.log(document.getElementById("SummartTable"))
   }
 
   function undotest() {
