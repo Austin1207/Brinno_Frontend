@@ -135,8 +135,8 @@ export default function SummaryTable() {
         console.log("test")
     
         img.crossOrigin = 'anonymous';
-        //img.src = `data:image/svg+xml;base64,${window.btoa(serializer.serializeToString(maxWidthSVGElement))}`;
-        img.src = `data:image/svg+xmlns http://www.we.org/1999/xlink;base64,${window.btoa(serializer.serializeToString(maxWidthSVGElement))}`;
+        img.src = `data:image/svg+xml;base64,${window.btoa(serializer.serializeToString(maxWidthSVGElement))}`;
+        // img.src = `data:image/svg+xmlns http://www.we.org/1999/xlink;base64,${window.btoa(serializer.serializeToString(maxWidthSVGElement))}`;
     
         img.onload = () => {
             ctx.drawImage(img, -15000, -9650, maxWidthSVGElement.width.baseVal.value, maxWidthSVGElement.height.baseVal.value);
