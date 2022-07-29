@@ -55,6 +55,30 @@ export default function SummaryTable() {
       setOpen(!open);
     };
 
+    /*test1*/
+    function getPdf() {
+        //Get svg markup as string
+        var svg = document.getElementById('view').innerHTML;
+      
+      if (svg)
+          svg = svg.replace(/r?n|r/g, '').trim();
+      
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+      
+      
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        canvg(canvas, svg);
+      
+        var imgData = canvas.toDataURL('image/png');
+      
+        // Generate PDF
+        var doc = new jsPDF('p', 'pt', 'a4');
+        doc.addImage(imgData, 'PNG', 0, 0, 500, 500);
+        doc.save('test.pdf');
+      
+      }
+
     /* html2canvas way */
     function takeScreenshot() {
         //使用html2canvas进行截图(需要加定时器延迟操作)
