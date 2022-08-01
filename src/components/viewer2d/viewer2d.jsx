@@ -87,7 +87,8 @@ function mode2Cursor(mode) {
 
     case constants.MODE_DRAWING_LINE:
       // return { cursor: 'crosshair' };
-      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png") 10 10,pointer' };
+      // return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/outline.png") 10 10,pointer' };
+      return { cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/add+camera.png") 17 17,pointer'};
     default:
       return { cursor: 'default' };
   }

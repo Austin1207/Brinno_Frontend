@@ -85,6 +85,15 @@
   background-color: #222222;
 }
 
+.Rectangle-21 {
+  width: 302px;
+  height: 143px;
+  flex-grow: 0;
+  /* margin: 58px 166px 347px 13px; */
+  border-radius: 8px;
+  background-color: #222222;
+}
+
 .Successful {
   width: 594px;
   height: 84px;
@@ -572,6 +581,36 @@ color: #ffa140;
   cursor: url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer;
 }
 
+.Tutorial {
+  width: 124px;
+  height: 16px;
+  flex-grow: 0;
+  font-family: "SF Pro Display";
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffa140;
+}
+
+.If-you-want-to-review-the-tutorial-click-here {
+  width: 250px;
+  height: 12px;
+  flex-grow: 0;
+  font-family: "SF Pro Display";
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff
+}
+
 /* picture */
 
 .Screen-Shot-2022-02-10-at-41152-PM {
@@ -757,4 +796,33 @@ flex-grow: 0;
   text-align: center;
   color: #ffffff;
   cursor: url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer;
+}
+
+.button_OK {
+  width: 94px;
+  height: 41px;
+  /* display: flex;
+  flex-direction: row;
+  justify-content: flex-start; */
+  align-items: center;
+  /* gap: 10px;
+  margin: 22px 105px 0 103px;
+  padding: 11px 36px; */
+  border-radius: 10px;
+  background-color: #ffa140;
+
+  font-family: "SF Pro Display";
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  cursor: url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer;
+}
+
+.button_OK:hover {
+  background-color:#ff8200;
 }

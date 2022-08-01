@@ -834,6 +834,10 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
         document.getElementById('2nd_Tutorial_Word').style.display = "none"
     }
 
+    const CloseTu = () =>{
+        console.log("te")
+    }
+
     return(
         <div>
             <span id = "TutorialScaleMeasureWord" style = {{
@@ -2689,6 +2693,60 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 </span>
 
             </span>
+
+
+            {/* <div id="2nd_Tutorial_Rectangular" class="Rectangle-21" style = {{
+                position: "absolute",
+                // left: (left-282)/2,
+                right: "71px",
+                bottom: "113px",
+                zIndex: 10002,
+                // display: "none"
+            }}>
+            </div>
+
+            <span id="2nd_Tutorial_Topic" class="Tutorial" style = {{
+                position: "absolute",
+                // right: "202.6px",
+                right: "223px",
+                bottom: "218px",
+                zIndex: 10002,
+                // display: "none"
+            }}>
+            Tutorial
+            </span>
+
+            <span id="2nd_Tutorial_Word" class="If-you-want-to-review-the-tutorial-click-here" style = {{
+                position: "absolute",
+                // right: "44px",
+                right: "97px",
+                bottom: "198px",
+                zIndex: 10002,
+                // display: "none"
+            }}>
+            If you want to review the tutorial, click here.
+            </span>
+
+            <button id="2nd_Tutorial_OK" class = "button_OK" onClick = {CloseTu} style = {{
+                position: "absolute",
+                // left: "198px",
+                right: "176px",
+                bottom: "135px",
+                zIndex: 10002,
+                // display:"none"
+            }}>
+                OK
+            </button>
+
+            <div id="2nd_Tutorial_Polygon" class="Polygon-3" style = {{
+                position: "absolute",
+                right: "208px",
+                bottom: "98px",
+                zIndex: 10002,
+                // display: "none"
+            }}></div> */}
+
+
 
 
             <div id="Coverage_1" class="Rectangle-20" style = {{
