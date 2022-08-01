@@ -24,7 +24,7 @@ import LaunchIcon from '@mui/icons-material/Launch';
 import BAC2000Icon from '../../../demo/src/catalog/items/BAC2000/BAC2000.png';
 import { createTheme } from '@mui/material';
 import jsPDF from 'jspdf';
-//import {PdfReport} from './pdfreport';
+import { Canvg } from 'canvg';
 //import html2canvas from 'html2canvas';
 import {coverage_base64, camera_base64, battery_base64, BAC2000_base64} from './pdfimages';
 
@@ -68,7 +68,8 @@ export default function SummaryTable() {
       
       
         context.clearRect(0, 0, canvas.width, canvas.height);
-        canvg(canvas, svg);
+        let v = Canvg.fromString(context, svg);
+        v.start();
       
         var imgData = canvas.toDataURL('image/png');
       
@@ -307,7 +308,7 @@ export default function SummaryTable() {
               sx={{ position: 'absolute', top: 14, right: 14, maxWidth: '36px', maxHeight: '36px', minWidth: '36px', minHeight: '36px',
               backgroundColor: '#FFFFFF', color: '#222222', "&:hover": {backgroundColor: '#989a9c', color: '#ffffff'}, cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
               onClick = {saveSVGScreenshotToFile}
-              //onClick = {takeScreenshot}
+              //onClick = {getPdf}
               >
                 <LaunchIcon />
             </Button>

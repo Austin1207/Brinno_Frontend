@@ -34,25 +34,50 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
       closeLoading();
 
       var img = new Image();
+      //let dataBase64 = '';
       img.src = url;
-      if (img.complete) {
-        if (img.width >= img.height){
-          projectActions.loadProject(loadimgjson(ScaleUrl, url, jsonleft, top));
-        }
-        else {
-          projectActions.loadProject(loadimgjson2(ScaleUrl, url, jsonleft, top));
-        }
-      }
-      else {
-        img.onload = function(){
+      getBase64FromUrl(url).then((value) => {
+        // 在 myPromise 被 resolve 時執行
+        if (img.complete) {
           if (img.width >= img.height){
-            projectActions.loadProject(loadimgjson(ScaleUrl, url, jsonleft, top));
+            projectActions.loadProject(loadimgjson(ScaleUrl, value, jsonleft, top));
           }
           else {
-            projectActions.loadProject(loadimgjson2(ScaleUrl, url, jsonleft, top));
+            projectActions.loadProject(loadimgjson2(ScaleUrl, value, jsonleft, top));
           }
         }
-      }
+        else {
+          img.onload = function(){
+            if (img.width >= img.height){
+              projectActions.loadProject(loadimgjson(ScaleUrl, value, jsonleft, top));
+            }
+            else {
+              projectActions.loadProject(loadimgjson2(ScaleUrl, value, jsonleft, top));
+            }
+          }
+        }
+        //console.log(value);
+      });
+      //console.log(url);
+      //console.log(dataBase64);
+      // if (img.complete) {
+      //   if (img.width >= img.height){
+      //     projectActions.loadProject(loadimgjson(ScaleUrl, url, jsonleft, top));
+      //   }
+      //   else {
+      //     projectActions.loadProject(loadimgjson2(ScaleUrl, url, jsonleft, top));
+      //   }
+      // }
+      // else {
+      //   img.onload = function(){
+      //     if (img.width >= img.height){
+      //       projectActions.loadProject(loadimgjson(ScaleUrl, url, jsonleft, top));
+      //     }
+      //     else {
+      //       projectActions.loadProject(loadimgjson2(ScaleUrl, url, jsonleft, top));
+      //     }
+      //   }
+      // }
       status = 1;
       return status;
       }
@@ -162,12 +187,14 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
           body: file
         })
 
-        const imageUrl = url.split('?')[0]
-        console.log(imageUrl)
+        const imageUrl = url.split('?')[0];
+        //const dataBase64 = getBase64FromUrl(imageUrl);
+        //console.log(dataBase64)
 
         var Check403 = setInterval(function(){ 
           var status = 0;
           status = checkForbidden(imageUrl, status);
+          //status = checkForbidden(dataBase64, status);
           if (status == 1) {
             clearInterval(Check403);
             setTimeout(()=>UploadTest(),2000)
@@ -197,11 +224,13 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
         const pdfName = pdfurl.split('/')[3]
         const dicName = pdfName.split('.')[0]
 
-        const imageUrl = "https://react-planner-img.s3.ap-northeast-1.amazonaws.com/" + dicName + ".jpg"
+        const imageUrl = "https://react-planner-img.s3.ap-northeast-1.amazonaws.com/" + dicName + ".jpg";
+        //const dataBase64 = getBase64FromUrl(imageUrl);
 
         var Check403 = setInterval(function(){ 
           var status = 0;
           status = checkForbidden(imageUrl, status);
+          //status = checkForbidden(dataBase64, status);
           if (status == 1) {
             clearInterval(Check403)
             setTimeout(()=>UploadTest(),2000)
@@ -219,11 +248,25 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
         alert("Please upload PDF or IMG");
         document.getElementById("UploadRectangular").style.display = "";
         document.getElementById("OutlineRectangular").style.display = "";
-        document.getElementById("Initialoverlay").style.display = "";w
+        document.getElementById("Initialoverlay").style.display = "";
         closeLoading();
         }
     });
   };
+
+  //url2base64
+  const getBase64FromUrl = async (url) => {
+    const data = await fetch(url);
+    const blob = await data.blob();
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(blob); 
+      reader.onloadend = () => {
+        const base64data = reader.result;   
+        resolve(base64data);
+      }
+    });
+  }
 
   const Outline = event => {
     document.getElementById("UploadRectangular").style.display = "none";

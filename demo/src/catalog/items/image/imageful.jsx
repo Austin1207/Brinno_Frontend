@@ -324,7 +324,8 @@ export default class ImageFul extends Component {
         {
           this.props.imageUri && !this.state.imageLoadError ?
             <image
-              xlinkHref={this.props.imageUri}
+              //xlinkHref={this.props.imageUri}
+              href={this.props.imageUri}
               x="0"
               y="0"
               width={this.props.width}
