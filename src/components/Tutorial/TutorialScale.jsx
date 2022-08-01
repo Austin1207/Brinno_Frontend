@@ -491,37 +491,30 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
     function showOptimizing() {
       document.getElementById("overlay").style.display = "";
       document.getElementById("optimizing").style.display = "";
-      for (var i = 1; i < 400; i++) {
+      var DetectOptimizing = setInterval(function(){ 
         setTimeout(function(){
             document.getElementById("optimizing").innerHTML = "Optimizing.";
-        },1500*i - 1000)
+            },0)
+
         setTimeout(function(){
             document.getElementById("optimizing").innerHTML = "Optimizing..";
-        },1500*i -500)
+            },500)
+
         setTimeout(function(){
             document.getElementById("optimizing").innerHTML = "Optimizing...";
-        },1500*i)
+            },1000)
+
+        if (document.getElementById("optimizing").style.display == "none") {
+          clearInterval(DetectOptimizing);
         }
+      },1500)
+  
     }
   
     function closeOptimizing() {
       document.getElementById("overlay").style.display = "none";
       document.getElementById("optimizing").style.display = "none";
-    }
-  
-    // function checkForbidden (url, resultJson, status) {
-    //   var req = new XMLHttpRequest();
-    //   req.open('GET', url, false);
-    //   req.send();
-    //   if (req.status == 200) {
-    //     closeLoading();
-  
-    //     projectActions.loadProject(resultJson);
-    //     status = 1;
-    //     return status;
-    //   }
-    // };
-  
+    }  
     
     function checkForbidden (url, status) {
       var req = new XMLHttpRequest();
