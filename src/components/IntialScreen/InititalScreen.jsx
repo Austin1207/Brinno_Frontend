@@ -8,6 +8,17 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
   //+Upload onclick
   const ScaleUrl = "https://example-img.s3.ap-northeast-1.amazonaws.com/small.png"
 
+  const ClickAreaLegend = (AreaLegend) => {
+    var e = document.createEvent("MouseEvents");
+    e.initEvent("click", true, true);
+    AreaLegend.dispatchEvent(e);
+    }
+
+  const OpenAreaLegend = event => {
+    var AreaLegendClick = document.getElementById("OpenAreaLegend")
+    ClickAreaLegend(AreaLegendClick);
+    }
+
   function UploadFile() {
     return new Promise(function (resolve, reject) {
   
@@ -204,6 +215,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
         document.getElementById('Scale2').style.display = ""
         document.getElementById('Question2').style.display = ""
         document.getElementById('Setting2').style.display = ""
+        OpenAreaLegend();
       }
 
       else if ( file.type.indexOf("pdf") == 12 ){
@@ -240,7 +252,7 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
         document.getElementById('Scale2').style.display = ""
         document.getElementById('Question2').style.display = ""
         document.getElementById('Setting2').style.display = ""
-
+        OpenAreaLegend();
 
     }
 
@@ -285,6 +297,8 @@ const InitialScreen = ({state,projectActions, left, jsonleft, top}) => {
     localStorage.setItem("Mode", "Outline")
 
     projectActions.loadProject(loadimgjson3(ScaleUrl, jsonleft, top));
+
+    OpenAreaLegend();
 
     if (localStorage.getItem("Tutorial_Outline") == "Done") {
       FinishTutorial("Done")

@@ -119,9 +119,15 @@ export default function Visibility_Polygon({state, sceneWidth, sceneHeight}) {
   let conepath = '';
   let visibility = [];
   let rendered = [];
+  if (localStorage.getItem("Unit") == "ft"){
+    var UnitScale = 0.3048
+  }
+  else{
+    var UnitScale = 1
+  }
   for(let i=0;i<cameara_info.length;i++){
     position = [cameara_info[i].x, sceneHeight-cameara_info[i].y];
-    conepath = camera_cone(cameara_info[i].x, sceneHeight-cameara_info[i].y, parseInt(cameara_info[i].distance)/scale, cameara_info[i].rotation, parseInt(cameara_info[i].fov));
+    conepath = camera_cone(cameara_info[i].x, sceneHeight-cameara_info[i].y, parseInt(cameara_info[i].distance)/(scale * UnitScale), cameara_info[i].rotation, parseInt(cameara_info[i].fov));
     visibility = compute(position, segments);
     rendered.push(
       <g key={`${cameara_info[i].id}_visibility`}>

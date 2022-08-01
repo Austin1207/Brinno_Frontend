@@ -71,10 +71,15 @@ export default function TargetFactory(name, info) {
       let extra_epsilon = 5;
       let textDistance = half_thickness + epsilon + extra_epsilon;
 
-      return (element.selected) ?
-        <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE_SELECTED} strokeDasharray="20"/>
+      // return (element.selected) ?
+      //   <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE_SELECTED} strokeDasharray="20"/>
+      //   :
+      //   <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE} strokeDasharray="20"/>
+
+        return (element.selected) ?
+        <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE_SELECTED}/>
         :
-        <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE} strokeDasharray="20"/>
+        <line x1="0" y1="0" x2={length} y2="0" style={STYLE_LINE}/>
     },
 
     render3D: function (element, layer, scene) {

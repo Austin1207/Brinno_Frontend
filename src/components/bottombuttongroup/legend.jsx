@@ -37,7 +37,7 @@ export default function Legend({blackMode}){
         <ButtonGroup variant="contained" aria-label="AreaLegend"
             sx={{ position: 'absolute', top: 39+36+70, right: 41}}
             >
-          <Button
+          <Button id = "OpenAreaLegend"
             sx={{...(blackMode ? buttonsBlackStyle : buttonsStyle), width: '36px', height: '36px', cursor: 'url("https://cursor.s3.ap-northeast-1.amazonaws.com/select.png") 13.5 4.5,pointer'}}
             onClick={handleLegendButton}
             >

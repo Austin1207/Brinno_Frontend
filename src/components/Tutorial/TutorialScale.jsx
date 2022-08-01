@@ -493,15 +493,15 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
       document.getElementById("optimizing").style.display = "";
       for (var i = 1; i < 400; i++) {
         setTimeout(function(){
-          document.getElementById("optimizing").innerHTML = "Optimizing.";
+            document.getElementById("optimizing").innerHTML = "Optimizing.";
         },1500*i - 1000)
         setTimeout(function(){
-          document.getElementById("optimizing").innerHTML = "Optimizing..";
+            document.getElementById("optimizing").innerHTML = "Optimizing..";
         },1500*i -500)
         setTimeout(function(){
-          document.getElementById("optimizing").innerHTML = "Optimizing...";
+            document.getElementById("optimizing").innerHTML = "Optimizing...";
         },1500*i)
-      }
+        }
     }
   
     function closeOptimizing() {
@@ -974,7 +974,7 @@ const TutorialScale = ({state, projectActions, itemsActions, sceneActions, left}
                 left: ((left-431)/2) + 414,
                 display: "none"
                 }}>
-                Feets
+                Feet
             </button>
 
             <div id ="TutorialScaleMeasureLine" style = {{
